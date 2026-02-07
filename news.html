@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Industry News - ShowFloorTips</title>
+    <meta name="description" content="Latest trade show industry news, exhibition updates, event technology trends, and marketing insights for exhibitors and event professionals.">
+    <meta name="keywords" content="trade show news, exhibition industry, event technology, trade show marketing, exhibitor news, CEIR, convention news 2026">
+
+    <meta property="og:title" content="Trade Show Industry News - ShowFloorTips">
+    <meta property="og:description" content="Latest trade show industry news, exhibition updates, and insights for exhibitors.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/news.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Industry News",
+        "description": "Latest trade show industry news and insights for exhibitors",
+        "url": "https://showfloortips.com/news.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://showfloortips.com/news.html">
+
+    <style>
+        /* ---- News Page Specific Styles ---- */
+        .news-hero {
+            position: relative;
+            background: var(--primary);
+            overflow: hidden;
+            padding: 4rem 2rem 3rem;
+        }
+        .news-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1600&q=80') center/cover;
+            opacity: 0.12;
+        }
+        .news-hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .news-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .news-hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+        .news-last-updated {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+        }
+
+        /* Category Filter Pills */
+        .news-filters {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+        }
+        .news-filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .news-filter-pill {
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .news-filter-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .news-filter-pill.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* News Grid */
+        .news-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .news-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .news-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* Featured Article (first article, spans 2 cols) */
+        .news-card.featured {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
+        .news-card.featured .news-card-image {
+            height: 320px;
+        }
+        .news-card.featured .news-card-body h3 {
+            font-size: 1.35rem;
+        }
+        .news-card.featured .news-card-summary {
+            -webkit-line-clamp: 4;
+        }
+
+        /* News Card */
+        .news-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card:hover {
+            border-color: var(--primary-medium);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        .news-card a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .news-card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: var(--bg-alt);
+        }
+        .news-card-image .news-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+        .news-card-image .news-placeholder svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.3;
+            color: #fff;
+        }
+        .news-card-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fff;
+            z-index: 1;
+        }
+        .news-card-body {
+            padding: 1.25rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .news-card-body h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news-card-summary {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+        .news-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+        }
+        .news-card-source {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .news-card-date {
+            font-weight: 400;
+        }
+        .news-card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .news-card:hover .news-card-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Category colors for news */
+        .cat-industry-news { background: #475569; }
+        .cat-show-updates { background: #0891b2; }
+        .cat-technology { background: #3b82f6; }
+        .cat-marketing { background: #8b5cf6; }
+        .cat-data-trends { background: #059669; }
+
+        /* Load More */
+        .news-load-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .news-load-more-btn {
+            padding: 0.75rem 2.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .news-load-more-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* No Results */
+        .news-no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+        .news-no-results h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        /* Scannly CTA Banner */
+        .scannly-cta {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+        .scannly-cta-box {
+            background: var(--bg-warm);
+            border: 1px solid var(--accent-light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .scannly-cta-content {
+            flex: 1;
+        }
+        .scannly-cta-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .scannly-cta-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .scannly-cta-content .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .scannly-cta-content .btn:hover {
+            background: var(--accent-hover);
+        }
+        .scannly-cta-icon {
+            font-size: 3.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Powered By */
+        .powered-by {
+            text-align: center;
+            padding: 1rem 2rem 2rem;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        .powered-by a {
+            color: var(--accent-hover);
+            font-weight: 600;
+        }
+
+        /* Mobile Nav Show State */
+        .nav-links.show {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            padding: 1rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .news-card.featured {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+            .scannly-cta-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .news-hero h1 {
+                font-size: 2rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .news-card.featured {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .news-card.featured .news-card-image {
+                height: 200px;
+            }
+            .news-filter-bar {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">Show<span>Floor</span>Tips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- News Hero -->
+    <section class="news-hero">
+        <div class="news-hero-content">
+            <h1>Trade Show Industry News</h1>
+            <p class="subtitle">The latest headlines, trends, and insights from across the exhibition industry.</p>
+            <p class="news-last-updated">Last updated: <time datetime="2026-02-07T15:28:57Z" id="lastUpdated">February 07, 2026 at 03:28 PM UTC</time></p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <div class="news-filters">
+        <div class="news-filter-bar" id="newsFilterBar">
+            <button class="news-filter-pill active" data-category="all">All News</button>
+            <button class="news-filter-pill" data-category="Industry News">Industry News</button>
+            <button class="news-filter-pill" data-category="Show Updates">Show Updates</button>
+            <button class="news-filter-pill" data-category="Technology">Technology</button>
+            <button class="news-filter-pill" data-category="Marketing">Marketing</button>
+            <button class="news-filter-pill" data-category="Data & Trends">Data &amp; Trends</button>
+        </div>
+    </div>
+
+    <!-- News Grid -->
+    <section class="news-section">
+        <div class="news-section-header">
+            <span class="news-count" id="newsCount">Loading articles...</span>
+        </div>
+        <div class="news-grid" id="newsGrid">
+            <div class="news-no-results">
+                <h3>Loading news...</h3>
+                <p>Fetching the latest trade show industry headlines.</p>
+            </div>
+        </div>
+        <div class="news-load-more" id="newsLoadMore" style="display:none;">
+            <button class="news-load-more-btn" id="newsLoadMoreBtn">Load More Articles</button>
+        </div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-cta">
+        <div class="scannly-cta-box">
+            <div class="scannly-cta-content">
+                <h3>Capture Every Lead at Your Next Trade Show</h3>
+                <p>Scannly replaces business cards with instant QR code contact exchange. Scan badges, share your info, and export leads in seconds.</p>
+                <a href="/scannly.html" class="btn">Learn About Scannly</a>
+            </div>
+            <div class="scannly-cta-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent-hover)" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="3" height="3"/>
+                    <line x1="21" y1="14" x2="21" y2="17"/>
+                    <line x1="14" y1="21" x2="17" y2="21"/>
+                    <line x1="21" y1="21" x2="21" y2="21.01"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Powered By -->
+    <div class="powered-by">
+        Powered by <a href="https://showfloortips.com">ShowFloorTips</a> &mdash; Trade Show Intelligence for Exhibitors
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Show<span>Floor</span>Tips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>News Categories</h4>
+                    <ul>
+                        <li><a href="#" onclick="filterNews('Industry News')">Industry News</a></li>
+                        <li><a href="#" onclick="filterNews('Technology')">Technology</a></li>
+                        <li><a href="#" onclick="filterNews('Marketing')">Marketing</a></li>
+                        <li><a href="#" onclick="filterNews('Data & Trends')">Data &amp; Trends</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- News Data (generated by scrape_news.py) -->
+    <script src="/news.js"></script>
+
+    <!-- News Page Logic -->
+    <script>
+    (function() {
+        'use strict';
+
+        var ITEMS_PER_PAGE = 12;
+        var currentFilter = 'all';
+        var visibleCount = ITEMS_PER_PAGE;
+        var filteredArticles = [];
+
+        var CAT_CLASSES = {
+            'Industry News': 'cat-industry-news',
+            'Show Updates': 'cat-show-updates',
+            'Technology': 'cat-technology',
+            'Marketing': 'cat-marketing',
+            'Data & Trends': 'cat-data-trends'
+        };
+
+        var PLACEHOLDER_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>';
+
+        function init() {
+            if (typeof NEWS_DATA === 'undefined' || !NEWS_DATA.length) {
+                document.getElementById('newsGrid').innerHTML =
+                    '<div class="news-no-results"><h3>No news available</h3><p>News data is being generated. Check back soon.</p></div>';
+                document.getElementById('newsCount').textContent = '0 articles';
+                return;
+            }
+
+            applyFilter();
+            bindEvents();
+        }
+
+        function bindEvents() {
+            // Filter pills
+            document.querySelectorAll('.news-filter-pill').forEach(function(pill) {
+                pill.addEventListener('click', function() {
+                    document.querySelectorAll('.news-filter-pill').forEach(function(p) {
+                        p.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    currentFilter = this.dataset.category;
+                    visibleCount = ITEMS_PER_PAGE;
+                    applyFilter();
+                });
+            });
+
+            // Load more
+            document.getElementById('newsLoadMoreBtn').addEventListener('click', function() {
+                visibleCount += ITEMS_PER_PAGE;
+                renderCards();
+            });
+        }
+
+        function applyFilter() {
+            if (currentFilter === 'all') {
+                filteredArticles = NEWS_DATA.slice();
+            } else {
+                filteredArticles = NEWS_DATA.filter(function(a) {
+                    return a.category === currentFilter;
+                });
+            }
+            visibleCount = ITEMS_PER_PAGE;
+            renderCards();
+        }
+
+        function renderCards() {
+            var grid = document.getElementById('newsGrid');
+            var visible = filteredArticles.slice(0, visibleCount);
+
+            var countText = filteredArticles.length + ' article' + (filteredArticles.length !== 1 ? 's' : '');
+            if (currentFilter !== 'all') {
+                countText += ' in ' + currentFilter;
+            }
+            document.getElementById('newsCount').textContent = countText;
+
+            if (visible.length === 0) {
+                grid.innerHTML = '<div class="news-no-results"><h3>No articles found</h3><p>Try selecting a different category.</p></div>';
+                document.getElementById('newsLoadMore').style.display = 'none';
+                return;
+            }
+
+            grid.innerHTML = visible.map(function(article, i) {
+                var catClass = CAT_CLASSES[article.category] || 'cat-industry-news';
+                var isFeatured = (i === 0 && currentFilter === 'all') ? ' featured' : '';
+
+                var imageHtml;
+                if (article.image_url) {
+                    imageHtml = '<div class="news-card-image" style="background-image:url(\''+escapeAttr(article.image_url)+'\')"><span class="news-card-category ' + catClass + '">' + escapeHtml(article.category) + '</span></div>';
+                } else {
+                    imageHtml = '<div class="news-card-image"><div class="news-placeholder">' + PLACEHOLDER_SVG + '</div><span class="news-card-category ' + catClass + '">' + escapeHtml(article.category) + '</span></div>';
+                }
+
+                var dateDisplay = formatDate(article.published_date);
+
+                return '<div class="news-card' + isFeatured + '">' +
+                    '<a href="' + escapeAttr(article.url) + '" target="_blank" rel="noopener noreferrer">' +
+                        imageHtml +
+                        '<div class="news-card-body">' +
+                            '<h3>' + escapeHtml(article.title) + '</h3>' +
+                            '<p class="news-card-summary">' + escapeHtml(article.summary) + '</p>' +
+                            '<div class="news-card-meta">' +
+                                '<span class="news-card-source">' + escapeHtml(article.source) + '</span>' +
+                                '<span class="news-card-date">' + dateDisplay + '</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</a>' +
+                '</div>';
+            }).join('');
+
+            var loadMore = document.getElementById('newsLoadMore');
+            loadMore.style.display = visibleCount < filteredArticles.length ? 'block' : 'none';
+        }
+
+        function formatDate(isoStr) {
+            if (!isoStr) return '';
+            try {
+                var d = new Date(isoStr);
+                if (isNaN(d.getTime())) return '';
+                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+            } catch(e) {
+                return '';
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function escapeAttr(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+        }
+
+        // Expose filterNews for footer links
+        window.filterNews = function(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.news-filter-pill').forEach(function(p) {
+                p.classList.toggle('active', p.dataset.category === cat);
+            });
+            visibleCount = ITEMS_PER_PAGE;
+            applyFilter();
+            document.querySelector('.news-filters').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // Init
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+
+</body>
+</html>
