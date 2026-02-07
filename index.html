@@ -293,6 +293,10 @@
             </div>
             <div class="modal-actions">
                 <a class="btn btn-primary" id="modalWebsite" href="#" target="_blank" rel="noopener">Visit Official Website</a>
+                <a class="btn btn-primary" id="modalSearchWebsite" href="#" target="_blank" rel="noopener" style="display:none">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Find Official Website
+                </a>
                 <a class="btn btn-outline" id="modalShowPage" href="#">Read Full Exhibitor Guide</a>
             </div>
         </div>
@@ -471,6 +475,16 @@
             return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
         }
 
+        function isAggregatorUrl(url) {
+            if (!url) return true;
+            var aggs = ['tradefairdates.com','eventsinamerica.com','thetradeshowcalendar.com','messeninfo.de','10times.com','eventseye.com','tsnn.com'];
+            var lower = url.toLowerCase();
+            for (var i = 0; i < aggs.length; i++) {
+                if (lower.indexOf(aggs[i]) !== -1) return true;
+            }
+            return false;
+        }
+
         // Expose openShow globally
         window.openShow = function(index) {
             const show = filteredShows[index];
@@ -520,13 +534,19 @@
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
             ).join('');
 
-            // Actions
+            // Actions - show official website link or search fallback
             const websiteBtn = document.getElementById('modalWebsite');
-            if (show.website) {
+            const searchBtn = document.getElementById('modalSearchWebsite');
+            const isOfficial = show.website && !isAggregatorUrl(show.website);
+
+            if (isOfficial) {
                 websiteBtn.href = show.website;
                 websiteBtn.style.display = 'inline-flex';
+                searchBtn.style.display = 'none';
             } else {
                 websiteBtn.style.display = 'none';
+                searchBtn.href = 'https://www.google.com/search?q=' + encodeURIComponent(show.title + ' official website 2026');
+                searchBtn.style.display = 'inline-flex';
             }
             document.getElementById('modalShowPage').href = '/shows/' + show.slug;
 
