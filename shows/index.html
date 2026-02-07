@@ -3,15 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trade Shows Directory | ShowFloorTips</title>
-    <meta name="description" content="Browse our comprehensive directory of trade shows across Technology, Healthcare, Manufacturing, and more. Get exhibitor tips for each show.">
+    <title>Trade Show Directory - Exhibitor Tips by Industry | ShowFloorTips</title>
+    <meta name="description" content="Find exhibitor tips for trade shows in Technology, Healthcare, Food & Beverage, Fashion, Construction, Manufacturing and more.">
     
-    <meta property="og:title" content="Trade Shows Directory | ShowFloorTips">
-    <meta property="og:description" content="Find exhibitor tips for trade shows across 12 industries.">
+    <meta property="og:title" content="Trade Show Directory | ShowFloorTips">
+    <meta property="og:description" content="Exhibitor tips for trade shows across all industries.">
     <meta property="og:type" content="website">
     
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Directory",
+        "description": "Exhibitor tips for trade shows across all industries",
+        "url": "https://showfloortips.com/shows"
+    }
+    </script>
+    
     <link rel="stylesheet" href="/styles.css">
-    <link rel="canonical" href="https://showfloortips.com/shows">
+    <style>
+        .show-list {
+            display: grid;
+            gap: 1rem;
+        }
+        .show-item {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+        .show-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .show-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary);
+        }
+        .show-item h3 a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .show-item h3 a:hover {
+            color: var(--accent);
+        }
+        .show-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .show-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .category-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .filter-btn {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,85 +111,273 @@
     </header>
     
     <main>
-        <section class="hero" style="padding: 2rem;">
-            <h1>Trade Shows Directory</h1>
-            <p class="subtitle">Expert exhibitor tips for every major trade show</p>
+        <section class="hero" style="padding: 3rem 2rem;">
+            <h1>Trade Show Directory</h1>
+            <p class="subtitle">Expert exhibitor tips for every major trade show. Find your show and dominate the floor.</p>
         </section>
         
-        <section class="show-list">
-            <h2>Technology</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/ces-2025.html">CES 2025</a></li>
-                <li><a href="/shows/mwc-barcelona-mobile-world-congress.html">MWC Barcelona</a></li>
-                <li><a href="/shows/rsa-conference.html">RSA Conference</a></li>
-                <li><a href="/shows/nrf-retails-big-show.html">NRF - Retail's Big Show</a></li>
-            </ul>
+        <section style="padding: 0 2rem;">
+            <div class="filter-section">
+                <h3>Filter by Industry</h3>
+                <div class="filter-buttons">
+                    <a href="/shows" class="filter-btn active">All Shows</a>
+                    <a href="/shows?category=technology" class="filter-btn">💻 Technology</a>
+                    <a href="/shows?category=healthcare" class="filter-btn">🏥 Healthcare</a>
+                    <a href="/shows?category=food-beverage" class="filter-btn">🍕 Food & Beverage</a>
+                    <a href="/shows?category=fashion" class="filter-btn">👗 Fashion</a>
+                    <a href="/shows?category=construction" class="filter-btn">🏗️ Construction</a>
+                    <a href="/shows?category=manufacturing" class="filter-btn">🏭 Manufacturing</a>
+                    <a href="/shows?category=energy" class="filter-btn">⚡ Energy</a>
+                    <a href="/shows?category=finance" class="filter-btn">💰 Finance</a>
+                    <a href="/shows?category=education" class="filter-btn">📚 Education</a>
+                    <a href="/shows?category=real-estate" class="filter-btn">🏠 Real Estate</a>
+                    <a href="/shows?category=automotive" class="filter-btn">🚗 Automotive</a>
+                    <a href="/shows?category=agriculture" class="filter-btn">🌾 Agriculture</a>
+                </div>
+            </div>
             
-            <h2>Healthcare</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/himss-global-health-conference.html">HIMSS Global Health Conference</a></li>
-                <li><a href="/shows/medica.html">Medica</a></li>
-            </ul>
-            
-            <h2>Food & Beverage</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/natural-products-expo-west.html">Natural Products Expo West</a></li>
-            </ul>
-            
-            <h2>Fashion</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/magic-las-vegas.html">MAGIC Las Vegas</a></li>
-            </ul>
-            
-            <h2>Construction</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/world-of-concrete.html">World of Concrete</a></li>
-                <li><a href="/shows/kbis-kitchen-bath-industry-show.html">KBIS - Kitchen & Bath Industry Show</a></li>
-            </ul>
-            
-            <h2>Manufacturing</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/imts-international-manufacturing-technology-show.html">IMTS</a></li>
-                <li><a href="/shows/automate.html">Automate</a></li>
-                <li><a href="/shows/pack-expo-international.html">PACK EXPO International</a></li>
-            </ul>
-            
-            <h2>Energy</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/solar-power-international.html">Solar Power International</a></li>
-            </ul>
-            
-            <h2>Finance</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/money2020-usa.html">Money20/20 USA</a></li>
-            </ul>
-            
-            <h2>Education</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/iste-conference-expo.html">ISTE Conference & Expo</a></li>
-            </ul>
-            
-            <h2>Real Estate</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/nar-nxt-realtor-experience.html">NAR NXT - The REALTOR Experience</a></li>
-            </ul>
-            
-            <h2>Automotive</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/sema-show.html">SEMA Show</a></li>
-                <li><a href="/shows/aapex.html">AAPEX</a></li>
-            </ul>
-            
-            <h2>Agriculture</h2>
-            <ul class="shows-grid">
-                <li><a href="/shows/world-ag-expo.html">World Ag Expo</a></li>
-            </ul>
+            <div class="show-list">
+                <!-- Technology -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/ces-2025.html">CES 2025</a></h3>
+                        <div class="show-meta">
+                            <span>📅 January 7-10, 2025</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Technology</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/mwc-barcelona-mobile-world-congress.html">MWC Barcelona - Mobile World Congress</a></h3>
+                        <div class="show-meta">
+                            <span>📅 February 24-27, 2025</span>
+                            <span>📍 Barcelona, Spain</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Technology</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/rsa-conference.html">RSA Conference</a></h3>
+                        <div class="show-meta">
+                            <span>📅 April 28 - May 1, 2025</span>
+                            <span>📍 San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Technology</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/nrf-retails-big-show.html">NRF - Retail's Big Show</a></h3>
+                        <div class="show-meta">
+                            <span>📅 January 12-14, 2025</span>
+                            <span>📍 New York, NY</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Technology</span>
+                </div>
+                
+                <!-- Healthcare -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/himss-global-health-conference.html">HIMSS Global Health Conference</a></h3>
+                        <div class="show-meta">
+                            <span>📅 March 3-6, 2025</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Healthcare</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/medica.html">Medica</a></h3>
+                        <div class="show-meta">
+                            <span>📅 November 11-14, 2024</span>
+                            <span>📍 Düsseldorf, Germany</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Healthcare</span>
+                </div>
+                
+                <!-- Food & Beverage -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/natural-products-expo-west.html">Natural Products Expo West</a></h3>
+                        <div class="show-meta">
+                            <span>📅 March 4-7, 2025</span>
+                            <span>📍 Anaheim, CA</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Food & Beverage</span>
+                </div>
+                
+                <!-- Fashion -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/magic-las-vegas.html">MAGIC Las Vegas</a></h3>
+                        <div class="show-meta">
+                            <span>📅 February 4-6, 2025</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Fashion</span>
+                </div>
+                
+                <!-- Construction -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/world-of-concrete.html">World of Concrete</a></h3>
+                        <div class="show-meta">
+                            <span>📅 January 21-23, 2025</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Construction</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/kbis-kitchen-bath-industry-show.html">KBIS - Kitchen & Bath Industry Show</a></h3>
+                        <div class="show-meta">
+                            <span>📅 February 25-27, 2025</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Construction</span>
+                </div>
+                
+                <!-- Manufacturing -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/imts-international-manufacturing-technology-show.html">IMTS - International Manufacturing Technology Show</a></h3>
+                        <div class="show-meta">
+                            <span>📅 September 9-14, 2024</span>
+                            <span>📍 Chicago, IL</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Manufacturing</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/automate.html">Automate</a></h3>
+                        <div class="show-meta">
+                            <span>📅 May 6-9, 2024</span>
+                            <span>📍 Chicago, IL</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Manufacturing</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/pack-expo-international.html">PACK EXPO International</a></h3>
+                        <div class="show-meta">
+                            <span>📅 November 3-6, 2024</span>
+                            <span>📍 Chicago, IL</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Manufacturing</span>
+                </div>
+                
+                <!-- Energy -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/solar-power-international.html">Solar Power International</a></h3>
+                        <div class="show-meta">
+                            <span>📅 September 16-19, 2024</span>
+                            <span>📍 Anaheim, CA</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Energy</span>
+                </div>
+                
+                <!-- Finance -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/money2020-usa.html">Money20/20 USA</a></h3>
+                        <div class="show-meta">
+                            <span>📅 October 27-30, 2024</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Finance</span>
+                </div>
+                
+                <!-- Education -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/iste-conference-expo.html">ISTE Conference & Expo</a></h3>
+                        <div class="show-meta">
+                            <span>📅 June 23-26, 2024</span>
+                            <span>📍 Denver, CO</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Education</span>
+                </div>
+                
+                <!-- Real Estate -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/nar-nxt-realtor-experience.html">NAR NXT - The REALTOR Experience</a></h3>
+                        <div class="show-meta">
+                            <span>📅 November 8-10, 2024</span>
+                            <span>📍 Boston, MA</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Real Estate</span>
+                </div>
+                
+                <!-- Automotive -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/sema-show.html">SEMA Show</a></h3>
+                        <div class="show-meta">
+                            <span>📅 November 5-8, 2024</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Automotive</span>
+                </div>
+                
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/aapex.html">AAPEX</a></h3>
+                        <div class="show-meta">
+                            <span>📅 November 5-7, 2024</span>
+                            <span>📍 Las Vegas, NV</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Automotive</span>
+                </div>
+                
+                <!-- Agriculture -->
+                <div class="show-item">
+                    <div>
+                        <h3><a href="/shows/world-ag-expo.html">World Ag Expo</a></h3>
+                        <div class="show-meta">
+                            <span>📅 February 11-13, 2025</span>
+                            <span>📍 Tulare, CA</span>
+                        </div>
+                    </div>
+                    <span class="category-badge">Agriculture</span>
+                </div>
+                
+            </div>
         </section>
         
-        <section class="cta-box large" style="margin-top: 3rem;">
-            <h2>📱 Capture 10x More Leads at Any Show</h2>
-            <p>Scannly's QR-based lead capture works at every trade show. Set up in minutes, capture leads instantly.</p>
-            <a href="https://scannly.app?utm_source=showfloortips&utm_medium=shows-directory" class="btn primary large">Try Scannly Free →</a>
+        <section class="featured-cta" style="margin-top: 3rem;">
+            <div class="cta-box">
+                <h3>📱 Capture 10x More Leads at Your Next Show</h3>
+                <p>Use <strong>Scannly</strong> to capture leads instantly via QR code. No more lost business cards.</p>
+                <a href="https://scannly.app?utm_source=showfloortips&utm_medium=shows&utm_campaign=directory" class="btn primary">Try Scannly Free →</a>
+            </div>
         </section>
     </main>
     
@@ -135,39 +407,5 @@
             <p>© 2025 ShowFloorTips.com | <a href="https://scannly.app">Powered by Scannly</a></p>
         </div>
     </footer>
-    
-    <style>
-        .show-list {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .show-list h2 {
-            text-align: left;
-            font-size: 1.3rem;
-            margin: 2rem 0 0.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-        .shows-grid {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 0.5rem;
-        }
-        .shows-grid a {
-            display: block;
-            padding: 0.75rem 1rem;
-            background: var(--bg-alt);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--primary);
-            transition: all 0.2s;
-        }
-        .shows-grid a:hover {
-            background: var(--primary);
-            color: white;
-        }
-    </style>
 </body>
 </html>
