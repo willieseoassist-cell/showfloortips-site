@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show ROI Calculator - Calculate Your Exhibitor Return on Investment | ShowFloorTips</title>
+    <meta name="description" content="Free trade show ROI calculator. Estimate your total exhibitor investment, expected revenue, cost per lead, and break-even point. Plan smarter with real benchmarks.">
+    <meta name="keywords" content="trade show ROI calculator, exhibitor ROI, trade show cost calculator, cost per lead, trade show budget, exhibitor investment, trade show planning">
+
+    <meta property="og:title" content="Trade Show ROI Calculator - ShowFloorTips">
+    <meta property="og:description" content="Free trade show ROI calculator. Estimate total investment, expected revenue, cost per lead, and break-even point.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/roi-calculator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show ROI Calculator - ShowFloorTips">
+    <meta name="twitter:description" content="Free trade show ROI calculator. Estimate total investment, expected revenue, cost per lead, and break-even point.">
+
+    <link rel="canonical" href="https://showfloortips.com/roi-calculator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show ROI Calculator",
+        "url": "https://showfloortips.com/roi-calculator.html",
+        "description": "Free interactive calculator to estimate your trade show return on investment. Input booth costs, travel, marketing, and expected leads to see projected ROI, cost per lead, and break-even analysis.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "Total investment calculation",
+            "ROI percentage",
+            "Cost per lead",
+            "Cost per acquisition",
+            "Break-even analysis",
+            "Downloadable report"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --accent-light: #fef3c7;
+            --accent-bg: rgba(245, 158, 11, 0.08);
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0f172a;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --green: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.08);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59, 130, 246, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ========== HEADER ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-links .nav-cta {
+            background: var(--accent);
+            color: var(--primary) !important;
+            font-weight: 600;
+            padding: 8px 20px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 50%, #0f172a 100%);
+            padding: 80px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .calculator-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* ========== INPUT PANEL ========== */
+        .input-panel {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .reset-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            border-color: var(--text-secondary);
+            color: var(--text);
+        }
+
+        .input-section {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .input-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .section-icon.booth { background: #dbeafe; }
+        .section-icon.travel { background: #dcfce7; }
+        .section-icon.marketing { background: #fef3c7; }
+        .section-icon.staff { background: #ede9fe; }
+        .section-icon.misc { background: #fee2e2; }
+        .section-icon.revenue { background: #d1fae5; }
+
+        .section-label h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.2px;
+        }
+
+        .section-label p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .input-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap .prefix {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .input-wrap .suffix {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--text);
+            background: var(--bg);
+            transition: all 0.2s;
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        .has-prefix input { padding-left: 28px; }
+        .has-suffix input { padding-right: 36px; }
+
+        .input-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ========== RESULTS PANEL ========== */
+        .results-panel {
+            position: sticky;
+            top: 88px;
+        }
+
+        .results-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .results-header {
+            background: var(--bg-dark);
+            padding: 24px 24px 20px;
+        }
+
+        .results-header h2 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.2px;
+            margin-bottom: 4px;
+        }
+
+        .results-header p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .roi-display {
+            padding: 28px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .roi-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .roi-value {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            transition: color 0.3s;
+        }
+
+        .roi-value.positive { color: var(--green); }
+        .roi-value.negative { color: var(--red); }
+        .roi-value.zero { color: var(--text-muted); }
+
+        .roi-subtitle {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+
+        .results-metrics {
+            padding: 4px 24px 8px;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .metric-value.green { color: var(--green); }
+        .metric-value.red { color: var(--red); }
+
+        .results-actions {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-download svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-share {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px 20px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-share:hover {
+            border-color: var(--text-secondary);
+            color: var(--text);
+        }
+
+        /* ========== SCANNLY CTA ========== */
+        .scannly-cta {
+            margin-top: 20px;
+            background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .scannly-cta h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .scannly-cta p {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .scannly-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .scannly-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== BENCHMARKS ========== */
+        .benchmarks-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .benchmarks-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .benchmarks-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.8px;
+            margin-bottom: 8px;
+        }
+
+        .benchmarks-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .benchmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .benchmark-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .benchmark-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benchmark-stat {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+        }
+
+        .benchmark-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .benchmark-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ========== TIPS SECTION ========== */
+        .tips-section {
+            background: var(--bg-alt);
+            padding: 64px 24px;
+        }
+
+        .tips-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tips-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tips-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.8px;
+            margin-bottom: 8px;
+        }
+
+        .tips-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .tip-number {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-bg);
+            color: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .tip-content h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .tip-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--bg-dark);
+            color: #94a3b8;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-brand .logo span { color: var(--accent); }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-panel {
+                position: static;
+            }
+
+            .benchmarks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--bg-dark);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-top: 1px solid rgba(255,255,255,0.08);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 56px 24px 48px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .calculator-section {
+                padding: 32px 16px 64px;
+            }
+
+            .input-section {
+                padding: 20px;
+            }
+
+            .panel-header {
+                padding: 20px;
+            }
+
+            .input-row,
+            .input-row-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .benchmarks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benchmarks-section {
+                padding: 0 16px 64px;
+            }
+
+            .tips-section {
+                padding: 48px 16px;
+            }
+
+            .roi-value {
+                font-size: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            header, footer, .hero, .benchmarks-section, .tips-section,
+            .scannly-cta, .btn-download, .btn-share, .reset-btn,
+            .mobile-menu-btn, nav { display: none !important; }
+
+            .calc-grid {
+                display: block;
+            }
+
+            .input-panel {
+                page-break-after: always;
+            }
+
+            .results-panel {
+                position: static;
+            }
+
+            body {
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">Show<span>Floor</span>Tips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/#tips">Tips</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                Free Tool
+            </div>
+            <h1>Trade Show <span>ROI Calculator</span></h1>
+            <p>Know your numbers before you commit. Calculate total investment, projected revenue, cost per lead, and whether that booth is worth booking.</p>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+        <div class="calc-grid">
+
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h2>Enter Your Show Costs</h2>
+                    <button class="reset-btn" onclick="resetCalculator()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        Reset
+                    </button>
+                </div>
+
+                <!-- Booth Costs -->
+                <div class="input-section">
+                    <div class="section-label">
+                        <div class="section-icon booth">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                        </div>
+                        <div>
+                            <h3>Booth Costs</h3>
+                            <p>Space rental and build-out</p>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="boothSpace">Booth Space Rental</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="boothSpace" placeholder="5,000" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="boothDesign">Design & Build</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="boothDesign" placeholder="10,000" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel & Accommodation -->
+                <div class="input-section">
+                    <div class="section-label">
+                        <div class="section-icon travel">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1l5.5 3.2-3.7 3.7-2 -.8c-.4-.2-.9 0-1.2.3-.2.3-.1.7.1 1l2.4 2.4c.3.2.7.3 1 .1.3-.3.5-.8.3-1.2l-.8-2 3.7-3.7 3.2 5.5c.2.4.7.5 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+                        </div>
+                        <div>
+                            <h3>Travel & Accommodation</h3>
+                            <p>Flights, hotels, and ground transport</p>
+                        </div>
+                    </div>
+                    <div class="input-row-3">
+                        <div class="input-group">
+                            <label for="numStaff">Staff Attending</label>
+                            <div class="input-wrap">
+                                <input type="number" id="numStaff" placeholder="4" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="flightCost">Avg. Flight / Person</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="flightCost" placeholder="450" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="hotelCost">Hotel / Night / Person</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="hotelCost" placeholder="200" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-row" style="margin-top:16px">
+                        <div class="input-group">
+                            <label for="hotelNights">Number of Nights</label>
+                            <div class="input-wrap">
+                                <input type="number" id="hotelNights" placeholder="3" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="groundTransport">Ground Transport (Total)</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="groundTransport" placeholder="500" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing & Shipping -->
+                <div class="input-section">
+                    <div class="section-label">
+                        <div class="section-icon marketing">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+                        </div>
+                        <div>
+                            <h3>Marketing & Logistics</h3>
+                            <p>Materials, printing, and shipping</p>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="marketingCost">Marketing Materials</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="marketingCost" placeholder="2,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Brochures, banners, swag, giveaways</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="shippingCost">Shipping & Drayage</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="shippingCost" placeholder="3,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Freight, material handling, I&D labor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Time -->
+                <div class="input-section">
+                    <div class="section-label">
+                        <div class="section-icon staff">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div>
+                            <h3>Staff Time</h3>
+                            <p>Labor cost for show preparation and attendance</p>
+                        </div>
+                    </div>
+                    <div class="input-row-3">
+                        <div class="input-group">
+                            <label for="hourlyRate">Avg. Hourly Rate</label>
+                            <div class="input-wrap has-prefix has-suffix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="hourlyRate" placeholder="50" min="0" oninput="calculate()">
+                                <span class="suffix">/hr</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="hoursPerPerson">Hours / Person</label>
+                            <div class="input-wrap">
+                                <input type="number" id="hoursPerPerson" placeholder="40" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Prep + show + follow-up</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="staffCount">Staff Involved</label>
+                            <div class="input-wrap">
+                                <input type="number" id="staffCount" placeholder="4" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miscellaneous -->
+                <div class="input-section">
+                    <div class="section-label">
+                        <div class="section-icon misc">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                        </div>
+                        <div>
+                            <h3>Miscellaneous</h3>
+                            <p>Meals, entertainment, Wi-Fi, electric, other</p>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="miscCost">Other Costs</label>
+                        <div class="input-wrap has-prefix">
+                            <span class="prefix">$</span>
+                            <input type="number" id="miscCost" placeholder="1,500" min="0" oninput="calculate()">
+                        </div>
+                        <div class="input-hint">Electricity, Wi-Fi, catering, client dinners, insurance</div>
+                    </div>
+                </div>
+
+                <!-- Revenue Projections -->
+                <div class="input-section" style="background: var(--bg-alt);">
+                    <div class="section-label">
+                        <div class="section-icon revenue">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div>
+                            <h3>Revenue Projections</h3>
+                            <p>Expected leads and conversion assumptions</p>
+                        </div>
+                    </div>
+                    <div class="input-row-3">
+                        <div class="input-group">
+                            <label for="expectedLeads">Expected Leads</label>
+                            <div class="input-wrap">
+                                <input type="number" id="expectedLeads" placeholder="150" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Qualified contacts collected</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="conversionRate">Conversion Rate</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="conversionRate" placeholder="5" min="0" max="100" step="0.1" oninput="calculate()">
+                                <span class="suffix">%</span>
+                            </div>
+                            <div class="input-hint">Industry avg: 5-10%</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="customerValue">Avg. Customer Value</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="customerValue" placeholder="10,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Lifetime value (LTV)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel">
+                <div class="results-card">
+                    <div class="results-header">
+                        <h2>Your ROI Analysis</h2>
+                        <p>Results update as you type</p>
+                    </div>
+
+                    <div class="roi-display">
+                        <div class="roi-label">Return on Investment</div>
+                        <div class="roi-value zero" id="roiPercent">0%</div>
+                        <div class="roi-subtitle" id="roiSubtitle">Enter your costs and revenue projections</div>
+                    </div>
+
+                    <div class="results-metrics">
+                        <div class="metric-item">
+                            <span class="metric-label">Total Investment</span>
+                            <span class="metric-value" id="totalInvestment">$0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Expected Revenue</span>
+                            <span class="metric-value green" id="expectedRevenue">$0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Net Profit / Loss</span>
+                            <span class="metric-value" id="netProfit">$0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Cost per Lead</span>
+                            <span class="metric-value" id="costPerLead">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Cost per Acquisition</span>
+                            <span class="metric-value" id="costPerAcquisition">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Break-even Leads Needed</span>
+                            <span class="metric-value" id="breakEvenLeads">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Expected New Customers</span>
+                            <span class="metric-value" id="expectedCustomers">0</span>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn-download" onclick="downloadReport()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Report
+                        </button>
+                        <button class="btn-share" onclick="copyLink()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            Copy Shareable Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Scannly CTA -->
+                <div class="scannly-cta">
+                    <h3>Capture More Leads with Scannly</h3>
+                    <p>The average exhibitor misses 40% of booth visitors. Scannly's QR-based lead capture ensures every contact is logged instantly.</p>
+                    <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-btn" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        Download on App Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benchmarks -->
+    <section class="benchmarks-section">
+        <div class="benchmarks-header">
+            <h2>Industry Benchmarks</h2>
+            <p>How your numbers stack up against averages</p>
+        </div>
+        <div class="benchmarks-grid">
+            <div class="benchmark-card">
+                <div class="benchmark-stat">5-10%</div>
+                <div class="benchmark-title">Average Conversion Rate</div>
+                <div class="benchmark-desc">Trade show leads convert at 5-10% on average -- significantly higher than cold outreach (1-2%). Quality follow-up within 48 hours can push this to 15%+.</div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-stat">$150-$300</div>
+                <div class="benchmark-title">Average Cost per Lead</div>
+                <div class="benchmark-desc">The average cost per trade show lead ranges from $150-$300, compared to $400+ for field sales leads. Digital lead capture tools can reduce this by 20-30%.</div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-stat">$100-$150</div>
+                <div class="benchmark-title">Cost per Sq. Ft.</div>
+                <div class="benchmark-desc">Average booth space costs $100-$150 per square foot at major shows. A standard 10x10 booth starts around $2,000-$5,000 for space alone.</div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-stat">2-3x</div>
+                <div class="benchmark-title">Design vs. Space Cost</div>
+                <div class="benchmark-desc">Plan to spend 2-3x your booth space cost on design, construction, graphics, and technology. First-time exhibitors often underestimate build-out by 40%.</div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-stat">20-25%</div>
+                <div class="benchmark-title">Budget for Travel</div>
+                <div class="benchmark-desc">Travel and accommodation typically account for 20-25% of your total show budget. Book early -- hotels near convention centers can spike 3-5x during shows.</div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-stat">48 hrs</div>
+                <div class="benchmark-title">Follow-up Window</div>
+                <div class="benchmark-desc">80% of trade show leads are never followed up. Exhibitors who contact leads within 48 hours see 3x higher conversion rates than those who wait a week.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="tips-section" id="tips">
+        <div class="tips-inner">
+            <div class="tips-header">
+                <h2>Maximize Your Trade Show ROI</h2>
+                <p>Proven strategies from experienced exhibitors</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-number">1</div>
+                    <div class="tip-content">
+                        <h4>Set Measurable Goals Before the Show</h4>
+                        <p>Define specific targets: number of qualified leads, demos scheduled, partnerships explored, or deals closed. Without clear KPIs, you cannot calculate true ROI.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-number">2</div>
+                    <div class="tip-content">
+                        <h4>Qualify Leads on the Floor</h4>
+                        <p>Not all badge scans are equal. Use a simple A/B/C scoring system at your booth to prioritize hot leads. This dramatically improves your conversion rate and lowers cost per acquisition.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-number">3</div>
+                    <div class="tip-content">
+                        <h4>Use Digital Lead Capture</h4>
+                        <p>Paper forms and business card bowls lose 30-50% of contacts. QR-based tools like Scannly capture complete, accurate data instantly and sync to your CRM in real time.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-number">4</div>
+                    <div class="tip-content">
+                        <h4>Follow Up Within 48 Hours</h4>
+                        <p>Send personalized follow-ups referencing your booth conversation. Leads go cold fast -- exhibitors who follow up within 2 days convert 3x more than those who wait a week.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-number">5</div>
+                    <div class="tip-content">
+                        <h4>Negotiate Early for Best Rates</h4>
+                        <p>Book booth space 6-12 months ahead for discounts of 10-20%. Early commitment also gets you better floor position, which directly impacts foot traffic and lead volume.</p>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-number">6</div>
+                    <div class="tip-content">
+                        <h4>Track Every Dollar Post-Show</h4>
+                        <p>Monitor leads through your pipeline for 6-12 months. Many trade show deals close months later. Without long-term tracking, you undervalue shows and misallocate budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Show<span>Floor</span>Tips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/#tips">Exhibitor Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="https://apps.apple.com/us/app/scannly/id6746970463">Scannly - Lead Capture</a></li>
+                        <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/scannly.html">About Scannly</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ========== CALCULATION ENGINE ==========
+        window.calculate = function() {
+            // Gather inputs
+            var boothSpace = getVal('boothSpace');
+            var boothDesign = getVal('boothDesign');
+            var numStaff = getVal('numStaff');
+            var flightCost = getVal('flightCost');
+            var hotelCost = getVal('hotelCost');
+            var hotelNights = getVal('hotelNights');
+            var groundTransport = getVal('groundTransport');
+            var marketingCost = getVal('marketingCost');
+            var shippingCost = getVal('shippingCost');
+            var hourlyRate = getVal('hourlyRate');
+            var hoursPerPerson = getVal('hoursPerPerson');
+            var staffCount = getVal('staffCount');
+            var miscCost = getVal('miscCost');
+            var expectedLeads = getVal('expectedLeads');
+            var conversionRate = getVal('conversionRate');
+            var customerValue = getVal('customerValue');
+
+            // Calculate cost components
+            var boothCosts = boothSpace + boothDesign;
+            var travelCosts = (numStaff * flightCost) + (numStaff * hotelCost * hotelNights) + groundTransport;
+            var marketingLogistics = marketingCost + shippingCost;
+            var staffTimeCost = hourlyRate * hoursPerPerson * staffCount;
+            var totalInvestment = boothCosts + travelCosts + marketingLogistics + staffTimeCost + miscCost;
+
+            // Revenue projections
+            var conversionDecimal = conversionRate / 100;
+            var expectedCustomers = Math.round(expectedLeads * conversionDecimal * 100) / 100;
+            var expectedRevenue = expectedCustomers * customerValue;
+            var netProfit = expectedRevenue - totalInvestment;
+
+            // ROI metrics
+            var roiPercent = totalInvestment > 0 ? ((netProfit / totalInvestment) * 100) : 0;
+            var costPerLead = expectedLeads > 0 ? totalInvestment / expectedLeads : 0;
+            var costPerAcquisition = expectedCustomers > 0 ? totalInvestment / expectedCustomers : 0;
+
+            // Break-even: how many leads needed to cover total investment
+            var revenuePerLead = conversionDecimal * customerValue;
+            var breakEvenLeads = revenuePerLead > 0 ? Math.ceil(totalInvestment / revenuePerLead) : 0;
+
+            // Update display
+            var roiEl = document.getElementById('roiPercent');
+            roiEl.textContent = (totalInvestment === 0 && expectedRevenue === 0) ? '0%' : formatPercent(roiPercent);
+            roiEl.className = 'roi-value ' + (roiPercent > 0 ? 'positive' : (roiPercent < 0 ? 'negative' : 'zero'));
+
+            var subtitleEl = document.getElementById('roiSubtitle');
+            if (totalInvestment === 0 && expectedRevenue === 0) {
+                subtitleEl.textContent = 'Enter your costs and revenue projections';
+            } else if (roiPercent > 100) {
+                subtitleEl.textContent = 'Excellent return -- this show looks very profitable';
+            } else if (roiPercent > 0) {
+                subtitleEl.textContent = 'Positive return -- the show should be profitable';
+            } else if (roiPercent === 0) {
+                subtitleEl.textContent = 'Break-even -- revenue matches investment';
+            } else {
+                subtitleEl.textContent = 'Negative return -- consider optimizing costs or lead targets';
+            }
+
+            document.getElementById('totalInvestment').textContent = formatCurrency(totalInvestment);
+            document.getElementById('expectedRevenue').textContent = formatCurrency(expectedRevenue);
+
+            var profitEl = document.getElementById('netProfit');
+            profitEl.textContent = formatCurrency(netProfit);
+            profitEl.className = 'metric-value ' + (netProfit > 0 ? 'green' : (netProfit < 0 ? 'red' : ''));
+
+            document.getElementById('costPerLead').textContent = expectedLeads > 0 ? formatCurrency(costPerLead) : '--';
+            document.getElementById('costPerAcquisition').textContent = expectedCustomers > 0 ? formatCurrency(costPerAcquisition) : '--';
+            document.getElementById('breakEvenLeads').textContent = breakEvenLeads > 0 ? breakEvenLeads.toLocaleString() + ' leads' : '--';
+            document.getElementById('expectedCustomers').textContent = expectedCustomers > 0 ? expectedCustomers.toLocaleString() : '0';
+        };
+
+        // ========== RESET ==========
+        window.resetCalculator = function() {
+            var inputs = document.querySelectorAll('input[type="number"]');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+            }
+            calculate();
+        };
+
+        // ========== DOWNLOAD REPORT ==========
+        window.downloadReport = function() {
+            var boothSpace = getVal('boothSpace');
+            var boothDesign = getVal('boothDesign');
+            var numStaff = getVal('numStaff');
+            var flightCost = getVal('flightCost');
+            var hotelCost = getVal('hotelCost');
+            var hotelNights = getVal('hotelNights');
+            var groundTransport = getVal('groundTransport');
+            var marketingCost = getVal('marketingCost');
+            var shippingCost = getVal('shippingCost');
+            var hourlyRate = getVal('hourlyRate');
+            var hoursPerPerson = getVal('hoursPerPerson');
+            var staffCount = getVal('staffCount');
+            var miscCost = getVal('miscCost');
+            var expectedLeads = getVal('expectedLeads');
+            var conversionRate = getVal('conversionRate');
+            var customerValue = getVal('customerValue');
+
+            var boothCosts = boothSpace + boothDesign;
+            var travelCosts = (numStaff * flightCost) + (numStaff * hotelCost * hotelNights) + groundTransport;
+            var marketingLogistics = marketingCost + shippingCost;
+            var staffTimeCost = hourlyRate * hoursPerPerson * staffCount;
+            var totalInvestment = boothCosts + travelCosts + marketingLogistics + staffTimeCost + miscCost;
+            var conversionDecimal = conversionRate / 100;
+            var expectedCustomers = Math.round(expectedLeads * conversionDecimal * 100) / 100;
+            var expectedRevenue = expectedCustomers * customerValue;
+            var netProfit = expectedRevenue - totalInvestment;
+            var roiPercent = totalInvestment > 0 ? ((netProfit / totalInvestment) * 100) : 0;
+            var costPerLead = expectedLeads > 0 ? totalInvestment / expectedLeads : 0;
+            var costPerAcquisition = expectedCustomers > 0 ? totalInvestment / expectedCustomers : 0;
+            var revenuePerLead = conversionDecimal * customerValue;
+            var breakEvenLeads = revenuePerLead > 0 ? Math.ceil(totalInvestment / revenuePerLead) : 0;
+
+            var today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Trade Show ROI Report</title>';
+            html += '<style>';
+            html += 'body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;color:#1e293b;max-width:800px;margin:0 auto;padding:40px;line-height:1.6}';
+            html += 'h1{font-size:24px;color:#0f172a;margin-bottom:4px;letter-spacing:-0.5px}';
+            html += 'h2{font-size:18px;color:#0f172a;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #f59e0b;letter-spacing:-0.3px}';
+            html += '.subtitle{color:#64748b;font-size:14px;margin-bottom:32px}';
+            html += '.logo{font-size:12px;color:#64748b;margin-bottom:24px}';
+            html += '.logo b{color:#0f172a}.logo span{color:#f59e0b}';
+            html += 'table{width:100%;border-collapse:collapse;margin:12px 0}';
+            html += 'th,td{text-align:left;padding:10px 12px;font-size:14px}';
+            html += 'th{font-weight:600;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.05em}';
+            html += 'tr{border-bottom:1px solid #e2e8f0}';
+            html += 'td:last-child{text-align:right;font-weight:600}';
+            html += '.total td{font-weight:700;font-size:15px;border-top:2px solid #0f172a;border-bottom:none}';
+            html += '.roi-box{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:24px;text-align:center;margin:24px 0}';
+            html += '.roi-number{font-size:48px;font-weight:800;letter-spacing:-2px}';
+            html += '.roi-number.pos{color:#10b981}.roi-number.neg{color:#ef4444}';
+            html += '.roi-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;margin-bottom:8px}';
+            html += '.metrics-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:20px 0}';
+            html += '.metric{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center}';
+            html += '.metric-val{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:2px}';
+            html += '.metric-lbl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.06em}';
+            html += '.footer{margin-top:40px;padding-top:16px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;text-align:center}';
+            html += '@media print{body{padding:20px}.roi-box{break-inside:avoid}}';
+            html += '</style></head><body>';
+            html += '<div class="logo"><b>Show<span>Floor</span>Tips</b></div>';
+            html += '<h1>Trade Show ROI Report</h1>';
+            html += '<div class="subtitle">Generated on ' + today + '</div>';
+
+            html += '<div class="roi-box">';
+            html += '<div class="roi-label">Projected Return on Investment</div>';
+            html += '<div class="roi-number ' + (roiPercent >= 0 ? 'pos' : 'neg') + '">' + formatPercent(roiPercent) + '</div>';
+            html += '</div>';
+
+            html += '<div class="metrics-grid">';
+            html += '<div class="metric"><div class="metric-val">' + formatCurrency(totalInvestment) + '</div><div class="metric-lbl">Total Investment</div></div>';
+            html += '<div class="metric"><div class="metric-val">' + formatCurrency(expectedRevenue) + '</div><div class="metric-lbl">Expected Revenue</div></div>';
+            html += '<div class="metric"><div class="metric-val">' + formatCurrency(netProfit) + '</div><div class="metric-lbl">Net Profit/Loss</div></div>';
+            html += '</div>';
+
+            html += '<h2>Cost Breakdown</h2>';
+            html += '<table>';
+            html += '<tr><th>Category</th><th>Amount</th></tr>';
+            html += '<tr><td>Booth Space Rental</td><td>' + formatCurrency(boothSpace) + '</td></tr>';
+            html += '<tr><td>Booth Design & Build</td><td>' + formatCurrency(boothDesign) + '</td></tr>';
+            html += '<tr><td>Flights (' + numStaff + ' staff x ' + formatCurrency(flightCost) + ')</td><td>' + formatCurrency(numStaff * flightCost) + '</td></tr>';
+            html += '<tr><td>Hotels (' + numStaff + ' staff x ' + hotelNights + ' nights x ' + formatCurrency(hotelCost) + ')</td><td>' + formatCurrency(numStaff * hotelCost * hotelNights) + '</td></tr>';
+            html += '<tr><td>Ground Transportation</td><td>' + formatCurrency(groundTransport) + '</td></tr>';
+            html += '<tr><td>Marketing Materials</td><td>' + formatCurrency(marketingCost) + '</td></tr>';
+            html += '<tr><td>Shipping & Drayage</td><td>' + formatCurrency(shippingCost) + '</td></tr>';
+            html += '<tr><td>Staff Time (' + staffCount + ' staff x ' + hoursPerPerson + ' hrs x ' + formatCurrency(hourlyRate) + '/hr)</td><td>' + formatCurrency(staffTimeCost) + '</td></tr>';
+            html += '<tr><td>Miscellaneous</td><td>' + formatCurrency(miscCost) + '</td></tr>';
+            html += '<tr class="total"><td>Total Investment</td><td>' + formatCurrency(totalInvestment) + '</td></tr>';
+            html += '</table>';
+
+            html += '<h2>Revenue Projections</h2>';
+            html += '<table>';
+            html += '<tr><th>Metric</th><th>Value</th></tr>';
+            html += '<tr><td>Expected Leads</td><td>' + expectedLeads.toLocaleString() + '</td></tr>';
+            html += '<tr><td>Conversion Rate</td><td>' + conversionRate + '%</td></tr>';
+            html += '<tr><td>Expected New Customers</td><td>' + expectedCustomers.toLocaleString() + '</td></tr>';
+            html += '<tr><td>Average Customer Lifetime Value</td><td>' + formatCurrency(customerValue) + '</td></tr>';
+            html += '<tr class="total"><td>Expected Revenue</td><td>' + formatCurrency(expectedRevenue) + '</td></tr>';
+            html += '</table>';
+
+            html += '<h2>Key Metrics</h2>';
+            html += '<table>';
+            html += '<tr><td>Cost per Lead</td><td>' + (expectedLeads > 0 ? formatCurrency(costPerLead) : 'N/A') + '</td></tr>';
+            html += '<tr><td>Cost per Acquisition</td><td>' + (expectedCustomers > 0 ? formatCurrency(costPerAcquisition) : 'N/A') + '</td></tr>';
+            html += '<tr><td>Break-even Leads Needed</td><td>' + (breakEvenLeads > 0 ? breakEvenLeads.toLocaleString() : 'N/A') + '</td></tr>';
+            html += '<tr><td>Net Profit / Loss</td><td>' + formatCurrency(netProfit) + '</td></tr>';
+            html += '</table>';
+
+            html += '<div class="footer">';
+            html += 'Generated by ShowFloorTips.com ROI Calculator<br>';
+            html += 'Capture more leads at your next show with <a href="https://apps.apple.com/us/app/scannly/id6746970463">Scannly</a>';
+            html += '</div>';
+            html += '</body></html>';
+
+            var blob = new Blob([html], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'trade-show-roi-report.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        };
+
+        // ========== COPY SHAREABLE LINK ==========
+        window.copyLink = function() {
+            var params = new URLSearchParams();
+            var fields = [
+                'boothSpace','boothDesign','numStaff','flightCost','hotelCost','hotelNights',
+                'groundTransport','marketingCost','shippingCost','hourlyRate','hoursPerPerson',
+                'staffCount','miscCost','expectedLeads','conversionRate','customerValue'
+            ];
+            var hasData = false;
+            for (var i = 0; i < fields.length; i++) {
+                var val = getVal(fields[i]);
+                if (val > 0) {
+                    params.set(fields[i], val);
+                    hasData = true;
+                }
+            }
+            if (!hasData) {
+                alert('Enter some values first, then share your calculation.');
+                return;
+            }
+            var shareUrl = window.location.origin + window.location.pathname + '?' + params.toString();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareUrl).then(function() {
+                    showCopyFeedback();
+                });
+            } else {
+                var ta = document.createElement('textarea');
+                ta.value = shareUrl;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showCopyFeedback();
+            }
+        };
+
+        function showCopyFeedback() {
+            var btn = document.querySelector('.btn-share');
+            var originalText = btn.innerHTML;
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Link Copied!';
+            btn.style.borderColor = '#10b981';
+            btn.style.color = '#10b981';
+            setTimeout(function() {
+                btn.innerHTML = originalText;
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 2000);
+        }
+
+        // ========== LOAD FROM URL ==========
+        function loadFromURL() {
+            var params = new URLSearchParams(window.location.search);
+            var fields = [
+                'boothSpace','boothDesign','numStaff','flightCost','hotelCost','hotelNights',
+                'groundTransport','marketingCost','shippingCost','hourlyRate','hoursPerPerson',
+                'staffCount','miscCost','expectedLeads','conversionRate','customerValue'
+            ];
+            var hasData = false;
+            for (var i = 0; i < fields.length; i++) {
+                var val = params.get(fields[i]);
+                if (val !== null && val !== '') {
+                    var el = document.getElementById(fields[i]);
+                    if (el) {
+                        el.value = val;
+                        hasData = true;
+                    }
+                }
+            }
+            if (hasData) {
+                calculate();
+            }
+        }
+
+        // ========== UTILITY ==========
+        function getVal(id) {
+            var el = document.getElementById(id);
+            if (!el) return 0;
+            var v = parseFloat(el.value);
+            return isNaN(v) ? 0 : v;
+        }
+
+        function formatCurrency(n) {
+            if (n === 0) return '$0';
+            var neg = n < 0;
+            n = Math.abs(n);
+            var formatted;
+            if (n >= 1000000) {
+                formatted = '$' + (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+            } else if (n >= 100000) {
+                formatted = '$' + Math.round(n).toLocaleString();
+            } else {
+                formatted = '$' + n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: n < 10 ? 2 : 0 });
+            }
+            return neg ? '-' + formatted : formatted;
+        }
+
+        function formatPercent(n) {
+            if (Math.abs(n) >= 1000) {
+                return (n > 0 ? '+' : '') + Math.round(n).toLocaleString() + '%';
+            }
+            return (n > 0 ? '+' : '') + n.toFixed(1) + '%';
+        }
+
+        // ========== INIT ==========
+        loadFromURL();
+    })();
+    </script>
+
+</body>
+</html>

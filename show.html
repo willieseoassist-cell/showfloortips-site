@@ -56,6 +56,8 @@
             <a href="/" class="logo">ShowFloorTips</a>
             <nav class="nav-links">
                 <a href="/#shows">Trade Shows</a>
+                <a href="/news.html">News</a>
+                <a href="/roi-calculator.html">ROI Calculator</a>
                 <a href="/scannly.html">Scannly App</a>
             </nav>
         </div>
@@ -102,6 +104,49 @@
         }
 
         document.title = show.title + ' - ShowFloorTips';
+
+        // Dynamic meta tags for SEO
+        var metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        metaDesc.content = show.title + ' - ' + (show.date || '2026') + ' in ' + (show.location || '') + '. Get venue details, nearby hotels, exhibitor tips, and booth pricing at ShowFloorTips.';
+        document.head.appendChild(metaDesc);
+
+        // Schema.org Event markup for Google rich results
+        var schema = {
+            '@context': 'https://schema.org',
+            '@type': 'Event',
+            'name': show.title,
+            'description': show.description || ('Trade show: ' + show.title + ' in ' + (show.location || '')),
+            'url': 'https://showfloortips.com/shows/' + show.slug,
+            'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+            'eventStatus': 'https://schema.org/EventScheduled'
+        };
+        if (show.date) schema.startDate = show.sort_date || show.date;
+        if (show.location) {
+            schema.location = {
+                '@type': 'Place',
+                'name': show.venue || show.location,
+                'address': {
+                    '@type': 'PostalAddress',
+                    'addressLocality': show.city || '',
+                    'addressRegion': show.state || '',
+                    'addressCountry': show.country || 'United States'
+                }
+            };
+        }
+        if (show.website) schema.url = show.website;
+        if (show.image) schema.image = show.image;
+        if (show.host) schema.organizer = { '@type': 'Organization', 'name': show.host };
+        var schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify(schema);
+        document.head.appendChild(schemaScript);
+
+        // Canonical URL
+        var canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = 'https://showfloortips.com/shows/' + show.slug;
+        document.head.appendChild(canonical);
 
         var catColors = {
             'Technology':'#3b82f6','Healthcare':'#10b981','Food & Beverage':'#f59e0b',
