@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... - ShowFloorTips</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .show-hero { position:relative; height:340px; background:#0f172a; display:flex; align-items:flex-end; overflow:hidden }
+        .show-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4 }
+        .show-hero-content { position:relative; z-index:2; padding:2rem; max-width:1120px; margin:0 auto; width:100%; color:#fff }
+        .show-hero h1 { font-size:2.5rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.5rem }
+        .show-meta { display:flex; flex-wrap:wrap; gap:1.5rem; font-size:0.95rem; opacity:0.9; margin-top:0.75rem }
+        .show-meta span { display:flex; align-items:center; gap:0.4rem }
+        .show-body { max-width:1120px; margin:0 auto; padding:2rem; display:grid; grid-template-columns:2fr 1fr; gap:2rem }
+        .show-main { min-width:0 }
+        .show-sidebar { min-width:0 }
+        .info-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; margin:1.5rem 0 }
+        .info-card { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem }
+        .info-card h4 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem }
+        .info-card p { font-size:1.05rem; font-weight:600; color:#1e293b }
+        .section-block { margin:2rem 0 }
+        .section-block h2 { font-size:1.35rem; font-weight:700; color:#0f172a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .hotel-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:0.75rem }
+        .hotel-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.25rem }
+        .hotel-card .hotel-detail { font-size:0.85rem; color:#64748b }
+        .tip-item { padding:0.75rem 0; border-bottom:1px solid #f1f5f9; font-size:0.95rem; color:#334155; line-height:1.6 }
+        .tip-item:last-child { border-bottom:none }
+        .sidebar-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem }
+        .sidebar-card h3 { font-size:1.1rem; font-weight:700; color:#0f172a; margin-bottom:1rem }
+        .btn-visit { display:block; width:100%; padding:0.875rem; background:#0f172a; color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s }
+        .btn-visit:hover { background:#1e293b }
+        .btn-scannly { display:block; width:100%; padding:0.875rem; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; margin-top:0.75rem; transition:background 0.2s }
+        .btn-scannly:hover { background:#818cf8 }
+        .stat-row { display:flex; justify-content:space-between; padding:0.6rem 0; border-bottom:1px solid #f1f5f9; font-size:0.9rem }
+        .stat-row:last-child { border-bottom:none }
+        .stat-label { color:#64748b }
+        .stat-value { font-weight:600; color:#1e293b }
+        .cat-badge { display:inline-block; padding:0.25rem 0.75rem; border-radius:50px; font-size:0.75rem; font-weight:600; color:#fff; margin-right:0.5rem }
+        .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#64748b; font-size:0.9rem; text-decoration:none; padding:1rem 2rem; transition:color 0.2s }
+        .back-link:hover { color:#0f172a }
+        .loading { text-align:center; padding:4rem 2rem; font-size:1.2rem; color:#64748b }
+        .not-found { text-align:center; padding:4rem 2rem }
+        .not-found h2 { font-size:1.5rem; color:#0f172a; margin-bottom:0.5rem }
+        @media(max-width:768px) {
+            .show-body { grid-template-columns:1fr }
+            .show-hero h1 { font-size:1.75rem }
+            .show-hero { height:260px }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav class="nav-links">
+                <a href="/#shows">Trade Shows</a>
+                <a href="/scannly.html">Scannly App</a>
+            </nav>
+        </div>
+    </header>
+
+    <a href="/" class="back-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to all shows</a>
+
+    <div id="show-content">
+        <div class="loading">Loading show details...</div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>ShowFloorTips - Your Guide to Trade Shows & Exhibitions</p>
+            <p><a href="/scannly.html">Scannly App</a></p>
+        </div>
+    </footer>
+
+    <script src="/shows.js"></script>
+    <script>
+    (function() {
+        var slug = '';
+        var path = window.location.pathname;
+        // Handle /shows/slug.html or /shows/slug
+        var m = path.match(/\/shows\/([^\/]+?)(?:\.html)?$/);
+        if (m) slug = m[1];
+
+        if (!slug || typeof SHOWS_DATA === 'undefined') {
+            document.getElementById('show-content').innerHTML = '<div class="not-found"><h2>Show not found</h2><p>This show may have been removed or the URL is incorrect.</p><a href="/" class="btn-visit" style="max-width:200px;margin:1rem auto">Browse All Shows</a></div>';
+            return;
+        }
+
+        var show = null;
+        for (var i = 0; i < SHOWS_DATA.length; i++) {
+            if (SHOWS_DATA[i].slug === slug) {
+                show = SHOWS_DATA[i];
+                break;
+            }
+        }
+
+        if (!show) {
+            document.getElementById('show-content').innerHTML = '<div class="not-found"><h2>Show not found</h2><p>This show may have been removed or the URL is incorrect.</p><a href="/" class="btn-visit" style="max-width:200px;margin:1rem auto">Browse All Shows</a></div>';
+            return;
+        }
+
+        document.title = show.title + ' - ShowFloorTips';
+
+        var catColors = {
+            'Technology':'#3b82f6','Healthcare':'#10b981','Food & Beverage':'#f59e0b',
+            'Fashion':'#ec4899','Fashion & Beauty':'#ec4899','Construction':'#f97316',
+            'Manufacturing':'#6366f1','Energy':'#eab308','Finance':'#14b8a6',
+            'Education':'#8b5cf6','Real Estate':'#06b6d4','Automotive':'#ef4444',
+            'Agriculture':'#22c55e','Defense & Security':'#991b1b','Travel & Hospitality':'#0891b2',
+            'Sports & Recreation':'#059669','Arts & Entertainment':'#7c3aed',
+            'Packaging & Logistics':'#d97706','Environmental':'#16a34a','Pet & Animal':'#ea580c',
+            'Business & Trade':'#475569'
+        };
+        var catColor = catColors[show.category] || '#475569';
+
+        var loc = show.location || '';
+        if (show.city) loc = show.city;
+        if (show.state) loc += ', ' + show.state;
+        if (show.country && show.country !== 'United States') loc = show.location + (show.country ? ', ' + show.country : '');
+
+        var websiteBtn = '';
+        if (show.website) {
+            websiteBtn = '<a href="' + show.website + '" target="_blank" rel="noopener" class="btn-visit">Visit Official Website</a>';
+        } else if (show.search_url) {
+            websiteBtn = '<a href="' + show.search_url + '" target="_blank" rel="noopener" class="btn-visit">Find Official Website</a>';
+        }
+
+        var infoCards = '';
+        if (show.date) infoCards += '<div class="info-card"><h4>Dates</h4><p>' + show.date + '</p></div>';
+        if (loc) infoCards += '<div class="info-card"><h4>Location</h4><p>' + loc + '</p></div>';
+        if (show.attendees) infoCards += '<div class="info-card"><h4>Expected Attendees</h4><p>' + show.attendees + '</p></div>';
+        if (show.exhibitors) infoCards += '<div class="info-card"><h4>Exhibitors</h4><p>' + show.exhibitors + '</p></div>';
+        if (show.booth_price) infoCards += '<div class="info-card"><h4>Booth Price Range</h4><p>' + show.booth_price + '</p></div>';
+
+        var hotels = '';
+        if (show.hotels && show.hotels.length > 0) {
+            hotels = '<div class="section-block"><h2>Nearby Hotels</h2>';
+            for (var h = 0; h < show.hotels.length; h++) {
+                var hotel = show.hotels[h];
+                hotels += '<div class="hotel-card"><h4>' + hotel.name + '</h4><div class="hotel-detail">' + hotel.distance + ' | ' + hotel.price + '</div></div>';
+            }
+            hotels += '</div>';
+        }
+
+        var tips = '';
+        if (show.tips && show.tips.length > 0) {
+            tips = '<div class="section-block"><h2>Exhibitor Tips for ' + show.category + '</h2>';
+            for (var t = 0; t < show.tips.length; t++) {
+                tips += '<div class="tip-item">' + show.tips[t] + '</div>';
+            }
+            tips += '</div>';
+        }
+
+        var sidebarStats = '';
+        sidebarStats += '<div class="stat-row"><span class="stat-label">Category</span><span class="stat-value"><span class="cat-badge" style="background:' + catColor + '">' + show.category + '</span></span></div>';
+        if (show.date) sidebarStats += '<div class="stat-row"><span class="stat-label">Date</span><span class="stat-value">' + show.date + '</span></div>';
+        if (show.attendees) sidebarStats += '<div class="stat-row"><span class="stat-label">Attendees</span><span class="stat-value">' + show.attendees + '</span></div>';
+        if (show.exhibitors) sidebarStats += '<div class="stat-row"><span class="stat-label">Exhibitors</span><span class="stat-value">' + show.exhibitors + '</span></div>';
+        if (show.booth_price) sidebarStats += '<div class="stat-row"><span class="stat-label">Booth Cost</span><span class="stat-value">' + show.booth_price + '</span></div>';
+
+        var html = '';
+        html += '<div class="show-hero"><img src="' + (show.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop') + '" alt="' + show.title + '">';
+        html += '<div class="show-hero-content"><span class="cat-badge" style="background:' + catColor + '">' + show.category + '</span>';
+        html += '<h1>' + show.title + '</h1>';
+        html += '<div class="show-meta">';
+        if (show.date) html += '<span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ' + show.date + '</span>';
+        if (loc) html += '<span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> ' + loc + '</span>';
+        html += '</div></div></div>';
+
+        html += '<div class="show-body"><div class="show-main">';
+        html += '<div class="info-grid">' + infoCards + '</div>';
+        if (show.description) html += '<div class="section-block"><h2>About This Show</h2><p style="color:#334155;line-height:1.8">' + show.description + '</p></div>';
+        html += hotels;
+        html += tips;
+
+        // Scannly CTA
+        html += '<div style="margin:2rem 0;padding:1.5rem;background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px">';
+        html += '<h3 style="margin-bottom:0.5rem;color:#1e293b">Capture More Leads at ' + show.title + '</h3>';
+        html += '<p style="color:#475569;font-size:0.9rem;margin-bottom:1rem">Scannly lets attendees scan your QR code to instantly share contact info. No more lost business cards.</p>';
+        html += '<a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" class="btn-scannly" style="max-width:220px">Get Scannly Free</a>';
+        html += '</div>';
+
+        html += '</div><div class="show-sidebar">';
+        html += '<div class="sidebar-card"><h3>Quick Facts</h3>' + sidebarStats + '</div>';
+        html += '<div class="sidebar-card">' + websiteBtn;
+        html += '<a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" class="btn-scannly">Download Scannly</a>';
+        html += '</div>';
+        html += '</div></div>';
+
+        document.getElementById('show-content').innerHTML = html;
+    })();
+    </script>
+</body>
+</html>
