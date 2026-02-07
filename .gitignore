@@ -1,11 +1,18 @@
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# Editor files
-*.swp
-*.swo
-*~
-
 # Logs
 *.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if we add any)
+node_modules/
+
+# Build
+.vercel/
