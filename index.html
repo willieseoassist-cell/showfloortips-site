@@ -3,217 +3,632 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShowFloorTips - Expert Trade Show Exhibitor Tips & Resources</title>
-    <meta name="description" content="Expert tips, guides, and tools for trade show exhibitors. Maximize your ROI with proven strategies for booth design, lead capture, and follow-up.">
-    <meta name="keywords" content="trade show tips, exhibitor tips, trade show booth, lead capture, trade show marketing">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="ShowFloorTips - Trade Show Success Starts Here">
-    <meta property="og:description" content="Expert tips and resources for trade show exhibitors. Maximize your ROI at every show.">
+    <title>ShowFloorTips - Trade Show Intelligence for Exhibitors</title>
+    <meta name="description" content="Your command center for upcoming trade shows. Venue details, nearby hotels, exhibitor tips, and resources to maximize your ROI at every show.">
+    <meta name="keywords" content="trade show tips, exhibitor tips, trade show booth, lead capture, trade show marketing, 2026 trade shows">
+
+    <meta property="og:title" content="ShowFloorTips - Trade Show Intelligence for Exhibitors">
+    <meta property="og:description" content="Your command center for upcoming trade shows. Venue details, nearby hotels, exhibitor tips, and resources.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://showfloortips.com">
-    
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ShowFloorTips - Trade Show Success Starts Here">
-    <meta name="twitter:description" content="Expert tips and resources for trade show exhibitors.">
-    
-    <!-- Schema.org -->
+    <meta name="twitter:title" content="ShowFloorTips - Trade Show Intelligence for Exhibitors">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "ShowFloorTips",
         "url": "https://showfloortips.com",
-        "description": "Expert tips and resources for trade show exhibitors",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://showfloortips.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "description": "Trade show intelligence for exhibitors - venue details, hotels, tips, and resources"
     }
     </script>
-    
+
     <link rel="stylesheet" href="/styles.css">
     <link rel="canonical" href="https://showfloortips.com">
 </head>
 <body>
+
+    <!-- Header -->
     <header>
-        <nav>
-            <a href="/" class="logo">📊 ShowFloorTips</a>
-            <div class="nav-links">
-                <a href="/shows">Trade Shows</a>
-                <a href="/products">Products</a>
-                <a href="/blog">Blog</a>
-                <a href="https://scannly.app" class="cta-nav">Try Scannly →</a>
-            </div>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="logo">Show<span>Floor</span>Tips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#shows">Trade Shows</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="https://scannly.app?utm_source=showfloortips&utm_medium=nav" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        </div>
     </header>
-    
-    <main>
-        <section class="hero">
-            <h1>Dominate the Show Floor</h1>
-            <p class="subtitle">Expert tips, proven strategies, and ready-to-use tools for trade show exhibitors who want results.</p>
-            <div class="hero-cta">
-                <a href="/shows" class="btn primary">Find Your Show →</a>
-                <a href="/products" class="btn secondary">Browse Products</a>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Trade Show<br>Command Center</h1>
+            <p class="subtitle">Venue intel, nearby hotels, exhibitor strategies, and everything you need to dominate the show floor in 2026.</p>
+            <div class="search-container">
+                <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="searchInput" placeholder="Search trade shows by name, city, or industry..." autocomplete="off">
             </div>
-        </section>
-        
-        <section class="featured-cta">
-            <div class="cta-box large">
-                <div class="cta-content">
-                    <h2>📱 Capture 10x More Leads</h2>
-                    <p>Stop fumbling with business cards. <strong>Scannly</strong> lets attendees scan your QR code to instantly share contact info. Track engagement, qualify leads, and follow up faster than your competition.</p>
-                    <ul>
-                        <li>✓ Instant contact capture via QR code</li>
-                        <li>✓ Real-time lead notifications</li>
-                        <li>✓ CRM integration ready</li>
-                        <li>✓ Pay-per-scan pricing (only pay for leads)</li>
-                    </ul>
-                </div>
-                <a href="https://scannly.app?utm_source=showfloortips&utm_medium=homepage&utm_campaign=hero" class="btn primary large">Get Started Free →</a>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-number" id="statShows">--</div>
+                <div class="stat-label">Upcoming Shows</div>
             </div>
-        </section>
-        
-        <section class="categories">
-            <h2>Trade Shows by Industry</h2>
-            <div class="category-grid">
-                <a href="/shows?category=technology" class="category-card">
-                    <span class="icon">💻</span>
-                    <span class="name">Technology</span>
-                </a>
-                <a href="/shows?category=healthcare" class="category-card">
-                    <span class="icon">🏥</span>
-                    <span class="name">Healthcare</span>
-                </a>
-                <a href="/shows?category=food-beverage" class="category-card">
-                    <span class="icon">🍕</span>
-                    <span class="name">Food & Beverage</span>
-                </a>
-                <a href="/shows?category=fashion" class="category-card">
-                    <span class="icon">👗</span>
-                    <span class="name">Fashion</span>
-                </a>
-                <a href="/shows?category=construction" class="category-card">
-                    <span class="icon">🏗️</span>
-                    <span class="name">Construction</span>
-                </a>
-                <a href="/shows?category=manufacturing" class="category-card">
-                    <span class="icon">🏭</span>
-                    <span class="name">Manufacturing</span>
-                </a>
-                <a href="/shows?category=energy" class="category-card">
-                    <span class="icon">⚡</span>
-                    <span class="name">Energy</span>
-                </a>
-                <a href="/shows?category=finance" class="category-card">
-                    <span class="icon">💰</span>
-                    <span class="name">Finance</span>
-                </a>
-                <a href="/shows?category=education" class="category-card">
-                    <span class="icon">📚</span>
-                    <span class="name">Education</span>
-                </a>
-                <a href="/shows?category=real-estate" class="category-card">
-                    <span class="icon">🏠</span>
-                    <span class="name">Real Estate</span>
-                </a>
-                <a href="/shows?category=automotive" class="category-card">
-                    <span class="icon">🚗</span>
-                    <span class="name">Automotive</span>
-                </a>
-                <a href="/shows?category=agriculture" class="category-card">
-                    <span class="icon">🌾</span>
-                    <span class="name">Agriculture</span>
-                </a>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Industries</div>
             </div>
-        </section>
-        
-        <section class="products">
+            <div class="stat-item">
+                <div class="stat-number" id="statCities">--</div>
+                <div class="stat-label">Cities</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filters-section">
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-pill active" data-category="all">All Shows</button>
+            <button class="filter-pill" data-category="Technology">Technology</button>
+            <button class="filter-pill" data-category="Healthcare">Healthcare</button>
+            <button class="filter-pill" data-category="Food & Beverage">Food & Bev</button>
+            <button class="filter-pill" data-category="Fashion">Fashion</button>
+            <button class="filter-pill" data-category="Construction">Construction</button>
+            <button class="filter-pill" data-category="Manufacturing">Manufacturing</button>
+            <button class="filter-pill" data-category="Energy">Energy</button>
+            <button class="filter-pill" data-category="Finance">Finance</button>
+            <button class="filter-pill" data-category="Education">Education</button>
+            <button class="filter-pill" data-category="Real Estate">Real Estate</button>
+            <button class="filter-pill" data-category="Automotive">Automotive</button>
+            <button class="filter-pill" data-category="Agriculture">Agriculture</button>
+        </div>
+    </div>
+
+    <!-- Shows Grid -->
+    <section class="shows-section" id="shows">
+        <div class="shows-header">
+            <span class="shows-count" id="showsCount">Loading shows...</span>
+            <select class="sort-select" id="sortSelect">
+                <option value="date">Sort by Date</option>
+                <option value="name">Sort by Name</option>
+                <option value="category">Sort by Category</option>
+            </select>
+        </div>
+        <div class="shows-grid" id="showsGrid"></div>
+        <div class="load-more-container" id="loadMoreContainer" style="display:none">
+            <button class="load-more-btn" id="loadMoreBtn">Load More Shows</button>
+        </div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <div class="cta-box-content">
+                <h3>Capture More Leads at Your Next Show</h3>
+                <p>Stop fumbling with business cards. Scannly lets attendees scan your QR code to instantly share contact info, track engagement, and follow up faster than your competition.</p>
+                <ul>
+                    <li>Instant contact capture via QR code</li>
+                    <li>Real-time lead notifications</li>
+                    <li>CRM integration ready</li>
+                    <li>Pay-per-scan pricing</li>
+                </ul>
+            </div>
+            <a href="https://scannly.app?utm_source=showfloortips&utm_medium=homepage&utm_campaign=cta" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products-section" id="products">
+        <div class="section-header">
             <h2>Exhibitor Tools & Templates</h2>
-            <p class="section-desc">Ready-to-use resources to streamline your trade show prep and follow-up.</p>
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="badge">Best Seller</span>
-                    <h3>Trade Show Budget & ROI Calculator</h3>
-                    <p>Plan expenses and calculate your true ROI with this comprehensive Excel template.</p>
-                    <span class="price">$12.99</span>
-                    <a href="https://www.etsy.com/shop/showfloortips" class="btn small">Get on Etsy →</a>
-                </div>
-                <div class="product-card">
-                    <h3>Post-Show Follow-Up Email Templates</h3>
-                    <p>5 proven email templates to convert leads into customers after the show.</p>
-                    <span class="price">$9.99</span>
-                    <a href="https://www.etsy.com/shop/showfloortips" class="btn small">Get on Etsy →</a>
-                </div>
-                <div class="product-card">
-                    <h3>Ultimate Trade Show Checklist</h3>
-                    <p>30-day countdown checklist covering everything from planning to post-show.</p>
-                    <span class="price">$7.99</span>
-                    <a href="https://www.etsy.com/shop/showfloortips" class="btn small">Get on Etsy →</a>
-                </div>
+            <p>Ready-to-use resources to streamline your trade show prep and follow-up.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="product-badge">Best Seller</span>
+                <h3>Trade Show Budget & ROI Calculator</h3>
+                <p>Plan every expense and calculate your true ROI with this comprehensive Excel template. Track booth costs, travel, marketing, and measure results.</p>
+                <span class="product-price">$12.99</span>
+                <a href="https://www.etsy.com/shop/showfloortips" class="btn btn-primary">Get Template</a>
             </div>
-            <a href="/products" class="btn secondary">View All Products →</a>
-        </section>
-        
-        <section class="tips-preview">
-            <h2>Quick Tips for Exhibitors</h2>
+            <div class="product-card">
+                <h3>Post-Show Follow-Up Email Pack</h3>
+                <p>5 proven email templates to convert trade show leads into customers. Personalized sequences for hot, warm, and cold leads.</p>
+                <span class="product-price">$9.99</span>
+                <a href="https://www.etsy.com/shop/showfloortips" class="btn btn-primary">Get Templates</a>
+            </div>
+            <div class="product-card">
+                <h3>Pre-Show Planning Checklist</h3>
+                <p>30-day countdown checklist covering everything from booth design to staff training. Never miss a detail before your next show.</p>
+                <span class="product-price">$7.99</span>
+                <a href="https://www.etsy.com/shop/showfloortips" class="btn btn-primary">Get Checklist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="tips-section" id="tips">
+        <div class="tips-section-inner">
+            <div class="section-header">
+                <h2>Exhibitor Playbook</h2>
+                <p>Proven strategies from seasoned trade show professionals.</p>
+            </div>
             <div class="tips-grid">
                 <div class="tip-card">
-                    <h3>🎯 Set Clear Goals</h3>
-                    <p>Define success before the show. Leads? Meetings? Brand awareness? Know your numbers.</p>
+                    <div class="tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <h3>Set Clear Goals</h3>
+                    <p>Define success before the show. Leads generated, meetings booked, or brand awareness metrics. Know your numbers.</p>
                 </div>
                 <div class="tip-card">
-                    <h3>📸 Capture Digitally</h3>
-                    <p>Business cards get lost. Use QR-based lead capture like Scannly for instant, accurate data.</p>
+                    <div class="tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>Capture Digitally</h3>
+                    <p>Business cards get lost. Use QR-based lead capture for instant, accurate data collection and real-time follow-up.</p>
                 </div>
                 <div class="tip-card">
-                    <h3>⚡ Follow Up Fast</h3>
-                    <p>48 hours max. Your competitors are emailing leads right now. Don't let them cool off.</p>
+                    <div class="tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Follow Up Fast</h3>
+                    <p>48 hours max. Your competitors are emailing leads right now. Personalize outreach and reference specific conversations.</p>
                 </div>
                 <div class="tip-card">
-                    <h3>👥 Train Your Team</h3>
-                    <p>Everyone at the booth should know the pitch, qualification criteria, and capture process.</p>
+                    <div class="tip-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Train Your Team</h3>
+                    <p>Everyone at the booth should know the pitch, qualification criteria, and lead capture process cold.</p>
                 </div>
-            </div>
-        </section>
-        
-        <section class="newsletter">
-            <h2>📧 Get Weekly Trade Show Tips</h2>
-            <p>Join exhibitors who get actionable tips every Tuesday. No spam, just value.</p>
-            <form action="/subscribe" method="POST" class="newsletter-form">
-                <input type="email" placeholder="your@email.com" required>
-                <button type="submit" class="btn primary">Subscribe →</button>
-            </form>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>ShowFloorTips</h4>
-                <p>Expert resources for trade show exhibitors.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="/shows">Trade Shows</a></li>
-                    <li><a href="/products">Products</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Tools</h4>
-                <ul>
-                    <li><a href="https://scannly.app">Scannly - Lead Capture</a></li>
-                    <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
-                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 ShowFloorTips.com | <a href="https://scannly.app">Powered by Scannly</a></p>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-box">
+            <h2>Weekly Trade Show Intel</h2>
+            <p>Join exhibitors who get actionable tips every Tuesday. No spam, just strategies that work.</p>
+            <form class="newsletter-form" onsubmit="return handleSubscribe(event)">
+                <input type="email" id="newsletterEmail" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Show<span>Floor</span>Tips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#shows">Trade Shows</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#tips">Exhibitor Tips</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="https://scannly.app">Scannly - Lead Capture</a></li>
+                        <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="#" onclick="filterBy('Technology')">Technology</a></li>
+                        <li><a href="#" onclick="filterBy('Healthcare')">Healthcare</a></li>
+                        <li><a href="#" onclick="filterBy('Construction')">Construction</a></li>
+                        <li><a href="#" onclick="filterBy('Manufacturing')">Manufacturing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <div class="modal-header" id="modalHeader">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-header-content">
+                    <span class="modal-category" id="modalCategory"></span>
+                    <h2 id="modalTitle"></h2>
+                    <div class="modal-header-meta">
+                        <span id="modalDate">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            <span class="meta-text"></span>
+                        </span>
+                        <span id="modalLocation">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="meta-text"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-tab="overview">Overview</button>
+                <button class="modal-tab" data-tab="hotels">Hotels</button>
+                <button class="modal-tab" data-tab="tips">Exhibitor Tips</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tab-content active" id="tab-overview">
+                    <div class="overview-grid" id="overviewGrid"></div>
+                    <p class="show-description" id="showDescription"></p>
+                </div>
+                <div class="modal-tab-content" id="tab-hotels">
+                    <div class="hotel-list" id="hotelList"></div>
+                    <a class="hotel-search-link" id="hotelSearchLink" href="#" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Search all hotels nearby
+                    </a>
+                </div>
+                <div class="modal-tab-content" id="tab-tips">
+                    <ol class="tips-list" id="tipsList"></ol>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <a class="btn btn-primary" id="modalWebsite" href="#" target="_blank" rel="noopener">Visit Official Website</a>
+                <a class="btn btn-outline" id="modalShowPage" href="#">Read Full Exhibitor Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Show Data (generated by page_generator.py) -->
+    <script src="/shows.js"></script>
+
+    <!-- App Logic -->
+    <script>
+    (function() {
+        'use strict';
+
+        const ITEMS_PER_PAGE = 24;
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let currentSort = 'date';
+        let visibleCount = ITEMS_PER_PAGE;
+        let filteredShows = [];
+
+        // Category colors
+        const CAT_COLORS = {
+            'Technology': '#3b82f6',
+            'Healthcare': '#10b981',
+            'Food & Beverage': '#f59e0b',
+            'Fashion': '#ec4899',
+            'Construction': '#f97316',
+            'Manufacturing': '#6366f1',
+            'Energy': '#eab308',
+            'Finance': '#14b8a6',
+            'Education': '#8b5cf6',
+            'Real Estate': '#06b6d4',
+            'Automotive': '#ef4444',
+            'Agriculture': '#22c55e'
+        };
+
+        // SVG icons
+        const ICONS = {
+            calendar: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+            location: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+            arrow: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'
+        };
+
+        function init() {
+            if (typeof SHOWS_DATA === 'undefined') {
+                document.getElementById('showsGrid').innerHTML = '<div class="no-results"><h3>Loading show data...</h3><p>Shows data is being generated. Check back soon.</p></div>';
+                return;
+            }
+
+            // Stats
+            const cities = new Set(SHOWS_DATA.map(s => s.city).filter(Boolean));
+            document.getElementById('statShows').textContent = SHOWS_DATA.length;
+            document.getElementById('statCities').textContent = cities.size;
+
+            // Render
+            applyFilters();
+            bindEvents();
+        }
+
+        function bindEvents() {
+            // Filter pills
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.category;
+                    visibleCount = ITEMS_PER_PAGE;
+                    applyFilters();
+                });
+            });
+
+            // Search
+            let searchTimeout;
+            document.getElementById('searchInput').addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    currentSearch = this.value.trim().toLowerCase();
+                    visibleCount = ITEMS_PER_PAGE;
+                    applyFilters();
+                }, 300);
+            });
+
+            // Sort
+            document.getElementById('sortSelect').addEventListener('change', function() {
+                currentSort = this.value;
+                applyFilters();
+            });
+
+            // Load more
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                visibleCount += ITEMS_PER_PAGE;
+                renderCards();
+            });
+
+            // Modal close
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Modal tabs
+            document.querySelectorAll('.modal-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+                });
+            });
+        }
+
+        function applyFilters() {
+            filteredShows = SHOWS_DATA.filter(show => {
+                if (currentFilter !== 'all' && show.category !== currentFilter) return false;
+                if (currentSearch) {
+                    const text = (show.title + ' ' + show.city + ' ' + show.state + ' ' + show.category + ' ' + show.venue).toLowerCase();
+                    if (!text.includes(currentSearch)) return false;
+                }
+                return true;
+            });
+
+            // Sort
+            filteredShows.sort((a, b) => {
+                if (currentSort === 'date') return (a.sort_date || '').localeCompare(b.sort_date || '');
+                if (currentSort === 'name') return a.title.localeCompare(b.title);
+                if (currentSort === 'category') return a.category.localeCompare(b.category);
+                return 0;
+            });
+
+            renderCards();
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('showsGrid');
+            const visible = filteredShows.slice(0, visibleCount);
+
+            document.getElementById('showsCount').textContent =
+                filteredShows.length + ' show' + (filteredShows.length !== 1 ? 's' : '') +
+                (currentFilter !== 'all' ? ' in ' + currentFilter : '');
+
+            if (visible.length === 0) {
+                grid.innerHTML = '<div class="no-results"><h3>No shows found</h3><p>Try a different search term or category filter.</p></div>';
+                document.getElementById('loadMoreContainer').style.display = 'none';
+                return;
+            }
+
+            grid.innerHTML = visible.map((show, i) => {
+                const color = CAT_COLORS[show.category] || '#64748b';
+                return '<div class="show-card" onclick="openShow(' + i + ')">' +
+                    '<div class="card-image" style="background-image:url(\'' + escapeHtml(show.image) + '\')">' +
+                        '<span class="card-category" style="background:' + color + '">' + escapeHtml(show.category) + '</span>' +
+                    '</div>' +
+                    '<div class="card-body">' +
+                        '<h3>' + escapeHtml(show.title) + '</h3>' +
+                        '<div class="card-meta">' +
+                            '<div class="card-meta-item">' + ICONS.calendar + '<span>' + escapeHtml(show.date) + '</span></div>' +
+                            '<div class="card-meta-item">' + ICONS.location + '<span>' + escapeHtml(show.city + (show.state ? ', ' + show.state : '')) + '</span></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="card-footer">' +
+                        '<span class="card-source">' + escapeHtml(show.source || '') + '</span>' +
+                        '<span class="card-arrow">View Details ' + ICONS.arrow + '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+
+            const loadMore = document.getElementById('loadMoreContainer');
+            loadMore.style.display = visibleCount < filteredShows.length ? 'block' : 'none';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+        }
+
+        // Expose openShow globally
+        window.openShow = function(index) {
+            const show = filteredShows[index];
+            if (!show) return;
+
+            const color = CAT_COLORS[show.category] || '#64748b';
+
+            // Header
+            document.getElementById('modalHeader').style.backgroundImage = 'url(' + show.image + ')';
+            document.getElementById('modalCategory').textContent = show.category;
+            document.getElementById('modalCategory').style.background = color;
+            document.getElementById('modalTitle').textContent = show.title;
+            document.querySelector('#modalDate .meta-text').textContent = show.date;
+            document.querySelector('#modalLocation .meta-text').textContent = show.location;
+
+            // Overview
+            const grid = document.getElementById('overviewGrid');
+            grid.innerHTML =
+                '<div class="detail-card"><h4>Venue</h4><p>' + escapeHtml(show.venue || show.location) + '</p></div>' +
+                '<div class="detail-card"><h4>Location</h4><p>' + escapeHtml(show.city + (show.state ? ', ' + show.state : '')) + '</p></div>' +
+                '<div class="detail-card"><h4>Organizer</h4><p>' + escapeHtml(show.host || 'Visit official website') + '</p></div>' +
+                '<div class="detail-card"><h4>Est. Booth Cost</h4><p>' + escapeHtml(show.booth_price || 'Contact organizer') + '</p></div>' +
+                (show.registration_info ? '<div class="detail-card"><h4>Registration</h4><p>' + escapeHtml(show.registration_info) + '</p></div>' : '') +
+                (show.attendees ? '<div class="detail-card"><h4>Expected Attendance</h4><p>' + escapeHtml(show.attendees) + '</p></div>' : '');
+
+            document.getElementById('showDescription').textContent = show.description || 'Visit the official website for complete show details, floor plans, and registration information.';
+
+            // Hotels
+            const hotelList = document.getElementById('hotelList');
+            if (show.hotels && show.hotels.length > 0) {
+                hotelList.innerHTML = show.hotels.map(h =>
+                    '<div class="hotel-item">' +
+                        '<div class="hotel-info"><h4>' + escapeHtml(h.name) + '</h4><p>' + escapeHtml(h.distance) + ' from venue</p></div>' +
+                        '<span class="hotel-price">' + escapeHtml(h.price) + '</span>' +
+                    '</div>'
+                ).join('');
+            } else {
+                hotelList.innerHTML = '<p style="color:var(--text-secondary)">Hotel information will be updated as the show date approaches. Use the search link below to find accommodations.</p>';
+            }
+
+            const searchCity = encodeURIComponent(show.venue || show.city || show.location);
+            document.getElementById('hotelSearchLink').href = 'https://www.google.com/travel/hotels?q=hotels+near+' + searchCity;
+
+            // Tips
+            const tips = show.tips || getDefaultTips(show.category);
+            document.getElementById('tipsList').innerHTML = tips.map((tip, i) =>
+                '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
+            ).join('');
+
+            // Actions
+            const websiteBtn = document.getElementById('modalWebsite');
+            if (show.website) {
+                websiteBtn.href = show.website;
+                websiteBtn.style.display = 'inline-flex';
+            } else {
+                websiteBtn.style.display = 'none';
+            }
+            document.getElementById('modalShowPage').href = '/shows/' + show.slug;
+
+            // Reset tabs
+            document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('.modal-tab[data-tab="overview"]').classList.add('active');
+            document.getElementById('tab-overview').classList.add('active');
+
+            // Show modal
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function getDefaultTips(category) {
+            const tips = {
+                'Technology': [
+                    'Showcase live product demos with interactive touchscreens and screens',
+                    'Offer device charging stations at your booth to attract tech-savvy attendees',
+                    'Use AR/VR experiences to demonstrate complex solutions interactively',
+                    'Prepare a strong Wi-Fi hotspot - tech attendees expect connectivity',
+                    'Record demo videos for social media content during the show'
+                ],
+                'Healthcare': [
+                    'Ensure all materials comply with HIPAA and relevant regulatory guidelines',
+                    'Have clinical staff available to answer technical questions',
+                    'Display case studies with measurable patient outcomes and ROI data',
+                    'Bring product samples with proper handling documentation',
+                    'Prepare CME/CE credit information if applicable to your products'
+                ],
+                'Food & Beverage': [
+                    'Offer product samples - check venue health regulations first',
+                    'Use refrigerated displays to keep products at optimal temperature',
+                    'Prepare ingredient lists and allergen information for all samples',
+                    'Partner with local chefs for live cooking demonstrations',
+                    'Have retail-ready packaging on display for buyer evaluation'
+                ],
+                'Fashion': [
+                    'Create Instagram-worthy photo opportunities at your booth',
+                    'Use professional lighting to showcase fabric quality and detail',
+                    'Offer exclusive show-only discounts and early access to new lines',
+                    'Display lookbooks and line sheets for wholesale buyers',
+                    'Have fitting rooms or mirrors available for product trials'
+                ],
+                'Construction': [
+                    'Bring physical material samples for hands-on evaluation',
+                    'Display before/after project photography with measurable results',
+                    'Have safety certification documentation ready for review',
+                    'Showcase scale models or VR walkthroughs of completed projects',
+                    'Prepare technical specifications and compliance documentation'
+                ],
+                'Manufacturing': [
+                    'Showcase machinery with video if equipment is too large for the floor',
+                    'Highlight quality certifications (ISO 9001, AS9100, etc.)',
+                    'Offer factory tour invitations to serious prospects',
+                    'Display raw material samples and finished product comparisons',
+                    'Prepare capacity and lead time information for buyer discussions'
+                ]
+            };
+            return tips[category] || [
+                'Set clear goals before the show - define leads, meetings, or awareness targets',
+                'Book your booth early for the best positioning on the show floor',
+                'Promote your presence via email, social media, and your website beforehand',
+                'Train every team member on key messages and lead qualification criteria',
+                'Follow up with all leads within 48 hours while the conversation is fresh'
+            ];
+        }
+
+        // Expose filterBy globally for footer links
+        window.filterBy = function(cat) {
+            currentFilter = cat;
+            document.querySelectorAll('.filter-pill').forEach(p => {
+                p.classList.toggle('active', p.dataset.category === cat);
+            });
+            visibleCount = ITEMS_PER_PAGE;
+            applyFilters();
+            document.getElementById('shows').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // Newsletter handler
+        window.handleSubscribe = function(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            // Beehiiv integration placeholder
+            alert('Thanks for subscribing! You\'ll receive weekly trade show intel at ' + email);
+            document.getElementById('newsletterEmail').value = '';
+            return false;
+        };
+
+        // Init on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+
 </body>
 </html>

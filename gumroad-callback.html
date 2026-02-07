@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Gumroad Auth</title></head>
+<body>
+<h1>Gumroad Authorization</h1>
+<p>Copy the code from the URL bar and paste it to Money.</p>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+if (code) {
+  document.body.innerHTML = "<h1>Success!</h1><p>Your auth code is:</p><h2 style=\"background:#eee;padding:20px;font-family:monospace\">" + code + "</h2><p>Copy this code and paste it to Money.</p>";
+}
+</script>
+</body>
+</html>
