@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShowFloorTips - Trade Show Intelligence for Exhibitors</title>
-    <meta name="description" content="Your command center for upcoming trade shows. Venue details, nearby hotels, exhibitor tips, and resources to maximize your ROI at every show.">
-    <meta name="keywords" content="trade show tips, exhibitor tips, trade show booth, lead capture, trade show marketing, 2026 trade shows">
+    <title>ShowFloorTips - Trade Show Intelligence for Exhibitors | 4,500+ Shows</title>
+    <meta name="description" content="The world's most comprehensive trade show database. 4,500+ upcoming shows across 93 countries with venue details, hotels, exhibitor tips, and official links.">
+    <meta name="keywords" content="trade show directory, trade show calendar, exhibitor tips, trade show booth, lead capture, trade show marketing, 2026 trade shows, exhibition directory">
 
     <meta property="og:title" content="ShowFloorTips - Trade Show Intelligence for Exhibitors">
-    <meta property="og:description" content="Your command center for upcoming trade shows. Venue details, nearby hotels, exhibitor tips, and resources.">
+    <meta property="og:description" content="The world's most comprehensive trade show database. 4,500+ shows across 93 countries.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://showfloortips.com">
     <meta name="twitter:card" content="summary_large_image">
@@ -20,12 +20,13 @@
         "@type": "WebSite",
         "name": "ShowFloorTips",
         "url": "https://showfloortips.com",
-        "description": "Trade show intelligence for exhibitors - venue details, hotels, tips, and resources"
+        "description": "The world's most comprehensive trade show database with 4,500+ upcoming shows across 93 countries"
     }
     </script>
 
     <link rel="stylesheet" href="/styles.css">
     <link rel="canonical" href="https://showfloortips.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -39,7 +40,7 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="#tips">Tips</a></li>
                     <li><a href="#newsletter">Newsletter</a></li>
-                    <li><a href="https://scannly.app?utm_source=showfloortips&utm_medium=nav" class="nav-cta">Try Scannly</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
@@ -50,10 +51,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Your Trade Show<br>Command Center</h1>
-            <p class="subtitle">Venue intel, nearby hotels, exhibitor strategies, and everything you need to dominate the show floor in 2026.</p>
+            <p class="subtitle">The world's most comprehensive trade show database. 4,500+ upcoming shows across 93 countries with venue intel, exhibitor strategies, and everything you need to dominate the show floor.</p>
             <div class="search-container">
                 <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" id="searchInput" placeholder="Search trade shows by name, city, or industry..." autocomplete="off">
+                <input type="text" id="searchInput" placeholder="Search by show name, city, country, or industry..." autocomplete="off">
             </div>
         </div>
     </section>
@@ -66,8 +67,12 @@
                 <div class="stat-label">Upcoming Shows</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">12</div>
+                <div class="stat-number">20</div>
                 <div class="stat-label">Industries</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="statCountries">--</div>
+                <div class="stat-label">Countries</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number" id="statCities">--</div>
@@ -76,22 +81,44 @@
         </div>
     </div>
 
-    <!-- Category Filters -->
+    <!-- Filters -->
     <div class="filters-section">
-        <div class="filter-bar" id="filterBar">
-            <button class="filter-pill active" data-category="all">All Shows</button>
-            <button class="filter-pill" data-category="Technology">Technology</button>
-            <button class="filter-pill" data-category="Healthcare">Healthcare</button>
-            <button class="filter-pill" data-category="Food & Beverage">Food & Bev</button>
-            <button class="filter-pill" data-category="Fashion">Fashion</button>
-            <button class="filter-pill" data-category="Construction">Construction</button>
-            <button class="filter-pill" data-category="Manufacturing">Manufacturing</button>
-            <button class="filter-pill" data-category="Energy">Energy</button>
-            <button class="filter-pill" data-category="Finance">Finance</button>
-            <button class="filter-pill" data-category="Education">Education</button>
-            <button class="filter-pill" data-category="Real Estate">Real Estate</button>
-            <button class="filter-pill" data-category="Automotive">Automotive</button>
-            <button class="filter-pill" data-category="Agriculture">Agriculture</button>
+        <div class="filter-controls">
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-pill active" data-category="all">All Shows</button>
+                <button class="filter-pill" data-category="Technology">Technology</button>
+                <button class="filter-pill" data-category="Healthcare">Healthcare</button>
+                <button class="filter-pill" data-category="Food & Beverage">Food & Bev</button>
+                <button class="filter-pill" data-category="Construction">Construction</button>
+                <button class="filter-pill" data-category="Manufacturing">Manufacturing</button>
+                <button class="filter-pill" data-category="Energy">Energy</button>
+                <button class="filter-pill" data-category="Automotive">Automotive</button>
+                <button class="filter-pill" data-category="Fashion & Beauty">Fashion</button>
+                <button class="filter-pill" data-category="Education">Education</button>
+                <button class="filter-pill" data-category="Travel & Hospitality">Travel</button>
+                <button class="filter-pill" data-category="Sports & Recreation">Sports</button>
+                <button class="filter-pill" data-category="Agriculture">Agriculture</button>
+                <button class="filter-pill" data-category="Arts & Entertainment">Entertainment</button>
+                <button class="filter-pill" data-category="Defense & Security">Defense</button>
+                <button class="filter-pill" data-category="Finance">Finance</button>
+                <button class="filter-pill" data-category="Environmental">Environmental</button>
+                <button class="filter-pill" data-category="Packaging & Logistics">Logistics</button>
+                <button class="filter-pill" data-category="Pet & Animal">Pets</button>
+                <button class="filter-pill" data-category="Real Estate">Real Estate</button>
+                <button class="filter-pill" data-category="Business & Trade">Business</button>
+            </div>
+            <div class="filter-dropdowns">
+                <select class="filter-select" id="countryFilter">
+                    <option value="all">All Countries</option>
+                </select>
+                <select class="sort-select" id="sortSelect">
+                    <option value="date">Sort by Date</option>
+                    <option value="name">Sort by Name</option>
+                    <option value="category">Sort by Category</option>
+                    <option value="country">Sort by Country</option>
+                    <option value="attendees">Sort by Attendees</option>
+                </select>
+            </div>
         </div>
     </div>
 
@@ -99,11 +126,6 @@
     <section class="shows-section" id="shows">
         <div class="shows-header">
             <span class="shows-count" id="showsCount">Loading shows...</span>
-            <select class="sort-select" id="sortSelect">
-                <option value="date">Sort by Date</option>
-                <option value="name">Sort by Name</option>
-                <option value="category">Sort by Category</option>
-            </select>
         </div>
         <div class="shows-grid" id="showsGrid"></div>
         <div class="load-more-container" id="loadMoreContainer" style="display:none">
@@ -121,10 +143,10 @@
                     <li>Instant contact capture via QR code</li>
                     <li>Real-time lead notifications</li>
                     <li>CRM integration ready</li>
-                    <li>Pay-per-scan pricing</li>
+                    <li>Free to download</li>
                 </ul>
             </div>
-            <a href="https://scannly.app?utm_source=showfloortips&utm_medium=homepage&utm_campaign=cta" class="btn btn-primary">Get Started Free</a>
+            <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="btn btn-primary">Download Scannly Free</a>
         </div>
     </section>
 
@@ -215,7 +237,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">Show<span>Floor</span>Tips</div>
-                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                    <p>The world's most comprehensive trade show database. Expert intelligence and resources for exhibitors across 93 countries.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
@@ -229,17 +251,19 @@
                 <div class="footer-col">
                     <h4>Tools</h4>
                     <ul>
-                        <li><a href="https://scannly.app">Scannly - Lead Capture</a></li>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
                         <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Industries</h4>
+                    <h4>Top Industries</h4>
                     <ul>
-                        <li><a href="#" onclick="filterBy('Technology')">Technology</a></li>
-                        <li><a href="#" onclick="filterBy('Healthcare')">Healthcare</a></li>
-                        <li><a href="#" onclick="filterBy('Construction')">Construction</a></li>
-                        <li><a href="#" onclick="filterBy('Manufacturing')">Manufacturing</a></li>
+                        <li><a href="#" onclick="filterBy('Technology');return false">Technology</a></li>
+                        <li><a href="#" onclick="filterBy('Healthcare');return false">Healthcare</a></li>
+                        <li><a href="#" onclick="filterBy('Construction');return false">Construction</a></li>
+                        <li><a href="#" onclick="filterBy('Manufacturing');return false">Manufacturing</a></li>
+                        <li><a href="#" onclick="filterBy('Energy');return false">Energy</a></li>
+                        <li><a href="#" onclick="filterBy('Food & Beverage');return false">Food & Beverage</a></li>
                     </ul>
                 </div>
             </div>
@@ -302,7 +326,7 @@
         </div>
     </div>
 
-    <!-- Show Data (generated by page_generator.py) -->
+    <!-- Show Data -->
     <script src="/shows.js"></script>
 
     <!-- App Logic -->
@@ -312,6 +336,7 @@
 
         const ITEMS_PER_PAGE = 24;
         let currentFilter = 'all';
+        let currentCountry = 'all';
         let currentSearch = '';
         let currentSort = 'date';
         let visibleCount = ITEMS_PER_PAGE;
@@ -322,7 +347,7 @@
             'Technology': '#3b82f6',
             'Healthcare': '#10b981',
             'Food & Beverage': '#f59e0b',
-            'Fashion': '#ec4899',
+            'Fashion & Beauty': '#ec4899',
             'Construction': '#f97316',
             'Manufacturing': '#6366f1',
             'Energy': '#eab308',
@@ -330,14 +355,23 @@
             'Education': '#8b5cf6',
             'Real Estate': '#06b6d4',
             'Automotive': '#ef4444',
-            'Agriculture': '#22c55e'
+            'Agriculture': '#22c55e',
+            'Defense & Security': '#991b1b',
+            'Travel & Hospitality': '#0891b2',
+            'Sports & Recreation': '#059669',
+            'Arts & Entertainment': '#7c3aed',
+            'Packaging & Logistics': '#d97706',
+            'Environmental': '#16a34a',
+            'Pet & Animal': '#ea580c',
+            'Business & Trade': '#475569'
         };
 
-        // SVG icons
         const ICONS = {
             calendar: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
             location: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
-            arrow: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'
+            arrow: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
+            people: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+            globe: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
         };
 
         function init() {
@@ -348,10 +382,26 @@
 
             // Stats
             const cities = new Set(SHOWS_DATA.map(s => s.city).filter(Boolean));
-            document.getElementById('statShows').textContent = SHOWS_DATA.length;
-            document.getElementById('statCities').textContent = cities.size;
+            const countries = new Set(SHOWS_DATA.map(s => s.country).filter(Boolean));
+            document.getElementById('statShows').textContent = SHOWS_DATA.length.toLocaleString();
+            document.getElementById('statCities').textContent = cities.size.toLocaleString();
+            document.getElementById('statCountries').textContent = countries.size;
 
-            // Render
+            // Populate country dropdown
+            const countrySelect = document.getElementById('countryFilter');
+            const countryCounts = {};
+            SHOWS_DATA.forEach(s => {
+                if (s.country) countryCounts[s.country] = (countryCounts[s.country] || 0) + 1;
+            });
+            Object.keys(countryCounts)
+                .sort((a, b) => countryCounts[b] - countryCounts[a])
+                .forEach(country => {
+                    const opt = document.createElement('option');
+                    opt.value = country;
+                    opt.textContent = country + ' (' + countryCounts[country] + ')';
+                    countrySelect.appendChild(opt);
+                });
+
             applyFilters();
             bindEvents();
         }
@@ -366,6 +416,13 @@
                     visibleCount = ITEMS_PER_PAGE;
                     applyFilters();
                 });
+            });
+
+            // Country filter
+            document.getElementById('countryFilter').addEventListener('change', function() {
+                currentCountry = this.value;
+                visibleCount = ITEMS_PER_PAGE;
+                applyFilters();
             });
 
             // Search
@@ -414,8 +471,9 @@
         function applyFilters() {
             filteredShows = SHOWS_DATA.filter(show => {
                 if (currentFilter !== 'all' && show.category !== currentFilter) return false;
+                if (currentCountry !== 'all' && show.country !== currentCountry) return false;
                 if (currentSearch) {
-                    const text = (show.title + ' ' + show.city + ' ' + show.state + ' ' + show.category + ' ' + show.venue).toLowerCase();
+                    const text = (show.title + ' ' + show.city + ' ' + show.state + ' ' + show.category + ' ' + show.venue + ' ' + (show.country || '')).toLowerCase();
                     if (!text.includes(currentSearch)) return false;
                 }
                 return true;
@@ -426,6 +484,12 @@
                 if (currentSort === 'date') return (a.sort_date || '').localeCompare(b.sort_date || '');
                 if (currentSort === 'name') return a.title.localeCompare(b.title);
                 if (currentSort === 'category') return a.category.localeCompare(b.category);
+                if (currentSort === 'country') return (a.country || '').localeCompare(b.country || '');
+                if (currentSort === 'attendees') {
+                    var na = parseInt((a.attendees || '0').replace(/[^0-9]/g, '')) || 0;
+                    var nb = parseInt((b.attendees || '0').replace(/[^0-9]/g, '')) || 0;
+                    return nb - na;
+                }
                 return 0;
             });
 
@@ -436,18 +500,29 @@
             const grid = document.getElementById('showsGrid');
             const visible = filteredShows.slice(0, visibleCount);
 
-            document.getElementById('showsCount').textContent =
-                filteredShows.length + ' show' + (filteredShows.length !== 1 ? 's' : '') +
-                (currentFilter !== 'all' ? ' in ' + currentFilter : '');
+            var countLabel = filteredShows.length.toLocaleString() + ' show' + (filteredShows.length !== 1 ? 's' : '');
+            if (currentFilter !== 'all') countLabel += ' in ' + currentFilter;
+            if (currentCountry !== 'all') countLabel += ' in ' + currentCountry;
+            document.getElementById('showsCount').textContent = countLabel;
 
             if (visible.length === 0) {
-                grid.innerHTML = '<div class="no-results"><h3>No shows found</h3><p>Try a different search term or category filter.</p></div>';
+                grid.innerHTML = '<div class="no-results"><h3>No shows found</h3><p>Try a different search term, category, or country filter.</p></div>';
                 document.getElementById('loadMoreContainer').style.display = 'none';
                 return;
             }
 
             grid.innerHTML = visible.map((show, i) => {
                 const color = CAT_COLORS[show.category] || '#64748b';
+                var locationText = show.city || show.location || '';
+                if (show.state) locationText += ', ' + show.state;
+                if (show.country && show.country !== 'United States') {
+                    locationText = show.location || show.city || '';
+                    if (show.country) locationText += ', ' + show.country;
+                }
+                var attendeeBadge = '';
+                if (show.attendees) {
+                    attendeeBadge = '<span class="card-attendees">' + ICONS.people + ' ' + escapeHtml(show.attendees) + '</span>';
+                }
                 return '<div class="show-card" onclick="openShow(' + i + ')">' +
                     '<div class="card-image" style="background-image:url(\'' + escapeHtml(show.image) + '\')">' +
                         '<span class="card-category" style="background:' + color + '">' + escapeHtml(show.category) + '</span>' +
@@ -456,8 +531,9 @@
                         '<h3>' + escapeHtml(show.title) + '</h3>' +
                         '<div class="card-meta">' +
                             '<div class="card-meta-item">' + ICONS.calendar + '<span>' + escapeHtml(show.date) + '</span></div>' +
-                            '<div class="card-meta-item">' + ICONS.location + '<span>' + escapeHtml(show.city + (show.state ? ', ' + show.state : '')) + '</span></div>' +
+                            '<div class="card-meta-item">' + ICONS.location + '<span>' + escapeHtml(locationText) + '</span></div>' +
                         '</div>' +
+                        attendeeBadge +
                     '</div>' +
                     '<div class="card-footer">' +
                         '<span class="card-source">' + escapeHtml(show.source || '') + '</span>' +
@@ -485,30 +561,33 @@
             return false;
         }
 
-        // Expose openShow globally
         window.openShow = function(index) {
             const show = filteredShows[index];
             if (!show) return;
 
             const color = CAT_COLORS[show.category] || '#64748b';
 
-            // Header
             document.getElementById('modalHeader').style.backgroundImage = 'url(' + show.image + ')';
             document.getElementById('modalCategory').textContent = show.category;
             document.getElementById('modalCategory').style.background = color;
             document.getElementById('modalTitle').textContent = show.title;
             document.querySelector('#modalDate .meta-text').textContent = show.date;
-            document.querySelector('#modalLocation .meta-text').textContent = show.location;
+
+            var loc = show.location || '';
+            if (show.country && show.country !== 'United States') loc += ', ' + show.country;
+            document.querySelector('#modalLocation .meta-text').textContent = loc;
 
             // Overview
             const grid = document.getElementById('overviewGrid');
             grid.innerHTML =
                 '<div class="detail-card"><h4>Venue</h4><p>' + escapeHtml(show.venue || show.location) + '</p></div>' +
-                '<div class="detail-card"><h4>Location</h4><p>' + escapeHtml(show.city + (show.state ? ', ' + show.state : '')) + '</p></div>' +
+                '<div class="detail-card"><h4>Location</h4><p>' + escapeHtml(show.city + (show.state ? ', ' + show.state : '') + (show.country && show.country !== 'United States' ? ', ' + show.country : '')) + '</p></div>' +
                 '<div class="detail-card"><h4>Organizer</h4><p>' + escapeHtml(show.host || 'Visit official website') + '</p></div>' +
                 '<div class="detail-card"><h4>Est. Booth Cost</h4><p>' + escapeHtml(show.booth_price || 'Contact organizer') + '</p></div>' +
                 (show.registration_info ? '<div class="detail-card"><h4>Registration</h4><p>' + escapeHtml(show.registration_info) + '</p></div>' : '') +
-                (show.attendees ? '<div class="detail-card"><h4>Expected Attendance</h4><p>' + escapeHtml(show.attendees) + '</p></div>' : '');
+                (show.attendees ? '<div class="detail-card"><h4>Expected Attendance</h4><p>' + escapeHtml(show.attendees) + '</p></div>' : '') +
+                (show.exhibitors ? '<div class="detail-card"><h4>Exhibitors</h4><p>' + escapeHtml(show.exhibitors) + '</p></div>' : '') +
+                (show.country ? '<div class="detail-card"><h4>Country</h4><p>' + escapeHtml(show.country) + '</p></div>' : '');
 
             document.getElementById('showDescription').textContent = show.description || 'Visit the official website for complete show details, floor plans, and registration information.';
 
@@ -534,7 +613,7 @@
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
             ).join('');
 
-            // Actions - show official website link or search fallback
+            // Actions
             const websiteBtn = document.getElementById('modalWebsite');
             const searchBtn = document.getElementById('modalSearchWebsite');
             const isOfficial = show.website && !isAggregatorUrl(show.website);
@@ -556,7 +635,6 @@
             document.querySelector('.modal-tab[data-tab="overview"]').classList.add('active');
             document.getElementById('tab-overview').classList.add('active');
 
-            // Show modal
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
         };
@@ -589,7 +667,7 @@
                     'Partner with local chefs for live cooking demonstrations',
                     'Have retail-ready packaging on display for buyer evaluation'
                 ],
-                'Fashion': [
+                'Fashion & Beauty': [
                     'Create Instagram-worthy photo opportunities at your booth',
                     'Use professional lighting to showcase fabric quality and detail',
                     'Offer exclusive show-only discounts and early access to new lines',
@@ -609,6 +687,90 @@
                     'Offer factory tour invitations to serious prospects',
                     'Display raw material samples and finished product comparisons',
                     'Prepare capacity and lead time information for buyer discussions'
+                ],
+                'Energy': [
+                    'Bring working models or simulations of energy solutions',
+                    'Display ROI calculations and energy savings case studies',
+                    'Have technical specifications ready for engineering discussions',
+                    'Showcase certifications and regulatory compliance documentation',
+                    'Prepare data on environmental impact and sustainability metrics'
+                ],
+                'Automotive': [
+                    'Display actual vehicle components or working prototypes when possible',
+                    'Use interactive touchscreens for configurators and spec comparisons',
+                    'Prepare OEM compatibility charts and certification documentation',
+                    'Have supply chain and lead time data ready for fleet buyers',
+                    'Showcase testing results and durability data prominently'
+                ],
+                'Defense & Security': [
+                    'Have proper export control and ITAR documentation prepared',
+                    'Display certifications (mil-spec, UL, etc.) prominently',
+                    'Prepare for secure discussions with classified/sensitive demos',
+                    'Bring demo units for hands-on evaluation by procurement officers',
+                    'Have contract vehicle and pricing structure information ready'
+                ],
+                'Travel & Hospitality': [
+                    'Create immersive destination experiences with VR or large displays',
+                    'Offer exclusive show rates and booking incentives',
+                    'Have digital brochures and rate cards ready for travel agents',
+                    'Display customer reviews and satisfaction metrics prominently',
+                    'Prepare group and corporate booking information'
+                ],
+                'Sports & Recreation': [
+                    'Allow hands-on product testing and demonstrations',
+                    'Display athlete endorsements and performance data',
+                    'Create engaging photo opportunities with your products',
+                    'Have bulk order and dealer pricing ready for retailers',
+                    'Showcase durability testing results and warranty information'
+                ],
+                'Arts & Entertainment': [
+                    'Create an immersive booth experience that showcases your medium',
+                    'Offer live demonstrations or performances at scheduled times',
+                    'Display portfolio work with professional lighting and presentation',
+                    'Have licensing and collaboration information ready',
+                    'Prepare digital media kits for press and industry contacts'
+                ],
+                'Agriculture': [
+                    'Bring actual product samples for hands-on evaluation',
+                    'Display yield improvement data and field trial results',
+                    'Have compatibility information for existing equipment systems',
+                    'Prepare seasonal availability and delivery timeline information',
+                    'Showcase sustainability and environmental compliance data'
+                ],
+                'Finance': [
+                    'Prepare ROI case studies and performance data for key products',
+                    'Have compliance and regulatory documentation readily available',
+                    'Display security certifications and data protection measures',
+                    'Offer live demonstrations of platforms and tools',
+                    'Prepare integration information for existing financial systems'
+                ],
+                'Environmental': [
+                    'Display measurable environmental impact data and case studies',
+                    'Showcase certifications (LEED, EPA, ISO 14001) prominently',
+                    'Bring working models or samples of environmental solutions',
+                    'Prepare regulatory compliance documentation for different regions',
+                    'Have ROI and cost-saving calculations for green investments'
+                ],
+                'Education': [
+                    'Offer live demonstrations of educational tools and platforms',
+                    'Display student outcome data and institutional case studies',
+                    'Prepare volume licensing and institutional pricing information',
+                    'Have integration guides for existing LMS and school systems',
+                    'Showcase accessibility features and compliance information'
+                ],
+                'Packaging & Logistics': [
+                    'Bring actual packaging samples for hands-on evaluation',
+                    'Display cost comparison data and efficiency metrics',
+                    'Showcase sustainability features and recyclability information',
+                    'Prepare minimum order quantities and lead time data',
+                    'Have custom capability information and design services ready'
+                ],
+                'Pet & Animal': [
+                    'Bring product samples for attendees to see and feel',
+                    'Display safety certifications and ingredient sourcing information',
+                    'Have retail packaging and point-of-sale materials ready',
+                    'Prepare wholesale pricing and minimum order information',
+                    'Showcase customer testimonials and product testing data'
                 ]
             };
             return tips[category] || [
@@ -620,7 +782,6 @@
             ];
         }
 
-        // Expose filterBy globally for footer links
         window.filterBy = function(cat) {
             currentFilter = cat;
             document.querySelectorAll('.filter-pill').forEach(p => {
@@ -631,17 +792,14 @@
             document.getElementById('shows').scrollIntoView({ behavior: 'smooth' });
         };
 
-        // Newsletter handler
         window.handleSubscribe = function(e) {
             e.preventDefault();
             const email = document.getElementById('newsletterEmail').value;
-            // Beehiiv integration placeholder
             alert('Thanks for subscribing! You\'ll receive weekly trade show intel at ' + email);
             document.getElementById('newsletterEmail').value = '';
             return false;
         };
 
-        // Init on DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
         } else {

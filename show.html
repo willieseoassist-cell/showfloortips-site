@@ -159,6 +159,7 @@
         if (show.attendees) sidebarStats += '<div class="stat-row"><span class="stat-label">Attendees</span><span class="stat-value">' + show.attendees + '</span></div>';
         if (show.exhibitors) sidebarStats += '<div class="stat-row"><span class="stat-label">Exhibitors</span><span class="stat-value">' + show.exhibitors + '</span></div>';
         if (show.booth_price) sidebarStats += '<div class="stat-row"><span class="stat-label">Booth Cost</span><span class="stat-value">' + show.booth_price + '</span></div>';
+        if (show.country) sidebarStats += '<div class="stat-row"><span class="stat-label">Country</span><span class="stat-value">' + show.country + '</span></div>';
 
         var html = '';
         html += '<div class="show-hero"><img src="' + (show.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop') + '" alt="' + show.title + '">';
