@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Budget Planner | ShowFloorTips</title>
+    <meta name="description" content="Free interactive trade show budget planner. Track estimated vs. actual costs across booth, travel, marketing, staffing, and more. Export to CSV or print.">
+    <meta name="keywords" content="trade show budget planner, exhibitor budget template, trade show cost tracker, booth budget calculator, trade show expenses, exhibitor planning tool">
+
+    <meta property="og:title" content="Trade Show Budget Planner - ShowFloorTips">
+    <meta property="og:description" content="Free interactive trade show budget planner. Track estimated vs. actual costs across all categories. Export to CSV.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/budget-planner.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Budget Planner - ShowFloorTips">
+    <meta name="twitter:description" content="Free interactive trade show budget planner. Track estimated vs. actual costs across all categories. Export to CSV.">
+
+    <link rel="canonical" href="https://showfloortips.com/budget-planner.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Budget Planner",
+        "url": "https://showfloortips.com/budget-planner.html",
+        "description": "Free interactive trade show budget planner. Track estimated vs. actual costs across booth space, design, shipping, travel, marketing, staffing, and miscellaneous categories.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "Category-based budget tracking",
+            "Estimated vs actual cost comparison",
+            "Variance calculation",
+            "CSV export",
+            "Print summary",
+            "Auto-save to browser"
+        ]
+    }
+    </script>
+
+    <style>
+        .page-hero {
+            background: var(--gray-50);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .page-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .budget-container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Show name input */
+        .show-name-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+        }
+        .show-name-bar label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .show-name-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--black);
+            background: transparent;
+        }
+        .show-name-bar input::placeholder {
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        /* Summary cards */
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .summary-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+        }
+        .summary-card .label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+        }
+        .summary-card .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.02em;
+        }
+        .summary-card .value.negative {
+            color: #404040;
+        }
+        .summary-card .value.positive {
+            color: var(--black);
+        }
+        .summary-card .sub {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+        }
+
+        /* Action buttons */
+        .actions-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            background: var(--white);
+            color: var(--black);
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .action-btn:hover {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        .action-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        .action-btn.primary {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        .action-btn.primary:hover {
+            background: var(--gray-800);
+        }
+
+        /* Budget category */
+        .budget-category {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s ease;
+        }
+        .category-header:hover {
+            background: var(--gray-50);
+        }
+        .category-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .category-toggle {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .category-toggle svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gray-500);
+        }
+        .budget-category.open .category-toggle {
+            transform: rotate(90deg);
+        }
+        .category-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+        .category-totals {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.85rem;
+        }
+        .category-totals span {
+            color: var(--gray-500);
+        }
+        .category-totals strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .category-body {
+            display: none;
+            border-top: 1px solid var(--gray-200);
+        }
+        .budget-category.open .category-body {
+            display: block;
+        }
+
+        .line-item-header {
+            display: grid;
+            grid-template-columns: 1fr 160px 160px 120px;
+            gap: 1rem;
+            padding: 0.625rem 1.5rem;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .line-item-header span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .line-item-header span:last-child {
+            text-align: right;
+        }
+
+        .line-item {
+            display: grid;
+            grid-template-columns: 1fr 160px 160px 120px;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid var(--gray-100);
+            align-items: center;
+        }
+        .line-item:last-child {
+            border-bottom: none;
+        }
+        .line-item-name {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+        .line-item input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-family: inherit;
+            color: var(--black);
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.15s ease;
+            text-align: right;
+        }
+        .line-item input:focus {
+            border-color: var(--gray-400);
+        }
+        .line-item input::placeholder {
+            color: var(--gray-400);
+        }
+        .line-item .variance {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: right;
+            color: var(--gray-500);
+        }
+        .line-item .variance.over {
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+        .line-item .variance.under {
+            color: var(--gray-600);
+        }
+
+        /* Scannly CTA */
+        .cta-banner {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .cta-banner h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+        .cta-banner p {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Print styles */
+        @media print {
+            header, footer, .actions-bar, .cta-banner, .action-btn { display: none !important; }
+            .budget-category { break-inside: avoid; }
+            .category-body { display: block !important; }
+            .budget-category .category-toggle { display: none; }
+            body { font-size: 12px; }
+            .page-hero { padding: 1rem; }
+            .summary-card .value { font-size: 1.25rem; }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .summary-row { grid-template-columns: repeat(2, 1fr); }
+            .line-item-header, .line-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            .line-item-header { display: none; }
+            .line-item {
+                padding: 1rem 1.5rem;
+            }
+            .line-item-name {
+                font-weight: 600;
+                color: var(--black);
+            }
+            .line-item input {
+                text-align: left;
+            }
+            .line-item .variance {
+                text-align: left;
+            }
+            .category-totals {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .show-name-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-hero h1 { font-size: 1.75rem; }
+            .summary-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>Trade Show Budget Planner</h1>
+        <p>Track estimated and actual costs across every category. Export to CSV or print a summary for your team.</p>
+    </section>
+
+    <div class="budget-container">
+        <div class="show-name-bar">
+            <label>Show Name</label>
+            <input type="text" id="showName" placeholder="e.g. CES 2026, SXSW, NRF Big Show" oninput="saveBudget()">
+        </div>
+
+        <div class="summary-row">
+            <div class="summary-card">
+                <div class="label">Total Estimated</div>
+                <div class="value" id="totalEstimated">$0</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Total Actual</div>
+                <div class="value" id="totalActual">$0</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Variance</div>
+                <div class="value" id="totalVariance">$0</div>
+                <div class="sub" id="variancePercent">0% difference</div>
+            </div>
+            <div class="summary-card">
+                <div class="label">Categories</div>
+                <div class="value">7</div>
+                <div class="sub" id="lineItemCount">0 line items filled</div>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <button class="action-btn primary" onclick="exportCSV()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export as CSV
+            </button>
+            <button class="action-btn" onclick="window.print()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print Summary
+            </button>
+            <button class="action-btn" onclick="resetBudget()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                Reset All
+            </button>
+        </div>
+
+        <div id="budgetCategories"></div>
+
+        <div class="cta-banner">
+            <div>
+                <h3>Capture leads without the expensive scanner rental</h3>
+                <p>Scannly lets attendees share contact info by scanning a QR code at your booth. Save on lead retrieval fees.</p>
+            </div>
+            <a href="/scannly.html" class="action-btn primary">Try Scannly</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>The world's most comprehensive trade show database.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">News</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/budget-planner.html">Budget Planner</a></li>
+                        <li><a href="/checklist.html">Checklist Generator</a></li>
+                        <li><a href="/qr-generator.html">QR Code Generator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const budgetData = {
+        'Booth Space': [
+            'Booth rental',
+            'Corner/end-cap premium',
+            'Electricity & power',
+            'WiFi / internet access',
+            'Lead retrieval system'
+        ],
+        'Booth Design': [
+            'Display structure',
+            'Graphics & signage',
+            'Flooring & carpet',
+            'Lighting',
+            'Furniture rental'
+        ],
+        'Shipping & Logistics': [
+            'Freight to show',
+            'Drayage (move-in/out)',
+            'Storage fees',
+            'Return shipping'
+        ],
+        'Travel': [
+            'Flights / airfare',
+            'Hotel accommodations',
+            'Meals & entertainment',
+            'Ground transportation',
+            'Parking'
+        ],
+        'Marketing': [
+            'Pre-show email campaigns',
+            'Giveaways & swag',
+            'Printed materials',
+            'Social media ads',
+            'Sponsorship fees'
+        ],
+        'Staffing': [
+            'Per diem allowance',
+            'Overtime pay',
+            'Pre-show training',
+            'Temporary staff'
+        ],
+        'Miscellaneous': [
+            'Event insurance',
+            'Union labor charges',
+            'Badge scanning fees',
+            'Booth cleaning service',
+            'Photography / video'
+        ]
+    };
+
+    function init() {
+        const container = document.getElementById('budgetCategories');
+        const saved = loadSaved();
+
+        Object.entries(budgetData).forEach(([category, items], idx) => {
+            const catId = category.replace(/[^a-zA-Z]/g, '');
+            const isOpen = idx < 2;
+
+            let itemsHTML = '';
+            items.forEach((item, i) => {
+                const key = catId + '_' + i;
+                const estVal = saved[key + '_est'] || '';
+                const actVal = saved[key + '_act'] || '';
+                itemsHTML += `
+                <div class="line-item">
+                    <div class="line-item-name">${item}</div>
+                    <input type="number" placeholder="$0" data-key="${key}_est" value="${estVal}" oninput="recalc(); saveBudget()">
+                    <input type="number" placeholder="$0" data-key="${key}_act" value="${actVal}" oninput="recalc(); saveBudget()">
+                    <div class="variance" id="var_${key}">--</div>
+                </div>`;
+            });
+
+            container.innerHTML += `
+            <div class="budget-category${isOpen ? ' open' : ''}" id="cat_${catId}">
+                <div class="category-header" onclick="toggleCategory('${catId}')">
+                    <div class="category-left">
+                        <div class="category-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <span class="category-name">${category}</span>
+                    </div>
+                    <div class="category-totals">
+                        <span>Est: <strong id="est_${catId}">$0</strong></span>
+                        <span>Act: <strong id="act_${catId}">$0</strong></span>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="line-item-header">
+                        <span>Item</span>
+                        <span>Estimated</span>
+                        <span>Actual</span>
+                        <span>Variance</span>
+                    </div>
+                    ${itemsHTML}
+                </div>
+            </div>`;
+        });
+
+        if (saved['showName']) {
+            document.getElementById('showName').value = saved['showName'];
+        }
+
+        recalc();
+    }
+
+    function toggleCategory(catId) {
+        document.getElementById('cat_' + catId).classList.toggle('open');
+    }
+
+    function getVal(key) {
+        const el = document.querySelector(`[data-key="${key}"]`);
+        return el ? parseFloat(el.value) || 0 : 0;
+    }
+
+    function formatCurrency(num) {
+        if (num < 0) return '-$' + Math.abs(num).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        return '$' + num.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function recalc() {
+        let grandEst = 0, grandAct = 0, filledCount = 0;
+
+        Object.entries(budgetData).forEach(([category, items]) => {
+            const catId = category.replace(/[^a-zA-Z]/g, '');
+            let catEst = 0, catAct = 0;
+
+            items.forEach((item, i) => {
+                const key = catId + '_' + i;
+                const est = getVal(key + '_est');
+                const act = getVal(key + '_act');
+                catEst += est;
+                catAct += act;
+
+                if (est > 0 || act > 0) filledCount++;
+
+                const varEl = document.getElementById('var_' + key);
+                if (est > 0 || act > 0) {
+                    const diff = act - est;
+                    varEl.textContent = formatCurrency(diff);
+                    varEl.className = 'variance' + (diff > 0 ? ' over' : diff < 0 ? ' under' : '');
+                } else {
+                    varEl.textContent = '--';
+                    varEl.className = 'variance';
+                }
+            });
+
+            grandEst += catEst;
+            grandAct += catAct;
+
+            document.getElementById('est_' + catId).textContent = formatCurrency(catEst);
+            document.getElementById('act_' + catId).textContent = formatCurrency(catAct);
+        });
+
+        document.getElementById('totalEstimated').textContent = formatCurrency(grandEst);
+        document.getElementById('totalActual').textContent = formatCurrency(grandAct);
+
+        const variance = grandAct - grandEst;
+        const varEl = document.getElementById('totalVariance');
+        varEl.textContent = formatCurrency(variance);
+        varEl.className = 'value' + (variance > 0 ? ' negative' : variance < 0 ? ' positive' : '');
+
+        const pct = grandEst > 0 ? ((variance / grandEst) * 100).toFixed(1) : 0;
+        document.getElementById('variancePercent').textContent =
+            variance > 0 ? pct + '% over budget' :
+            variance < 0 ? Math.abs(pct) + '% under budget' : 'On budget';
+
+        document.getElementById('lineItemCount').textContent = filledCount + ' line items filled';
+    }
+
+    function saveBudget() {
+        const data = {};
+        document.querySelectorAll('[data-key]').forEach(el => {
+            if (el.value) data[el.getAttribute('data-key')] = el.value;
+        });
+        data['showName'] = document.getElementById('showName').value;
+        try { localStorage.setItem('sft_budget', JSON.stringify(data)); } catch(e) {}
+    }
+
+    function loadSaved() {
+        try {
+            return JSON.parse(localStorage.getItem('sft_budget')) || {};
+        } catch(e) { return {}; }
+    }
+
+    function resetBudget() {
+        if (!confirm('Reset all budget data? This cannot be undone.')) return;
+        localStorage.removeItem('sft_budget');
+        document.querySelectorAll('[data-key]').forEach(el => el.value = '');
+        document.getElementById('showName').value = '';
+        recalc();
+    }
+
+    function exportCSV() {
+        const showName = document.getElementById('showName').value || 'Trade Show';
+        let csv = 'Category,Item,Estimated,Actual,Variance\n';
+
+        Object.entries(budgetData).forEach(([category, items]) => {
+            const catId = category.replace(/[^a-zA-Z]/g, '');
+            items.forEach((item, i) => {
+                const key = catId + '_' + i;
+                const est = getVal(key + '_est');
+                const act = getVal(key + '_act');
+                const diff = act - est;
+                csv += `"${category}","${item}",${est},${act},${diff}\n`;
+            });
+        });
+
+        const grandEst = parseFloat(document.getElementById('totalEstimated').textContent.replace(/[^0-9.-]/g, '')) || 0;
+        const grandAct = parseFloat(document.getElementById('totalActual').textContent.replace(/[^0-9.-]/g, '')) || 0;
+        csv += `\n"TOTAL","",${grandEst},${grandAct},${grandAct - grandEst}\n`;
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = showName.replace(/[^a-zA-Z0-9]/g, '_') + '_Budget.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Vendor Directory | ShowFloorTips</title>
+    <meta name="description" content="Find the best trade show vendors and service providers. Browse booth builders, freight companies, A/V providers, staffing agencies, and more in our curated vendor directory.">
+    <meta name="keywords" content="trade show vendors, booth builders, trade show services, exhibit companies, trade show freight, event staffing">
+    <link rel="canonical" href="https://showfloortips.com/vendors.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Trade Show Vendor Directory | ShowFloorTips">
+    <meta property="og:description" content="Find the best trade show vendors and service providers. Booth builders, freight, A/V, staffing, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/vendors.html">
+    <meta property="og:site_name" content="ShowFloorTips">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Vendor Directory | ShowFloorTips">
+    <meta name="twitter:description" content="Find the best trade show vendors and service providers.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Vendor Directory",
+        "description": "Curated directory of trade show vendors and service providers for exhibitors.",
+        "url": "https://showfloortips.com/vendors.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://showfloortips.com" },
+                { "@type": "ListItem", "position": 2, "name": "Vendor Directory", "item": "https://showfloortips.com/vendors.html" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Vendor Directory Page Styles */
+        .vendor-hero {
+            background: var(--gray-50);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .vendor-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .vendor-hero p {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 560px;
+            margin: 0 auto 2rem;
+        }
+        .vendor-search-wrap {
+            max-width: 520px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .vendor-search-wrap input {
+            width: 100%;
+            padding: 0.875rem 1.25rem 0.875rem 3rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 50px;
+            background: var(--white);
+            color: var(--black);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+        .vendor-search-wrap input::placeholder {
+            color: var(--gray-400);
+        }
+        .vendor-search-wrap input:focus {
+            border-color: var(--gray-400);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
+        }
+        .vendor-search-wrap .search-icon {
+            position: absolute;
+            left: 1.125rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+            pointer-events: none;
+        }
+
+        .vendor-filters {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+        }
+        .vendor-filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .vendor-filter-pill {
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .vendor-filter-pill:hover {
+            background: var(--gray-200);
+            color: var(--black);
+        }
+        .vendor-filter-pill.active {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .vendor-directory {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+        }
+        .vendor-category {
+            margin-bottom: 3rem;
+        }
+        .vendor-category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .vendor-category-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .vendor-category-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gray-600);
+        }
+        .vendor-category-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.02em;
+        }
+        .vendor-category-count {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin-left: auto;
+        }
+        .vendor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .vendor-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .vendor-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-lg);
+        }
+        .vendor-card.featured {
+            border-color: var(--gray-800);
+        }
+        .vendor-featured-badge {
+            position: absolute;
+            top: -8px;
+            right: 16px;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.15rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .vendor-card h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.375rem;
+        }
+        .vendor-card p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        .vendor-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: var(--transition);
+        }
+        .vendor-card-link:hover {
+            color: var(--black);
+        }
+        .vendor-card-link svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .vendor-cta-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .vendor-cta-box {
+            background: var(--black);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .vendor-cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.04), transparent 60%);
+        }
+        .vendor-cta-box > * {
+            position: relative;
+        }
+        .vendor-cta-box h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .vendor-cta-box p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .vendor-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .vendor-cta-btn:hover {
+            background: var(--gray-200);
+        }
+
+        .vendor-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .vendor-stat {
+            text-align: center;
+        }
+        .vendor-stat-number {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+        .vendor-stat-label {
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .vendor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .vendor-hero h1 {
+                font-size: 2rem;
+            }
+            .vendor-grid {
+                grid-template-columns: 1fr;
+            }
+            .vendor-filter-bar {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+            .vendor-stats {
+                gap: 1.5rem;
+            }
+            .vendor-cta-box {
+                padding: 2rem 1.5rem;
+            }
+            .nav-links.show {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--gray-200);
+                gap: 0.75rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .vendor-hero h1 {
+                font-size: 1.625rem;
+            }
+            .vendor-stats {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">ShowFloorTips</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/#shows">Trade Shows</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+</header>
+
+<section class="vendor-hero">
+    <h1>Vendor Directory</h1>
+    <p>Trusted service providers for trade show exhibitors. Find booth builders, logistics partners, technology vendors, and more.</p>
+    <div class="vendor-search-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="vendorSearch" placeholder="Search vendors by name or category..." oninput="filterVendors()">
+    </div>
+</section>
+
+<div class="vendor-stats">
+    <div class="vendor-stat">
+        <div class="vendor-stat-number">40+</div>
+        <div class="vendor-stat-label">Vendors</div>
+    </div>
+    <div class="vendor-stat">
+        <div class="vendor-stat-number">8</div>
+        <div class="vendor-stat-label">Categories</div>
+    </div>
+    <div class="vendor-stat">
+        <div class="vendor-stat-number">100%</div>
+        <div class="vendor-stat-label">Vetted</div>
+    </div>
+</div>
+
+<div class="vendor-filters">
+    <div class="vendor-filter-bar">
+        <button class="vendor-filter-pill active" onclick="filterByCategory('all', this)">All Categories</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('booth', this)">Booth Design</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('freight', this)">Freight & Logistics</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('av', this)">A/V & Tech</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('printing', this)">Printing</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('staffing', this)">Staffing</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('travel', this)">Hotels & Travel</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('leads', this)">Lead Capture</button>
+        <button class="vendor-filter-pill" onclick="filterByCategory('promo', this)">Promo Products</button>
+    </div>
+</div>
+
+<div class="vendor-directory">
+
+    <!-- Booth Designers & Builders -->
+    <div class="vendor-category" data-category="booth">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <h2>Booth Designers & Builders</h2>
+            <span class="vendor-category-count">5 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="skyline exhibits">
+                <h3>Skyline Exhibits</h3>
+                <p>Modular trade show displays with nationwide dealer network. Custom and portable solutions for booths of all sizes.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="freeman">
+                <h3>Freeman</h3>
+                <p>Full-service exhibit provider offering design, fabrication, logistics, and event technology under one roof.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="czarnowski">
+                <h3>Czarnowski</h3>
+                <p>Award-winning exhibit design and production for major brands. Specializes in large-scale custom builds.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="exhibit concepts">
+                <h3>Exhibit Concepts</h3>
+                <p>Full-service exhibit house with in-house design, production, and program management capabilities.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="steelhead productions">
+                <h3>Steelhead Productions</h3>
+                <p>Custom exhibit fabrication and rental solutions. Known for innovative designs and sustainable build practices.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Freight & Logistics -->
+    <div class="vendor-category" data-category="freight">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="15" height="12" rx="1"/><polyline points="16 10 21 10 21 18 16 18"/><circle cx="5.5" cy="18" r="2"/><circle cx="18.5" cy="18" r="2"/></svg>
+            </div>
+            <h2>Freight & Logistics</h2>
+            <span class="vendor-category-count">5 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="freeman logistics">
+                <h3>Freeman</h3>
+                <p>Industry-leading logistics network with warehousing, shipping, and on-site material handling for shows nationwide.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="ges">
+                <h3>GES</h3>
+                <p>Global experience specialists providing freight, installation, and show services for major conventions.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="agility">
+                <h3>Agility</h3>
+                <p>Specialized trade show freight forwarding with customs brokerage and international shipping expertise.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="cort events">
+                <h3>CORT Events</h3>
+                <p>Event furniture rental and logistics. Provides tables, seating, and decor delivered directly to your booth.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="shepard">
+                <h3>Shepard</h3>
+                <p>Full-service exposition contractor offering freight management, installation, and show floor logistics.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- A/V & Technology -->
+    <div class="vendor-category" data-category="av">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h2>A/V & Technology</h2>
+            <span class="vendor-category-count">4 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="psav">
+                <h3>PSAV</h3>
+                <p>Premier audio-visual services for conventions and trade shows. LED walls, sound systems, and lighting design.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="encore">
+                <h3>Encore</h3>
+                <p>Event technology and production services including projection, staging, and interactive digital displays.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="smart city networks">
+                <h3>Smart City Networks</h3>
+                <p>Convention center Wi-Fi, internet, and telecommunications provider for major venues across the U.S.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="convention data services">
+                <h3>Convention Data Services</h3>
+                <p>Badge scanning, registration systems, and attendee analytics for trade shows and conferences.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Printing & Graphics -->
+    <div class="vendor-category" data-category="printing">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            </div>
+            <h2>Printing & Graphics</h2>
+            <span class="vendor-category-count">4 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="spoonflower">
+                <h3>Spoonflower</h3>
+                <p>Custom fabric and wallpaper printing for unique booth backdrops, table covers, and branded textile displays.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="vistaprint">
+                <h3>Vistaprint</h3>
+                <p>Business cards, banners, signage, and marketing collateral with fast turnaround and bulk pricing.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="fastsigns">
+                <h3>FastSigns</h3>
+                <p>Local sign and graphics centers offering booth signage, banners, vehicle wraps, and large-format printing.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="signwarehouse">
+                <h3>SignWarehouse</h3>
+                <p>Wholesale signage supplies and equipment for creating professional booth graphics and displays in-house.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staffing & Talent -->
+    <div class="vendor-category" data-category="staffing">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h2>Staffing & Talent</h2>
+            <span class="vendor-category-count">4 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="atlas expo">
+                <h3>Atlas Expo</h3>
+                <p>Professional booth staff, brand ambassadors, and product demonstrators available in major trade show cities.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="convention staffing group">
+                <h3>Convention Staffing Group</h3>
+                <p>Experienced event staff for registration, hospitality, and booth assistance at conventions nationwide.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="hype staffing">
+                <h3>Hype Staffing</h3>
+                <p>Energetic trade show staff and promotional talent for engaging attendees and driving booth traffic.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="promomodels">
+                <h3>PromoModels</h3>
+                <p>Brand ambassadors, models, and promotional staff for trade shows, product launches, and corporate events.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotels & Travel -->
+    <div class="vendor-category" data-category="travel">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="9" y1="13" x2="9" y2="13.01"/><line x1="9" y1="17" x2="9" y2="17.01"/></svg>
+            </div>
+            <h2>Hotels & Travel</h2>
+            <span class="vendor-category-count">4 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="convention.com">
+                <h3>Convention.com</h3>
+                <p>Discounted hotel blocks and travel packages specifically curated for trade show and convention attendees.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="eventconnect">
+                <h3>EventConnect</h3>
+                <p>Group hotel booking platform that helps exhibitors and teams secure negotiated rates near convention centers.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="marriott">
+                <h3>Marriott</h3>
+                <p>Global hotel chain with properties near every major convention center. Business traveler rewards and meeting spaces.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="hilton">
+                <h3>Hilton</h3>
+                <p>Extensive portfolio of hotels and resorts near trade show venues worldwide. Hilton Honors loyalty program.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Capture & CRM -->
+    <div class="vendor-category" data-category="leads">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h2>Lead Capture & CRM</h2>
+            <span class="vendor-category-count">5 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card featured" data-name="scannly">
+                <span class="vendor-featured-badge">Featured</span>
+                <h3>Scannly</h3>
+                <p>QR-based lead capture built for trade shows. Scan badges, collect contact info, and sync leads to your CRM instantly.</p>
+                <a href="/scannly.html" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="salesforce">
+                <h3>Salesforce</h3>
+                <p>Leading CRM platform with event management integrations for tracking leads from trade show to closed deal.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="hubspot">
+                <h3>HubSpot</h3>
+                <p>Inbound marketing and CRM platform with tools for managing event contacts, follow-up workflows, and ROI tracking.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="cvent">
+                <h3>Cvent</h3>
+                <p>End-to-end event management software with registration, attendee tracking, and lead retrieval capabilities.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="bizzabo">
+                <h3>Bizzabo</h3>
+                <p>Event experience platform offering networking tools, analytics, and lead capture for B2B events and trade shows.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotional Products -->
+    <div class="vendor-category" data-category="promo">
+        <div class="vendor-category-header">
+            <div class="vendor-category-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12v10H4V12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <h2>Promotional Products</h2>
+            <span class="vendor-category-count">4 vendors</span>
+        </div>
+        <div class="vendor-grid">
+            <div class="vendor-card" data-name="4imprint">
+                <h3>4imprint</h3>
+                <p>Massive selection of branded giveaways, apparel, and promotional items with free samples and fast delivery.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="staples promotional">
+                <h3>Staples Promotional</h3>
+                <p>Corporate branded merchandise and promotional products backed by the reliability of the Staples brand.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="amsterdam printing">
+                <h3>Amsterdam Printing</h3>
+                <p>Custom printed promotional items including pens, bags, drinkware, and tech accessories for trade show giveaways.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+            <div class="vendor-card" data-name="quality logo products">
+                <h3>Quality Logo Products</h3>
+                <p>Affordable branded swag and promotional merchandise with low minimums and quick turnaround times.</p>
+                <a href="#" class="vendor-card-link">Visit Website <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="vendor-cta-section">
+    <div class="vendor-cta-box">
+        <h2>Capture Every Lead at Your Next Show</h2>
+        <p>Scannly turns badge scans into qualified leads with instant CRM sync. No hardware required.</p>
+        <a href="/scannly.html" class="vendor-cta-btn">Learn About Scannly <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">ShowFloorTips</div>
+                <p>The world's most comprehensive trade show database.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShowFloorTips.com</p>
+            <p>Built for exhibitors, by exhibitors</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+function filterByCategory(category, btn) {
+    // Update active pill
+    document.querySelectorAll('.vendor-filter-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Filter categories
+    document.querySelectorAll('.vendor-category').forEach(cat => {
+        if (category === 'all' || cat.dataset.category === category) {
+            cat.style.display = '';
+        } else {
+            cat.style.display = 'none';
+        }
+    });
+}
+
+function filterVendors() {
+    const query = document.getElementById('vendorSearch').value.toLowerCase().trim();
+
+    document.querySelectorAll('.vendor-category').forEach(cat => {
+        let hasVisibleCard = false;
+        cat.querySelectorAll('.vendor-card').forEach(card => {
+            const name = card.dataset.name || '';
+            const desc = card.querySelector('p').textContent.toLowerCase();
+            const catName = cat.querySelector('h2').textContent.toLowerCase();
+            if (!query || name.includes(query) || desc.includes(query) || catName.includes(query)) {
+                card.style.display = '';
+                hasVisibleCard = true;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        cat.style.display = hasVisibleCard ? '' : 'none';
+    });
+
+    // Reset filter pills when searching
+    if (query) {
+        document.querySelectorAll('.vendor-filter-pill').forEach(p => p.classList.remove('active'));
+        document.querySelector('.vendor-filter-pill').classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>

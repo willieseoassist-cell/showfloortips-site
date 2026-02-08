@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Booth Design Ideas & Inspiration | ShowFloorTips</title>
+    <meta name="description" content="Browse trade show booth design ideas by size. Get inspiration for 10x10, 10x20, 20x20, and island booths with cost estimates, key features, and design principles.">
+    <meta name="keywords" content="trade show booth design, booth ideas, exhibit design, 10x10 booth, 10x20 booth, island booth, trade show display">
+    <link rel="canonical" href="https://showfloortips.com/booth-ideas.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Trade Show Booth Design Ideas & Inspiration | ShowFloorTips">
+    <meta property="og:description" content="Browse trade show booth design ideas by size. Inspiration for booths of every budget and footprint.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/booth-ideas.html">
+    <meta property="og:site_name" content="ShowFloorTips">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Booth Design Ideas & Inspiration | ShowFloorTips">
+    <meta name="twitter:description" content="Browse trade show booth design ideas by size.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Booth Design Ideas & Inspiration",
+        "description": "Curated gallery of trade show booth design concepts organized by booth size, with cost estimates and key features.",
+        "url": "https://showfloortips.com/booth-ideas.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://showfloortips.com" },
+                { "@type": "ListItem", "position": 2, "name": "Booth Ideas", "item": "https://showfloortips.com/booth-ideas.html" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Booth Ideas Page Styles */
+        .booth-hero {
+            background: var(--gray-50);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .booth-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .booth-hero p {
+            font-size: 1.125rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .booth-tabs {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .booth-tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .booth-tab:hover {
+            color: var(--black);
+        }
+        .booth-tab.active {
+            color: var(--black);
+            border-bottom-color: var(--black);
+            font-weight: 600;
+        }
+
+        .booth-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+        }
+
+        .booth-size-section {
+            display: none;
+        }
+        .booth-size-section.active {
+            display: block;
+        }
+
+        .booth-size-header {
+            margin-bottom: 2rem;
+        }
+        .booth-size-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.375rem;
+        }
+        .booth-size-header p {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+        }
+
+        .booth-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .booth-idea-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .booth-idea-card:hover {
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-lg);
+        }
+        .booth-idea-image {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .booth-idea-image .placeholder-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--gray-400);
+        }
+        .booth-idea-body {
+            padding: 1.5rem;
+        }
+        .booth-idea-body h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+        .booth-idea-body > p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .booth-idea-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
+        }
+        .booth-feature-tag {
+            padding: 0.25rem 0.625rem;
+            background: var(--gray-100);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+        .booth-idea-cost {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+        .booth-cost-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray-400);
+            font-weight: 600;
+        }
+        .booth-cost-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        /* Design Principles & Common Mistakes */
+        .booth-info-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .booth-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .booth-info-card {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+        .booth-info-card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+        .booth-info-list {
+            list-style: none;
+        }
+        .booth-info-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .booth-info-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .booth-info-list li:first-child {
+            padding-top: 0;
+        }
+        .booth-info-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            color: var(--gray-700);
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .booth-info-text {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+        .booth-info-text strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Scannly CTA */
+        .booth-cta-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        .booth-cta-box {
+            background: var(--black);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .booth-cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.04), transparent 60%);
+        }
+        .booth-cta-box > * {
+            position: relative;
+        }
+        .booth-cta-content {
+            flex: 1;
+        }
+        .booth-cta-content h2 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .booth-cta-content p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .booth-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .booth-cta-btn:hover {
+            background: var(--gray-200);
+        }
+
+        /* Gradients for placeholder images */
+        .gradient-1 { background: linear-gradient(135deg, #e5e5e5 0%, #d4d4d4 50%, #a3a3a3 100%); }
+        .gradient-2 { background: linear-gradient(135deg, #f5f5f5 0%, #e5e5e5 50%, #d4d4d4 100%); }
+        .gradient-3 { background: linear-gradient(135deg, #d4d4d4 0%, #a3a3a3 50%, #737373 100%); }
+        .gradient-4 { background: linear-gradient(135deg, #fafafa 0%, #e5e5e5 50%, #a3a3a3 100%); }
+        .gradient-5 { background: linear-gradient(135deg, #a3a3a3 0%, #d4d4d4 50%, #f5f5f5 100%); }
+        .gradient-6 { background: linear-gradient(160deg, #262626 0%, #404040 50%, #737373 100%); }
+        .gradient-7 { background: linear-gradient(160deg, #525252 0%, #737373 50%, #a3a3a3 100%); }
+        .gradient-8 { background: linear-gradient(160deg, #171717 0%, #262626 50%, #525252 100%); }
+        .gradient-9 { background: linear-gradient(135deg, #404040 0%, #525252 50%, #d4d4d4 100%); }
+
+        .gradient-6 .placeholder-label,
+        .gradient-7 .placeholder-label,
+        .gradient-8 .placeholder-label,
+        .gradient-9 .placeholder-label {
+            color: var(--gray-300);
+        }
+
+        @media (max-width: 1024px) {
+            .booth-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .booth-hero h1 {
+                font-size: 2rem;
+            }
+            .booth-tabs {
+                overflow-x: auto;
+                justify-content: flex-start;
+                -webkit-overflow-scrolling: touch;
+            }
+            .booth-tab {
+                white-space: nowrap;
+            }
+            .booth-gallery {
+                grid-template-columns: 1fr;
+            }
+            .booth-info-grid {
+                grid-template-columns: 1fr;
+            }
+            .booth-cta-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .nav-links.show {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--gray-200);
+                gap: 0.75rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .booth-hero h1 {
+                font-size: 1.625rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">ShowFloorTips</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/#shows">Trade Shows</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+</header>
+
+<section class="booth-hero">
+    <h1>Booth Design Ideas</h1>
+    <p>Curated design concepts for trade show booths of every size. Browse by footprint, get cost estimates, and find inspiration for your next exhibit.</p>
+</section>
+
+<div class="booth-tabs">
+    <button class="booth-tab active" onclick="switchBoothTab('10x10', this)">10x10</button>
+    <button class="booth-tab" onclick="switchBoothTab('10x20', this)">10x20</button>
+    <button class="booth-tab" onclick="switchBoothTab('20x20', this)">20x20</button>
+    <button class="booth-tab" onclick="switchBoothTab('island', this)">Island (20x30+)</button>
+    <button class="booth-tab" onclick="switchBoothTab('all', this)">All Sizes</button>
+</div>
+
+<div class="booth-content">
+
+    <!-- 10x10 Section -->
+    <div class="booth-size-section active" data-size="10x10">
+        <div class="booth-size-header">
+            <h2>10x10 Booth Designs</h2>
+            <p>The standard starter booth. Maximize impact in 100 square feet with these proven layouts.</p>
+        </div>
+        <div class="booth-gallery">
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-1">
+                    <span class="placeholder-label">Minimalist Modern Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Minimalist Modern</h3>
+                    <p>Clean lines, a single backwall graphic, and an open floor plan that invites conversation. Uses negative space to draw attention to your core message.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Fabric Backwall</span>
+                        <span class="booth-feature-tag">Counter Display</span>
+                        <span class="booth-feature-tag">Tablet Stand</span>
+                        <span class="booth-feature-tag">LED Accent Light</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$3,000 - $8,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-2">
+                    <span class="placeholder-label">Bold Graphic Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Bold Graphic</h3>
+                    <p>Full-coverage printed graphics wrapping the entire back and side walls. High-contrast imagery creates a striking visual anchor on the show floor.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Full Wrap Graphics</span>
+                        <span class="booth-feature-tag">Overhead Banner</span>
+                        <span class="booth-feature-tag">Literature Rack</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$5,000 - $12,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-3">
+                    <span class="placeholder-label">Interactive Tech Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Interactive Tech</h3>
+                    <p>Centered around a touchscreen kiosk or demo station. Attendees interact with your product firsthand while booth staff guide the experience.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Touchscreen Kiosk</span>
+                        <span class="booth-feature-tag">Monitor Mount</span>
+                        <span class="booth-feature-tag">Charging Station</span>
+                        <span class="booth-feature-tag">QR Lead Capture</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$6,000 - $15,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-4">
+                    <span class="placeholder-label">Product Showcase Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Product Showcase</h3>
+                    <p>Shelving, pedestals, and display cases take center stage. Ideal for physical products that need to be seen and touched up close.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Display Shelving</span>
+                        <span class="booth-feature-tag">Spot Lighting</span>
+                        <span class="booth-feature-tag">Acrylic Cases</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$4,000 - $10,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10x20 Section -->
+    <div class="booth-size-section" data-size="10x20">
+        <div class="booth-size-header">
+            <h2>10x20 Booth Designs</h2>
+            <p>Double the inline space opens up new layout possibilities. Enough room for dedicated zones.</p>
+        </div>
+        <div class="booth-gallery">
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-5">
+                    <span class="placeholder-label">Lounge Style Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Lounge Style</h3>
+                    <p>Comfortable seating area paired with a presentation zone. Creates an inviting atmosphere for longer conversations and relationship building.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Lounge Furniture</span>
+                        <span class="booth-feature-tag">Coffee Table</span>
+                        <span class="booth-feature-tag">Backlit Graphics</span>
+                        <span class="booth-feature-tag">Carpet</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$10,000 - $25,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-6">
+                    <span class="placeholder-label">Demo Station Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Demo Station</h3>
+                    <p>Two or three demo stations running simultaneously with a central meeting area. Staff can handle multiple visitors at different stages.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Multiple Monitors</span>
+                        <span class="booth-feature-tag">Demo Counters</span>
+                        <span class="booth-feature-tag">Lead Capture Kiosks</span>
+                        <span class="booth-feature-tag">Storage Closet</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$12,000 - $30,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-7">
+                    <span class="placeholder-label">Rustic Natural Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Rustic Natural</h3>
+                    <p>Reclaimed wood, greenery, and natural textures create warmth on the show floor. Stands out against typical corporate displays.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Wood Accents</span>
+                        <span class="booth-feature-tag">Live Plants</span>
+                        <span class="booth-feature-tag">Warm Lighting</span>
+                        <span class="booth-feature-tag">Natural Carpet</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$8,000 - $22,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-1">
+                    <span class="placeholder-label">Meeting Focused Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Meeting Focused</h3>
+                    <p>Semi-private meeting area with seating for four, separated from the main display by a half-wall. Perfect for sales-driven exhibitors.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Conference Table</span>
+                        <span class="booth-feature-tag">Privacy Divider</span>
+                        <span class="booth-feature-tag">Monitor Display</span>
+                        <span class="booth-feature-tag">Brochure Wall</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$9,000 - $20,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-4">
+                    <span class="placeholder-label">Minimalist Modern Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Minimalist Modern (Expanded)</h3>
+                    <p>Scaled-up version of the clean minimalist approach. Open sight lines, floating graphic panels, and strategic product placement.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Floating Panels</span>
+                        <span class="booth-feature-tag">LED Light Bars</span>
+                        <span class="booth-feature-tag">Open Floor Plan</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$8,000 - $18,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 20x20 Section -->
+    <div class="booth-size-section" data-size="20x20">
+        <div class="booth-size-header">
+            <h2>20x20 Booth Designs</h2>
+            <p>A serious exhibit footprint. Room for distinct zones, theater presentations, and dedicated meeting spaces.</p>
+        </div>
+        <div class="booth-gallery">
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-8">
+                    <span class="placeholder-label">Theater Style Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Theater Style</h3>
+                    <p>Built-in presentation area with seating for 10-15. Scheduled demos run on a loop to draw crowds and create a sense of event within the event.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Raised Stage</span>
+                        <span class="booth-feature-tag">Large LED Screen</span>
+                        <span class="booth-feature-tag">Theater Seating</span>
+                        <span class="booth-feature-tag">Sound System</span>
+                        <span class="booth-feature-tag">Podium</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$30,000 - $65,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-9">
+                    <span class="placeholder-label">Multi-Zone Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Multi-Zone Experience</h3>
+                    <p>Divided into product demo, lounge, meeting, and reception zones. Each area serves a different stage of the visitor journey.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Zone Dividers</span>
+                        <span class="booth-feature-tag">Welcome Counter</span>
+                        <span class="booth-feature-tag">Demo Area</span>
+                        <span class="booth-feature-tag">Private Meeting Room</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$35,000 - $75,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-2">
+                    <span class="placeholder-label">Interactive Tech Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Interactive Tech Hub</h3>
+                    <p>Multiple touchpoints with interactive screens, VR stations, and product configurators. A technology-forward experience that generates buzz.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Touchscreen Wall</span>
+                        <span class="booth-feature-tag">VR Station</span>
+                        <span class="booth-feature-tag">Interactive Floor</span>
+                        <span class="booth-feature-tag">Digital Lead Capture</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$40,000 - $90,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-5">
+                    <span class="placeholder-label">Open Showroom Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Open Showroom</h3>
+                    <p>Gallery-style product displays with wide aisles and clear sight lines from all directions. Architectural elements create visual height.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Product Pedestals</span>
+                        <span class="booth-feature-tag">Hanging Sign</span>
+                        <span class="booth-feature-tag">Overhead Lighting</span>
+                        <span class="booth-feature-tag">Open Corners</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$25,000 - $55,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Island Section -->
+    <div class="booth-size-section" data-size="island">
+        <div class="booth-size-header">
+            <h2>Island Booth Designs (20x30+)</h2>
+            <p>Open on all four sides with maximum visibility. The pinnacle of trade show exhibiting.</p>
+        </div>
+        <div class="booth-gallery">
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-6">
+                    <span class="placeholder-label">Brand Experience Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Brand Experience Center</h3>
+                    <p>Immersive brand storytelling through spatial design, multimedia, and curated visitor flow. Every touchpoint reinforces brand narrative.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Immersive Tunnel</span>
+                        <span class="booth-feature-tag">Video Walls</span>
+                        <span class="booth-feature-tag">Guided Tour Path</span>
+                        <span class="booth-feature-tag">Hospitality Suite</span>
+                        <span class="booth-feature-tag">Storage Room</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$80,000 - $200,000+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-3">
+                    <span class="placeholder-label">Double Deck Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Double Deck</h3>
+                    <p>Two-story structure with meeting rooms upstairs and product displays below. Maximizes square footage and creates exclusivity on the upper level.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Second Level</span>
+                        <span class="booth-feature-tag">Staircase</span>
+                        <span class="booth-feature-tag">Private Rooms</span>
+                        <span class="booth-feature-tag">Balcony View</span>
+                        <span class="booth-feature-tag">Kitchen Area</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$120,000 - $350,000+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-8">
+                    <span class="placeholder-label">Mega Demo Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Mega Demo Stage</h3>
+                    <p>Large central stage with surrounding seating and product zones on the perimeter. Built for companies that lead with live demonstrations.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Central Stage</span>
+                        <span class="booth-feature-tag">Surround Seating</span>
+                        <span class="booth-feature-tag">LED Backdrop</span>
+                        <span class="booth-feature-tag">Professional A/V</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$100,000 - $250,000+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-9">
+                    <span class="placeholder-label">Architectural Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Architectural Statement</h3>
+                    <p>Custom-fabricated structural elements create a landmark on the show floor. Sculptural forms and dramatic lighting define the space.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Custom Structures</span>
+                        <span class="booth-feature-tag">Dramatic Lighting</span>
+                        <span class="booth-feature-tag">Hanging Elements</span>
+                        <span class="booth-feature-tag">Branded Flooring</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$90,000 - $300,000+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booth-idea-card">
+                <div class="booth-idea-image gradient-1">
+                    <span class="placeholder-label">Community Hub Concept</span>
+                </div>
+                <div class="booth-idea-body">
+                    <h3>Community Hub</h3>
+                    <p>Built around networking with open gathering spaces, a coffee bar, and comfortable seating. Becomes a destination on the show floor.</p>
+                    <div class="booth-idea-features">
+                        <span class="booth-feature-tag">Coffee Bar</span>
+                        <span class="booth-feature-tag">Lounge Seating</span>
+                        <span class="booth-feature-tag">Charging Stations</span>
+                        <span class="booth-feature-tag">Info Desk</span>
+                    </div>
+                    <div class="booth-idea-cost">
+                        <span class="booth-cost-label">Estimated Cost</span>
+                        <span class="booth-cost-value">$75,000 - $180,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Design Principles & Common Mistakes -->
+<div class="booth-info-section">
+    <div class="booth-info-grid">
+        <div class="booth-info-card">
+            <h2>Design Principles</h2>
+            <ul class="booth-info-list">
+                <li>
+                    <span class="booth-info-number">1</span>
+                    <span class="booth-info-text"><strong>Open the entrance.</strong> Remove barriers between the aisle and your booth. Attendees are more likely to enter an open space than step over a threshold.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">2</span>
+                    <span class="booth-info-text"><strong>Lead with one message.</strong> Your primary value proposition should be readable from 20 feet away. Save secondary messaging for conversations.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">3</span>
+                    <span class="booth-info-text"><strong>Use vertical space.</strong> Hanging signs and tall backwalls create visibility above the crowd, especially in dense show floors.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">4</span>
+                    <span class="booth-info-text"><strong>Light it well.</strong> Good lighting directs attention to products and graphics. Spotlights, backlighting, and ambient LEDs work together.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">5</span>
+                    <span class="booth-info-text"><strong>Plan the flow.</strong> Guide visitors through a natural path: attract, engage, inform, capture. Each zone should serve a purpose.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">6</span>
+                    <span class="booth-info-text"><strong>Include storage.</strong> Every booth needs a place for personal items, extra literature, and supplies. A hidden closet keeps the space clean.</span>
+                </li>
+            </ul>
+        </div>
+        <div class="booth-info-card">
+            <h2>Common Mistakes</h2>
+            <ul class="booth-info-list">
+                <li>
+                    <span class="booth-info-number">1</span>
+                    <span class="booth-info-text"><strong>Too much text on graphics.</strong> Large paragraphs on booth walls go unread. Use short headlines and let your team deliver the details.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">2</span>
+                    <span class="booth-info-text"><strong>Blocking the entrance.</strong> Tables stretched across the front create a wall between you and attendees. Move tables to the side or replace with counters.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">3</span>
+                    <span class="booth-info-text"><strong>Ignoring lighting.</strong> Convention hall lighting is flat and unflattering. Without your own lighting, your booth will look washed out.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">4</span>
+                    <span class="booth-info-text"><strong>No lead capture plan.</strong> Collecting business cards in a fishbowl is not a strategy. Use digital lead capture to qualify and follow up fast.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">5</span>
+                    <span class="booth-info-text"><strong>Overspending on giveaways.</strong> Expensive swag that has nothing to do with your product attracts the wrong crowd. Spend on targeted follow-up instead.</span>
+                </li>
+                <li>
+                    <span class="booth-info-number">6</span>
+                    <span class="booth-info-text"><strong>Staff sitting behind the table.</strong> Your team should be standing at the front of the booth, engaging passersby, not seated behind a barrier.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Scannly CTA -->
+<div class="booth-cta-section">
+    <div class="booth-cta-box">
+        <div class="booth-cta-content">
+            <h2>Add QR-Based Lead Capture to Any Booth Design</h2>
+            <p>Scannly works with any booth layout. Place QR codes on displays, counters, or giveaways and capture leads directly to your CRM. No hardware or badge scanners needed.</p>
+        </div>
+        <a href="/scannly.html" class="booth-cta-btn">Learn About Scannly <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">ShowFloorTips</div>
+                <p>The world's most comprehensive trade show database.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShowFloorTips.com</p>
+            <p>Built for exhibitors, by exhibitors</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+function switchBoothTab(size, btn) {
+    // Update active tab
+    document.querySelectorAll('.booth-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (size === 'all') {
+        document.querySelectorAll('.booth-size-section').forEach(s => {
+            s.classList.add('active');
+        });
+    } else {
+        document.querySelectorAll('.booth-size-section').forEach(s => {
+            s.classList.remove('active');
+        });
+        document.querySelector(`.booth-size-section[data-size="${size}"]`).classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>

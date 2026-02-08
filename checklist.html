@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Checklist Generator | ShowFloorTips</title>
+    <meta name="description" content="Free interactive trade show checklist. 7 phases from 12 weeks out to post-show follow-up. Track progress, save your state, and print or download.">
+    <meta name="keywords" content="trade show checklist, exhibitor checklist, trade show planning checklist, booth setup checklist, trade show preparation, exhibitor to-do list">
+
+    <meta property="og:title" content="Trade Show Checklist Generator - ShowFloorTips">
+    <meta property="og:description" content="Free interactive trade show checklist covering 7 phases. Track progress, save state, print or download.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/checklist.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Checklist Generator - ShowFloorTips">
+    <meta name="twitter:description" content="Free interactive trade show checklist covering 7 phases. Track progress, save state, print or download.">
+
+    <link rel="canonical" href="https://showfloortips.com/checklist.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Checklist Generator",
+        "url": "https://showfloortips.com/checklist.html",
+        "description": "Free interactive trade show checklist with 7 phases from 12 weeks before the show through post-show follow-up. Save progress, print, and download.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "7-phase planning timeline",
+            "Interactive checkboxes",
+            "Progress tracking",
+            "Auto-save to browser",
+            "Print checklist",
+            "Downloadable PDF"
+        ]
+    }
+    </script>
+
+    <style>
+        .page-hero {
+            background: var(--gray-50);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .page-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .page-hero p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .checklist-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Progress bar */
+        .progress-section {
+            margin-bottom: 2rem;
+        }
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+        }
+        .progress-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .progress-count {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        .progress-count strong {
+            color: var(--black);
+            font-weight: 700;
+        }
+        .progress-bar-track {
+            width: 100%;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--black);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Actions */
+        .actions-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            background: var(--white);
+            color: var(--black);
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .action-btn:hover {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        .action-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Phase accordion */
+        .phase {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s ease;
+        }
+        .phase-header:hover {
+            background: var(--gray-50);
+        }
+        .phase-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .phase-toggle {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+        .phase-toggle svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gray-500);
+        }
+        .phase.open .phase-toggle {
+            transform: rotate(90deg);
+        }
+        .phase-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+        .phase-progress {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+        .phase-progress .done {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .phase-body {
+            display: none;
+            border-top: 1px solid var(--gray-200);
+        }
+        .phase.open .phase-body {
+            display: block;
+        }
+
+        /* Checklist item */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            padding: 0.875rem 1.5rem;
+            border-bottom: 1px solid var(--gray-100);
+            transition: background 0.1s ease;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-item:hover {
+            background: var(--gray-50);
+        }
+        .checklist-item.checked {
+            opacity: 0.55;
+        }
+        .checklist-item.checked .item-title {
+            text-decoration: line-through;
+        }
+
+        .custom-checkbox {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 1;
+            margin: 0;
+        }
+        .custom-checkbox .checkmark {
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid var(--gray-300);
+            border-radius: 4px;
+            background: var(--white);
+            transition: all 0.15s ease;
+        }
+        .custom-checkbox input:checked + .checkmark {
+            background: var(--black);
+            border-color: var(--black);
+        }
+        .custom-checkbox input:checked + .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid var(--white);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .item-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .item-title {
+            font-size: 0.875rem;
+            color: var(--gray-800);
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        .item-notes {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+            line-height: 1.4;
+        }
+
+        /* CTA */
+        .cta-banner {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .cta-banner h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+        .cta-banner p {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.15s ease;
+            text-decoration: none;
+        }
+        .cta-btn:hover {
+            background: var(--gray-800);
+        }
+
+        @media print {
+            header, footer, .actions-bar, .cta-banner, .progress-section { display: none !important; }
+            .phase-body { display: block !important; }
+            .phase { break-inside: avoid; }
+            .phase-toggle { display: none !important; }
+            .page-hero { padding: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-hero h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>Trade Show Checklist</h1>
+        <p>A complete timeline from 12 weeks out through post-show follow-up. Check items off as you go -- your progress is saved automatically.</p>
+    </section>
+
+    <div class="checklist-container">
+        <div class="progress-section">
+            <div class="progress-top">
+                <span class="progress-label">Overall Progress</span>
+                <span class="progress-count"><strong id="progressPercent">0%</strong> complete (<span id="progressNums">0 / 0</span>)</span>
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <button class="action-btn" onclick="expandAll()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                Expand All
+            </button>
+            <button class="action-btn" onclick="collapseAll()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+                Collapse All
+            </button>
+            <button class="action-btn" onclick="window.print()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print Checklist
+            </button>
+            <button class="action-btn" onclick="window.print()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download as PDF
+            </button>
+            <button class="action-btn" onclick="resetChecklist()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                Reset All
+            </button>
+        </div>
+
+        <div id="phases"></div>
+
+        <div class="cta-banner">
+            <div>
+                <h3>Need a budget for your trade show?</h3>
+                <p>Use our free Budget Planner to track estimated vs. actual costs across every category.</p>
+            </div>
+            <a href="/budget-planner.html" class="cta-btn">Open Budget Planner</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>The world's most comprehensive trade show database.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">News</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/budget-planner.html">Budget Planner</a></li>
+                        <li><a href="/checklist.html">Checklist Generator</a></li>
+                        <li><a href="/qr-generator.html">QR Code Generator</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const phases = [
+        {
+            name: '12 Weeks Before',
+            items: [
+                { title: 'Define show objectives and KPIs', notes: 'Leads, meetings, demos, brand awareness, etc.' },
+                { title: 'Set overall trade show budget', notes: 'Use the ShowFloorTips Budget Planner for detailed tracking.' },
+                { title: 'Reserve booth space and select location', notes: 'Corner and end-cap positions get more foot traffic.' },
+                { title: 'Book hotel rooms for the team', notes: 'Blocks near the venue sell out fast.' },
+                { title: 'Identify and assign booth staff', notes: 'Mix sales, marketing, and product experts.' },
+                { title: 'Begin booth design and layout planning', notes: 'Consider open layouts that invite traffic in.' },
+                { title: 'Register for exhibitor services and utilities', notes: 'Electricity, WiFi, lead retrieval, cleaning, etc.' }
+            ]
+        },
+        {
+            name: '8 Weeks Before',
+            items: [
+                { title: 'Finalize booth design and order graphics', notes: 'Allow lead time for printing and fabrication.' },
+                { title: 'Order promotional materials and giveaways', notes: 'Useful items get kept; novelty items get tossed.' },
+                { title: 'Plan pre-show marketing campaign', notes: 'Email, social, direct mail to target attendees.' },
+                { title: 'Schedule meetings with key prospects', notes: 'Use the show app or email to lock in times.' },
+                { title: 'Arrange shipping and freight logistics', notes: 'Confirm deadlines for advance warehouse delivery.' },
+                { title: 'Order furniture, flooring, and A/V rentals', notes: 'Compare show contractor prices vs. outside vendors.' },
+                { title: 'Confirm travel arrangements for all staff', notes: 'Flights, ground transport, parking passes.' }
+            ]
+        },
+        {
+            name: '4 Weeks Before',
+            items: [
+                { title: 'Launch pre-show email campaign', notes: 'Send invitations to visit your booth with a specific CTA.' },
+                { title: 'Promote the show on social media', notes: 'Use the official show hashtag for visibility.' },
+                { title: 'Prepare product demos and presentations', notes: 'Rehearse to keep demos under 5 minutes.' },
+                { title: 'Create lead qualification criteria', notes: 'Define what makes a hot, warm, or cold lead.' },
+                { title: 'Train booth staff on messaging and goals', notes: 'Role-play common conversations and objections.' },
+                { title: 'Print business cards and collateral', notes: 'Double-check all URLs, phone numbers, and QR codes.' },
+                { title: 'Confirm all vendor orders and deliveries', notes: 'Get tracking numbers for freight shipments.' },
+                { title: 'Set up lead capture system', notes: 'Test badge scanners, apps, or QR-based tools like Scannly.' },
+                { title: 'Prepare an emergency supply kit', notes: 'Tape, zip ties, markers, power strips, first aid, etc.' },
+                { title: 'Review show rules and exhibitor manual', notes: 'Check height restrictions, fire codes, union labor rules.' }
+            ]
+        },
+        {
+            name: '2 Weeks Before',
+            items: [
+                { title: 'Send a second pre-show email blast', notes: 'Reminder with booth number and a reason to visit.' },
+                { title: 'Finalize staff schedule and booth shifts', notes: 'Stagger shifts to avoid burnout and ensure coverage.' },
+                { title: 'Pack all booth materials and supplies', notes: 'Create an itemized packing list and check everything off.' },
+                { title: 'Prepare digital assets for on-site use', notes: 'Slide decks, videos, digital brochures on USB drives.' },
+                { title: 'Confirm meeting schedule with prospects', notes: 'Send calendar invites with booth number.' },
+                { title: 'Brief the team on daily goals and agenda', notes: 'Share the show floor map and key competitor locations.' },
+                { title: 'Test all technology and equipment', notes: 'Screens, tablets, chargers, WiFi hotspot, badge scanners.' }
+            ]
+        },
+        {
+            name: '1 Week Before',
+            items: [
+                { title: 'Verify freight shipment delivery and tracking', notes: 'Contact the advance warehouse to confirm receipt.' },
+                { title: 'Download the show app and floor plan', notes: 'Identify competitor booths and key sessions to attend.' },
+                { title: 'Charge all devices and pack backup batteries', notes: 'Laptops, tablets, portable chargers, camera batteries.' },
+                { title: 'Print staff badges and exhibitor credentials', notes: 'Distribute or plan pickup at the registration desk.' },
+                { title: 'Prepare per diem envelopes or expense process', notes: 'Clarify reimbursement policies for the team.' },
+                { title: 'Set up out-of-office email replies', notes: 'Include booth number and show dates if relevant.' },
+                { title: 'Pack comfortable shoes and professional attire', notes: 'Expect 8-12 hours on your feet each show day.' },
+                { title: 'Review booth setup instructions and timeline', notes: 'Know your move-in window and any union labor requirements.' }
+            ]
+        },
+        {
+            name: 'Show Day',
+            items: [
+                { title: 'Arrive early for booth setup and walkthrough', notes: 'Check lighting, power, signage placement, and sightlines.' },
+                { title: 'Brief staff on daily targets and talking points', notes: 'Morning huddle to set the tone for the day.' },
+                { title: 'Test lead capture system before doors open', notes: 'Do a practice scan to ensure data is recording.' },
+                { title: 'Stock booth with collateral and giveaways', notes: 'Keep backup supplies stored neatly out of sight.' },
+                { title: 'Engage every visitor within 3 seconds of approach', notes: 'Open with a question, not a pitch.' },
+                { title: 'Take notes on each lead immediately after conversation', notes: 'Record pain points, timeline, budget, and next steps.' },
+                { title: 'Photograph the booth and capture social content', notes: 'Post live updates using the show hashtag.' },
+                { title: 'Attend networking events and after-hours receptions', notes: 'Some of the best connections happen off the show floor.' },
+                { title: 'Hold an end-of-day debrief with the team', notes: 'Review lead count, top conversations, and lessons learned.' },
+                { title: 'Secure valuables and lock booth displays overnight', notes: 'Never leave laptops, tablets, or product samples exposed.' }
+            ]
+        },
+        {
+            name: 'Post-Show',
+            items: [
+                { title: 'Send follow-up emails within 48 hours', notes: 'Personalize each message referencing your conversation.' },
+                { title: 'Categorize and score all collected leads', notes: 'Prioritize hot leads for immediate sales outreach.' },
+                { title: 'Share lead data with the sales team', notes: 'Import into CRM with notes and qualification level.' },
+                { title: 'Conduct a team debrief and retrospective', notes: 'What worked, what did not, what to change next time.' },
+                { title: 'Calculate ROI and compare to budget', notes: 'Use the ShowFloorTips ROI Calculator for a detailed analysis.' },
+                { title: 'Arrange return shipping for booth materials', notes: 'Inspect for damage and note any repairs needed.' },
+                { title: 'Write a post-show report for stakeholders', notes: 'Include metrics, highlights, and recommendations.' },
+                { title: 'Begin planning for the next show', notes: 'Lock in early-bird pricing and preferred booth location.' }
+            ]
+        }
+    ];
+
+    let totalItems = 0;
+
+    function init() {
+        const container = document.getElementById('phases');
+        const saved = loadSaved();
+        let globalIdx = 0;
+
+        phases.forEach((phase, pIdx) => {
+            const phaseId = 'phase_' + pIdx;
+            const isOpen = pIdx === 0;
+
+            let itemsHTML = '';
+            phase.items.forEach((item, iIdx) => {
+                const itemId = 'item_' + pIdx + '_' + iIdx;
+                const isChecked = saved[itemId] === true;
+                totalItems++;
+                itemsHTML += `
+                <div class="checklist-item${isChecked ? ' checked' : ''}" id="row_${itemId}">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleItem('${itemId}', this)">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="item-content">
+                        <div class="item-title" onclick="this.closest('.checklist-item').querySelector('input[type=checkbox]').click()">${item.title}</div>
+                        ${item.notes ? '<div class="item-notes">' + item.notes + '</div>' : ''}
+                    </div>
+                </div>`;
+            });
+
+            container.innerHTML += `
+            <div class="phase${isOpen ? ' open' : ''}" id="${phaseId}">
+                <div class="phase-header" onclick="togglePhase('${phaseId}')">
+                    <div class="phase-left">
+                        <div class="phase-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                        </div>
+                        <span class="phase-name">${phase.name}</span>
+                    </div>
+                    <span class="phase-progress" id="prog_${phaseId}"></span>
+                </div>
+                <div class="phase-body">
+                    ${itemsHTML}
+                </div>
+            </div>`;
+        });
+
+        updateProgress();
+    }
+
+    function togglePhase(phaseId) {
+        document.getElementById(phaseId).classList.toggle('open');
+    }
+
+    function expandAll() {
+        document.querySelectorAll('.phase').forEach(p => p.classList.add('open'));
+    }
+
+    function collapseAll() {
+        document.querySelectorAll('.phase').forEach(p => p.classList.remove('open'));
+    }
+
+    function toggleItem(itemId, checkbox) {
+        const row = document.getElementById('row_' + itemId);
+        if (checkbox.checked) {
+            row.classList.add('checked');
+        } else {
+            row.classList.remove('checked');
+        }
+        saveState();
+        updateProgress();
+    }
+
+    function updateProgress() {
+        let checked = 0;
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
+            if (cb.checked) checked++;
+        });
+
+        const pct = totalItems > 0 ? Math.round((checked / totalItems) * 100) : 0;
+        document.getElementById('progressPercent').textContent = pct + '%';
+        document.getElementById('progressNums').textContent = checked + ' / ' + totalItems;
+        document.getElementById('progressBar').style.width = pct + '%';
+
+        // Update per-phase progress
+        phases.forEach((phase, pIdx) => {
+            const phaseId = 'phase_' + pIdx;
+            const items = document.querySelectorAll('#' + phaseId + ' .checklist-item input[type="checkbox"]');
+            let phaseChecked = 0;
+            items.forEach(cb => { if (cb.checked) phaseChecked++; });
+            const progEl = document.getElementById('prog_' + phaseId);
+            if (phaseChecked === items.length && items.length > 0) {
+                progEl.innerHTML = '<span class="done">Complete</span>';
+            } else {
+                progEl.innerHTML = '<span class="done">' + phaseChecked + '</span> / ' + items.length;
+            }
+        });
+    }
+
+    function saveState() {
+        const data = {};
+        phases.forEach((phase, pIdx) => {
+            phase.items.forEach((item, iIdx) => {
+                const itemId = 'item_' + pIdx + '_' + iIdx;
+                const row = document.getElementById('row_' + itemId);
+                const cb = row.querySelector('input[type="checkbox"]');
+                if (cb.checked) data[itemId] = true;
+            });
+        });
+        try { localStorage.setItem('sft_checklist', JSON.stringify(data)); } catch(e) {}
+    }
+
+    function loadSaved() {
+        try {
+            return JSON.parse(localStorage.getItem('sft_checklist')) || {};
+        } catch(e) { return {}; }
+    }
+
+    function resetChecklist() {
+        if (!confirm('Reset the entire checklist? All progress will be lost.')) return;
+        localStorage.removeItem('sft_checklist');
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+            cb.closest('.checklist-item').classList.remove('checked');
+        });
+        updateProgress();
+    }
+
+    init();
+    </script>
+</body>
+</html>
