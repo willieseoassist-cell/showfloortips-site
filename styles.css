@@ -1,43 +1,38 @@
-/* ShowFloorTips - Professional Design System */
+/* ShowFloorTips - Monochrome Design System */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --primary: #0f172a;
-    --primary-light: #1e293b;
-    --primary-medium: #334155;
-    --accent: #f59e0b;
-    --accent-hover: #d97706;
-    --accent-light: #fef3c7;
-    --text: #1e293b;
-    --text-secondary: #64748b;
-    --text-light: #94a3b8;
-    --bg: #ffffff;
-    --bg-alt: #f8fafc;
-    --bg-warm: #fffbeb;
-    --border: #e2e8f0;
-    --border-light: #f1f5f9;
-    --radius: 12px;
-    --radius-sm: 8px;
-    --radius-lg: 16px;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-    --transition: all 0.2s ease;
+    --white: #ffffff;
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    --black: #0a0a0a;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
 
-    /* Category Colors */
-    --cat-technology: #3b82f6;
-    --cat-healthcare: #10b981;
-    --cat-food: #f59e0b;
-    --cat-fashion: #ec4899;
-    --cat-construction: #f97316;
-    --cat-manufacturing: #6366f1;
-    --cat-energy: #eab308;
-    --cat-finance: #14b8a6;
-    --cat-education: #8b5cf6;
-    --cat-realestate: #06b6d4;
-    --cat-automotive: #ef4444;
-    --cat-agriculture: #22c55e;
+    --text: var(--gray-900);
+    --text-secondary: var(--gray-500);
+    --text-light: var(--gray-400);
+    --bg: var(--white);
+    --bg-alt: var(--gray-50);
+    --border: var(--gray-200);
+    --border-light: var(--gray-100);
+    --radius: 8px;
+    --radius-sm: 6px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-xl: 0 8px 24px rgba(0,0,0,0.1);
+    --transition: all 0.15s ease;
 }
 
 /* Reset */
@@ -68,11 +63,11 @@ img {
 
 /* ─── Header ─────────────────────────────────────────────── */
 header {
-    background: var(--primary);
+    background: var(--white);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--gray-200);
 }
 
 .header-inner {
@@ -88,12 +83,12 @@ header {
 .logo {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--black);
     letter-spacing: -0.025em;
 }
 
 .logo span {
-    color: var(--accent);
+    color: var(--black);
 }
 
 .nav-links {
@@ -104,19 +99,19 @@ header {
 }
 
 .nav-links a {
-    color: rgba(255,255,255,0.75);
+    color: var(--gray-500);
     font-size: 0.875rem;
     font-weight: 500;
     transition: var(--transition);
 }
 
 .nav-links a:hover {
-    color: #fff;
+    color: var(--black);
 }
 
 .nav-cta {
-    background: var(--accent);
-    color: var(--primary) !important;
+    background: var(--black);
+    color: var(--white) !important;
     padding: 0.5rem 1.25rem;
     border-radius: 6px;
     font-weight: 600;
@@ -124,14 +119,14 @@ header {
 }
 
 .nav-cta:hover {
-    background: var(--accent-hover);
+    background: var(--gray-800);
 }
 
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: #fff;
+    color: var(--black);
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -139,17 +134,13 @@ header {
 /* ─── Hero ────────────────────────────────────────────────── */
 .hero {
     position: relative;
-    background: var(--primary);
+    background: var(--gray-50);
     overflow: hidden;
     padding: 5rem 2rem 4rem;
 }
 
 .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover;
-    opacity: 0.15;
+    display: none;
 }
 
 .hero-content {
@@ -162,7 +153,7 @@ header {
 .hero h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    color: #fff;
+    color: var(--black);
     letter-spacing: -0.03em;
     line-height: 1.1;
     margin-bottom: 1rem;
@@ -170,7 +161,7 @@ header {
 
 .hero .subtitle {
     font-size: 1.25rem;
-    color: rgba(255,255,255,0.7);
+    color: var(--gray-500);
     max-width: 600px;
     margin: 0 auto 2.5rem;
     font-weight: 400;
@@ -185,11 +176,10 @@ header {
 .search-container input {
     width: 100%;
     padding: 1rem 1.5rem 1rem 3rem;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--gray-200);
     border-radius: 50px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    color: #fff;
+    background: var(--white);
+    color: var(--black);
     font-size: 1rem;
     font-family: inherit;
     outline: none;
@@ -197,12 +187,12 @@ header {
 }
 
 .search-container input::placeholder {
-    color: rgba(255,255,255,0.5);
+    color: var(--gray-400);
 }
 
 .search-container input:focus {
-    border-color: var(--accent);
-    background: rgba(255,255,255,0.15);
+    border-color: var(--gray-400);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
 }
 
 .search-icon {
@@ -210,13 +200,13 @@ header {
     left: 1.25rem;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255,255,255,0.5);
+    color: var(--gray-400);
     pointer-events: none;
 }
 
 /* ─── Stats Bar ──────────────────────────────────────────── */
 .stats-bar {
-    background: var(--bg-alt);
+    background: var(--white);
     border-bottom: 1px solid var(--border);
     padding: 1rem 2rem;
 }
@@ -236,7 +226,7 @@ header {
 .stat-number {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--black);
 }
 
 .stat-label {
@@ -266,9 +256,9 @@ header {
 .filter-pill {
     padding: 0.5rem 1.25rem;
     border-radius: 50px;
-    border: 1px solid var(--border);
-    background: var(--bg);
-    color: var(--text-secondary);
+    border: 1px solid transparent;
+    background: var(--gray-100);
+    color: var(--gray-700);
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
@@ -278,14 +268,14 @@ header {
 }
 
 .filter-pill:hover {
-    border-color: var(--primary);
-    color: var(--primary);
+    background: var(--gray-200);
+    color: var(--black);
 }
 
 .filter-pill.active {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
 }
 
 /* ─── Shows Grid ─────────────────────────────────────────── */
@@ -327,8 +317,8 @@ header {
 
 /* ─── Show Card ──────────────────────────────────────────── */
 .show-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius);
     overflow: hidden;
     cursor: pointer;
@@ -337,9 +327,8 @@ header {
 }
 
 .show-card:hover {
-    border-color: var(--primary-medium);
+    border-color: var(--gray-300);
     box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
 }
 
 .card-image {
@@ -356,7 +345,7 @@ header {
     left: 0;
     right: 0;
     height: 60px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.4));
+    background: linear-gradient(transparent, rgba(0,0,0,0.3));
 }
 
 .card-category {
@@ -369,7 +358,8 @@ header {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #fff;
+    color: var(--white);
+    background: var(--black) !important;
     z-index: 1;
 }
 
@@ -407,7 +397,7 @@ header {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .card-footer {
@@ -426,13 +416,14 @@ header {
 }
 
 .card-arrow {
-    color: var(--accent);
+    color: var(--gray-400);
     font-size: 0.875rem;
     font-weight: 600;
     transition: var(--transition);
 }
 
 .show-card:hover .card-arrow {
+    color: var(--black);
     transform: translateX(4px);
 }
 
@@ -444,10 +435,10 @@ header {
 
 .load-more-btn {
     padding: 0.75rem 2.5rem;
-    border: 2px solid var(--primary);
-    border-radius: 50px;
-    background: transparent;
-    color: var(--primary);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    background: var(--white);
+    color: var(--black);
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -456,8 +447,9 @@ header {
 }
 
 .load-more-btn:hover {
-    background: var(--primary);
-    color: #fff;
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
 }
 
 /* ─── No Results ─────────────────────────────────────────── */
@@ -478,8 +470,8 @@ header {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(8px);
     z-index: 2000;
     display: none;
     justify-content: center;
@@ -493,12 +485,13 @@ header {
 }
 
 .modal {
-    background: var(--bg);
+    background: var(--white);
     border-radius: var(--radius-lg);
     max-width: 800px;
     width: 100%;
     margin: 2rem auto;
     box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
     animation: modalSlideUp 0.3s ease;
     overflow: hidden;
 }
@@ -523,7 +516,7 @@ header {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent 30%, rgba(15,23,42,0.85));
+    background: linear-gradient(transparent 30%, rgba(10,10,10,0.8));
 }
 
 .modal-header-content {
@@ -539,7 +532,8 @@ header {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #fff;
+    color: var(--white);
+    background: var(--black);
     margin-bottom: 0.75rem;
 }
 
@@ -598,7 +592,7 @@ header {
     display: flex;
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
-    background: var(--bg);
+    background: var(--white);
 }
 
 .modal-tab {
@@ -620,8 +614,8 @@ header {
 }
 
 .modal-tab.active {
-    color: var(--primary);
-    border-bottom-color: var(--accent);
+    color: var(--black);
+    border-bottom-color: var(--black);
     font-weight: 600;
 }
 
@@ -648,7 +642,7 @@ header {
 
 .detail-card {
     padding: 1.25rem;
-    background: var(--bg-alt);
+    background: var(--gray-50);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-light);
 }
@@ -669,7 +663,7 @@ header {
 }
 
 .detail-card a {
-    color: var(--accent-hover);
+    color: var(--accent);
     font-weight: 500;
 }
 
@@ -695,7 +689,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem;
-    background: var(--bg-alt);
+    background: var(--gray-50);
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-light);
 }
@@ -715,7 +709,7 @@ header {
 .hotel-price {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--black);
     white-space: nowrap;
 }
 
@@ -725,7 +719,7 @@ header {
     gap: 0.5rem;
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    background: var(--bg-alt);
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     font-size: 0.875rem;
@@ -735,9 +729,9 @@ header {
 }
 
 .hotel-search-link:hover {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
 }
 
 /* Tips Tab */
@@ -767,8 +761,8 @@ header {
     min-width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--accent-light);
-    color: var(--accent-hover);
+    background: var(--gray-100);
+    color: var(--gray-700);
     font-size: 0.75rem;
     font-weight: 700;
     flex-shrink: 0;
@@ -798,23 +792,23 @@ header {
 }
 
 .btn-primary {
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--black);
+    color: var(--white);
 }
 
 .btn-primary:hover {
-    background: var(--accent-hover);
+    background: var(--gray-800);
 }
 
 .btn-outline {
-    background: transparent;
-    border: 1.5px solid var(--border);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     color: var(--text);
 }
 
 .btn-outline:hover {
-    border-color: var(--primary);
-    background: var(--bg-alt);
+    border-color: var(--black);
+    background: var(--gray-50);
 }
 
 /* ─── Products Section ───────────────────────────────────── */
@@ -832,7 +826,7 @@ header {
 .section-header h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--black);
     letter-spacing: -0.025em;
     margin-bottom: 0.5rem;
 }
@@ -852,8 +846,8 @@ header {
 }
 
 .product-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius);
     padding: 2rem;
     transition: var(--transition);
@@ -862,15 +856,15 @@ header {
 
 .product-card:hover {
     box-shadow: var(--shadow-lg);
-    border-color: var(--primary-medium);
+    border-color: var(--gray-300);
 }
 
 .product-badge {
     position: absolute;
     top: -8px;
     right: 20px;
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--black);
+    color: var(--white);
     padding: 0.2rem 0.75rem;
     border-radius: 50px;
     font-size: 0.7rem;
@@ -897,7 +891,7 @@ header {
 .product-price {
     font-size: 1.75rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--black);
     display: block;
     margin-bottom: 1rem;
 }
@@ -909,7 +903,7 @@ header {
 
 /* ─── Tips Section ───────────────────────────────────────── */
 .tips-section {
-    background: var(--bg-alt);
+    background: var(--gray-50);
     padding: 4rem 2rem;
 }
 
@@ -925,8 +919,8 @@ header {
 }
 
 .tip-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius);
     padding: 1.5rem;
     transition: var(--transition);
@@ -944,13 +938,13 @@ header {
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    background: var(--accent-light);
+    background: var(--gray-100);
 }
 
 .tip-icon svg {
     width: 20px;
     height: 20px;
-    color: var(--accent-hover);
+    color: var(--gray-700);
 }
 
 .tip-card h3 {
@@ -974,7 +968,7 @@ header {
 }
 
 .newsletter-box {
-    background: var(--primary);
+    background: var(--black);
     border-radius: var(--radius-lg);
     padding: 3.5rem;
     text-align: center;
@@ -986,7 +980,7 @@ header {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(245,158,11,0.15), transparent 60%);
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.04), transparent 60%);
 }
 
 .newsletter-box > * {
@@ -996,12 +990,12 @@ header {
 .newsletter-box h2 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--white);
     margin-bottom: 0.5rem;
 }
 
 .newsletter-box p {
-    color: rgba(255,255,255,0.7);
+    color: var(--gray-400);
     margin-bottom: 2rem;
     font-size: 1rem;
 }
@@ -1016,17 +1010,27 @@ header {
 .newsletter-form input {
     flex: 1;
     padding: 0.875rem 1.25rem;
-    border: none;
+    border: 1px solid var(--gray-700);
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
     font-family: inherit;
     outline: none;
+    background: var(--gray-900);
+    color: var(--white);
+}
+
+.newsletter-form input::placeholder {
+    color: var(--gray-500);
+}
+
+.newsletter-form input:focus {
+    border-color: var(--gray-500);
 }
 
 .newsletter-form button {
     padding: 0.875rem 1.75rem;
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--white);
+    color: var(--black);
     border: none;
     border-radius: var(--radius-sm);
     font-size: 0.95rem;
@@ -1038,7 +1042,7 @@ header {
 }
 
 .newsletter-form button:hover {
-    background: var(--accent-hover);
+    background: var(--gray-200);
 }
 
 /* ─── CTA Section ────────────────────────────────────────── */
@@ -1049,8 +1053,8 @@ header {
 }
 
 .cta-box {
-    background: var(--bg-warm);
-    border: 1px solid var(--accent-light);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     padding: 2.5rem;
     display: flex;
@@ -1065,7 +1069,7 @@ header {
 .cta-box h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--black);
     margin-bottom: 0.5rem;
 }
 
@@ -1091,7 +1095,7 @@ header {
     display: inline-block;
     width: 6px;
     height: 6px;
-    background: var(--accent);
+    background: var(--gray-400);
     border-radius: 50%;
     margin-right: 0.75rem;
     vertical-align: middle;
@@ -1099,9 +1103,10 @@ header {
 
 /* ─── Footer ─────────────────────────────────────────────── */
 footer {
-    background: var(--primary);
-    color: rgba(255,255,255,0.6);
+    background: var(--gray-50);
+    color: var(--gray-500);
     padding: 3rem 2rem 1.5rem;
+    border-top: 1px solid var(--gray-200);
 }
 
 .footer-inner {
@@ -1120,10 +1125,11 @@ footer {
     font-size: 0.875rem;
     line-height: 1.7;
     margin-top: 0.5rem;
+    color: var(--gray-500);
 }
 
 .footer-col h4 {
-    color: rgba(255,255,255,0.9);
+    color: var(--gray-900);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1140,26 +1146,31 @@ footer {
 }
 
 .footer-col a {
-    color: rgba(255,255,255,0.6);
+    color: var(--gray-500);
     font-size: 0.875rem;
     transition: var(--transition);
 }
 
 .footer-col a:hover {
-    color: var(--accent);
+    color: var(--black);
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--gray-200);
     padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem;
+    color: var(--gray-400);
 }
 
 .footer-bottom a {
-    color: var(--accent);
+    color: var(--gray-600);
+}
+
+.footer-bottom a:hover {
+    color: var(--black);
 }
 
 /* ─── Article Pages (SEO Show Pages) ─────────────────────── */
@@ -1177,7 +1188,7 @@ footer {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(transparent 20%, rgba(15,23,42,0.9));
+    background: linear-gradient(transparent 20%, rgba(10,10,10,0.85));
 }
 
 .article-hero-content {
@@ -1206,7 +1217,7 @@ footer {
 .article-content h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--black);
     margin: 2.5rem 0 1rem;
 }
 
@@ -1233,8 +1244,8 @@ footer {
 }
 
 .sidebar-card {
-    background: var(--bg-alt);
-    border: 1px solid var(--border);
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
     border-radius: var(--radius);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
@@ -1243,7 +1254,7 @@ footer {
 .sidebar-card h3 {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--black);
     margin-bottom: 0.75rem;
 }
 
@@ -1438,7 +1449,7 @@ footer {
 
 .filter-select:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: var(--black);
 }
 
 /* ─── Card Attendees Badge ───────────────────────────────── */
@@ -1450,14 +1461,14 @@ footer {
     color: var(--text-light);
     margin-top: 0.5rem;
     padding: 0.2rem 0.5rem;
-    background: var(--bg-alt);
+    background: var(--gray-100);
     border-radius: 4px;
 }
 
 .card-attendees svg {
     width: 12px;
     height: 12px;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 @media (max-width: 768px) {

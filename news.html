@@ -35,7 +35,7 @@
         /* ---- News Page Specific Styles ---- */
         .news-hero {
             position: relative;
-            background: var(--primary);
+            background: #fafafa;
             overflow: hidden;
             padding: 4rem 2rem 3rem;
         }
@@ -44,7 +44,7 @@
             position: absolute;
             inset: 0;
             background: url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1600&q=80') center/cover;
-            opacity: 0.12;
+            opacity: 0;
         }
         .news-hero-content {
             position: relative;
@@ -55,20 +55,20 @@
         .news-hero h1 {
             font-size: 2.75rem;
             font-weight: 800;
-            color: #fff;
+            color: #0a0a0a;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 0.75rem;
         }
         .news-hero .subtitle {
             font-size: 1.1rem;
-            color: rgba(255,255,255,0.7);
+            color: #525252;
             max-width: 600px;
             margin: 0 auto 1rem;
         }
         .news-last-updated {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.45);
+            color: #a3a3a3;
         }
 
         /* Category Filter Pills */
@@ -103,9 +103,9 @@
             color: var(--primary);
         }
         .news-filter-pill.active {
-            background: var(--primary);
+            background: #0a0a0a;
             color: #fff;
-            border-color: var(--primary);
+            border-color: #0a0a0a;
         }
 
         /* News Grid */
@@ -159,7 +159,6 @@
         .news-card:hover {
             border-color: var(--primary-medium);
             box-shadow: var(--shadow-lg);
-            transform: translateY(-4px);
         }
         .news-card a {
             text-decoration: none;
@@ -180,7 +179,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: #e5e5e5;
         }
         .news-card-image .news-placeholder svg {
             width: 48px;
@@ -251,7 +250,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            color: var(--accent);
+            color: #0a0a0a;
             font-size: 0.8rem;
             font-weight: 600;
             transition: var(--transition);
@@ -261,11 +260,11 @@
         }
 
         /* Category colors for news */
-        .cat-industry-news { background: #475569; }
-        .cat-show-updates { background: #0891b2; }
-        .cat-technology { background: #3b82f6; }
-        .cat-marketing { background: #8b5cf6; }
-        .cat-data-trends { background: #059669; }
+        .cat-industry-news { background: #171717; }
+        .cat-show-updates { background: #171717; }
+        .cat-technology { background: #171717; }
+        .cat-marketing { background: #171717; }
+        .cat-data-trends { background: #171717; }
 
         /* Load More */
         .news-load-more {
@@ -274,10 +273,10 @@
         }
         .news-load-more-btn {
             padding: 0.75rem 2.5rem;
-            border: 2px solid var(--primary);
+            border: 2px solid #0a0a0a;
             border-radius: 50px;
             background: transparent;
-            color: var(--primary);
+            color: #0a0a0a;
             font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
@@ -285,7 +284,7 @@
             transition: var(--transition);
         }
         .news-load-more-btn:hover {
-            background: var(--primary);
+            background: #0a0a0a;
             color: #fff;
         }
 
@@ -309,8 +308,8 @@
             padding: 0 2rem 3rem;
         }
         .scannly-cta-box {
-            background: var(--bg-warm);
-            border: 1px solid var(--accent-light);
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
             border-radius: var(--radius-lg);
             padding: 2.5rem;
             display: flex;
@@ -323,7 +322,7 @@
         .scannly-cta-content h3 {
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--primary);
+            color: #0a0a0a;
             margin-bottom: 0.5rem;
         }
         .scannly-cta-content p {
@@ -337,8 +336,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
-            background: var(--accent);
-            color: var(--primary);
+            background: #0a0a0a;
+            color: #fff;
             border-radius: var(--radius-sm);
             font-size: 0.875rem;
             font-weight: 600;
@@ -347,7 +346,7 @@
             transition: var(--transition);
         }
         .scannly-cta-content .btn:hover {
-            background: var(--accent-hover);
+            background: #262626;
         }
         .scannly-cta-icon {
             font-size: 3.5rem;
@@ -374,9 +373,9 @@
             top: 64px;
             left: 0;
             right: 0;
-            background: var(--primary);
+            background: #fff;
             padding: 1rem 2rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid #e5e5e5;
             gap: 1rem;
             z-index: 999;
         }
@@ -423,7 +422,7 @@
     <!-- Header -->
     <header>
         <div class="header-inner">
-            <a href="/" class="logo">Show<span>Floor</span>Tips</a>
+            <a href="/" class="logo">ShowFloorTips</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="/#shows">Trade Shows</a></li>
@@ -432,7 +431,7 @@
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         </div>
     </header>
 
@@ -505,7 +504,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo">Show<span>Floor</span>Tips</div>
+                    <div class="logo">ShowFloorTips</div>
                     <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
                 </div>
                 <div class="footer-col">

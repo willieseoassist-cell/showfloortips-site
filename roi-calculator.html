@@ -51,18 +51,18 @@
     <style>
         /* ========== RESET & BASE ========== */
         :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --accent: #f59e0b;
-            --accent-hover: #d97706;
-            --accent-light: #fef3c7;
-            --accent-bg: rgba(245, 158, 11, 0.08);
+            --primary: #0a0a0a;
+            --primary-light: #171717;
+            --accent: #0a0a0a;
+            --accent-hover: #171717;
+            --accent-light: #f5f5f5;
+            --accent-bg: rgba(10, 10, 10, 0.06);
             --text: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
             --bg: #ffffff;
             --bg-alt: #f8fafc;
-            --bg-dark: #0f172a;
+            --bg-dark: #0a0a0a;
             --border: #e2e8f0;
             --border-light: #f1f5f9;
             --radius: 12px;
@@ -98,10 +98,10 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(15, 23, 42, 0.97);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid #e5e5e5;
         }
 
         .header-inner {
@@ -117,11 +117,11 @@
         .logo {
             font-size: 20px;
             font-weight: 800;
-            color: #fff;
+            color: #0a0a0a;
             letter-spacing: -0.5px;
         }
 
-        .logo span { color: var(--accent); }
+        .logo span { color: #0a0a0a; }
 
         .nav-links {
             list-style: none;
@@ -131,7 +131,7 @@
         }
 
         .nav-links a {
-            color: #cbd5e1;
+            color: #525252;
             padding: 8px 16px;
             border-radius: var(--radius-sm);
             font-size: 14px;
@@ -140,13 +140,13 @@
         }
 
         .nav-links a:hover {
-            color: #fff;
-            background: rgba(255,255,255,0.08);
+            color: #0a0a0a;
+            background: rgba(0,0,0,0.04);
         }
 
         .nav-links .nav-cta {
-            background: var(--accent);
-            color: var(--primary) !important;
+            background: #0a0a0a;
+            color: #fff !important;
             font-weight: 600;
             padding: 8px 20px;
         }
@@ -159,7 +159,7 @@
             display: none;
             background: none;
             border: none;
-            color: #fff;
+            color: #0a0a0a;
             font-size: 24px;
             cursor: pointer;
             padding: 8px;
@@ -167,7 +167,7 @@
 
         /* ========== HERO ========== */
         .hero {
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 50%, #0f172a 100%);
+            background: #fafafa;
             padding: 80px 24px 64px;
             text-align: center;
             position: relative;
@@ -181,8 +181,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
-                        radial-gradient(ellipse at 70% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+            background: none;
             pointer-events: none;
         }
 
@@ -197,9 +196,9 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(245, 158, 11, 0.12);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            color: var(--accent);
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            color: #0a0a0a;
             padding: 6px 16px;
             border-radius: 100px;
             font-size: 13px;
@@ -211,22 +210,19 @@
         .hero h1 {
             font-size: clamp(32px, 5vw, 48px);
             font-weight: 800;
-            color: #fff;
+            color: #0a0a0a;
             line-height: 1.15;
             letter-spacing: -1.5px;
             margin-bottom: 16px;
         }
 
         .hero h1 span {
-            background: linear-gradient(135deg, var(--accent), #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #0a0a0a;
         }
 
         .hero p {
             font-size: 18px;
-            color: #94a3b8;
+            color: #525252;
             max-width: 540px;
             margin: 0 auto;
             line-height: 1.7;
@@ -411,8 +407,8 @@
 
         input:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+            border-color: #0a0a0a;
+            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
         }
 
         .has-prefix input { padding-left: 28px; }
@@ -439,7 +435,7 @@
         }
 
         .results-header {
-            background: var(--bg-dark);
+            background: #0a0a0a;
             padding: 24px 24px 20px;
         }
 
@@ -584,24 +580,24 @@
         /* ========== SCANNLY CTA ========== */
         .scannly-cta {
             margin-top: 20px;
-            background: linear-gradient(135deg, var(--bg-dark), #1e293b);
+            background: #fafafa;
             border-radius: var(--radius-lg);
             padding: 24px;
             text-align: center;
-            border: 1px solid rgba(245, 158, 11, 0.15);
+            border: 1px solid #e5e5e5;
         }
 
         .scannly-cta h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #fff;
+            color: #0a0a0a;
             margin-bottom: 8px;
             letter-spacing: -0.3px;
         }
 
         .scannly-cta p {
             font-size: 13px;
-            color: #94a3b8;
+            color: #525252;
             margin-bottom: 16px;
             line-height: 1.5;
         }
@@ -611,8 +607,8 @@
             align-items: center;
             gap: 8px;
             padding: 10px 24px;
-            background: var(--accent);
-            color: var(--primary);
+            background: #0a0a0a;
+            color: #fff;
             border-radius: var(--radius-sm);
             font-size: 14px;
             font-weight: 700;
@@ -664,14 +660,14 @@
         }
 
         .benchmark-card:hover {
-            border-color: var(--accent);
+            border-color: #0a0a0a;
             box-shadow: var(--shadow-md);
         }
 
         .benchmark-stat {
             font-size: 28px;
             font-weight: 800;
-            color: var(--accent);
+            color: #0a0a0a;
             letter-spacing: -1px;
             margin-bottom: 4px;
         }
@@ -762,8 +758,8 @@
 
         /* ========== FOOTER ========== */
         footer {
-            background: var(--bg-dark);
-            color: #94a3b8;
+            background: #fafafa;
+            color: #525252;
             padding: 48px 24px 24px;
         }
 
@@ -782,12 +778,12 @@
         .footer-brand .logo {
             font-size: 20px;
             font-weight: 800;
-            color: #fff;
+            color: #0a0a0a;
             margin-bottom: 12px;
             display: block;
         }
 
-        .footer-brand .logo span { color: var(--accent); }
+        .footer-brand .logo span { color: #0a0a0a; }
 
         .footer-brand p {
             font-size: 14px;
@@ -797,7 +793,7 @@
         .footer-col h4 {
             font-size: 13px;
             font-weight: 700;
-            color: #fff;
+            color: #0a0a0a;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             margin-bottom: 16px;
@@ -811,14 +807,14 @@
 
         .footer-col a {
             font-size: 14px;
-            color: #94a3b8;
+            color: #525252;
             transition: color 0.2s;
         }
 
-        .footer-col a:hover { color: var(--accent); }
+        .footer-col a:hover { color: #0a0a0a; }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid #e5e5e5;
             padding-top: 24px;
             display: flex;
             justify-content: space-between;
@@ -856,10 +852,10 @@
                 top: 64px;
                 left: 0;
                 right: 0;
-                background: var(--bg-dark);
+                background: #fff;
                 flex-direction: column;
                 padding: 16px 24px;
-                border-top: 1px solid rgba(255,255,255,0.08);
+                border-top: 1px solid #e5e5e5;
             }
 
             .nav-links.show {
@@ -957,7 +953,7 @@
     <!-- Header -->
     <header>
         <div class="header-inner">
-            <a href="/" class="logo">Show<span>Floor</span>Tips</a>
+            <a href="/" class="logo">ShowFloorTips</a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="/#shows">Trade Shows</a></li>
@@ -966,7 +962,7 @@
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
         </div>
     </header>
 
@@ -1371,7 +1367,7 @@
         <div class="footer-inner">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo">Show<span>Floor</span>Tips</div>
+                    <div class="logo">ShowFloorTips</div>
                     <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
                 </div>
                 <div class="footer-col">
@@ -1533,7 +1529,7 @@
             html += 'h2{font-size:18px;color:#0f172a;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #f59e0b;letter-spacing:-0.3px}';
             html += '.subtitle{color:#64748b;font-size:14px;margin-bottom:32px}';
             html += '.logo{font-size:12px;color:#64748b;margin-bottom:24px}';
-            html += '.logo b{color:#0f172a}.logo span{color:#f59e0b}';
+            html += '.logo b{color:#0f172a}.logo span{color:#0a0a0a}';
             html += 'table{width:100%;border-collapse:collapse;margin:12px 0}';
             html += 'th,td{text-align:left;padding:10px 12px;font-size:14px}';
             html += 'th{font-weight:600;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.05em}';
@@ -1551,7 +1547,7 @@
             html += '.footer{margin-top:40px;padding-top:16px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;text-align:center}';
             html += '@media print{body{padding:20px}.roi-box{break-inside:avoid}}';
             html += '</style></head><body>';
-            html += '<div class="logo"><b>Show<span>Floor</span>Tips</b></div>';
+            html += '<div class="logo"><b>ShowFloorTips</b></div>';
             html += '<h1>Trade Show ROI Report</h1>';
             html += '<div class="subtitle">Generated on ' + today + '</div>';
 

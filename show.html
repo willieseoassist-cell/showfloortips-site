@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .show-hero { position:relative; height:340px; background:#0f172a; display:flex; align-items:flex-end; overflow:hidden }
+        .show-hero { position:relative; height:340px; background:#0a0a0a; display:flex; align-items:flex-end; overflow:hidden }
         .show-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4 }
         .show-hero-content { position:relative; z-index:2; padding:2rem; max-width:1120px; margin:0 auto; width:100%; color:#fff }
         .show-hero h1 { font-size:2.5rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.5rem }
@@ -21,15 +21,15 @@
         .info-card h4 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:#64748b; margin-bottom:0.5rem }
         .info-card p { font-size:1.05rem; font-weight:600; color:#1e293b }
         .section-block { margin:2rem 0 }
-        .section-block h2 { font-size:1.35rem; font-weight:700; color:#0f172a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .section-block h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
         .hotel-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:0.75rem }
         .hotel-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.25rem }
         .hotel-card .hotel-detail { font-size:0.85rem; color:#64748b }
         .tip-item { padding:0.75rem 0; border-bottom:1px solid #f1f5f9; font-size:0.95rem; color:#334155; line-height:1.6 }
         .tip-item:last-child { border-bottom:none }
         .sidebar-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem }
-        .sidebar-card h3 { font-size:1.1rem; font-weight:700; color:#0f172a; margin-bottom:1rem }
-        .btn-visit { display:block; width:100%; padding:0.875rem; background:#0f172a; color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s }
+        .sidebar-card h3 { font-size:1.1rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem }
+        .btn-visit { display:block; width:100%; padding:0.875rem; background:#0a0a0a; color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s }
         .btn-visit:hover { background:#1e293b }
         .btn-scannly { display:block; width:100%; padding:0.875rem; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; margin-top:0.75rem; transition:background 0.2s }
         .btn-scannly:hover { background:#818cf8 }
@@ -39,10 +39,10 @@
         .stat-value { font-weight:600; color:#1e293b }
         .cat-badge { display:inline-block; padding:0.25rem 0.75rem; border-radius:50px; font-size:0.75rem; font-weight:600; color:#fff; margin-right:0.5rem }
         .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#64748b; font-size:0.9rem; text-decoration:none; padding:1rem 2rem; transition:color 0.2s }
-        .back-link:hover { color:#0f172a }
+        .back-link:hover { color:#0a0a0a }
         .loading { text-align:center; padding:4rem 2rem; font-size:1.2rem; color:#64748b }
         .not-found { text-align:center; padding:4rem 2rem }
-        .not-found h2 { font-size:1.5rem; color:#0f172a; margin-bottom:0.5rem }
+        .not-found h2 { font-size:1.5rem; color:#0a0a0a; margin-bottom:0.5rem }
         @media(max-width:768px) {
             .show-body { grid-template-columns:1fr }
             .show-hero h1 { font-size:1.75rem }
@@ -149,14 +149,14 @@
         document.head.appendChild(canonical);
 
         var catColors = {
-            'Technology':'#3b82f6','Healthcare':'#10b981','Food & Beverage':'#f59e0b',
-            'Fashion':'#ec4899','Fashion & Beauty':'#ec4899','Construction':'#f97316',
-            'Manufacturing':'#6366f1','Energy':'#eab308','Finance':'#14b8a6',
-            'Education':'#8b5cf6','Real Estate':'#06b6d4','Automotive':'#ef4444',
-            'Agriculture':'#22c55e','Defense & Security':'#991b1b','Travel & Hospitality':'#0891b2',
-            'Sports & Recreation':'#059669','Arts & Entertainment':'#7c3aed',
-            'Packaging & Logistics':'#d97706','Environmental':'#16a34a','Pet & Animal':'#ea580c',
-            'Business & Trade':'#475569'
+            'Technology':'#171717','Healthcare':'#171717','Food & Beverage':'#171717',
+            'Fashion':'#171717','Fashion & Beauty':'#171717','Construction':'#171717',
+            'Manufacturing':'#171717','Energy':'#171717','Finance':'#171717',
+            'Education':'#171717','Real Estate':'#171717','Automotive':'#171717',
+            'Agriculture':'#171717','Defense & Security':'#171717','Travel & Hospitality':'#171717',
+            'Sports & Recreation':'#171717','Arts & Entertainment':'#171717',
+            'Packaging & Logistics':'#171717','Environmental':'#171717','Pet & Animal':'#171717',
+            'Business & Trade':'#171717'
         };
         var catColor = catColors[show.category] || '#475569';
 
