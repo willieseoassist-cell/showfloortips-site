@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/shows/:slug", "destination": "/show.html" },
-    { "source": "/shows/:slug.html", "destination": "/show.html" }
+    { "source": "/shows/:slug.html", "destination": "/show.html" },
+    { "source": "/best-trade-shows/:category", "destination": "/best-shows.html" }
   ]
 }

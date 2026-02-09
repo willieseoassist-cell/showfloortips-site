@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... - ShowFloorTips</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .best-hero { background:#0a0a0a; color:#fff; padding:4rem 2rem 3rem; text-align:center }
+        .best-hero h1 { font-size:2.8rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:0.75rem; max-width:800px; margin-left:auto; margin-right:auto }
+        .best-hero p { font-size:1.1rem; color:#94a3b8; max-width:640px; margin:0 auto; line-height:1.7 }
+        .best-hero .hero-stats { display:flex; justify-content:center; gap:2.5rem; margin-top:2rem; flex-wrap:wrap }
+        .best-hero .hero-stat { text-align:center }
+        .best-hero .hero-stat-num { font-size:1.75rem; font-weight:800; color:#fff }
+        .best-hero .hero-stat-label { font-size:0.8rem; color:#64748b; text-transform:uppercase; letter-spacing:0.05em; margin-top:0.25rem }
+        .best-content { max-width:1000px; margin:0 auto; padding:2rem }
+        .best-intro { font-size:1.05rem; color:#334155; line-height:1.85; margin-bottom:2.5rem; padding:1.5rem; background:#f8fafc; border-radius:12px; border:1px solid #e2e8f0 }
+        .best-grid { display:flex; flex-direction:column; gap:1.25rem }
+        .best-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1.75rem; display:grid; grid-template-columns:auto 1fr auto; gap:1.5rem; align-items:start; transition:border-color 0.2s, box-shadow 0.2s }
+        .best-card:hover { border-color:#334155; box-shadow:0 4px 16px rgba(0,0,0,0.06) }
+        .best-rank { width:48px; height:48px; background:#0a0a0a; color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.1rem; flex-shrink:0 }
+        .best-card-body h3 { font-size:1.15rem; font-weight:700; color:#0a0a0a; margin-bottom:0.5rem; line-height:1.3 }
+        .best-card-body h3 a { color:inherit; text-decoration:none }
+        .best-card-body h3 a:hover { color:#334155 }
+        .best-card-meta { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem }
+        .best-card-tag { display:inline-flex; align-items:center; gap:0.3rem; background:#f1f5f9; color:#475569; font-size:0.8rem; padding:0.3rem 0.65rem; border-radius:6px; font-weight:500 }
+        .best-card-desc { font-size:0.9rem; color:#64748b; line-height:1.6 }
+        .best-card-action { display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem; min-width:120px }
+        .best-card-action .btn-view { display:inline-block; padding:0.65rem 1.25rem; background:#0a0a0a; color:#fff; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none; white-space:nowrap; transition:background 0.2s }
+        .best-card-action .btn-view:hover { background:#1e293b }
+        .best-card-action .card-attendees { font-size:0.85rem; color:#64748b; font-weight:500; white-space:nowrap }
+        .load-more-container { text-align:center; margin:2rem 0 }
+        .load-more-btn { padding:0.875rem 2.5rem; background:#0a0a0a; color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 0.2s }
+        .load-more-btn:hover { background:#1e293b }
+        .best-nav { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; padding:1.5rem 2rem; background:#f8fafc; border-bottom:1px solid #e2e8f0 }
+        .best-nav a { display:inline-block; padding:0.4rem 0.85rem; border-radius:6px; font-size:0.82rem; font-weight:500; color:#475569; text-decoration:none; transition:background 0.2s, color 0.2s; border:1px solid transparent }
+        .best-nav a:hover { background:#e2e8f0; color:#0a0a0a }
+        .best-nav a.active { background:#0a0a0a; color:#fff }
+        .scannly-cta { background:#eef2ff; border:1px solid #c7d2fe; border-radius:16px; padding:2rem; text-align:center; margin:2.5rem 0 }
+        .scannly-cta h3 { font-size:1.2rem; font-weight:700; color:#1e293b; margin-bottom:0.5rem }
+        .scannly-cta p { color:#475569; font-size:0.9rem; margin-bottom:1rem; max-width:480px; margin-left:auto; margin-right:auto }
+        .scannly-cta a { display:inline-block; padding:0.75rem 1.75rem; background:#6366f1; color:#fff; border-radius:10px; font-weight:600; text-decoration:none; transition:background 0.2s }
+        .scannly-cta a:hover { background:#818cf8 }
+        @media(max-width:768px) {
+            .best-hero h1 { font-size:1.75rem }
+            .best-card { grid-template-columns:auto 1fr; gap:1rem }
+            .best-card-action { flex-direction:row; align-items:center; grid-column:1 / -1 }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav class="nav-links">
+                <a href="/#shows">Trade Shows</a>
+                <a href="/news.html">News</a>
+                <a href="/roi-calculator.html">ROI Calculator</a>
+                <a href="/products.html">Products</a>
+                <a href="/scannly.html" class="nav-cta">Try Scannly</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="best-nav" id="categoryNav"></div>
+
+    <div id="page-content">
+        <div style="text-align:center;padding:4rem 2rem;color:#64748b;font-size:1.1rem">Loading...</div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>ShowFloorTips - Your Guide to Trade Shows & Exhibitions</p>
+            <p><a href="/scannly.html">Scannly App</a></p>
+        </div>
+    </footer>
+
+    <script src="/shows.js"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        var CATEGORIES = {
+            'technology': { name: 'Technology', icon: '💻' },
+            'healthcare': { name: 'Healthcare', icon: '🏥' },
+            'food-beverage': { name: 'Food & Beverage', icon: '🍽️' },
+            'construction': { name: 'Construction', icon: '🏗️' },
+            'manufacturing': { name: 'Manufacturing', icon: '🏭' },
+            'energy': { name: 'Energy', icon: '⚡' },
+            'automotive': { name: 'Automotive', icon: '🚗' },
+            'fashion-beauty': { name: 'Fashion & Beauty', icon: '👗' },
+            'education': { name: 'Education', icon: '🎓' },
+            'travel-hospitality': { name: 'Travel & Hospitality', icon: '✈️' },
+            'sports-recreation': { name: 'Sports & Recreation', icon: '🏆' },
+            'agriculture': { name: 'Agriculture', icon: '🌾' },
+            'arts-entertainment': { name: 'Arts & Entertainment', icon: '🎭' },
+            'defense-security': { name: 'Defense & Security', icon: '🛡️' },
+            'finance': { name: 'Finance', icon: '💰' },
+            'environmental': { name: 'Environmental', icon: '🌍' },
+            'packaging-logistics': { name: 'Packaging & Logistics', icon: '📦' },
+            'pet-animal': { name: 'Pet & Animal', icon: '🐾' },
+            'real-estate': { name: 'Real Estate', icon: '🏠' },
+            'business-trade': { name: 'Business & Trade', icon: '💼' }
+        };
+
+        var INTROS = {
+            'Technology': 'The technology trade show landscape is one of the most dynamic in the world, bringing together innovators, investors, and industry leaders under one roof. From massive conventions like CES to specialized summits on AI, cybersecurity, and cloud computing, these events shape the future of how we live and work. Whether you\'re launching a product, scouting competitors, or forging partnerships, attending the right tech trade show can accelerate your business by years.',
+            'Healthcare': 'Healthcare trade shows are where medical innovation meets the market. From cutting-edge surgical devices and pharmaceutical breakthroughs to digital health platforms and hospital management systems, these events connect manufacturers, clinicians, and distributors across the global healthcare ecosystem. For exhibitors, they represent unmatched access to decision-makers in one of the world\'s largest industries.',
+            'Food & Beverage': 'The food and beverage industry thrives on trade shows — events where new flavors, packaging innovations, and supply chain solutions come to life. From massive international expositions to niche specialty food fairs, these shows connect producers with buyers, distributors, and retailers who shape what consumers eat and drink around the world.',
+            'Construction': 'Construction trade shows are the backbone of the building industry, showcasing everything from heavy machinery and sustainable materials to smart building technologies and safety innovations. These events draw contractors, architects, engineers, and suppliers from around the globe, making them essential for staying competitive in an industry that\'s constantly evolving.',
+            'Manufacturing': 'Manufacturing trade shows are where the world\'s production powerhouses converge. From industrial automation and robotics to precision tooling and supply chain management, these events showcase the technologies and partnerships that keep global manufacturing moving forward. They\'re essential for anyone in the business of making things.',
+            'Energy': 'Energy trade shows span the full spectrum — from oil and gas to solar, wind, and nuclear power. These events bring together utilities, equipment manufacturers, service providers, and policymakers to address the world\'s most pressing energy challenges. For exhibitors, they offer direct access to decision-makers in one of the world\'s most capital-intensive industries.',
+            'Automotive': 'Automotive trade shows are where the future of mobility takes shape. From electric vehicles and autonomous driving to aftermarket parts and motorsports technology, these events attract manufacturers, dealers, tech companies, and enthusiasts from every corner of the automotive world.',
+            'Fashion & Beauty': 'Fashion and beauty trade shows are the heartbeat of style commerce, connecting designers, brands, retailers, and beauty professionals in a fast-moving marketplace. From haute couture to mass-market cosmetics, these events set trends, launch collections, and forge the wholesale relationships that drive the industry.',
+            'Education': 'Education trade shows bring together edtech companies, publishers, school administrators, and educators to explore the tools and strategies transforming learning. From K-12 technology to higher education solutions, these events are where the future of education takes shape.',
+            'Travel & Hospitality': 'Travel and hospitality trade shows connect hotels, airlines, tourism boards, and travel technology companies with buyers and industry professionals. These events drive the partnerships, bookings, and innovations that shape how the world travels.',
+            'Sports & Recreation': 'Sports and recreation trade shows bring together equipment manufacturers, venue operators, fitness brands, and sports technology companies. From professional leagues to outdoor recreation, these events cover the full spectrum of an industry driven by passion and performance.',
+            'Agriculture': 'Agriculture trade shows are essential gatherings for the farming and agribusiness community, featuring everything from precision agriculture technology and livestock equipment to crop science innovations and sustainable farming practices. They connect growers, suppliers, and distributors across the food supply chain.',
+            'Arts & Entertainment': 'Arts and entertainment trade shows serve the creative industries — from film and music production to live events, gaming, and theme parks. These events showcase the technology, talent, and business opportunities that power the world\'s entertainment economy.',
+            'Defense & Security': 'Defense and security trade shows are among the most strategically important events in the world, connecting military organizations, law enforcement agencies, and security firms with equipment manufacturers and technology providers. These events shape national defense capabilities and global security partnerships.',
+            'Finance': 'Finance trade shows and conferences bring together banks, fintech companies, investment firms, and regulatory bodies to explore the latest in financial technology, compliance, and market trends. They\'re essential for staying ahead in one of the world\'s most regulated and fast-moving industries.',
+            'Environmental': 'Environmental trade shows focus on sustainability, clean technology, waste management, and environmental remediation. These events connect green businesses, government agencies, and NGOs working to address climate change, pollution, and resource conservation.',
+            'Packaging & Logistics': 'Packaging and logistics trade shows serve the supply chain industry, from packaging design and materials to warehousing, shipping, and last-mile delivery. These events are critical for companies looking to optimize their operations and reduce costs in an increasingly complex global supply chain.',
+            'Pet & Animal': 'Pet and animal trade shows connect pet product manufacturers, veterinary suppliers, and animal care professionals with retailers and distributors. The pet industry is one of the fastest-growing consumer sectors, and these events drive the product launches and partnerships that fuel it.',
+            'Real Estate': 'Real estate trade shows bring together developers, investors, brokers, property managers, and proptech companies. From commercial real estate to residential markets, these events are where deals get made and industry trends are set.',
+            'Business & Trade': 'Business and trade shows serve as broad platforms for B2B commerce, connecting companies across industries with potential partners, suppliers, and customers. These events range from general business expos to specialized trade fairs focused on specific sectors or regions.'
+        };
+
+        // Parse category from URL
+        var path = window.location.pathname;
+        var match = path.match(/\/best-trade-shows\/([^\/]+?)(?:\.html)?$/);
+        var categorySlug = match ? match[1] : '';
+
+        // Build category navigation
+        var navHtml = '';
+        var slugs = Object.keys(CATEGORIES);
+        for (var n = 0; n < slugs.length; n++) {
+            var s = slugs[n];
+            var isActive = s === categorySlug ? ' active' : '';
+            navHtml += '<a href="/best-trade-shows/' + s + '" class="' + isActive + '">' + CATEGORIES[s].name + '</a>';
+        }
+        document.getElementById('categoryNav').innerHTML = navHtml;
+
+        if (!categorySlug || !CATEGORIES[categorySlug]) {
+            document.getElementById('page-content').innerHTML = '<div style="text-align:center;padding:4rem 2rem"><h2 style="font-size:1.5rem;color:#0a0a0a;margin-bottom:1rem">Best Trade Shows by Industry</h2><p style="color:#64748b;margin-bottom:2rem">Select an industry from the navigation above to see the top trade shows.</p></div>';
+            document.title = 'Best Trade Shows by Industry 2026 - ShowFloorTips';
+            return;
+        }
+
+        if (typeof SHOWS_DATA === 'undefined') {
+            document.getElementById('page-content').innerHTML = '<div style="text-align:center;padding:4rem 2rem;color:#64748b">Loading show data...</div>';
+            return;
+        }
+
+        var cat = CATEGORIES[categorySlug];
+        var catName = cat.name;
+
+        // Filter shows by category
+        var shows = [];
+        for (var i = 0; i < SHOWS_DATA.length; i++) {
+            if (SHOWS_DATA[i].category === catName) {
+                shows.push(SHOWS_DATA[i]);
+            }
+        }
+
+        // Sort: shows with attendees first (by attendee count desc), then alphabetical
+        shows.sort(function(a, b) {
+            var numA = parseInt(String(a.attendees || '0').replace(/[^0-9]/g, ''), 10) || 0;
+            var numB = parseInt(String(b.attendees || '0').replace(/[^0-9]/g, ''), 10) || 0;
+            if (numA !== numB) return numB - numA;
+            return a.title.localeCompare(b.title);
+        });
+
+        // Page meta
+        document.title = 'Best ' + catName + ' Trade Shows 2026 | Top ' + shows.length + ' ' + catName + ' Expos - ShowFloorTips';
+        var metaDesc = document.createElement('meta');
+        metaDesc.name = 'description';
+        metaDesc.content = 'Discover the best ' + catName.toLowerCase() + ' trade shows and exhibitions for 2026. Browse ' + shows.length + ' upcoming ' + catName.toLowerCase() + ' expos worldwide with dates, venues, exhibitor tips, and booth pricing.';
+        document.head.appendChild(metaDesc);
+
+        var canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = 'https://showfloortips.com/best-trade-shows/' + categorySlug;
+        document.head.appendChild(canonical);
+
+        // Schema.org ItemList
+        var schemaItems = [];
+        var schemaCount = Math.min(shows.length, 50);
+        for (var si = 0; si < schemaCount; si++) {
+            var ss = shows[si];
+            var eventSchema = {
+                '@type': 'ListItem',
+                'position': si + 1,
+                'item': {
+                    '@type': 'Event',
+                    'name': ss.title,
+                    'url': 'https://showfloortips.com/shows/' + ss.slug,
+                    'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+                    'eventStatus': 'https://schema.org/EventScheduled'
+                }
+            };
+            if (ss.sort_date) eventSchema.item.startDate = ss.sort_date;
+            if (ss.city || ss.country) {
+                eventSchema.item.location = {
+                    '@type': 'Place',
+                    'name': ss.venue || ss.city || '',
+                    'address': {
+                        '@type': 'PostalAddress',
+                        'addressLocality': ss.city || '',
+                        'addressRegion': ss.state || '',
+                        'addressCountry': ss.country || ''
+                    }
+                };
+            }
+            if (ss.image) eventSchema.item.image = ss.image;
+            schemaItems.push(eventSchema);
+        }
+
+        var schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            'name': 'Best ' + catName + ' Trade Shows 2026',
+            'description': 'Top ' + catName.toLowerCase() + ' trade shows and exhibitions worldwide',
+            'numberOfItems': shows.length,
+            'itemListElement': schemaItems
+        });
+        document.head.appendChild(schemaScript);
+
+        // Count unique countries and cities
+        var countriesSet = {};
+        var citiesSet = {};
+        for (var cs = 0; cs < shows.length; cs++) {
+            if (shows[cs].country) countriesSet[shows[cs].country] = 1;
+            if (shows[cs].city) citiesSet[shows[cs].city] = 1;
+        }
+        var countryCount = Object.keys(countriesSet).length;
+        var cityCount = Object.keys(citiesSet).length;
+
+        // Build hero
+        var html = '<div class="best-hero">';
+        html += '<h1>Best ' + catName + ' Trade Shows 2026</h1>';
+        html += '<p>' + (INTROS[catName] ? INTROS[catName].substring(0, 180) + '...' : 'Discover the top ' + catName.toLowerCase() + ' exhibitions and expos happening worldwide.') + '</p>';
+        html += '<div class="hero-stats">';
+        html += '<div class="hero-stat"><div class="hero-stat-num">' + shows.length.toLocaleString() + '</div><div class="hero-stat-label">Shows</div></div>';
+        html += '<div class="hero-stat"><div class="hero-stat-num">' + countryCount + '</div><div class="hero-stat-label">Countries</div></div>';
+        html += '<div class="hero-stat"><div class="hero-stat-num">' + cityCount + '</div><div class="hero-stat-label">Cities</div></div>';
+        html += '</div></div>';
+
+        // Intro
+        html += '<div class="best-content">';
+        if (INTROS[catName]) {
+            html += '<div class="best-intro">' + INTROS[catName] + '</div>';
+        }
+
+        // Cards
+        var INITIAL_COUNT = 50;
+        html += '<h2 style="font-size:1.4rem;font-weight:700;color:#0a0a0a;margin-bottom:1.25rem">Top ' + catName + ' Trade Shows, Ranked by Size</h2>';
+        html += '<div class="best-grid" id="showGrid">';
+
+        var renderCount = Math.min(shows.length, INITIAL_COUNT);
+        for (var c = 0; c < renderCount; c++) {
+            html += buildCard(shows[c], c);
+        }
+        html += '</div>';
+
+        // Load more
+        if (shows.length > INITIAL_COUNT) {
+            html += '<div class="load-more-container"><button class="load-more-btn" id="loadMoreBtn">Show More (' + (shows.length - INITIAL_COUNT) + ' remaining)</button></div>';
+        }
+
+        // Scannly CTA
+        html += '<div class="scannly-cta">';
+        html += '<h3>Exhibiting at a ' + catName + ' Trade Show?</h3>';
+        html += '<p>Capture every lead at your booth with Scannly. Scan badges, share contact info via QR code, and export leads instantly.</p>';
+        html += '<a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener">Download Scannly Free</a>';
+        html += '</div>';
+
+        html += '</div>'; // close best-content
+
+        document.getElementById('page-content').innerHTML = html;
+
+        // Load more functionality
+        var currentVisible = INITIAL_COUNT;
+        var loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                var grid = document.getElementById('showGrid');
+                var nextBatch = Math.min(currentVisible + 50, shows.length);
+                var fragment = '';
+                for (var lb = currentVisible; lb < nextBatch; lb++) {
+                    fragment += buildCard(shows[lb], lb);
+                }
+                grid.insertAdjacentHTML('beforeend', fragment);
+                currentVisible = nextBatch;
+                if (currentVisible >= shows.length) {
+                    loadMoreBtn.parentElement.style.display = 'none';
+                } else {
+                    loadMoreBtn.textContent = 'Show More (' + (shows.length - currentVisible) + ' remaining)';
+                }
+            });
+        }
+
+        function buildCard(show, index) {
+            var loc = show.city || '';
+            if (show.state) loc += ', ' + show.state;
+            if (show.country && show.country !== 'United States') {
+                loc = show.city || '';
+                if (show.country) loc += ', ' + show.country;
+            }
+
+            var c = '<div class="best-card">';
+            c += '<div class="best-rank">' + (index + 1) + '</div>';
+            c += '<div class="best-card-body">';
+            c += '<h3><a href="/shows/' + show.slug + '">' + escapeHtml(show.title) + '</a></h3>';
+            c += '<div class="best-card-meta">';
+            if (show.date) c += '<span class="best-card-tag">📅 ' + escapeHtml(show.date) + '</span>';
+            if (loc) c += '<span class="best-card-tag">📍 ' + escapeHtml(loc) + '</span>';
+            if (show.exhibitors) c += '<span class="best-card-tag">🏢 ' + escapeHtml(show.exhibitors) + ' exhibitors</span>';
+            c += '</div>';
+            if (show.description) {
+                var desc = show.description.length > 160 ? show.description.substring(0, 157) + '...' : show.description;
+                c += '<div class="best-card-desc">' + escapeHtml(desc) + '</div>';
+            }
+            c += '</div>';
+            c += '<div class="best-card-action">';
+            if (show.attendees) c += '<span class="card-attendees">👥 ' + escapeHtml(show.attendees) + '</span>';
+            c += '<a href="/shows/' + show.slug + '" class="btn-view">View Details</a>';
+            c += '</div>';
+            c += '</div>';
+            return c;
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+    })();
+    </script>
+</body>
+</html>
