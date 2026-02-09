@@ -3,214 +3,520 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trade Show Products & Supplies - ShowFloorTips</title>
-    <meta name="description" content="1,000+ curated trade show products across 25 categories. Displays, giveaways, lead capture tech, booth accessories, lighting, furniture, and more.">
-    <meta name="keywords" content="trade show products, trade show supplies, trade show displays, trade show giveaways, booth accessories, lead capture, exhibitor supplies 2026">
+    <title>Trade Show Products & Supplies | ShowFloorTips</title>
+    <meta name="description" content="Curated trade show products, supplies, and exhibitor essentials. Lead capture apps, booth accessories, displays, giveaways, and more from trusted sources.">
+    <meta name="keywords" content="trade show products, trade show supplies, exhibitor essentials, booth accessories, trade show displays, promotional giveaways, lead capture">
 
-    <meta property="og:title" content="Trade Show Products & Supplies - ShowFloorTips">
-    <meta property="og:description" content="1,000+ curated trade show products across 25 categories. Everything you need for your next trade show.">
+    <meta property="og:title" content="Trade Show Products & Supplies | ShowFloorTips">
+    <meta property="og:description" content="Curated trade show products and exhibitor essentials from trusted sources.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://showfloortips.com/products.html">
     <meta name="twitter:card" content="summary_large_image">
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Trade Show Products & Supplies",
-        "description": "1,000+ curated trade show products across 25 categories",
-        "url": "https://showfloortips.com/products.html",
-        "publisher": {
-            "@type": "Organization",
-            "name": "ShowFloorTips",
-            "url": "https://showfloortips.com"
-        }
-    }
-    </script>
 
     <link rel="stylesheet" href="/styles.css">
     <link rel="canonical" href="https://showfloortips.com/products.html">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ---- Products Page Specific Styles ---- */
+        /* ===== PAGE-SPECIFIC STYLES ===== */
+
+        /* Hero */
         .products-hero {
-            position: relative;
-            background: var(--gray-50);
-            overflow: hidden;
-            padding: 4rem 2rem 3rem;
-        }
-        .products-hero-content {
-            position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
+            padding: 100px 24px 60px;
             text-align: center;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
         }
         .products-hero h1 {
-            font-size: 2.75rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            color: var(--black);
+            color: #0a0a0a;
+            margin: 0 0 12px;
             letter-spacing: -0.03em;
             line-height: 1.1;
-            margin-bottom: 0.75rem;
         }
         .products-hero .subtitle {
             font-size: 1.1rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            color: #6b7280;
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
         }
 
-        /* Products Search */
-        .products-search {
-            max-width: 1280px;
+        /* ===== OUR PRODUCTS (FEATURED) ===== */
+        .our-products-section {
+            padding: 64px 24px 48px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 2rem 0;
         }
-
-        /* Category Filter */
-        .products-filters {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem 0;
+        .our-products-heading {
+            text-align: center;
+            margin-bottom: 36px;
         }
-        .products-filter-bar {
+        .our-products-heading .overline {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.06);
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .our-products-heading h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .featured-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 36px 32px;
+            position: relative;
+            transition: box-shadow 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .featured-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+        .featured-card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #16a34a;
+            background: rgba(22, 163, 74, 0.06);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        .featured-card-badge svg {
+            width: 12px;
+            height: 12px;
+            flex-shrink: 0;
+        }
+        .featured-icon {
+            width: 56px;
+            height: 56px;
+            background: #f3f4f6;
+            border-radius: 14px;
             display: flex;
-            gap: 0.5rem;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        .products-filter-bar::-webkit-scrollbar {
+        .featured-icon svg {
+            width: 28px;
+            height: 28px;
+            color: #0a0a0a;
+        }
+        .featured-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 0 0 10px;
+            letter-spacing: -0.01em;
+        }
+        .featured-card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.65;
+            margin: 0 0 24px;
+        }
+        .featured-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .featured-btn-dark {
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .featured-btn-dark:hover {
+            background: #1f2937;
+        }
+        .featured-btn-outline {
+            background: #fff;
+            color: #0a0a0a;
+            border: 1.5px solid #e5e5e5;
+        }
+        .featured-btn-outline:hover {
+            border-color: #0a0a0a;
+            background: #fafafa;
+        }
+        .featured-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ===== RECOMMENDED SUPPLIES ===== */
+        .supplies-section {
+            padding: 48px 24px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .supplies-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .supplies-header .overline {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        .supplies-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 0 0 6px;
+            letter-spacing: -0.02em;
+        }
+        .supplies-header p {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            margin: 0;
+        }
+
+        /* Search */
+        .products-search-wrap {
+            max-width: 480px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+        .products-search-wrap svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            color: #9ca3af;
+            pointer-events: none;
+        }
+        .products-search {
+            width: 100%;
+            padding: 13px 16px 13px 46px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #0a0a0a;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .products-search:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        }
+        .products-search::placeholder {
+            color: #9ca3af;
+        }
+
+        /* Filter Pills */
+        .filter-pills-wrap {
+            position: relative;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        .filter-pills-scroll {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 4px 2px 12px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+        .filter-pills-scroll::-webkit-scrollbar {
             display: none;
         }
-
-        /* Products Section */
-        .products-listing {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .products-listing-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        .products-count {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+        .filter-pill-btn {
+            flex-shrink: 0;
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid #e5e5e5;
+            background: #fff;
+            color: #6b7280;
+            font-size: 0.8rem;
             font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .filter-pill-btn:hover {
+            border-color: #d1d5db;
+            color: #0a0a0a;
+            background: #f9fafb;
+        }
+        .filter-pill-btn.active {
+            background: #0a0a0a;
+            color: #fff;
+            border-color: #0a0a0a;
         }
 
-        /* Product card overrides for listing page */
-        .products-listing .product-card {
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 24px 20px 20px;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
         }
-        .products-listing .product-card .product-card-body {
-            flex: 1;
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateY(-1px);
+        }
+        .product-icon-wrap {
+            width: 48px;
+            height: 48px;
+            background: #f3f4f6;
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            flex-shrink: 0;
         }
-        .products-listing .product-card h3 {
+        .product-icon-wrap svg {
+            width: 22px;
+            height: 22px;
+            color: #6b7280;
+        }
+        .product-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            line-height: 1.45;
+            margin: 0 0 8px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 2.8em;
+            min-height: 2.4em;
         }
-        .products-listing .product-card .product-card-footer {
-            margin-top: auto;
+        .product-price {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin: 0 0 16px;
         }
-        .product-card .product-category-badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            border-radius: 50px;
-            font-size: 0.65rem;
+        .product-card .spacer {
+            flex: 1;
+        }
+        .amazon-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            background: #ff9900;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.78rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            color: var(--gray-600);
-            background: var(--gray-100);
-            margin-bottom: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            justify-content: center;
         }
-        .product-card .product-price {
-            font-size: 1.35rem;
-            margin-bottom: 0.75rem;
+        .amazon-btn:hover {
+            background: #e68a00;
         }
-        .product-card .btn {
-            text-align: center;
-        }
-        .product-card .alt-link {
-            display: block;
-            text-align: center;
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 500;
-        }
-        .product-card .alt-link:hover {
-            text-decoration: underline;
+        .amazon-btn svg {
+            width: 14px;
+            height: 14px;
         }
 
-        /* Product Grid 4 columns for this page */
-        .products-listing .product-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
+        /* Load More */
+        .load-more-wrap {
+            text-align: center;
+            margin-bottom: 48px;
         }
-
-        /* Mobile Nav Show State */
-        .nav-links.show {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 64px;
-            left: 0;
-            right: 0;
+        .load-more-btn {
+            padding: 13px 36px;
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
             background: #fff;
-            padding: 1rem 2rem 2rem;
-            border-top: 1px solid #e5e5e5;
-            gap: 1rem;
-            z-index: 999;
+            color: #0a0a0a;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .load-more-btn:hover {
+            border-color: #0a0a0a;
+            background: #fafafa;
+        }
+        .load-more-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
         }
 
-        /* Active nav link */
-        .nav-links .nav-active {
-            color: var(--black);
+        /* Results info */
+        .results-info {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 24px;
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #9ca3af;
+        }
+        .no-results svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+        .no-results h3 {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin: 0 0 8px;
             font-weight: 600;
         }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .products-listing .product-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .no-results p {
+            font-size: 0.85rem;
+            margin: 0;
         }
-        @media (max-width: 768px) {
+
+        /* Disclaimer */
+        .affiliate-disclaimer {
+            text-align: center;
+            padding: 24px 20px;
+            border-top: 1px solid #e5e5e5;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .affiliate-disclaimer p {
+            font-size: 0.72rem;
+            color: #9ca3af;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: #e5e5e5;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
             .products-hero h1 {
                 font-size: 2rem;
             }
-            .products-listing .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .products-filter-bar {
-                justify-content: flex-start;
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
         }
-        @media (max-width: 480px) {
-            .products-listing .product-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 540px) {
+            .products-hero {
+                padding: 90px 20px 48px;
             }
             .products-hero h1 {
-                font-size: 1.75rem;
+                font-size: 1.65rem;
+            }
+            .products-hero .subtitle {
+                font-size: 0.95rem;
+            }
+            .our-products-section {
+                padding: 48px 16px 36px;
+            }
+            .featured-card {
+                padding: 28px 24px;
+            }
+            .supplies-section {
+                padding: 36px 16px 60px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .product-card {
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                padding: 16px;
+                gap: 0;
+            }
+            .product-icon-wrap {
+                margin-bottom: 0;
+                margin-right: 14px;
+                width: 44px;
+                height: 44px;
+            }
+            .product-card .product-info-inline {
+                flex: 1;
+                min-width: 0;
+            }
+            .product-name {
+                margin-bottom: 4px;
+                min-height: auto;
+            }
+            .product-price {
+                margin-bottom: 0;
+            }
+            .product-card .spacer {
+                display: none;
+            }
+            .amazon-btn {
+                margin-top: 12px;
             }
         }
     </style>
@@ -226,45 +532,103 @@
                     <li><a href="/#shows">Trade Shows</a></li>
                     <li><a href="/news.html">News</a></li>
                     <li><a href="/roi-calculator.html">ROI Calculator</a></li>
-                    <li><a href="/products.html" class="nav-active">Products</a></li>
+                    <li><a href="/products.html" class="active">Products</a></li>
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
         </div>
     </header>
 
     <!-- Hero -->
     <section class="products-hero">
-        <div class="products-hero-content">
-            <h1>Trade Show Products &amp; Supplies</h1>
-            <p class="subtitle">1,000+ curated products across 25 categories. Everything you need for your next trade show.</p>
+        <h1>Trade Show Products &amp; Supplies</h1>
+        <p class="subtitle">Everything you need to exhibit like a pro. Our own tools plus hand-picked supplies from trusted sellers.</p>
+    </section>
+
+    <!-- Our Products -->
+    <section class="our-products-section">
+        <div class="our-products-heading">
+            <span class="overline">ShowFloorTips</span>
+            <h2>Our Products</h2>
+        </div>
+        <div class="featured-grid">
+            <!-- Scannly Card -->
+            <div class="featured-card">
+                <div class="featured-card-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Official
+                </div>
+                <div class="featured-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                        <line x1="12" y1="18" x2="12" y2="18.01"/>
+                        <path d="M9 8h1M14 8h1M9 11h1M14 11h1M9 14h1"/>
+                    </svg>
+                </div>
+                <h3>Scannly &mdash; Lead Capture App</h3>
+                <p>Scan badges, collect leads, and export contacts instantly at any trade show. Available on iOS.</p>
+                <a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener" class="featured-btn featured-btn-dark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    Download Scannly
+                </a>
+            </div>
+
         </div>
     </section>
 
-    <!-- Search -->
-    <div class="products-search">
-        <div class="search-container">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="productSearchInput" placeholder="Search products by name, category, or keyword..." autocomplete="off">
-        </div>
-    </div>
+    <div class="section-divider"></div>
 
-    <!-- Category Filter -->
-    <div class="products-filters">
-        <div class="products-filter-bar" id="categoryFilterBar">
-            <button class="filter-pill active" data-category="all">All Products</button>
+    <!-- Recommended Supplies -->
+    <section class="supplies-section">
+        <div class="supplies-header">
+            <div class="overline">Curated for Exhibitors</div>
+            <h2>Recommended Supplies</h2>
+            <p>Hand-picked products to help you prepare for your next show</p>
         </div>
-    </div>
 
-    <!-- Products Grid -->
-    <section class="products-listing">
-        <div class="products-listing-header">
-            <span class="products-count" id="productsCount">Loading products...</span>
+        <!-- Search -->
+        <div class="products-search-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="products-search" id="productSearch" placeholder="Search products..." autocomplete="off">
         </div>
-        <div class="product-grid" id="productsGrid"></div>
-        <div class="load-more-container" id="loadMoreContainer" style="display:none">
-            <button class="load-more-btn" id="loadMoreBtn">Load More Products</button>
+
+        <!-- Filter Pills -->
+        <div class="filter-pills-wrap">
+            <div class="filter-pills-scroll" id="filterPills">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="results-info" id="resultsInfo"></div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <h3>No products found</h3>
+            <p>Try a different search term or category.</p>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-wrap" id="loadMoreWrap">
+            <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">Load More Products</button>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="affiliate-disclaimer">
+            <p>As an Amazon Associate, ShowFloorTips earns from qualifying purchases. Product prices and availability are subject to change. Prices displayed are approximate at time of listing and may not reflect current Amazon pricing.</p>
         </div>
     </section>
 
@@ -274,33 +638,33 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="logo">ShowFloorTips</div>
-                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                    <p>The world's most comprehensive trade show database. Expert intelligence and resources for exhibitors across 93 countries.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="/#shows">Trade Shows</a></li>
-                        <li><a href="/news.html">Industry News</a></li>
-                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
                         <li><a href="/products.html">Products</a></li>
+                        <li><a href="/news.html">News</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Tools</h4>
                     <ul>
                         <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
-                        <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
+                        <li><a href="/affiliates.html">Affiliate Picks</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Top Categories</h4>
+                    <h4>Top Industries</h4>
                     <ul>
-                        <li><a href="#" onclick="filterByCategory('trade_show_displays');return false">Displays</a></li>
-                        <li><a href="#" onclick="filterByCategory('trade_show_giveaways');return false">Giveaways</a></li>
-                        <li><a href="#" onclick="filterByCategory('lead_capture_tech');return false">Lead Capture</a></li>
-                        <li><a href="#" onclick="filterByCategory('booth_accessories');return false">Booth Accessories</a></li>
-                        <li><a href="#" onclick="filterByCategory('lighting_electrical');return false">Lighting</a></li>
-                        <li><a href="#" onclick="filterByCategory('tech_gadgets_phone');return false">Tech Gadgets</a></li>
+                        <li><a href="/technology-trade-shows.html">Technology</a></li>
+                        <li><a href="/healthcare-trade-shows.html">Healthcare</a></li>
+                        <li><a href="/construction-trade-shows.html">Construction</a></li>
+                        <li><a href="/manufacturing-trade-shows.html">Manufacturing</a></li>
+                        <li><a href="/energy-trade-shows.html">Energy</a></li>
+                        <li><a href="/food-beverage-trade-shows.html">Food & Beverage</a></li>
                     </ul>
                 </div>
             </div>
@@ -315,42 +679,44 @@
     (function() {
         'use strict';
 
-        var ITEMS_PER_PAGE = 40;
-        var allProducts = [];
-        var filteredProducts = [];
-        var visibleCount = ITEMS_PER_PAGE;
-        var currentCategory = 'all';
-        var currentSearch = '';
+        const ITEMS_PER_PAGE = 20;
+        let allProducts = [];
+        let filteredProducts = [];
+        let visibleCount = ITEMS_PER_PAGE;
+        let activeCategory = 'all';
+        let searchQuery = '';
 
-        var categoryLabels = {
-            trade_show_displays: 'Trade Show Displays',
-            trade_show_giveaways: 'Trade Show Giveaways',
-            lead_capture_tech: 'Lead Capture Tech',
-            booth_accessories: 'Booth Accessories',
-            lighting_electrical: 'Lighting & Electrical',
-            furniture_seating: 'Furniture & Seating',
-            flooring_mats: 'Flooring & Mats',
-            shipping_transport: 'Shipping & Transport',
-            audio_visual: 'Audio Visual',
-            printing_signage: 'Printing & Signage',
-            promotional_apparel: 'Promotional Apparel',
-            drinkware_bottles: 'Drinkware & Bottles',
-            bags_totes: 'Bags & Totes',
-            office_writing: 'Office & Writing',
-            health_safety_wellness: 'Health, Safety & Wellness',
-            food_service_hospitality: 'Food Service & Hospitality',
-            eco_friendly_sustainable: 'Eco-Friendly & Sustainable',
-            tech_gadgets_phone: 'Tech Gadgets & Phone',
-            photography_video: 'Photography & Video',
-            badges_credentials: 'Badges & Credentials',
-            storage_organization: 'Storage & Organization',
-            outdoor_event_canopies: 'Outdoor Event & Canopies',
-            premium_executive_gifts: 'Premium Executive Gifts',
-            novelty_fun_promotional: 'Novelty & Fun Promotional',
-            cleaning_maintenance: 'Cleaning & Maintenance'
+        // Category SVG icons mapped by slug
+        const categoryIcons = {
+            trade_show_displays: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+            trade_show_giveaways: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>',
+            lead_capture_tech: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="4" height="4"/><line x1="21" y1="14" x2="21" y2="14.01"/><line x1="21" y1="21" x2="21" y2="21.01"/><line x1="14" y1="21" x2="14" y2="21.01"/></svg>',
+            booth_accessories: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
+            lighting_electrical: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0018 8 6 6 0 006 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 018.91 14"/></svg>',
+            furniture_seating: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 00-2-2H7a2 2 0 00-2 2v3"/><path d="M3 11v5a2 2 0 002 2h14a2 2 0 002-2v-5a2 2 0 00-4 0H7a2 2 0 00-4 0z"/><line x1="5" y1="18" x2="5" y2="21"/><line x1="19" y1="18" x2="19" y2="21"/></svg>',
+            flooring_mats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>',
+            shipping_transport: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+            audio_visual: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>',
+            printing_signage: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="1"/><line x1="6" y1="8" x2="18" y2="8"/><line x1="6" y1="11" x2="14" y2="11"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>',
+            promotional_apparel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2 12 5 8 2 3.62 3.46a1 1 0 00-.66.83L2 11l4 1v8a1 1 0 001 1h10a1 1 0 001-1v-8l4-1-.96-6.71a1 1 0 00-.66-.83z"/></svg>',
+            drinkware_bottles: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
+            bags_totes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
+            office_writing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="3" x2="21" y2="3"/><line x1="19" y1="1" x2="19" y2="5"/><path d="M12 21l-1.45-3.15L4 16l8-3.85L12 3l1.45 9.15L22 16l-8.55 1.85z"/></svg>',
+            health_safety_wellness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>',
+            food_service_hospitality: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+            eco_friendly_sustainable: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 018 20c4 0 5-5 5-5s2 .5 5-2c1.5-1.5 2-5 2-5s-5 .5-6.5 2z"/><path d="M2 2s7 3 7 8"/></svg>',
+            tech_gadgets_phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>',
+            photography_video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+            badges_credentials: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><circle cx="12" cy="13" r="3"/><line x1="8" y1="18" x2="16" y2="18"/></svg>',
+            storage_organization: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>',
+            outdoor_event_canopies: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10L12 2l9 8"/><line x1="5" y1="10" x2="5" y2="20"/><line x1="19" y1="10" x2="19" y2="20"/><line x1="3" y1="20" x2="21" y2="20"/><line x1="12" y1="10" x2="12" y2="20"/></svg>',
+            premium_executive_gifts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+            novelty_fun_promotional: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+            cleaning_maintenance: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v4.5"/><path d="M7 6.5h6a1 1 0 011 1V10a5 5 0 01-10 0V7.5a1 1 0 011-1h2z"/><path d="M10 15v7"/><path d="M7 22h6"/><path d="M14 5l2-2"/><path d="M15 8h2"/></svg>'
         };
 
-        var categoryShortLabels = {
+        // Short display labels for filter pills
+        const categoryLabels = {
             trade_show_displays: 'Displays',
             trade_show_giveaways: 'Giveaways',
             lead_capture_tech: 'Lead Capture',
@@ -359,17 +725,17 @@
             furniture_seating: 'Furniture',
             flooring_mats: 'Flooring',
             shipping_transport: 'Shipping',
-            audio_visual: 'Audio Visual',
+            audio_visual: 'Audio/Visual',
             printing_signage: 'Signage',
             promotional_apparel: 'Apparel',
             drinkware_bottles: 'Drinkware',
             bags_totes: 'Bags & Totes',
-            office_writing: 'Office',
+            office_writing: 'Office & Writing',
             health_safety_wellness: 'Health & Safety',
             food_service_hospitality: 'Food Service',
             eco_friendly_sustainable: 'Eco-Friendly',
             tech_gadgets_phone: 'Tech Gadgets',
-            photography_video: 'Photo & Video',
+            photography_video: 'Photography',
             badges_credentials: 'Badges',
             storage_organization: 'Storage',
             outdoor_event_canopies: 'Outdoor & Canopies',
@@ -378,211 +744,165 @@
             cleaning_maintenance: 'Cleaning'
         };
 
-        function init() {
-            fetch('/products_data.json')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    allProducts = flattenData(data);
-                    buildCategoryPills(data);
-                    applyFilters();
-                    bindEvents();
-                })
-                .catch(function(err) {
-                    console.error('Failed to load products:', err);
-                    document.getElementById('productsCount').textContent = 'Failed to load products. Please try again later.';
-                });
+        function getCategoryIcon(cat) {
+            return categoryIcons[cat] || '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>';
         }
 
-        function flattenData(data) {
-            var products = [];
-            var categoryKeys = Object.keys(data);
-            for (var i = 0; i < categoryKeys.length; i++) {
-                var catKey = categoryKeys[i];
-                var items = data[catKey];
-                if (!Array.isArray(items)) continue;
-                for (var j = 0; j < items.length; j++) {
-                    var item = items[j];
-                    item._category = catKey;
-                    item._categoryLabel = categoryLabels[catKey] || catKey;
-                    products.push(item);
+        // Parse products_data.json
+        async function loadProducts() {
+            try {
+                const resp = await fetch('/products_data.json');
+                const data = await resp.json();
+
+                const categories = [];
+                allProducts = [];
+
+                // Extract category keys and flatten items
+                for (const key of Object.keys(data)) {
+                    if (!key.startsWith('category_')) continue;
+                    if (!Array.isArray(data[key])) continue;
+
+                    // Extract slug: "category_1_trade_show_displays" -> "trade_show_displays"
+                    const slug = key.replace(/^category_\d+_/, '');
+                    categories.push(slug);
+
+                    for (const item of data[key]) {
+                        allProducts.push({
+                            ...item,
+                            _category: slug
+                        });
+                    }
                 }
-            }
-            return products;
-        }
 
-        function buildCategoryPills(data) {
-            var bar = document.getElementById('categoryFilterBar');
-            var categoryKeys = Object.keys(categoryLabels);
-            for (var i = 0; i < categoryKeys.length; i++) {
-                var key = categoryKeys[i];
-                if (!data[key]) continue;
-                var btn = document.createElement('button');
-                btn.className = 'filter-pill';
-                btn.setAttribute('data-category', key);
-                btn.textContent = categoryShortLabels[key] || categoryLabels[key];
-                bar.appendChild(btn);
-            }
-        }
-
-        function bindEvents() {
-            // Search
-            var searchInput = document.getElementById('productSearchInput');
-            var debounceTimer;
-            searchInput.addEventListener('input', function() {
-                clearTimeout(debounceTimer);
-                debounceTimer = setTimeout(function() {
-                    currentSearch = searchInput.value.trim().toLowerCase();
-                    visibleCount = ITEMS_PER_PAGE;
-                    applyFilters();
-                }, 250);
-            });
-
-            // Category pills
-            var filterBar = document.getElementById('categoryFilterBar');
-            filterBar.addEventListener('click', function(e) {
-                var pill = e.target.closest('.filter-pill');
-                if (!pill) return;
-                var pills = filterBar.querySelectorAll('.filter-pill');
-                for (var i = 0; i < pills.length; i++) {
-                    pills[i].classList.remove('active');
-                }
-                pill.classList.add('active');
-                currentCategory = pill.getAttribute('data-category');
-                visibleCount = ITEMS_PER_PAGE;
+                buildFilterPills(categories);
                 applyFilters();
+            } catch (err) {
+                console.error('Failed to load products:', err);
+                document.getElementById('productGrid').innerHTML = '<p style="text-align:center;color:#9ca3af;grid-column:1/-1;padding:40px 0;">Failed to load products. Please try again later.</p>';
+            }
+        }
+
+        function buildFilterPills(categories) {
+            const wrap = document.getElementById('filterPills');
+            let html = '<button class="filter-pill-btn active" data-cat="all" onclick="setFilter(\'all\')">All</button>';
+            for (const cat of categories) {
+                const label = categoryLabels[cat] || cat.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+                html += '<button class="filter-pill-btn" data-cat="' + cat + '" onclick="setFilter(\'' + cat + '\')">' + label + '</button>';
+            }
+            wrap.innerHTML = html;
+        }
+
+        window.setFilter = function(cat) {
+            activeCategory = cat;
+            visibleCount = ITEMS_PER_PAGE;
+            document.querySelectorAll('.filter-pill-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.cat === cat);
             });
 
-            // Load more
-            document.getElementById('loadMoreBtn').addEventListener('click', function() {
-                visibleCount += ITEMS_PER_PAGE;
-                renderProducts();
-            });
-        }
+            // Scroll the active pill into view
+            const activeBtn = document.querySelector('.filter-pill-btn.active');
+            if (activeBtn) {
+                activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+
+            applyFilters();
+        };
 
         function applyFilters() {
-            filteredProducts = allProducts.filter(function(item) {
+            const q = searchQuery.toLowerCase().trim();
+
+            filteredProducts = allProducts.filter(item => {
                 // Category filter
-                if (currentCategory !== 'all' && item._category !== currentCategory) {
-                    return false;
-                }
+                if (activeCategory !== 'all' && item._category !== activeCategory) return false;
+
                 // Search filter
-                if (currentSearch) {
-                    var haystack = (
-                        (item.product_name || '') + ' ' +
-                        (item.search_query || '') + ' ' +
-                        (item._categoryLabel || '')
-                    ).toLowerCase();
-                    var terms = currentSearch.split(/\s+/);
-                    for (var t = 0; t < terms.length; t++) {
-                        if (haystack.indexOf(terms[t]) === -1) return false;
-                    }
+                if (q) {
+                    const haystack = (item.product_name + ' ' + item.search_query + ' ' + (categoryLabels[item._category] || item._category)).toLowerCase();
+                    return haystack.includes(q);
                 }
                 return true;
             });
+
             renderProducts();
         }
 
         function renderProducts() {
-            var grid = document.getElementById('productsGrid');
-            var visible = filteredProducts.slice(0, visibleCount);
+            const grid = document.getElementById('productGrid');
+            const noResults = document.getElementById('noResults');
+            const loadMoreWrap = document.getElementById('loadMoreWrap');
+            const resultsInfo = document.getElementById('resultsInfo');
 
-            if (visible.length === 0) {
-                grid.innerHTML = '<div class="no-results"><h3>No products found</h3><p>Try adjusting your search or category filter.</p></div>';
-                document.getElementById('productsCount').textContent = 'Showing 0 of 0 products';
-                document.getElementById('loadMoreContainer').style.display = 'none';
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                loadMoreWrap.style.display = 'none';
+                resultsInfo.textContent = '';
                 return;
             }
 
-            var html = '';
-            for (var i = 0; i < visible.length; i++) {
-                var p = visible[i];
-                var price = p.approx_price || '';
-                var priceDisplay = price;
-                if (price && typeof price === 'string' && price.charAt(0) !== '$') {
-                    priceDisplay = '$' + price;
-                } else if (typeof price === 'number') {
-                    priceDisplay = '$' + price.toFixed(2);
-                }
-                var name = escapeHtml(p.product_name || p.search_query || 'Trade Show Product');
-                var categoryBadge = categoryShortLabels[p._category] || p._categoryLabel || '';
-                var url = p.url || '#';
-                var altUrl = p.alt_url || '';
-                var altProduct = p.alt_product || '';
+            noResults.style.display = 'none';
+            const visible = filteredProducts.slice(0, visibleCount);
 
-                html += '<div class="product-card">';
-                html += '<div class="product-card-body">';
-                html += '<span class="product-category-badge">' + escapeHtml(categoryBadge) + '</span>';
-                html += '<h3>' + name + '</h3>';
-                if (priceDisplay) {
-                    html += '<span class="product-price">' + escapeHtml(priceDisplay) + '</span>';
-                }
-                html += '<div class="product-card-footer">';
-                html += '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View on Amazon</a>';
-                if (altUrl && altProduct) {
-                    html += '<a href="' + escapeAttr(altUrl) + '" target="_blank" rel="noopener noreferrer" class="alt-link">Alt: ' + escapeHtml(truncate(altProduct, 40)) + '</a>';
-                }
-                html += '</div>';
-                html += '</div>';
-                html += '</div>';
+            let html = '';
+            for (const item of visible) {
+                const icon = getCategoryIcon(item._category);
+                const name = escHtml(item.product_name);
+                const price = escHtml(item.approx_price || '');
+                const url = escHtml(item.url || '#');
+
+                html += '<div class="product-card">' +
+                    '<div class="product-icon-wrap">' + icon + '</div>' +
+                    '<div class="product-info-inline">' +
+                    '<div class="product-name" title="' + name + '">' + name + '</div>' +
+                    '<div class="product-price">' + price + '</div>' +
+                    '</div>' +
+                    '<div class="spacer"></div>' +
+                    '<a href="' + url + '" target="_blank" rel="noopener nofollow" class="amazon-btn">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+                    'View on Amazon</a>' +
+                    '</div>';
             }
-
             grid.innerHTML = html;
 
-            // Update count
-            document.getElementById('productsCount').textContent =
-                'Showing ' + visible.length + ' of ' + filteredProducts.length + ' products';
+            // Results info
+            resultsInfo.textContent = 'Showing ' + visible.length + ' of ' + filteredProducts.length + ' products';
 
             // Load more button
-            var loadMoreContainer = document.getElementById('loadMoreContainer');
-            if (visibleCount < filteredProducts.length) {
-                loadMoreContainer.style.display = '';
+            if (visibleCount >= filteredProducts.length) {
+                loadMoreWrap.style.display = 'none';
             } else {
-                loadMoreContainer.style.display = 'none';
+                loadMoreWrap.style.display = 'block';
             }
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-        }
-
-        function escapeAttr(str) {
-            if (!str) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;');
-        }
-
-        function truncate(str, max) {
-            if (!str) return '';
-            if (str.length <= max) return str;
-            return str.substring(0, max) + '...';
-        }
-
-        // Expose for footer links
-        window.filterByCategory = function(cat) {
-            currentCategory = cat;
-            currentSearch = '';
-            visibleCount = ITEMS_PER_PAGE;
-            document.getElementById('productSearchInput').value = '';
-
-            var pills = document.querySelectorAll('#categoryFilterBar .filter-pill');
-            for (var i = 0; i < pills.length; i++) {
-                pills[i].classList.remove('active');
-                if (pills[i].getAttribute('data-category') === cat) {
-                    pills[i].classList.add('active');
-                }
-            }
-
-            applyFilters();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.loadMore = function() {
+            visibleCount += ITEMS_PER_PAGE;
+            renderProducts();
         };
 
-        init();
+        function escHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Search with debounce
+        let searchTimeout;
+        document.getElementById('productSearch').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(function() {
+                searchQuery = e.target.value;
+                visibleCount = ITEMS_PER_PAGE;
+                applyFilters();
+            }, 250);
+        });
+
+        // Initialize
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadProducts);
+        } else {
+            loadProducts();
+        }
     })();
     </script>
 
