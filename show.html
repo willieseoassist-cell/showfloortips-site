@@ -203,10 +203,10 @@
         if (show.state) loc += ', ' + show.state;
         if (show.country && show.country !== 'United States') loc = show.location + (show.country ? ', ' + show.country : '');
 
-        // Official website links - direct Google search
+        // Official website link - use I'm Feeling Lucky to go directly to site
         var searchTerms = encodeURIComponent(show.title + ' ' + (show.city || '') + ' official site ' + (show.date ? show.date.split(' ').pop() : '2026'));
-        var searchUrl = 'https://www.google.com/search?q=' + searchTerms;
-        var websiteBtn = '<a href="' + searchUrl + '" target="_blank" rel="noopener" class="btn-visit">Find Official Website</a>';
+        var websiteUrl = 'https://www.google.com/search?q=' + searchTerms + '&btnI=1';
+        var websiteBtn = '<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="btn-visit">Visit Official Website</a>';
 
         var infoCards = '';
         if (show.date) infoCards += '<div class="info-card"><h4>Dates</h4><p>' + show.date + '</p></div>';
@@ -219,29 +219,28 @@
         var cityName = show.city || '';
         var venueName = show.venue || '';
 
-        var hotels = '';
+        var hotels = '<div class="section-block"><h2>Nearby Hotels</h2>';
         if (show.hotels && show.hotels.length > 0) {
-            hotels = '<div class="section-block"><h2>Nearby Hotels</h2>';
             for (var h = 0; h < show.hotels.length; h++) {
                 var hotel = show.hotels[h];
                 var hotelPrice = hotel.price_range || hotel.price || '';
                 var bookingUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(hotel.name + ' ' + cityName);
                 hotels += '<div class="hotel-card">';
                 hotels += '<div class="hotel-info"><h4>' + hotel.name + '</h4>';
-                hotels += '<div class="hotel-detail">' + hotel.distance + '</div>';
+                hotels += '<div class="hotel-detail">' + (hotel.distance || 'Near venue') + '</div>';
                 if (hotelPrice) hotels += '<div class="hotel-price">' + hotelPrice + '</div>';
                 hotels += '</div>';
                 hotels += '<a href="' + bookingUrl + '" target="_blank" rel="noopener" class="btn-book">Book Hotel</a>';
                 hotels += '</div>';
             }
-            // General hotel search card
-            var generalBookingUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(venueName + ' ' + cityName);
-            hotels += '<div class="hotel-search-card">';
-            hotels += '<p>Find more hotels near ' + (venueName || cityName) + '</p>';
-            hotels += '<a href="' + generalBookingUrl + '" target="_blank" rel="noopener" class="btn-book">Search All Hotels</a>';
-            hotels += '</div>';
-            hotels += '</div>';
         }
+        // General hotel search card (always shown)
+        var generalBookingUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent((venueName || show.title) + ' ' + cityName);
+        hotels += '<div class="hotel-search-card">';
+        hotels += '<p>Find hotels near ' + (venueName || cityName || show.title) + '</p>';
+        hotels += '<a href="' + generalBookingUrl + '" target="_blank" rel="noopener" class="btn-book">Search All Hotels</a>';
+        hotels += '</div>';
+        hotels += '</div>';
 
         // --- RENTAL CARS SECTION ---
         var rentalCars = '<div class="travel-section"><h2>Rental Cars</h2>';
@@ -367,6 +366,10 @@
             for (var t = 0; t < show.tips.length; t++) {
                 tips += '<div class="tip-item">' + show.tips[t] + '</div>';
             }
+            tips += '<div class="tip-item" style="padding:1rem 0;border-bottom:none">';
+            tips += '<strong>Pro Tip:</strong> Use <a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener" style="color:#6366f1;font-weight:600">Scannly</a> to capture leads instantly at your booth. Scan badges, share contact info via QR code, and export leads in seconds.';
+            tips += ' <a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener" class="btn-scannly" style="display:inline-block;width:auto;padding:0.5rem 1.25rem;margin-top:0.5rem;font-size:0.85rem">Download Scannly</a>';
+            tips += '</div>';
             tips += '</div>';
         }
 
