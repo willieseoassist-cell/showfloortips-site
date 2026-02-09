@@ -20,7 +20,7 @@
   - **Domain:** showfloortips.com (verified, DKIM + SPF confirmed)
   - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
   - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
-- **Data files:** `shows.js` (exhibit records, 29MB, 24,500+ shows), `news.js` (article index, 14MB)
+- **Data files:** `shows.js` (exhibit records, 29MB, 24,615+ shows), `news.js` (article index, 14MB)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -244,6 +244,47 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
   - city-shows.html: Travel guide banner appears on city pages for all 10 guide cities
   - show.html: Travel guide link appears in hotel/travel section for shows in guide cities
 - **Purpose:** Build travel content layer for Travelpayouts/Booking.com affiliate reapplication + Amazon Associates revenue
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
+
+### Feb 9, 2026 — Session 5
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/return-to-office-trade-show-attendance-boom-2026.html` — Return-to-office mandates supercharging trade show attendance
+- `news/ai-infrastructure-boom-reshaping-tech-trade-shows-2026.html` — $2T AI infrastructure boom reshaping every tech show floor
+- `news/space-industry-trade-shows-fastest-growing-2026.html` — Space industry shows are the fastest-growing exhibition sector
+- `news/global-inflation-cooling-exhibitor-budgets-2026.html` — Inflation cooling but exhibitor budgets haven't caught up
+- `news/ev-price-war-auto-trade-shows-2026.html` — EV price war (BYD, Tesla, Chinese OEMs) transforming auto show floors
+
+**Networking Guides (3):**
+- `news/networking-guide-nvidia-gtc-2026.html` — NVIDIA GTC (30K+ AI developers, San Jose, Mar 16-19)
+- `news/networking-guide-nab-show-2026.html` — NAB Show (100K+ media pros, Las Vegas, Apr 12-16)
+- `news/networking-guide-sxsw-2026.html` — SXSW (300K+ attendees, Austin, Mar 12-18)
+
+**Comparison Articles (2):**
+- `news/nab-show-vs-infocomm-comparison.html` — NAB Show (content creators) vs InfoComm (AV integrators)
+- `news/gdc-vs-pax-gaming-shows-comparison.html` — GDC (B2B developers) vs PAX (B2C consumers)
+
+#### New Shows Added to shows.js (15 new, total now 24,615)
+- MJBizCon 2026 (Nov 17, Las Vegas) — Cannabis
+- Hall of Flowers 2026 (Mar 18, Ventura) — Cannabis
+- NECANN Boston 2026 (Apr 24, Boston) — Cannabis
+- Commercial UAV Expo 2026 (Sep 1, Las Vegas) — Drones
+- Money20/20 USA 2026 (Oct 18, Las Vegas) — Fintech
+- FinovateEurope 2026 (Feb 10, London) — Fintech
+- FinTech Americas Miami 2026 (Mar 24, Miami) — Fintech
+- Global Pet Expo 2026 (Mar 25, Orlando) — Pet Industry
+- SuperZoo 2026 (Aug 18, Las Vegas) — Pet Industry
+- Petfood Forum 2026 (Apr 28, Kansas City) — Pet Industry
+- Greenbuild 2026 (Oct 20, New York) — Sustainability
+- GreenTech Amsterdam 2026 (Jun 9, Amsterdam) — Agriculture
+- INTERGEO 2026 (Sep 15, Munich) — Geospatial
+- Climate Technology Show 2026 (Mar 24, London) — Clean Tech
+- World Future Energy Summit 2026 (Jan 13, Abu Dhabi) — Energy
 
 #### Deployment
 - Pushed all changes to GitHub (main branch)
