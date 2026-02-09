@@ -212,12 +212,10 @@
         if (show.state) loc += ', ' + show.state;
         if (show.country && show.country !== 'United States') loc = show.location + (show.country ? ', ' + show.country : '');
 
-        var websiteBtn = '';
-        if (show.website) {
-            websiteBtn = '<a href="' + show.website + '" target="_blank" rel="noopener" class="btn-visit">Visit Official Website</a>';
-        } else if (show.search_url) {
-            websiteBtn = '<a href="' + show.search_url + '" target="_blank" rel="noopener" class="btn-visit">Find Official Website</a>';
-        }
+        // Build a Google search URL so users can find the real official website
+        var searchQuery = encodeURIComponent(show.title + ' ' + (show.city || '') + ' ' + (show.country || '') + ' official website');
+        var googleSearchUrl = 'https://www.google.com/search?q=' + searchQuery;
+        var websiteBtn = '<a href="' + googleSearchUrl + '" target="_blank" rel="noopener" class="btn-visit">Find Official Website</a>';
 
         var infoCards = '';
         if (show.date) infoCards += '<div class="info-card"><h4>Dates</h4><p>' + show.date + '</p></div>';
