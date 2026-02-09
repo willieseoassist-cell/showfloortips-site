@@ -69,15 +69,6 @@
         .transport-card-wide .btn-book { background:#334155 }
 
         /* Product Section */
-        .product-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:0.75rem; margin-bottom:1rem }
-        .product-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; transition:border-color 0.2s, box-shadow 0.2s; display:flex; flex-direction:column; justify-content:space-between }
-        .product-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
-        .product-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.35rem; font-size:0.95rem; line-height:1.3 }
-        .product-card .product-price { font-size:0.9rem; color:#475569; margin-bottom:0.75rem; font-weight:500 }
-        .btn-amazon { display:inline-block; padding:0.6rem 1.25rem; background:#ff9900; color:#fff; border:none; border-radius:8px; font-size:0.85rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s; white-space:nowrap }
-        .btn-amazon:hover { background:#e68a00 }
-        .view-all-products { display:inline-block; margin-top:0.5rem; color:#475569; font-size:0.9rem; font-weight:600; text-decoration:none; transition:color 0.2s }
-        .view-all-products:hover { color:#0a0a0a }
 
         /* Nearby Shows in Sidebar */
         .nearby-show { display:block; padding:0.75rem 0; border-bottom:1px solid #f1f5f9; text-decoration:none; transition:opacity 0.2s }
@@ -91,7 +82,7 @@
             .show-hero h1 { font-size:1.75rem }
             .show-hero { height:260px }
             .transport-grid { grid-template-columns:1fr }
-            .product-grid { grid-template-columns:1fr }
+
             .hotel-card { flex-direction:column; align-items:flex-start }
         }
     </style>
@@ -448,7 +439,6 @@
         html += flightsSection;
 
         // Products placeholder (populated by fetch)
-        html += '<div id="products-section"></div>';
 
         // Tips
         html += tips;
@@ -477,70 +467,6 @@
 
         document.getElementById('show-content').innerHTML = html;
 
-        // --- LOAD PRODUCTS ---
-        (function loadProducts() {
-            var defaultCategories = ['trade_show_displays', 'booth_accessories', 'trade_show_giveaways', 'lead_capture_tech'];
-
-            fetch('/products_data.json')
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    if (!data || !data.categories) return;
-
-                    // Collect products from relevant categories
-                    var allProducts = [];
-                    var cats = data.categories;
-
-                    for (var ci = 0; ci < defaultCategories.length; ci++) {
-                        var catKey = defaultCategories[ci];
-                        if (cats[catKey] && cats[catKey].products) {
-                            for (var pi = 0; pi < cats[catKey].products.length; pi++) {
-                                allProducts.push(cats[catKey].products[pi]);
-                            }
-                        }
-                    }
-
-                    // If we didn't find anything in those categories, try all categories
-                    if (allProducts.length === 0) {
-                        var allKeys = Object.keys(cats);
-                        for (var ak = 0; ak < allKeys.length; ak++) {
-                            if (cats[allKeys[ak]] && cats[allKeys[ak]].products) {
-                                for (var ap = 0; ap < cats[allKeys[ak]].products.length; ap++) {
-                                    allProducts.push(cats[allKeys[ak]].products[ap]);
-                                }
-                            }
-                        }
-                    }
-
-                    if (allProducts.length === 0) return;
-
-                    // Take up to 6 products
-                    var displayProducts = allProducts.slice(0, 6);
-
-                    var prodHtml = '<div class="travel-section"><h2>Recommended Products for ' + (show.category || 'Trade') + ' Shows</h2>';
-                    prodHtml += '<div class="product-grid">';
-
-                    for (var dp = 0; dp < displayProducts.length; dp++) {
-                        var prod = displayProducts[dp];
-                        prodHtml += '<div class="product-card">';
-                        prodHtml += '<div>';
-                        prodHtml += '<h4>' + (prod.name || prod.title || 'Product') + '</h4>';
-                        prodHtml += '<div class="product-price">' + (prod.price || '') + '</div>';
-                        prodHtml += '</div>';
-                        prodHtml += '<a href="' + (prod.url || prod.link || '#') + '" target="_blank" rel="noopener" class="btn-amazon">Shop on Amazon</a>';
-                        prodHtml += '</div>';
-                    }
-
-                    prodHtml += '</div>';
-                    prodHtml += '<a href="/products.html" class="view-all-products">View all products &rarr;</a>';
-                    prodHtml += '</div>';
-
-                    var container = document.getElementById('products-section');
-                    if (container) container.innerHTML = prodHtml;
-                })
-                .catch(function(err) {
-                    // Silently fail - products are optional
-                });
-        })();
     })();
     </script>
 </body>
