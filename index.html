@@ -206,7 +206,7 @@
             <a href="/" class="logo">ShowFloorTips</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#shows">Trade Shows</a></li>
+                    <li><a href="/#shows">Trade Shows</a></li>
                     <li><a href="/news.html">News</a></li>
                     <li><a href="/roi-calculator.html">ROI Calculator</a></li>
                     <li><a href="/products.html">Products</a></li>
@@ -940,17 +940,16 @@
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
             ).join('');
 
-            // Actions - Use Google "I'm Feeling Lucky" to redirect directly to the official website
+            // Actions - Google search to find official website
             const websiteBtn = document.getElementById('modalWebsite');
             const searchBtn = document.getElementById('modalSearchWebsite');
             const searchTerms = show.title + ' ' + (show.city || '') + ' ' + (show.state || show.country || '') + ' official site ' + (show.date ? show.date.split(' ').pop() : '2026');
-            const luckyUrl = 'https://www.google.com/search?btnI=1&q=' + encodeURIComponent(searchTerms);
-            const fallbackUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
+            const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
 
-            websiteBtn.href = luckyUrl;
+            websiteBtn.href = searchUrl;
+            websiteBtn.textContent = 'Find Official Website';
             websiteBtn.style.display = 'inline-flex';
-            searchBtn.href = fallbackUrl;
-            searchBtn.style.display = 'inline-flex';
+            searchBtn.style.display = 'none';
             document.getElementById('modalShowPage').href = '/shows/' + show.slug;
 
             // Reset tabs

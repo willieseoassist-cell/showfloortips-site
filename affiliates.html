@@ -435,10 +435,13 @@
 
     function formatPrice(p) {
         if (!p) return '';
-        var s = String(p).replace(/[^0-9.]/g, '');
+        var s = String(p).trim();
+        // If it already has $ sign, return as-is (handles ranges like $25-$35)
+        if (s.charAt(0) === '$') return s;
+        // If it's a plain number, format it
         var n = parseFloat(s);
-        if (isNaN(n)) return p;
-        return '$' + n.toFixed(2);
+        if (!isNaN(n)) return '$' + n.toFixed(2);
+        return s;
     }
 
     function buildCategoryPills(slugs) {
@@ -461,7 +464,7 @@
     }
 
     function cardHTML(item) {
-        var imgSrc = 'https://m.media-amazon.com/images/P/' + item.asin + '.jpg';
+        var imgSrc = 'https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=' + item.asin + '&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=' + AFFILIATE_TAG;
         var href = appendTag(item.url);
         var price = formatPrice(item.approx_price);
 
