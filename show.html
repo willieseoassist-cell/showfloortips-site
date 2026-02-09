@@ -160,6 +160,7 @@
             'eventStatus': 'https://schema.org/EventScheduled'
         };
         if (show.date) schema.startDate = show.sort_date || show.date;
+        if (show.sort_date) schema.endDate = show.sort_date;
         if (show.location) {
             schema.location = {
                 '@type': 'Place',
@@ -174,7 +175,11 @@
         }
         if (show.website) schema.url = show.website;
         if (show.image) schema.image = show.image;
-        if (show.host) schema.organizer = { '@type': 'Organization', 'name': show.host };
+        schema.organizer = { '@type': 'Organization', 'name': show.host || show.title + ' Organizers' };
+        schema.performer = { '@type': 'Organization', 'name': show.host || show.title };
+        if (show.booth_price) {
+            schema.offers = { '@type': 'Offer', 'name': 'Exhibition Booth', 'description': 'Booth space: ' + show.booth_price, 'url': 'https://showfloortips.com/shows/' + show.slug, 'availability': 'https://schema.org/InStock' };
+        }
         var schemaScript = document.createElement('script');
         schemaScript.type = 'application/ld+json';
         schemaScript.textContent = JSON.stringify(schema);

@@ -7,35 +7,62 @@
 1. **NEVER** access or make changes to `memory-tradeshow-app` or `Developer/hidden app`
 2. **Compact after every code change**
 3. **Never store or make changes locally** — all work happens on the drive (`/Volumes/Willie Extr/tradeshow-website`)
+4. **Update this file** after completing any task — log what was done in the Achievement Log below
 
 ## Project Setup
 - **Repo:** `willieseoassist-cell/showfloortips-site` on GitHub (main branch)
-- **Hosting:** Vercel (auto-deploys from GitHub)
-- **Payments:** Stripe (`stripe_links.json`)
-- **Data files:** `shows.js` (exhibit records), `news.js` (article index)
+- **Hosting:** Vercel (auto-deploys from GitHub BUT requires `--archive=tgz` due to 24K+ files exceeding 15K file limit)
+- **Deploy command:** `cd "/Volumes/Willie Extr/tradeshow-website" && npx vercel --prod --archive=tgz --yes`
+- **Payments:** Stripe (`stripe_links.json` — 19 products, $7.99-$14.99)
+- **Email:** Resend API for outreach
+  - **API Key:** `re_CGmCArUb_D1qyCSuaXGhsdRdUtZk5XhcZ`
+  - **From:** `Show Floor Tips Team <info@showfloortips.com>`
+  - **Domain:** showfloortips.com (verified, DKIM + SPF confirmed)
+  - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
+  - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
+- **Data files:** `shows.js` (exhibit records, 29MB, 24,500+ shows), `news.js` (article index, 14MB)
 - **Articles:** `/news/` folder — self-contained HTML files
+- **Site URL:** https://showfloortips.com
+- **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
 
 ## Competitor
 - **Primary competitor:** https://www.orbus.com/about-us/usa-tradeshow-list
 - We must be better than Orbus in every way — more shows, better data, better UX, better SEO
 - Study their site regularly and ensure ShowFloorTips surpasses them
 
+## Revenue Plan ($1M Target)
+- **Digital Products:** $150K (Stripe, $7.99-$14.99 guides)
+- **Pro Subscription:** $300K (premium tier)
+- **Scannly App:** $200K (lead capture tool)
+- **Affiliates:** $100K (hotel, travel, booth services)
+- **Sponsored Listings:** $150K (event sponsors — Bronze $1.5K/mo, Silver $3K/mo, Gold $5K/mo)
+- **Data/Reports:** $100K (industry reports)
+- Full plan in `MILLION-DOLLAR-PLAN.md`
+
 ## Growth Strategy
 - SEO is the primary growth channel (24K+ articles, sitemaps, structured data)
 - Newsletter opt-in to capture emails legitimately
 - Social media, Google Ads, partnerships with trade show organizers
-- NO email scraping or unsolicited outreach — protect the domain reputation
+- **Sponsor outreach via Resend** — send 100+ emails per day to upcoming show organizers
+- NO email scraping or unsolicited outreach to random people — protect the domain reputation
 
 ## Daily Tasks (Every Session)
 
-### 0. Monitor Competitor (Orbus)
+### 0. Send Sponsor Outreach Emails (100/day)
+- Pull upcoming shows from `shows.js` (next 60-90 days)
+- Search for event organizer/sponsor/exhibit contact emails
+- Send personalized partnership pitch emails via Resend API
+- Track what was sent in the Achievement Log below to avoid duplicate outreach
+- Focus on shows with 5K+ attendees and real organizer websites
+- **Always use Python** for sending (not curl) due to HTML escaping issues in shell
+
+### 1. Monitor Competitor (Orbus)
 - Check https://www.orbus.com/about-us/usa-tradeshow-list for any new shows
 - Any new shows they add that we DON'T already have, we add to our site in our own format with richer data (hotels, tips, booth costs, etc.)
 - Always check shows.js for duplicates before adding
 - We must always have everything they have and more
 
-
-### 1. Add 10-15 New Articles (Mix of Types)
+### 2. Add 10-15 New Articles (Mix of Types)
 - Follow the existing article HTML template format (inline CSS, SEO meta, JSON-LD, Scannly CTA)
 - Article types:
   - **Networking Guides** — "Networking Guide for [Show Name]"
@@ -45,13 +72,18 @@
 - Add corresponding entries to `news.js`
 - Use Unsplash images consistent with existing articles
 
-### 2. Scrape for New Exhibits
+### 3. Scrape for New Exhibits
 - Search the internet for upcoming trade shows, expos, conferences, and conventions
 - Add new entries to `shows.js` following the existing JSON format:
   - title, slug, category, date, sort_date, location, venue, city, state, country
   - description, host, website, search_url, image, hotels, booth_price
   - registration_info, attendees, exhibitors, tips (5 strategies), source
 - Avoid duplicates — check existing data before adding
+
+## Sponsorship Pricing Tiers
+- **Bronze:** $1,500/month ($15K/year) — show page partner listing, logo in sidebar, 1 sponsored article/quarter
+- **Silver:** $3,000/month ($30K/year) — everything in Bronze + homepage rotation, 1 article/month, newsletter logo, category banner
+- **Gold:** $5,000/month ($50K/year) — everything in Silver + permanent homepage placement, 2 articles/month, dedicated newsletter blast, traffic data reports, "Recommended" badge
 
 ## Content Formats Reference
 
@@ -96,3 +128,101 @@
 - Sidebar: Quick Links + Show Details
 - Scannly CTA at bottom of article
 - Footer: brand, resources, tools, industry browse
+
+---
+
+## Achievement Log
+
+### Feb 9, 2026 — Session 1
+
+#### SEO & Site Fixes
+- Added HSTS header to `vercel.json` (Strict-Transport-Security) to fix Google Search Console Non-HTTPS URL issue
+- Fixed Google Search snippet — updated meta description, title, og:image, og:site_name, twitter:description, twitter:image, enhanced JSON-LD with SearchAction and publisher
+- Previous Google result showed stale GoDaddy text; now shows proper ShowFloorTips description
+
+#### Homepage Addiction Features Added
+- FOMO ticker banner (shows count of trade shows this week/month)
+- "Happening Soon" section with 4 live countdown timers to nearest shows
+- "Trending Shows This Week" section showing top 4 by attendance with ranked badges
+- "Latest Insights" section with 3 article cards linking to news articles
+
+#### Articles Created (12 total)
+**News Insight Articles (5):**
+- `news/ai-disruption-what-exhibitors-must-know-2026.html`
+- `news/eu-chip-race-semiconductor-trade-shows-2026.html`
+- `news/super-bowl-lx-what-exhibitors-learn-from-halftime.html`
+- `news/cybersecurity-threats-trade-show-booth-technology.html`
+- `news/construction-labor-shortage-trade-show-impact-2026.html`
+
+**Networking Guides (4):**
+- `news/networking-guide-euroshop-2026.html`
+- `news/networking-guide-vive-2026.html`
+- `news/networking-guide-wvc-2026.html`
+- `news/networking-guide-fruit-logistica-2026.html`
+
+**Comparison Articles (3):**
+- `news/euroshop-vs-nrf-comparison.html`
+- `news/vive-vs-himss-comparison.html`
+- `news/world-of-concrete-vs-conexpo-comparison.html`
+
+#### Sponsor Outreach — 105 Emails Sent
+**Shows contacted (60+ unique shows, some with multiple contacts):**
+
+EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (sales@hlth.com) | CHIME (foundationstaff, info @chimecentral.org) | Canadian International AutoShow (dmcclean, cias @autoshow.ca) | National Farm Machinery Show (don.tourte@farmprogress.com, sponsorship@kyvenues.com) | World AG Expo (info@farmshow.org) | Toy Fair NY (lmangiaracina@toyassociation.org) | MAGIC Las Vegas (cs@fashionresource.com) | NAHB Builders Show (msutton@nahb.org) | KBIS (diana.gallagher@emeraldx.com) | PACK EXPO East (sales@pmmi.org) | NAPE Summit (sponsorships@NAPEexpo.com) | Intersolar NA (sales@iesna.com) | MWC Barcelona (sponsorship@gsma.com) | CONEXPO-CON/AGG (exhibitors@aem.org) | Natural Products Expo West (exhibitors@expowest.com, exhibitorservices@newhope.com) | ITB Berlin (itb@messe-berlin.de, teresa.baumgarten@messe-berlin.de) | HIMSS (exhibitors@himssconference.com, HIMSSCustomerSuccess@informa.com) | GDC (gamemarketing@informa.com) | Seafood Expo NA (kbutland@divcom.com) | ISC West (inquiry@iscwest.com) | RSAC (kwhite@nthdegree.com) | ACC (acc-exhibits@acc.org) | Cosmoprof Bologna (info@cosmoprof.com, l.aguiati@bolognafiere.it) | MIPIM (customer.service@rxglobal.com) | Franchise Expo Paris (info@franchiseparis.com, carolina.gautron@infopro-digital.com) | Embedded World (gina.giessmann@nuernbergmesse.de) | Commodity Classic (apodkul@soy.org) | AAOS (schott, abogdal @aaos.org) | Pittcon (info, marketing @pittcon.org) | Japan Shop (tradefairs@congre.co.jp) | Taipei Bakery Show (office@bakery.org.tw) | IFA Convention (ljames@franchise.org) | SXSW (sales@sxsw.com) | National Restaurant Association Show (RestaurantShowSales, restaurantshowexhibitorservices @informa.com) | Hannover Messe (info@messe.de) | NAB Show (exhibit@nab.org) | InfoComm (exhibitsales@avixa.org) | Licensing Expo (exhibitors@licensingexpo.com) | AIME Melbourne (aime, matt.pearce @talk2.media) | ATD (globalsponsorships@td.org) | SHRM (sponsorships@shrm.org) | ProMat (sales, gbaer @mhi.org) | Automate (sales, azmikly @automate.org) | AORN (aornexhibsales@us.wearemci.com, sgeraths@aorn.org) | SHOT Show (exhibitorhelp, regmgr @shotshow.org) | Outdoor Retailer (john.krause@outdoorretailer.com) | NY Now (customerservice@nynow.com, lauren.riccacesare@emeraldx.com) | ASD Market Week (customerservice@asdonline.com) | SupplySide West (sponsorships@supplysideshow.com) | IFT FIRST (mshey, tsheetz @ift.org) | CEDIA Expo (cmenefee, chelsea.cafiero @emeraldx.com, cedia@cedia.org) | Cosmoprof Asia (visit-ca@informa.com) | Warsaw Motorcycle Show (media2@warsawexpo.eu) | WTM London (rxinfo@rxglobal.com) | RC Show (rcshow@restaurantscanada.org) | Ceramitec (exhibiting@ceramitec.com) | Naidex (sales@naidex.co.uk) | ENADA Spring (orietta.foschi@iegexpo.it) | Expodental (expodental@ifema.es) | Western Hunting Expo (chris@huntexpo.com) | BioFach (info@biofach.de) | WEST/AFCEA (jessica.neiers@spargoinc.com) | GEAPS (sponsorship@geaps.com) | Enterprise Connect (Jessica.Cheng@informa.com) | ASCRS (exhibits@ascrs.org) | Dubai Boat Show (info@boatshowdubai.com) | AHR Expo (info@ahrexpo.com) | SOCMA (meetings@socma.org) | Prosper Show (tim.berry@emeraldx.com)
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,227 files)
+- Live at https://showfloortips.com
+
+#### Revenue Plan
+- Created `MILLION-DOLLAR-PLAN.md` with 6 revenue streams and 3-phase roadmap
+- Defined sponsorship pricing tiers (Bronze $15K/yr, Silver $30K/yr, Gold $50K/yr)
+
+### Feb 9, 2026 — Session 2
+
+#### Articles Created (8 total — 5 news insight + 3 new)
+**News Insight Articles (5):**
+- `news/jimmy-lai-hong-kong-exhibitor-asia-strategy-2026.html`
+- `news/tariffs-reshaping-exhibit-budgets-2026.html`
+- `news/labor-shortage-booth-build-delay-2026.html`
+- `news/bridgepay-ransomware-trade-show-payments-2026.html`
+- `news/saaspocalypse-exhibitor-tech-stack-2026.html`
+
+### Feb 9, 2026 — Session 3
+
+#### Articles Created (3 total)
+**News Insight (1):**
+- `news/japan-first-female-pm-asia-trade-shows-2026.html` — Sanae Takaichi's landslide victory and what it means for Asia's exhibition industry
+
+**Networking Guide (1):**
+- `news/networking-guide-natural-products-expo-west-2026.html` — Complete networking playbook for 89,000-attendee Expo West
+
+**Comparison (1):**
+- `news/sxsw-vs-ces-comparison.html` — SXSW's 300K creative audience vs CES's 138K hardware buyers
+
+#### New Shows Added to shows.js (12 new, total now 24,600)
+- NVIDIA GTC 2026 (Mar 16-19, San Jose)
+- Google Cloud Next 2026 (Apr 22-24, Las Vegas)
+- Adobe Summit 2026 (Apr 19-22, Las Vegas)
+- Databricks Data + AI Summit 2026 (Jun 15-18, San Francisco)
+- Cisco Live 2026 (May 31 - Jun 4, Las Vegas)
+- Shoptalk Spring 2026 (Mar 24-26, Las Vegas)
+- IPC APEX EXPO 2026 (Mar 17-19, Anaheim)
+- CommerceNext Growth Show 2026 (Jun 24-26, New York)
+- CLEANPOWER 2026 (May 18-21, San Diego)
+- SuperAI Conference 2026 (Jun 10-11, Singapore)
+- National Restaurant Association Show 2026 (May 16-19, Chicago)
+- FIME 2026 (Jun 17-19, Miami Beach)
+
+#### Sponsor Outreach
+- Received response from SXSW sales team (Lanesia, sales@sxsw.com) requesting partnership details
+- SXSW dates confirmed: SXSW EDU Mar 9-12, SXSW Mar 12-18, 2026
+
+#### Orbus Monitoring
+- Orbus competitor page (orbus.com/about-us/usa-tradeshow-list) appears to be JS-rendered, not accessible via fetch — needs manual browser check next session
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
