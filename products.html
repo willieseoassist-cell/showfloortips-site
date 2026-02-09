@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Products & Supplies - ShowFloorTips</title>
+    <meta name="description" content="1,000+ curated trade show products across 25 categories. Displays, giveaways, lead capture tech, booth accessories, lighting, furniture, and more.">
+    <meta name="keywords" content="trade show products, trade show supplies, trade show displays, trade show giveaways, booth accessories, lead capture, exhibitor supplies 2026">
+
+    <meta property="og:title" content="Trade Show Products & Supplies - ShowFloorTips">
+    <meta property="og:description" content="1,000+ curated trade show products across 25 categories. Everything you need for your next trade show.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/products.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Products & Supplies",
+        "description": "1,000+ curated trade show products across 25 categories",
+        "url": "https://showfloortips.com/products.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://showfloortips.com/products.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---- Products Page Specific Styles ---- */
+        .products-hero {
+            position: relative;
+            background: var(--gray-50);
+            overflow: hidden;
+            padding: 4rem 2rem 3rem;
+        }
+        .products-hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .products-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: var(--black);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .products-hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Products Search */
+        .products-search {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0;
+        }
+
+        /* Category Filter */
+        .products-filters {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+        }
+        .products-filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .products-filter-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Products Section */
+        .products-listing {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .products-listing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .products-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Product card overrides for listing page */
+        .products-listing .product-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .products-listing .product-card .product-card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .products-listing .product-card h3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            min-height: 2.8em;
+        }
+        .products-listing .product-card .product-card-footer {
+            margin-top: auto;
+        }
+        .product-card .product-category-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--gray-600);
+            background: var(--gray-100);
+            margin-bottom: 0.75rem;
+        }
+        .product-card .product-price {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+        .product-card .btn {
+            text-align: center;
+        }
+        .product-card .alt-link {
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .product-card .alt-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Product Grid 4 columns for this page */
+        .products-listing .product-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        /* Mobile Nav Show State */
+        .nav-links.show {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 1rem 2rem 2rem;
+            border-top: 1px solid #e5e5e5;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        /* Active nav link */
+        .nav-links .nav-active {
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-listing .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .products-hero h1 {
+                font-size: 2rem;
+            }
+            .products-listing .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .products-filter-bar {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+        @media (max-width: 480px) {
+            .products-listing .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .products-hero h1 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html" class="nav-active">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="products-hero">
+        <div class="products-hero-content">
+            <h1>Trade Show Products &amp; Supplies</h1>
+            <p class="subtitle">1,000+ curated products across 25 categories. Everything you need for your next trade show.</p>
+        </div>
+    </section>
+
+    <!-- Search -->
+    <div class="products-search">
+        <div class="search-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="productSearchInput" placeholder="Search products by name, category, or keyword..." autocomplete="off">
+        </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="products-filters">
+        <div class="products-filter-bar" id="categoryFilterBar">
+            <button class="filter-pill active" data-category="all">All Products</button>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="products-listing">
+        <div class="products-listing-header">
+            <span class="products-count" id="productsCount">Loading products...</span>
+        </div>
+        <div class="product-grid" id="productsGrid"></div>
+        <div class="load-more-container" id="loadMoreContainer" style="display:none">
+            <button class="load-more-btn" id="loadMoreBtn">Load More Products</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/products.html">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="https://www.etsy.com/shop/showfloortips">Etsy Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Top Categories</h4>
+                    <ul>
+                        <li><a href="#" onclick="filterByCategory('trade_show_displays');return false">Displays</a></li>
+                        <li><a href="#" onclick="filterByCategory('trade_show_giveaways');return false">Giveaways</a></li>
+                        <li><a href="#" onclick="filterByCategory('lead_capture_tech');return false">Lead Capture</a></li>
+                        <li><a href="#" onclick="filterByCategory('booth_accessories');return false">Booth Accessories</a></li>
+                        <li><a href="#" onclick="filterByCategory('lighting_electrical');return false">Lighting</a></li>
+                        <li><a href="#" onclick="filterByCategory('tech_gadgets_phone');return false">Tech Gadgets</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var ITEMS_PER_PAGE = 40;
+        var allProducts = [];
+        var filteredProducts = [];
+        var visibleCount = ITEMS_PER_PAGE;
+        var currentCategory = 'all';
+        var currentSearch = '';
+
+        var categoryLabels = {
+            trade_show_displays: 'Trade Show Displays',
+            trade_show_giveaways: 'Trade Show Giveaways',
+            lead_capture_tech: 'Lead Capture Tech',
+            booth_accessories: 'Booth Accessories',
+            lighting_electrical: 'Lighting & Electrical',
+            furniture_seating: 'Furniture & Seating',
+            flooring_mats: 'Flooring & Mats',
+            shipping_transport: 'Shipping & Transport',
+            audio_visual: 'Audio Visual',
+            printing_signage: 'Printing & Signage',
+            promotional_apparel: 'Promotional Apparel',
+            drinkware_bottles: 'Drinkware & Bottles',
+            bags_totes: 'Bags & Totes',
+            office_writing: 'Office & Writing',
+            health_safety_wellness: 'Health, Safety & Wellness',
+            food_service_hospitality: 'Food Service & Hospitality',
+            eco_friendly_sustainable: 'Eco-Friendly & Sustainable',
+            tech_gadgets_phone: 'Tech Gadgets & Phone',
+            photography_video: 'Photography & Video',
+            badges_credentials: 'Badges & Credentials',
+            storage_organization: 'Storage & Organization',
+            outdoor_event_canopies: 'Outdoor Event & Canopies',
+            premium_executive_gifts: 'Premium Executive Gifts',
+            novelty_fun_promotional: 'Novelty & Fun Promotional',
+            cleaning_maintenance: 'Cleaning & Maintenance'
+        };
+
+        var categoryShortLabels = {
+            trade_show_displays: 'Displays',
+            trade_show_giveaways: 'Giveaways',
+            lead_capture_tech: 'Lead Capture',
+            booth_accessories: 'Booth Accessories',
+            lighting_electrical: 'Lighting',
+            furniture_seating: 'Furniture',
+            flooring_mats: 'Flooring',
+            shipping_transport: 'Shipping',
+            audio_visual: 'Audio Visual',
+            printing_signage: 'Signage',
+            promotional_apparel: 'Apparel',
+            drinkware_bottles: 'Drinkware',
+            bags_totes: 'Bags & Totes',
+            office_writing: 'Office',
+            health_safety_wellness: 'Health & Safety',
+            food_service_hospitality: 'Food Service',
+            eco_friendly_sustainable: 'Eco-Friendly',
+            tech_gadgets_phone: 'Tech Gadgets',
+            photography_video: 'Photo & Video',
+            badges_credentials: 'Badges',
+            storage_organization: 'Storage',
+            outdoor_event_canopies: 'Outdoor & Canopies',
+            premium_executive_gifts: 'Executive Gifts',
+            novelty_fun_promotional: 'Novelty & Fun',
+            cleaning_maintenance: 'Cleaning'
+        };
+
+        function init() {
+            fetch('/products_data.json')
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    allProducts = flattenData(data);
+                    buildCategoryPills(data);
+                    applyFilters();
+                    bindEvents();
+                })
+                .catch(function(err) {
+                    console.error('Failed to load products:', err);
+                    document.getElementById('productsCount').textContent = 'Failed to load products. Please try again later.';
+                });
+        }
+
+        function flattenData(data) {
+            var products = [];
+            var categoryKeys = Object.keys(data);
+            for (var i = 0; i < categoryKeys.length; i++) {
+                var catKey = categoryKeys[i];
+                var items = data[catKey];
+                if (!Array.isArray(items)) continue;
+                for (var j = 0; j < items.length; j++) {
+                    var item = items[j];
+                    item._category = catKey;
+                    item._categoryLabel = categoryLabels[catKey] || catKey;
+                    products.push(item);
+                }
+            }
+            return products;
+        }
+
+        function buildCategoryPills(data) {
+            var bar = document.getElementById('categoryFilterBar');
+            var categoryKeys = Object.keys(categoryLabels);
+            for (var i = 0; i < categoryKeys.length; i++) {
+                var key = categoryKeys[i];
+                if (!data[key]) continue;
+                var btn = document.createElement('button');
+                btn.className = 'filter-pill';
+                btn.setAttribute('data-category', key);
+                btn.textContent = categoryShortLabels[key] || categoryLabels[key];
+                bar.appendChild(btn);
+            }
+        }
+
+        function bindEvents() {
+            // Search
+            var searchInput = document.getElementById('productSearchInput');
+            var debounceTimer;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    currentSearch = searchInput.value.trim().toLowerCase();
+                    visibleCount = ITEMS_PER_PAGE;
+                    applyFilters();
+                }, 250);
+            });
+
+            // Category pills
+            var filterBar = document.getElementById('categoryFilterBar');
+            filterBar.addEventListener('click', function(e) {
+                var pill = e.target.closest('.filter-pill');
+                if (!pill) return;
+                var pills = filterBar.querySelectorAll('.filter-pill');
+                for (var i = 0; i < pills.length; i++) {
+                    pills[i].classList.remove('active');
+                }
+                pill.classList.add('active');
+                currentCategory = pill.getAttribute('data-category');
+                visibleCount = ITEMS_PER_PAGE;
+                applyFilters();
+            });
+
+            // Load more
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                visibleCount += ITEMS_PER_PAGE;
+                renderProducts();
+            });
+        }
+
+        function applyFilters() {
+            filteredProducts = allProducts.filter(function(item) {
+                // Category filter
+                if (currentCategory !== 'all' && item._category !== currentCategory) {
+                    return false;
+                }
+                // Search filter
+                if (currentSearch) {
+                    var haystack = (
+                        (item.product_name || '') + ' ' +
+                        (item.search_query || '') + ' ' +
+                        (item._categoryLabel || '')
+                    ).toLowerCase();
+                    var terms = currentSearch.split(/\s+/);
+                    for (var t = 0; t < terms.length; t++) {
+                        if (haystack.indexOf(terms[t]) === -1) return false;
+                    }
+                }
+                return true;
+            });
+            renderProducts();
+        }
+
+        function renderProducts() {
+            var grid = document.getElementById('productsGrid');
+            var visible = filteredProducts.slice(0, visibleCount);
+
+            if (visible.length === 0) {
+                grid.innerHTML = '<div class="no-results"><h3>No products found</h3><p>Try adjusting your search or category filter.</p></div>';
+                document.getElementById('productsCount').textContent = 'Showing 0 of 0 products';
+                document.getElementById('loadMoreContainer').style.display = 'none';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < visible.length; i++) {
+                var p = visible[i];
+                var price = p.approx_price || '';
+                var priceDisplay = price;
+                if (price && typeof price === 'string' && price.charAt(0) !== '$') {
+                    priceDisplay = '$' + price;
+                } else if (typeof price === 'number') {
+                    priceDisplay = '$' + price.toFixed(2);
+                }
+                var name = escapeHtml(p.product_name || p.search_query || 'Trade Show Product');
+                var categoryBadge = categoryShortLabels[p._category] || p._categoryLabel || '';
+                var url = p.url || '#';
+                var altUrl = p.alt_url || '';
+                var altProduct = p.alt_product || '';
+
+                html += '<div class="product-card">';
+                html += '<div class="product-card-body">';
+                html += '<span class="product-category-badge">' + escapeHtml(categoryBadge) + '</span>';
+                html += '<h3>' + name + '</h3>';
+                if (priceDisplay) {
+                    html += '<span class="product-price">' + escapeHtml(priceDisplay) + '</span>';
+                }
+                html += '<div class="product-card-footer">';
+                html += '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View on Amazon</a>';
+                if (altUrl && altProduct) {
+                    html += '<a href="' + escapeAttr(altUrl) + '" target="_blank" rel="noopener noreferrer" class="alt-link">Alt: ' + escapeHtml(truncate(altProduct, 40)) + '</a>';
+                }
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+            }
+
+            grid.innerHTML = html;
+
+            // Update count
+            document.getElementById('productsCount').textContent =
+                'Showing ' + visible.length + ' of ' + filteredProducts.length + ' products';
+
+            // Load more button
+            var loadMoreContainer = document.getElementById('loadMoreContainer');
+            if (visibleCount < filteredProducts.length) {
+                loadMoreContainer.style.display = '';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function escapeAttr(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function truncate(str, max) {
+            if (!str) return '';
+            if (str.length <= max) return str;
+            return str.substring(0, max) + '...';
+        }
+
+        // Expose for footer links
+        window.filterByCategory = function(cat) {
+            currentCategory = cat;
+            currentSearch = '';
+            visibleCount = ITEMS_PER_PAGE;
+            document.getElementById('productSearchInput').value = '';
+
+            var pills = document.querySelectorAll('#categoryFilterBar .filter-pill');
+            for (var i = 0; i < pills.length; i++) {
+                pills[i].classList.remove('active');
+                if (pills[i].getAttribute('data-category') === cat) {
+                    pills[i].classList.add('active');
+                }
+            }
+
+            applyFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        init();
+    })();
+    </script>
+
+</body>
+</html>
