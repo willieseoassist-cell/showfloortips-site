@@ -22,9 +22,12 @@
         .info-card p { font-size:1.05rem; font-weight:600; color:#1e293b }
         .section-block { margin:2rem 0 }
         .section-block h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
-        .hotel-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:0.75rem }
+        .hotel-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:0.75rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; transition:border-color 0.2s, box-shadow 0.2s }
+        .hotel-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
         .hotel-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.25rem }
         .hotel-card .hotel-detail { font-size:0.85rem; color:#64748b }
+        .hotel-card .hotel-info { flex:1; min-width:200px }
+        .hotel-card .hotel-price { font-weight:600; color:#1e293b; font-size:0.95rem; margin-bottom:0.5rem }
         .tip-item { padding:0.75rem 0; border-bottom:1px solid #f1f5f9; font-size:0.95rem; color:#334155; line-height:1.6 }
         .tip-item:last-child { border-bottom:none }
         .sidebar-card { background:#fff; border:1px solid #e2e8f0; border-radius:16px; padding:1.5rem; margin-bottom:1.5rem }
@@ -43,10 +46,53 @@
         .loading { text-align:center; padding:4rem 2rem; font-size:1.2rem; color:#64748b }
         .not-found { text-align:center; padding:4rem 2rem }
         .not-found h2 { font-size:1.5rem; color:#0a0a0a; margin-bottom:0.5rem }
+
+        /* Enhanced Hotel Button */
+        .btn-book { display:inline-block; padding:0.6rem 1.25rem; background:#0a0a0a; color:#fff; border:none; border-radius:8px; font-size:0.85rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s; white-space:nowrap }
+        .btn-book:hover { background:#334155 }
+        .hotel-search-card { background:#f1f5f9; border:2px dashed #e2e8f0; border-radius:12px; padding:1.25rem; text-align:center; margin-top:0.75rem }
+        .hotel-search-card p { color:#475569; font-size:0.9rem; margin-bottom:0.75rem }
+        .hotel-search-card .btn-book { background:#334155 }
+        .hotel-search-card .btn-book:hover { background:#1e293b }
+
+        /* Travel Sections */
+        .travel-section { margin:2rem 0 }
+        .travel-section h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .transport-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:0.75rem }
+        .transport-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; transition:border-color 0.2s, box-shadow 0.2s; display:flex; flex-direction:column; justify-content:space-between }
+        .transport-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
+        .transport-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.25rem; font-size:1rem }
+        .transport-card .transport-sub { font-size:0.82rem; color:#64748b; margin-bottom:0.75rem }
+        .transport-card .card-icon { font-size:1.5rem; margin-bottom:0.5rem; display:block }
+        .transport-card-wide { grid-column:1 / -1; background:#f1f5f9; border:2px dashed #e2e8f0; border-radius:12px; padding:1.25rem; text-align:center }
+        .transport-card-wide p { color:#475569; font-size:0.9rem; margin-bottom:0.75rem }
+        .transport-card-wide .btn-book { background:#334155 }
+
+        /* Product Section */
+        .product-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:0.75rem; margin-bottom:1rem }
+        .product-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; transition:border-color 0.2s, box-shadow 0.2s; display:flex; flex-direction:column; justify-content:space-between }
+        .product-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
+        .product-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.35rem; font-size:0.95rem; line-height:1.3 }
+        .product-card .product-price { font-size:0.9rem; color:#475569; margin-bottom:0.75rem; font-weight:500 }
+        .btn-amazon { display:inline-block; padding:0.6rem 1.25rem; background:#ff9900; color:#fff; border:none; border-radius:8px; font-size:0.85rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s; white-space:nowrap }
+        .btn-amazon:hover { background:#e68a00 }
+        .view-all-products { display:inline-block; margin-top:0.5rem; color:#475569; font-size:0.9rem; font-weight:600; text-decoration:none; transition:color 0.2s }
+        .view-all-products:hover { color:#0a0a0a }
+
+        /* Nearby Shows in Sidebar */
+        .nearby-show { display:block; padding:0.75rem 0; border-bottom:1px solid #f1f5f9; text-decoration:none; transition:opacity 0.2s }
+        .nearby-show:last-child { border-bottom:none }
+        .nearby-show:hover { opacity:0.7 }
+        .nearby-show h4 { font-size:0.9rem; font-weight:600; color:#1e293b; margin-bottom:0.2rem; line-height:1.3 }
+        .nearby-show .nearby-detail { font-size:0.8rem; color:#64748b }
+
         @media(max-width:768px) {
             .show-body { grid-template-columns:1fr }
             .show-hero h1 { font-size:1.75rem }
             .show-hero { height:260px }
+            .transport-grid { grid-template-columns:1fr }
+            .product-grid { grid-template-columns:1fr }
+            .hotel-card { flex-direction:column; align-items:flex-start }
         }
     </style>
 </head>
@@ -58,7 +104,8 @@
                 <a href="/#shows">Trade Shows</a>
                 <a href="/news.html">News</a>
                 <a href="/roi-calculator.html">ROI Calculator</a>
-                <a href="/scannly.html">Scannly App</a>
+                <a href="/products.html">Products</a>
+                <a href="/scannly.html" class="nav-cta">Try Scannly</a>
             </nav>
         </div>
     </header>
@@ -179,16 +226,152 @@
         if (show.exhibitors) infoCards += '<div class="info-card"><h4>Exhibitors</h4><p>' + show.exhibitors + '</p></div>';
         if (show.booth_price) infoCards += '<div class="info-card"><h4>Booth Price Range</h4><p>' + show.booth_price + '</p></div>';
 
+        // --- ENHANCED HOTELS SECTION ---
+        var cityName = show.city || '';
+        var venueName = show.venue || '';
+
         var hotels = '';
         if (show.hotels && show.hotels.length > 0) {
             hotels = '<div class="section-block"><h2>Nearby Hotels</h2>';
             for (var h = 0; h < show.hotels.length; h++) {
                 var hotel = show.hotels[h];
-                hotels += '<div class="hotel-card"><h4>' + hotel.name + '</h4><div class="hotel-detail">' + hotel.distance + ' | ' + (hotel.price_range || hotel.price || '') + '</div></div>';
+                var hotelPrice = hotel.price_range || hotel.price || '';
+                var bookingUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(hotel.name + ' ' + cityName);
+                hotels += '<div class="hotel-card">';
+                hotels += '<div class="hotel-info"><h4>' + hotel.name + '</h4>';
+                hotels += '<div class="hotel-detail">' + hotel.distance + '</div>';
+                if (hotelPrice) hotels += '<div class="hotel-price">' + hotelPrice + '</div>';
+                hotels += '</div>';
+                hotels += '<a href="' + bookingUrl + '" target="_blank" rel="noopener" class="btn-book">Book Hotel</a>';
+                hotels += '</div>';
             }
+            // General hotel search card
+            var generalBookingUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(venueName + ' ' + cityName);
+            hotels += '<div class="hotel-search-card">';
+            hotels += '<p>Find more hotels near ' + (venueName || cityName) + '</p>';
+            hotels += '<a href="' + generalBookingUrl + '" target="_blank" rel="noopener" class="btn-book">Search All Hotels</a>';
+            hotels += '</div>';
             hotels += '</div>';
         }
 
+        // --- RENTAL CARS SECTION ---
+        var rentalCars = '<div class="travel-section"><h2>Rental Cars</h2>';
+        rentalCars += '<div class="transport-grid">';
+
+        var rentalCompanies = [
+            { name: 'Enterprise', url: 'https://www.enterprise.com/en/reserve.html#location=' + encodeURIComponent(cityName), icon: '\uD83D\uDE97' },
+            { name: 'Hertz', url: 'https://www.hertz.com/rentacar/reservation/', icon: '\uD83D\uDE99' },
+            { name: 'Budget', url: 'https://www.budget.com/en/reserve', icon: '\uD83D\uDE98' },
+            { name: 'National', url: 'https://www.nationalcar.com/en/reserve.html', icon: '\uD83D\uDE95' }
+        ];
+
+        for (var r = 0; r < rentalCompanies.length; r++) {
+            var rc = rentalCompanies[r];
+            rentalCars += '<div class="transport-card">';
+            rentalCars += '<div>';
+            rentalCars += '<span class="card-icon">' + rc.icon + '</span>';
+            rentalCars += '<h4>' + rc.name + '</h4>';
+            rentalCars += '<div class="transport-sub">Search ' + (cityName || 'local') + ' rentals</div>';
+            rentalCars += '</div>';
+            rentalCars += '<a href="' + rc.url + '" target="_blank" rel="noopener" class="btn-book">Reserve Car</a>';
+            rentalCars += '</div>';
+        }
+
+        rentalCars += '</div>';
+        // Compare all link
+        var kayakCarsUrl = 'https://www.kayak.com/cars/' + encodeURIComponent(cityName);
+        rentalCars += '<div class="transport-card-wide" style="margin-top:0.75rem">';
+        rentalCars += '<p>Compare all car rentals in ' + (cityName || 'the area') + '</p>';
+        rentalCars += '<a href="' + kayakCarsUrl + '" target="_blank" rel="noopener" class="btn-book">Compare on Kayak</a>';
+        rentalCars += '</div>';
+        rentalCars += '</div>';
+
+        // --- TRAINS & TRANSIT SECTION ---
+        var venueAndCity = venueName + ' ' + cityName;
+        var transitSection = '<div class="travel-section"><h2>Trains & Transit</h2>';
+        transitSection += '<div class="transport-grid">';
+
+        var transitOptions = [
+            {
+                name: 'Amtrak',
+                sub: 'Book Amtrak to ' + (cityName || 'your destination'),
+                url: 'https://www.amtrak.com/tickets/departure.html',
+                icon: '\uD83D\uDE86'
+            },
+            {
+                name: 'Google Maps Transit',
+                sub: 'Get transit directions to ' + (venueName || 'the venue'),
+                url: 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(venueAndCity) + '&travelmode=transit',
+                icon: '\uD83D\uDDFA\uFE0F'
+            },
+            {
+                name: 'Uber',
+                sub: 'Uber to ' + (venueName || 'the venue'),
+                url: 'https://m.uber.com/looking?destination=' + encodeURIComponent(venueAndCity),
+                icon: '\uD83D\uDE96'
+            },
+            {
+                name: 'Lyft',
+                sub: 'Get a Lyft',
+                url: 'https://www.lyft.com/rider',
+                icon: '\uD83D\uDE97'
+            }
+        ];
+
+        for (var tr = 0; tr < transitOptions.length; tr++) {
+            var to = transitOptions[tr];
+            transitSection += '<div class="transport-card">';
+            transitSection += '<div>';
+            transitSection += '<span class="card-icon">' + to.icon + '</span>';
+            transitSection += '<h4>' + to.name + '</h4>';
+            transitSection += '<div class="transport-sub">' + to.sub + '</div>';
+            transitSection += '</div>';
+            transitSection += '<a href="' + to.url + '" target="_blank" rel="noopener" class="btn-book">Go</a>';
+            transitSection += '</div>';
+        }
+
+        transitSection += '</div></div>';
+
+        // --- FLIGHTS SECTION ---
+        var flightsSection = '<div class="travel-section"><h2>Flights</h2>';
+        flightsSection += '<div class="transport-grid">';
+
+        var flightOptions = [
+            {
+                name: 'Kayak',
+                sub: 'Search flights to ' + (cityName || 'your destination'),
+                url: 'https://www.kayak.com/flights?to=' + encodeURIComponent(cityName),
+                icon: '\u2708\uFE0F'
+            },
+            {
+                name: 'Google Flights',
+                sub: 'Google Flights to ' + (cityName || 'your destination'),
+                url: 'https://www.google.com/travel/flights?q=flights+to+' + encodeURIComponent(cityName),
+                icon: '\uD83C\uDF10'
+            },
+            {
+                name: 'Skyscanner',
+                sub: 'Compare on Skyscanner',
+                url: 'https://www.skyscanner.com/transport/flights/?to=' + encodeURIComponent(cityName),
+                icon: '\uD83D\uDEEB'
+            }
+        ];
+
+        for (var fl = 0; fl < flightOptions.length; fl++) {
+            var fo = flightOptions[fl];
+            flightsSection += '<div class="transport-card">';
+            flightsSection += '<div>';
+            flightsSection += '<span class="card-icon">' + fo.icon + '</span>';
+            flightsSection += '<h4>' + fo.name + '</h4>';
+            flightsSection += '<div class="transport-sub">' + fo.sub + '</div>';
+            flightsSection += '</div>';
+            flightsSection += '<a href="' + fo.url + '" target="_blank" rel="noopener" class="btn-book">Search Flights</a>';
+            flightsSection += '</div>';
+        }
+
+        flightsSection += '</div></div>';
+
+        // --- TIPS SECTION ---
         var tips = '';
         if (show.tips && show.tips.length > 0) {
             tips = '<div class="section-block"><h2>Exhibitor Tips for ' + show.category + '</h2>';
@@ -198,6 +381,7 @@
             tips += '</div>';
         }
 
+        // --- SIDEBAR: Quick Facts ---
         var sidebarStats = '';
         sidebarStats += '<div class="stat-row"><span class="stat-label">Category</span><span class="stat-value"><span class="cat-badge" style="background:' + catColor + '">' + show.category + '</span></span></div>';
         if (show.date) sidebarStats += '<div class="stat-row"><span class="stat-label">Date</span><span class="stat-value">' + show.date + '</span></div>';
@@ -206,7 +390,36 @@
         if (show.booth_price) sidebarStats += '<div class="stat-row"><span class="stat-label">Booth Cost</span><span class="stat-value">' + show.booth_price + '</span></div>';
         if (show.country) sidebarStats += '<div class="stat-row"><span class="stat-label">Country</span><span class="stat-value">' + show.country + '</span></div>';
 
+        // --- SIDEBAR: Nearby Shows ---
+        var nearbyShows = '';
+        if (typeof SHOWS_DATA !== 'undefined' && show.category) {
+            var related = [];
+            for (var ns = 0; ns < SHOWS_DATA.length; ns++) {
+                var s = SHOWS_DATA[ns];
+                if (s.slug !== show.slug && s.category === show.category) {
+                    related.push(s);
+                }
+                if (related.length >= 5) break;
+            }
+            if (related.length > 0) {
+                nearbyShows = '<div class="sidebar-card"><h3>Related ' + show.category + ' Shows</h3>';
+                for (var rn = 0; rn < related.length; rn++) {
+                    var rs = related[rn];
+                    var rsLoc = rs.city || '';
+                    if (rs.state) rsLoc += ', ' + rs.state;
+                    nearbyShows += '<a href="/shows/' + rs.slug + '" class="nearby-show">';
+                    nearbyShows += '<h4>' + rs.title + '</h4>';
+                    nearbyShows += '<div class="nearby-detail">' + (rs.date || '') + (rsLoc ? ' &middot; ' + rsLoc : '') + '</div>';
+                    nearbyShows += '</a>';
+                }
+                nearbyShows += '</div>';
+            }
+        }
+
+        // --- BUILD FULL HTML ---
         var html = '';
+
+        // Hero section
         html += '<div class="show-hero"><img src="' + (show.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=500&fit=crop') + '" alt="' + show.title + '">';
         html += '<div class="show-hero-content"><span class="cat-badge" style="background:' + catColor + '">' + show.category + '</span>';
         html += '<h1>' + show.title + '</h1>';
@@ -215,10 +428,31 @@
         if (loc) html += '<span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> ' + loc + '</span>';
         html += '</div></div></div>';
 
+        // Body: Main + Sidebar
         html += '<div class="show-body"><div class="show-main">';
+
+        // Info grid
         html += '<div class="info-grid">' + infoCards + '</div>';
+
+        // About section
         if (show.description) html += '<div class="section-block"><h2>About This Show</h2><p style="color:#334155;line-height:1.8">' + show.description + '</p></div>';
+
+        // Enhanced Hotels
         html += hotels;
+
+        // Rental Cars
+        html += rentalCars;
+
+        // Trains & Transit
+        html += transitSection;
+
+        // Flights
+        html += flightsSection;
+
+        // Products placeholder (populated by fetch)
+        html += '<div id="products-section"></div>';
+
+        // Tips
         html += tips;
 
         // Scannly CTA
@@ -229,13 +463,86 @@
         html += '</div>';
 
         html += '</div><div class="show-sidebar">';
+
+        // Quick Facts
         html += '<div class="sidebar-card"><h3>Quick Facts</h3>' + sidebarStats + '</div>';
+
+        // Visit / Scannly
         html += '<div class="sidebar-card">' + websiteBtn;
         html += '<a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" class="btn-scannly">Download Scannly</a>';
         html += '</div>';
+
+        // Nearby Shows
+        html += nearbyShows;
+
         html += '</div></div>';
 
         document.getElementById('show-content').innerHTML = html;
+
+        // --- LOAD PRODUCTS ---
+        (function loadProducts() {
+            var defaultCategories = ['trade_show_displays', 'booth_accessories', 'trade_show_giveaways', 'lead_capture_tech'];
+
+            fetch('/products_data.json')
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (!data || !data.categories) return;
+
+                    // Collect products from relevant categories
+                    var allProducts = [];
+                    var cats = data.categories;
+
+                    for (var ci = 0; ci < defaultCategories.length; ci++) {
+                        var catKey = defaultCategories[ci];
+                        if (cats[catKey] && cats[catKey].products) {
+                            for (var pi = 0; pi < cats[catKey].products.length; pi++) {
+                                allProducts.push(cats[catKey].products[pi]);
+                            }
+                        }
+                    }
+
+                    // If we didn't find anything in those categories, try all categories
+                    if (allProducts.length === 0) {
+                        var allKeys = Object.keys(cats);
+                        for (var ak = 0; ak < allKeys.length; ak++) {
+                            if (cats[allKeys[ak]] && cats[allKeys[ak]].products) {
+                                for (var ap = 0; ap < cats[allKeys[ak]].products.length; ap++) {
+                                    allProducts.push(cats[allKeys[ak]].products[ap]);
+                                }
+                            }
+                        }
+                    }
+
+                    if (allProducts.length === 0) return;
+
+                    // Take up to 6 products
+                    var displayProducts = allProducts.slice(0, 6);
+
+                    var prodHtml = '<div class="travel-section"><h2>Recommended Products for ' + (show.category || 'Trade') + ' Shows</h2>';
+                    prodHtml += '<div class="product-grid">';
+
+                    for (var dp = 0; dp < displayProducts.length; dp++) {
+                        var prod = displayProducts[dp];
+                        prodHtml += '<div class="product-card">';
+                        prodHtml += '<div>';
+                        prodHtml += '<h4>' + (prod.name || prod.title || 'Product') + '</h4>';
+                        prodHtml += '<div class="product-price">' + (prod.price || '') + '</div>';
+                        prodHtml += '</div>';
+                        prodHtml += '<a href="' + (prod.url || prod.link || '#') + '" target="_blank" rel="noopener" class="btn-amazon">Shop on Amazon</a>';
+                        prodHtml += '</div>';
+                    }
+
+                    prodHtml += '</div>';
+                    prodHtml += '<a href="/products.html" class="view-all-products">View all products &rarr;</a>';
+                    prodHtml += '</div>';
+
+                    var container = document.getElementById('products-section');
+                    if (container) container.innerHTML = prodHtml;
+                })
+                .catch(function(err) {
+                    // Silently fail - products are optional
+                });
+        })();
     })();
     </script>
 </body>
