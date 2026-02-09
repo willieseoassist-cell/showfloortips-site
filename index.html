@@ -613,20 +613,15 @@
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
             ).join('');
 
-            // Actions
+            // Actions - Link to Google search to find official website
             const websiteBtn = document.getElementById('modalWebsite');
             const searchBtn = document.getElementById('modalSearchWebsite');
-            const isOfficial = show.website && !isAggregatorUrl(show.website);
+            const searchTerms = show.title + ' ' + (show.city || '') + ' ' + (show.state || show.country || '') + ' official website 2026';
+            const officialSearchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
 
-            if (isOfficial) {
-                websiteBtn.href = show.website;
-                websiteBtn.style.display = 'inline-flex';
-                searchBtn.style.display = 'none';
-            } else {
-                websiteBtn.style.display = 'none';
-                searchBtn.href = 'https://www.google.com/search?q=' + encodeURIComponent(show.title + ' official website 2026');
-                searchBtn.style.display = 'inline-flex';
-            }
+            websiteBtn.href = officialSearchUrl;
+            websiteBtn.style.display = 'inline-flex';
+            searchBtn.style.display = 'none';
             document.getElementById('modalShowPage').href = '/shows/' + show.slug;
 
             // Reset tabs
