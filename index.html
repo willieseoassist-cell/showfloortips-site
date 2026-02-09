@@ -160,6 +160,11 @@
 </head>
 <body>
 
+    <!-- FOMO Ticker Banner -->
+    <div id="fomoBanner" style="background:#0a0a0a;color:#fff;text-align:center;padding:10px 16px;font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.02em;display:none;cursor:pointer" onclick="document.getElementById('shows').scrollIntoView({behavior:'smooth'})">
+        <span id="fomoText"></span>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-inner">
@@ -270,6 +275,36 @@
             </div>
         </div>
     </div>
+
+    <!-- Happening Soon - Countdown Timers -->
+    <section id="happeningSoon" style="max-width:1200px;margin:0 auto;padding:24px 24px 0">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:700;color:#0a0a0a;letter-spacing:-0.02em">Happening Soon</h2>
+            <span style="font-size:0.75rem;color:#a3a3a3;font-weight:500;text-transform:uppercase;letter-spacing:0.05em">Live Countdowns</span>
+        </div>
+        <div id="countdownGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        </div>
+    </section>
+
+    <!-- Trending Shows This Week -->
+    <section id="trendingSection" style="max-width:1200px;margin:0 auto;padding:24px 24px 0">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:700;color:#0a0a0a;letter-spacing:-0.02em">Trending Shows This Week</h2>
+            <span style="font-size:0.75rem;color:#a3a3a3;font-weight:500;text-transform:uppercase;letter-spacing:0.05em">By Attendance</span>
+        </div>
+        <div id="trendingGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        </div>
+    </section>
+
+    <!-- Latest Insights -->
+    <section id="latestInsights" style="max-width:1200px;margin:0 auto;padding:24px 24px 0">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <h2 style="font-family:'Inter',sans-serif;font-size:1.25rem;font-weight:700;color:#0a0a0a;letter-spacing:-0.02em">Latest Insights</h2>
+            <a href="/news.html" style="font-size:0.8rem;color:#525252;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif">View All &rarr;</a>
+        </div>
+        <div id="insightsGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        </div>
+    </section>
 
     <!-- Filters -->
     <div class="filters-section">
@@ -1286,13 +1321,171 @@
             return false;
         };
 
+        // ── Addiction Features ──
+
+        function initAddictionFeatures() {
+            if (typeof SHOWS_DATA === 'undefined') return;
+            renderFomoBanner();
+            renderCountdowns();
+            renderTrending();
+            renderLatestInsights();
+            // Update countdowns every second
+            setInterval(updateCountdowns, 1000);
+        }
+
+        // FOMO Banner - shows how many shows are happening this week
+        function renderFomoBanner() {
+            var now = new Date();
+            var weekEnd = new Date(now);
+            weekEnd.setDate(weekEnd.getDate() + 7);
+            var thisWeek = SHOWS_DATA.filter(function(s) {
+                var d = new Date(s.sort_date);
+                return d >= now && d <= weekEnd;
+            });
+            var banner = document.getElementById('fomoBanner');
+            var text = document.getElementById('fomoText');
+            if (thisWeek.length > 0) {
+                text.innerHTML = '🔥 ' + thisWeek.length + ' trade shows happening this week — Don\'t miss out → Browse now';
+                banner.style.display = 'block';
+            } else {
+                var monthEnd = new Date(now);
+                monthEnd.setDate(monthEnd.getDate() + 30);
+                var thisMonth = SHOWS_DATA.filter(function(s) {
+                    var d = new Date(s.sort_date);
+                    return d >= now && d <= monthEnd;
+                });
+                if (thisMonth.length > 0) {
+                    text.innerHTML = '📅 ' + thisMonth.length + ' shows in the next 30 days — Start planning now →';
+                    banner.style.display = 'block';
+                }
+            }
+        }
+
+        // Countdown timers for the 4 nearest upcoming shows
+        var countdownShows = [];
+        function renderCountdowns() {
+            var now = new Date();
+            var upcoming = SHOWS_DATA.filter(function(s) {
+                return new Date(s.sort_date) >= now;
+            }).sort(function(a, b) {
+                return new Date(a.sort_date) - new Date(b.sort_date);
+            }).slice(0, 4);
+            countdownShows = upcoming;
+            var grid = document.getElementById('countdownGrid');
+            grid.innerHTML = upcoming.map(function(s, i) {
+                return '<div id="cd-' + i + '" style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:16px;cursor:pointer;transition:box-shadow 0.2s" onclick="window.location.href=\'/shows/' + s.slug + '\'" onmouseover="this.style.boxShadow=\'0 4px 12px rgba(0,0,0,0.08)\'" onmouseout="this.style.boxShadow=\'none\'">' +
+                    '<div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a3a3a3;margin-bottom:4px">' + s.category + '</div>' +
+                    '<div style="font-size:0.9rem;font-weight:700;color:#0a0a0a;margin-bottom:4px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + s.title + '</div>' +
+                    '<div style="font-size:0.75rem;color:#737373;margin-bottom:8px">' + s.city + (s.country ? ', ' + s.country : '') + '</div>' +
+                    '<div id="cd-timer-' + i + '" style="font-size:1.1rem;font-weight:800;color:#0a0a0a;font-variant-numeric:tabular-nums"></div>' +
+                    '<div style="font-size:0.65rem;color:#a3a3a3;font-weight:500;margin-top:2px">until show opens</div>' +
+                '</div>';
+            }).join('');
+            updateCountdowns();
+        }
+
+        function updateCountdowns() {
+            var now = new Date();
+            countdownShows.forEach(function(s, i) {
+                var el = document.getElementById('cd-timer-' + i);
+                if (!el) return;
+                var target = new Date(s.sort_date);
+                var diff = target - now;
+                if (diff <= 0) {
+                    el.textContent = 'HAPPENING NOW';
+                    el.style.color = '#dc2626';
+                    return;
+                }
+                var days = Math.floor(diff / 86400000);
+                var hours = Math.floor((diff % 86400000) / 3600000);
+                var mins = Math.floor((diff % 3600000) / 60000);
+                var secs = Math.floor((diff % 60000) / 1000);
+                if (days > 0) {
+                    el.textContent = days + 'd ' + hours + 'h ' + mins + 'm ' + secs + 's';
+                } else {
+                    el.textContent = hours + 'h ' + mins + 'm ' + secs + 's';
+                }
+            });
+        }
+
+        // Trending shows - top 4 by attendee count (upcoming only)
+        function renderTrending() {
+            var now = new Date();
+            var trending = SHOWS_DATA.filter(function(s) {
+                return new Date(s.sort_date) >= now && s.attendees;
+            }).sort(function(a, b) {
+                return parseNumericValue(b.attendees) - parseNumericValue(a.attendees);
+            }).slice(0, 4);
+            var grid = document.getElementById('trendingGrid');
+            grid.innerHTML = trending.map(function(s, i) {
+                var rank = i + 1;
+                return '<div style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:16px;cursor:pointer;transition:box-shadow 0.2s;position:relative" onclick="window.location.href=\'/shows/' + s.slug + '\'" onmouseover="this.style.boxShadow=\'0 4px 12px rgba(0,0,0,0.08)\'" onmouseout="this.style.boxShadow=\'none\'">' +
+                    '<div style="position:absolute;top:12px;right:12px;width:24px;height:24px;background:#0a0a0a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800">' + rank + '</div>' +
+                    '<div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a3a3a3;margin-bottom:4px">' + s.category + '</div>' +
+                    '<div style="font-size:0.9rem;font-weight:700;color:#0a0a0a;margin-bottom:4px;line-height:1.3;padding-right:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + s.title + '</div>' +
+                    '<div style="font-size:0.75rem;color:#737373;margin-bottom:6px">' + s.date + '</div>' +
+                    '<div style="font-size:0.85rem;font-weight:700;color:#0a0a0a">' + s.attendees + ' attendees</div>' +
+                '</div>';
+            }).join('');
+        }
+
+        // Latest Insights - pull from NEWS_DATA if available, otherwise static
+        function renderLatestInsights() {
+            var grid = document.getElementById('insightsGrid');
+            var articles = [
+                {
+                    title: 'AI Is Eating SaaS Alive — What Every Exhibitor Must Know',
+                    summary: 'Anthropic\'s Claude plugins triggered a SaaS market correction. Here\'s what the AI disruption means for your next trade show strategy.',
+                    url: '/news/ai-disruption-what-exhibitors-must-know-2026.html',
+                    badge: 'Industry Insight',
+                    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop'
+                },
+                {
+                    title: 'Cybersecurity Threats Your Booth Tech Can\'t Ignore',
+                    summary: 'SolarWinds exploits, ransomware attacks on payment processors, and supply chain compromises — your trade show tech stack is a target.',
+                    url: '/news/cybersecurity-threats-trade-show-booth-technology.html',
+                    badge: 'Industry Insight',
+                    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop'
+                },
+                {
+                    title: 'The EU Chip Race: Why Semiconductor Shows Are Exploding',
+                    summary: 'Europe just poured €2.5 billion into chip manufacturing. Semiconductor trade shows are the hottest ticket in 2026.',
+                    url: '/news/eu-chip-race-semiconductor-trade-shows-2026.html',
+                    badge: 'Industry Insight',
+                    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop'
+                }
+            ];
+            grid.innerHTML = articles.map(function(a) {
+                return '<a href="' + a.url + '" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow 0.2s,transform 0.2s;display:block" onmouseover="this.style.boxShadow=\'0 8px 24px rgba(0,0,0,0.1)\';this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.boxShadow=\'none\';this.style.transform=\'none\'">' +
+                    '<img src="' + a.image + '" alt="' + a.title + '" style="width:100%;height:160px;object-fit:cover">' +
+                    '<div style="padding:16px">' +
+                        '<span style="display:inline-block;padding:2px 8px;background:#171717;color:#fff;font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;border-radius:50px;margin-bottom:8px">' + a.badge + '</span>' +
+                        '<div style="font-size:0.95rem;font-weight:700;color:#0a0a0a;line-height:1.3;margin-bottom:6px">' + a.title + '</div>' +
+                        '<div style="font-size:0.8rem;color:#737373;line-height:1.5">' + a.summary + '</div>' +
+                    '</div>' +
+                '</a>';
+            }).join('');
+        }
+
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', init);
+            document.addEventListener('DOMContentLoaded', function() { init(); initAddictionFeatures(); });
         } else {
             init();
+            initAddictionFeatures();
         }
     })();
     </script>
+
+    <!-- Responsive overrides for addiction features -->
+    <style>
+        @media (max-width: 900px) {
+            #countdownGrid, #trendingGrid { grid-template-columns: repeat(2, 1fr) !important; }
+            #insightsGrid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 500px) {
+            #countdownGrid, #trendingGrid { grid-template-columns: 1fr !important; }
+        }
+    </style>
 
 </body>
 </html>
