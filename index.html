@@ -761,6 +761,7 @@
         function updateFilterBadge() {
             var count = countActiveAdvancedFilters();
             var badge = document.getElementById('filterBadge');
+            if (!badge) return;
             if (count > 0) {
                 badge.textContent = count + ' filter' + (count > 1 ? 's' : '') + ' active';
                 badge.style.display = 'inline-block';
