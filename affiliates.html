@@ -3,696 +3,559 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Amazon Picks for Trade Show Exhibitors - ShowFloorTips</title>
-    <meta name="description" content="Hand-picked Amazon supplies and gear for trade show exhibitors. 1,000+ products across 25 categories including displays, giveaways, lead capture tech, and more.">
-    <meta name="keywords" content="trade show supplies amazon, trade show products, exhibitor gear, booth supplies, trade show displays, trade show giveaways 2026">
-
-    <meta property="og:title" content="Top Amazon Picks for Trade Show Exhibitors - ShowFloorTips">
-    <meta property="og:description" content="Hand-picked Amazon supplies and gear for trade show exhibitors. 1,000+ curated products across 25 categories.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://showfloortips.com/affiliates.html">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "Top Amazon Picks for Trade Show Exhibitors",
-        "description": "Hand-picked Amazon supplies and gear for trade show exhibitors. 1,000+ curated products across 25 categories.",
-        "url": "https://showfloortips.com/affiliates.html",
-        "publisher": {
-            "@type": "Organization",
-            "name": "ShowFloorTips",
-            "url": "https://showfloortips.com"
-        }
-    }
-    </script>
-
+    <title>Top Amazon Picks for Trade Show Exhibitors | ShowFloorTips</title>
+    <meta name="description" content="Hand-picked Amazon supplies and gear we recommend for trade show success. Displays, giveaways, lead capture tools, booth accessories, and more.">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="canonical" href="https://showfloortips.com/affiliates.html">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        /* ---- Affiliates Page Styles ---- */
-
-        /* Hero */
+        /* ── Page-specific styles ── */
         .aff-hero {
-            position: relative;
-            background: var(--gray-50, #fafafa);
-            overflow: hidden;
-            padding: 4rem 2rem 3rem;
-        }
-        .aff-hero-content {
-            position: relative;
-            max-width: 1280px;
-            margin: 0 auto;
             text-align: center;
+            padding: 3.5rem 1.5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
         .aff-hero h1 {
-            font-size: 2.75rem;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: 2.25rem;
             font-weight: 800;
-            color: var(--black, #0a0a0a);
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
+            color: #0a0a0a;
+            margin: 0 0 0.75rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
-        .aff-hero .subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-600, #525252);
-            max-width: 640px;
-            margin: 0 auto;
+        .aff-hero p {
+            color: #525252;
+            font-size: 1.05rem;
             line-height: 1.6;
+            margin: 0;
         }
 
-        /* Search */
+        /* ── Search ── */
         .aff-search-wrap {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 2rem 0;
+            max-width: 520px;
+            margin: 0 auto 1.5rem;
+            padding: 0 1.5rem;
         }
-        .aff-search-input {
-            width: 100%;
-            padding: 0.875rem 1.25rem 0.875rem 3rem;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            border: 1px solid var(--gray-200, #e5e5e5);
-            border-radius: 12px;
+        .aff-search {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             background: #fff;
-            color: var(--black, #0a0a0a);
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            transition: border-color 0.2s;
         }
-        .aff-search-input:focus {
+        .aff-search:focus-within {
             border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
-        .aff-search-input::placeholder {
+        .aff-search svg {
+            flex-shrink: 0;
             color: #a3a3a3;
         }
-        .aff-search-container {
-            position: relative;
+        .aff-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #0a0a0a;
+            background: transparent;
         }
-        .aff-search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
+        .aff-search input::placeholder {
             color: #a3a3a3;
-            pointer-events: none;
         }
 
-        /* Category Pills */
-        .aff-filters {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1.25rem 2rem 0;
-        }
-        .aff-filter-bar {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: nowrap;
+        /* ── Category pills ── */
+        .aff-cats-wrap {
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 1.5rem;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
-        .aff-filter-bar::-webkit-scrollbar {
+        .aff-cats-wrap::-webkit-scrollbar {
             display: none;
         }
-        .aff-pill {
-            flex-shrink: 0;
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            border: 1px solid var(--gray-200, #e5e5e5);
+        .aff-cats {
+            display: flex;
+            gap: 0.5rem;
+            white-space: nowrap;
+            padding-bottom: 4px;
+        }
+        .aff-cat-pill {
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            border: 1.5px solid #e5e5e5;
             background: #fff;
-            color: var(--gray-600, #525252);
+            color: #525252;
             font-size: 0.85rem;
             font-weight: 500;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             cursor: pointer;
             transition: all 0.2s;
-            white-space: nowrap;
+            flex-shrink: 0;
         }
-        .aff-pill:hover {
-            border-color: #2563eb;
-            color: #2563eb;
+        .aff-cat-pill:hover {
+            border-color: #0a0a0a;
+            color: #0a0a0a;
         }
-        .aff-pill.active {
-            background: var(--black, #0a0a0a);
-            color: #fff;
-            border-color: var(--black, #0a0a0a);
+        .aff-cat-pill.active {
+            background: #0a0a0a;
+            color: #fafafa;
+            border-color: #0a0a0a;
         }
 
-        /* Product Grid */
-        .aff-grid-section {
-            max-width: 1280px;
+        /* ── Count + grid container ── */
+        .aff-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1.5rem 2rem 3rem;
+            padding: 0 1.5rem 3rem;
         }
         .aff-count {
-            font-size: 0.9rem;
-            color: var(--gray-500, #737373);
+            font-size: 0.875rem;
+            color: #737373;
             margin-bottom: 1.25rem;
-            font-weight: 500;
         }
+
+        /* ── Product grid ── */
         .aff-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.25rem;
         }
+        @media (max-width: 1024px) {
+            .aff-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .aff-grid { grid-template-columns: repeat(2, 1fr); }
+            .aff-hero h1 { font-size: 1.75rem; }
+        }
+        @media (max-width: 480px) {
+            .aff-grid { grid-template-columns: 1fr; }
+            .aff-hero { padding: 2.5rem 1rem 1.5rem; }
+            .aff-hero h1 { font-size: 1.5rem; }
+        }
 
-        /* Product Card */
+        /* ── Product card ── */
         .aff-card {
             background: #fff;
-            border: 1px solid var(--gray-200, #e5e5e5);
-            border-radius: 14px;
-            padding: 1.5rem;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 0.875rem;
-            transition: box-shadow 0.25s, border-color 0.25s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         .aff-card:hover {
             border-color: #d4d4d4;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         }
-        .aff-card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #f5f5f5;
-            display: flex;
+        .aff-card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .aff-card-fallback {
+            width: 100%;
+            height: 160px;
+            background: #f9fafb;
+            border-radius: 8px;
+            display: none;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
         }
-        .aff-card-icon svg {
-            width: 22px;
-            height: 22px;
-            color: #525252;
+        .aff-card-fallback svg {
+            color: #d4d4d4;
         }
         .aff-card-name {
-            font-size: 0.925rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--black, #0a0a0a);
-            line-height: 1.45;
+            color: #0a0a0a;
+            margin: 0.75rem 0 0.35rem;
+            line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 2.6em;
         }
         .aff-card-price {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--black, #0a0a0a);
+            color: #0a0a0a;
+            margin-bottom: 0.75rem;
         }
         .aff-card-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.4rem;
-            padding: 0.625rem 1.25rem;
+            margin-top: auto;
+            padding: 0.6rem 1rem;
             background: #ff9900;
             color: #0a0a0a;
+            font-weight: 700;
             font-size: 0.85rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             border: none;
             border-radius: 8px;
-            cursor: pointer;
             text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-            margin-top: auto;
-            width: 100%;
-            justify-content: center;
+            text-align: center;
+            transition: background 0.2s;
+            cursor: pointer;
         }
         .aff-card-btn:hover {
             background: #e68a00;
-            transform: translateY(-1px);
-        }
-        .aff-card-btn svg {
-            width: 14px;
-            height: 14px;
         }
 
-        /* Load More */
-        .aff-load-more-wrap {
+        /* ── Load More ── */
+        .aff-load-wrap {
             text-align: center;
-            padding: 2rem 0 0;
+            margin-top: 2rem;
         }
-        .aff-load-more {
-            padding: 0.875rem 2.5rem;
-            font-size: 0.95rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            background: var(--black, #0a0a0a);
-            color: #fff;
+        .aff-load-btn {
+            padding: 0.75rem 2.5rem;
+            background: #0a0a0a;
+            color: #fafafa;
             border: none;
             border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
-        }
-        .aff-load-more:hover {
-            background: #1a1a1a;
-            transform: translateY(-1px);
-        }
-
-        /* Disclaimer */
-        .aff-disclaimer {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-        }
-        .aff-disclaimer-inner {
-            background: #f5f5f5;
-            border: 1px solid var(--gray-200, #e5e5e5);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-        }
-        .aff-disclaimer-inner h3 {
             font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--black, #0a0a0a);
-            margin-bottom: 0.5rem;
-        }
-        .aff-disclaimer-inner p {
-            font-size: 0.85rem;
-            color: var(--gray-600, #525252);
-            line-height: 1.65;
-            margin: 0;
-        }
-
-        /* No Results */
-        .aff-no-results {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--gray-500, #737373);
-        }
-        .aff-no-results h3 {
-            font-size: 1.2rem;
             font-weight: 600;
-            color: var(--black, #0a0a0a);
-            margin-bottom: 0.5rem;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .aff-load-btn:hover {
+            background: #262626;
+        }
+        .aff-load-btn:disabled {
+            display: none;
         }
 
-        /* Responsive */
-        @media (max-width: 1100px) {
-            .aff-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        /* ── Disclaimer ── */
+        .aff-disclaimer {
+            max-width: 800px;
+            margin: 1rem auto 3rem;
+            padding: 1.25rem 1.5rem;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 12px;
+            background: #fafafa;
+            font-size: 0.85rem;
+            color: #737373;
+            line-height: 1.7;
+            text-align: center;
         }
-        @media (max-width: 768px) {
-            .aff-hero h1 {
-                font-size: 2rem;
-            }
-            .aff-hero .subtitle {
-                font-size: 1rem;
-            }
-            .aff-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            .aff-card {
-                padding: 1.25rem;
-            }
-            .aff-search-wrap,
-            .aff-filters,
-            .aff-grid-section,
-            .aff-disclaimer {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
+        .aff-disclaimer strong {
+            color: #525252;
         }
-        @media (max-width: 480px) {
-            .aff-hero {
-                padding: 3rem 1rem 2rem;
-            }
-            .aff-hero h1 {
-                font-size: 1.65rem;
-            }
-            .aff-grid {
-                grid-template-columns: 1fr;
-            }
+
+        /* ── Loading spinner ── */
+        .aff-loading {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: #a3a3a3;
+            font-size: 0.95rem;
+        }
+        .aff-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #0a0a0a;
+            border-radius: 50%;
+            animation: aff-spin 0.7s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes aff-spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="header-inner">
-            <a href="/" class="logo">ShowFloorTips</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/#shows">Trade Shows</a></li>
-                    <li><a href="/news.html">News</a></li>
-                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
-                    <li><a href="/products.html">Products</a></li>
-                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-        </div>
-    </header>
+<header>
+    <div class="header-inner">
+        <a href="/" class="logo">ShowFloorTips</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/#shows">Trade Shows</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+</header>
+
+<main>
 
     <!-- Hero -->
     <section class="aff-hero">
-        <div class="aff-hero-content">
-            <h1>Top Amazon Picks for Trade Show Exhibitors</h1>
-            <p class="subtitle">Hand-picked supplies and gear we recommend. As an Amazon Associate, we earn from qualifying purchases.</p>
-        </div>
+        <h1>Top Amazon Picks for Exhibitors</h1>
+        <p>Hand-picked supplies and gear we recommend for trade show success. As an Amazon Associate, we earn from qualifying purchases.</p>
     </section>
 
     <!-- Search -->
     <div class="aff-search-wrap">
-        <div class="aff-search-container">
-            <svg class="aff-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" class="aff-search-input" id="affSearch" placeholder="Search 1,000+ products..." autocomplete="off">
+        <div class="aff-search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="affSearch" placeholder="Search products by name or category..." autocomplete="off">
         </div>
     </div>
 
-    <!-- Category Pills -->
-    <div class="aff-filters">
-        <div class="aff-filter-bar" id="affFilterBar">
-            <!-- Populated by JS -->
-        </div>
+    <!-- Category pills -->
+    <div class="aff-cats-wrap">
+        <div class="aff-cats" id="affCats"></div>
     </div>
 
-    <!-- Product Grid -->
-    <div class="aff-grid-section">
-        <p class="aff-count" id="affCount"></p>
+    <!-- Grid container -->
+    <div class="aff-container">
+        <div class="aff-count" id="affCount"></div>
+        <div id="affLoading" class="aff-loading">
+            <div class="aff-spinner"></div>
+            Loading products...
+        </div>
         <div class="aff-grid" id="affGrid"></div>
-        <div id="affNoResults" class="aff-no-results" style="display:none;">
-            <h3>No products found</h3>
-            <p>Try a different search term or category.</p>
-        </div>
-        <div class="aff-load-more-wrap" id="affLoadMoreWrap" style="display:none;">
-            <button class="aff-load-more" id="affLoadMore">Load More Products</button>
+        <div class="aff-load-wrap">
+            <button class="aff-load-btn" id="affLoadMore" style="display:none">Load More</button>
         </div>
     </div>
 
     <!-- Disclaimer -->
     <div class="aff-disclaimer">
-        <div class="aff-disclaimer-inner">
-            <h3>Amazon Affiliate Disclosure</h3>
-            <p>ShowFloorTips is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on Amazon at the time of purchase will apply. As an Amazon Associate, we earn from qualifying purchases.</p>
-        </div>
+        <strong>Affiliate Disclosure:</strong> ShowFloorTips.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. Product prices and availability are subject to change. Any price and availability information displayed at the time of purchase will apply.
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">ShowFloorTips</div>
-                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/#shows">Trade Shows</a></li>
-                        <li><a href="/news.html">Industry News</a></li>
-                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
-                        <li><a href="/products.html">Products</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
-                        <li><a href="/affiliates.html">Affiliate Picks</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Top Categories</h4>
-                    <ul>
-                        <li><a href="/products.html">Displays</a></li>
-                        <li><a href="/products.html">Giveaways</a></li>
-                        <li><a href="/products.html">Lead Capture</a></li>
-                        <li><a href="/products.html">Booth Accessories</a></li>
-                        <li><a href="/products.html">Lighting</a></li>
-                        <li><a href="/products.html">Tech Gadgets</a></li>
-                    </ul>
-                </div>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">ShowFloorTips</div>
+                <p>Expert intelligence and resources for trade show exhibitors.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ShowFloorTips. All rights reserved.</p>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/affiliates.html">Amazon Picks</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                    <li><a href="/store.html">Digital Store</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShowFloorTips.com</p>
+            <p>Built for exhibitors, by exhibitors</p>
+        </div>
+    </div>
+</footer>
 
-    <script>
-    (function() {
-        'use strict';
+<script>
+(function() {
+    'use strict';
 
-        // Category SVG icons (inline SVGs for each category)
-        const CATEGORY_ICONS = {
-            trade_show_displays: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
-            trade_show_giveaways: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8V21"/><path d="M3 12h18"/><path d="M12 8c-1.5-2-4-3-4-3s1 2.5 4 3z"/><path d="M12 8c1.5-2 4-3 4-3s-1 2.5-4 3z"/></svg>',
-            lead_capture_tech: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
-            booth_accessories: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
-            lighting_electrical: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>',
-            furniture_seating: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0H7a2 2 0 0 0-4 0z"/><line x1="5" y1="18" x2="5" y2="21"/><line x1="19" y1="18" x2="19" y2="21"/></svg>',
-            flooring_mats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>',
-            shipping_transport: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
-            audio_visual: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>',
-            printing_signage: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>',
-            promotional_apparel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2l-4 4-4-4L3.62 3.46a2 2 0 0 0-.88 1.26L1 12l4 1v8h14v-8l4-1-1.74-7.28a2 2 0 0 0-.88-1.26z"/></svg>',
-            drinkware_bottles: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>',
-            bags_totes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>',
-            office_writing: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="3" x2="22" y2="8"/><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
-            health_safety_wellness: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
-            food_service_hospitality: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><line x1="7" y1="2" x2="7" y2="22"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3v7"/></svg>',
-            eco_friendly_sustainable: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
-            tech_gadgets_phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
-            photography_video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
-            badges_credentials: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><circle cx="8" cy="14" r="2"/><line x1="14" y1="13" x2="19" y2="13"/><line x1="14" y1="17" x2="17" y2="17"/></svg>',
-            storage_organization: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>',
-            outdoor_event_canopies: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10L12 2l9 8"/><path d="M5 10v10h14V10"/><line x1="5" y1="20" x2="3" y2="22"/><line x1="19" y1="20" x2="21" y2="22"/></svg>',
-            premium_executive_gifts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-            novelty_fun_promotional: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
-            cleaning_maintenance: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v5"/><path d="M6 7h12l-1 15H7L6 7z"/><path d="M8 2h8"/></svg>'
-        };
+    var AFFILIATE_TAG = 'showfloor0e-20';
+    var PAGE_SIZE = 40;
+    var SKIP_KEYS = { generated_date: 1, note: 1, total_products: 1, total_categories: 1 };
 
-        // Pretty category names
-        const CATEGORY_NAMES = {
-            trade_show_displays: 'Displays',
-            trade_show_giveaways: 'Giveaways',
-            lead_capture_tech: 'Lead Capture',
-            booth_accessories: 'Booth Accessories',
-            lighting_electrical: 'Lighting & Electrical',
-            furniture_seating: 'Furniture & Seating',
-            flooring_mats: 'Flooring & Mats',
-            shipping_transport: 'Shipping & Transport',
-            audio_visual: 'Audio Visual',
-            printing_signage: 'Printing & Signage',
-            promotional_apparel: 'Apparel',
-            drinkware_bottles: 'Drinkware',
-            bags_totes: 'Bags & Totes',
-            office_writing: 'Office & Writing',
-            health_safety_wellness: 'Health & Safety',
-            food_service_hospitality: 'Food & Hospitality',
-            eco_friendly_sustainable: 'Eco-Friendly',
-            tech_gadgets_phone: 'Tech Gadgets',
-            photography_video: 'Photography & Video',
-            badges_credentials: 'Badges & Credentials',
-            storage_organization: 'Storage & Organization',
-            outdoor_event_canopies: 'Outdoor & Canopies',
-            premium_executive_gifts: 'Executive Gifts',
-            novelty_fun_promotional: 'Novelty & Fun',
-            cleaning_maintenance: 'Cleaning & Maintenance'
-        };
+    var CATEGORY_LABELS = {
+        'all': 'All',
+        'trade_show_displays': 'Displays',
+        'giveaways': 'Giveaways',
+        'lead_capture': 'Lead Capture',
+        'booth_accessories': 'Booth Accessories',
+        'lighting': 'Lighting',
+        'furniture': 'Furniture',
+        'flooring': 'Flooring',
+        'shipping': 'Shipping',
+        'audio_visual': 'Audio Visual',
+        'signage': 'Signage',
+        'apparel': 'Apparel',
+        'drinkware': 'Drinkware',
+        'bags_and_totes': 'Bags & Totes',
+        'office': 'Office',
+        'health_and_safety': 'Health & Safety',
+        'food_service': 'Food Service',
+        'eco_friendly': 'Eco-Friendly',
+        'tech_gadgets': 'Tech Gadgets',
+        'photo_and_video': 'Photo & Video',
+        'badges': 'Badges',
+        'storage': 'Storage',
+        'outdoor': 'Outdoor',
+        'executive_gifts': 'Executive Gifts',
+        'novelty': 'Novelty',
+        'cleaning': 'Cleaning'
+    };
 
-        // Category ordering (numerical)
-        const CATEGORY_ORDER = [
-            'trade_show_displays','trade_show_giveaways','lead_capture_tech','booth_accessories',
-            'lighting_electrical','furniture_seating','flooring_mats','shipping_transport',
-            'audio_visual','printing_signage','promotional_apparel','drinkware_bottles',
-            'bags_totes','office_writing','health_safety_wellness','food_service_hospitality',
-            'eco_friendly_sustainable','tech_gadgets_phone','photography_video','badges_credentials',
-            'storage_organization','outdoor_event_canopies','premium_executive_gifts',
-            'novelty_fun_promotional','cleaning_maintenance'
-        ];
+    var CATEGORY_ORDER = [
+        'all','trade_show_displays','giveaways','lead_capture','booth_accessories',
+        'lighting','furniture','flooring','shipping','audio_visual','signage',
+        'apparel','drinkware','bags_and_totes','office','health_and_safety',
+        'food_service','eco_friendly','tech_gadgets','photo_and_video','badges',
+        'storage','outdoor','executive_gifts','novelty','cleaning'
+    ];
 
-        const BATCH_SIZE = 40;
-        let allProducts = [];
-        let filteredProducts = [];
-        let visibleCount = 0;
-        let activeCategory = 'all';
-        let searchQuery = '';
+    var allProducts = [];
+    var filtered = [];
+    var visibleCount = 0;
+    var activeCategory = 'all';
+    var searchTerm = '';
 
-        // DOM refs
-        const grid = document.getElementById('affGrid');
-        const countEl = document.getElementById('affCount');
-        const filterBar = document.getElementById('affFilterBar');
-        const searchInput = document.getElementById('affSearch');
-        const loadMoreWrap = document.getElementById('affLoadMoreWrap');
-        const loadMoreBtn = document.getElementById('affLoadMore');
-        const noResults = document.getElementById('affNoResults');
+    var grid = document.getElementById('affGrid');
+    var countEl = document.getElementById('affCount');
+    var loadBtn = document.getElementById('affLoadMore');
+    var loadingEl = document.getElementById('affLoading');
+    var searchInput = document.getElementById('affSearch');
+    var catsContainer = document.getElementById('affCats');
 
-        // Extract clean category key from raw key
-        function cleanCategoryKey(rawKey) {
-            return rawKey.replace(/^category_\d+_/, '');
-        }
+    function slugFromKey(key) {
+        return key.replace(/^category_\d+_/, '');
+    }
 
-        // Build a product card HTML
-        function buildCard(product) {
-            const icon = CATEGORY_ICONS[product.category] || CATEGORY_ICONS.booth_accessories;
-            const tag = product.url.startsWith('http') ? 'a' : 'a';
-            const affiliateTag = 'showfloor0e-20';
-            let url = product.url;
-            if (url.includes('amazon.com') && !url.includes('tag=')) {
-                url += (url.includes('?') ? '&' : '?') + 'tag=' + affiliateTag;
-            }
+    function appendTag(url) {
+        if (!url) return '#';
+        var sep = url.indexOf('?') === -1 ? '?' : '&';
+        return url + sep + 'tag=' + AFFILIATE_TAG;
+    }
 
-            return '<div class="aff-card">' +
-                '<div class="aff-card-icon">' + icon + '</div>' +
-                '<div class="aff-card-name" title="' + escapeAttr(product.product_name) + '">' + escapeHtml(product.product_name) + '</div>' +
-                '<div class="aff-card-price">' + escapeHtml(product.approx_price) + '</div>' +
-                '<a href="' + escapeAttr(url) + '" target="_blank" rel="noopener noreferrer nofollow" class="aff-card-btn">' +
-                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
-                    'Shop on Amazon' +
-                '</a>' +
-            '</div>';
-        }
+    function formatPrice(p) {
+        if (!p) return '';
+        var s = String(p).replace(/[^0-9.]/g, '');
+        var n = parseFloat(s);
+        if (isNaN(n)) return p;
+        return '$' + n.toFixed(2);
+    }
 
-        function escapeHtml(str) {
-            var d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
-        }
-
-        function escapeAttr(str) {
-            return str.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        }
-
-        // Render products
-        function render() {
-            var showing = Math.min(visibleCount, filteredProducts.length);
-            grid.innerHTML = '';
-
-            if (filteredProducts.length === 0) {
-                noResults.style.display = 'block';
-                loadMoreWrap.style.display = 'none';
-                countEl.textContent = 'Showing 0 of 0 products';
-                return;
-            }
-
-            noResults.style.display = 'none';
-            var html = '';
-            for (var i = 0; i < showing; i++) {
-                html += buildCard(filteredProducts[i]);
-            }
-            grid.innerHTML = html;
-
-            countEl.textContent = 'Showing ' + showing + ' of ' + filteredProducts.length + ' products';
-
-            if (showing < filteredProducts.length) {
-                loadMoreWrap.style.display = 'block';
-            } else {
-                loadMoreWrap.style.display = 'none';
-            }
-        }
-
-        // Filter products
-        function applyFilters() {
-            var q = searchQuery.toLowerCase().trim();
-            filteredProducts = allProducts.filter(function(p) {
-                var catMatch = (activeCategory === 'all') || (p.category === activeCategory);
-                if (!catMatch) return false;
-                if (!q) return true;
-                return p.product_name.toLowerCase().indexOf(q) !== -1 ||
-                       p.search_query.toLowerCase().indexOf(q) !== -1 ||
-                       (CATEGORY_NAMES[p.category] || '').toLowerCase().indexOf(q) !== -1;
-            });
-            visibleCount = BATCH_SIZE;
-            render();
-        }
-
-        // Build filter pills
-        function buildFilterPills() {
-            var html = '<button class="aff-pill active" data-cat="all">All Products</button>';
-            CATEGORY_ORDER.forEach(function(cat) {
-                var name = CATEGORY_NAMES[cat] || cat;
-                html += '<button class="aff-pill" data-cat="' + cat + '">' + name + '</button>';
-            });
-            filterBar.innerHTML = html;
-
-            filterBar.addEventListener('click', function(e) {
-                var pill = e.target.closest('.aff-pill');
-                if (!pill) return;
-                activeCategory = pill.getAttribute('data-cat');
-                var pills = filterBar.querySelectorAll('.aff-pill');
-                pills.forEach(function(p) { p.classList.remove('active'); });
-                pill.classList.add('active');
+    function buildCategoryPills(slugs) {
+        catsContainer.innerHTML = '';
+        CATEGORY_ORDER.forEach(function(slug) {
+            if (slug !== 'all' && slugs.indexOf(slug) === -1) return;
+            var btn = document.createElement('button');
+            btn.className = 'aff-cat-pill' + (slug === activeCategory ? ' active' : '');
+            btn.textContent = CATEGORY_LABELS[slug] || slug.replace(/_/g, ' ');
+            btn.setAttribute('data-cat', slug);
+            btn.addEventListener('click', function() {
+                activeCategory = slug;
+                document.querySelectorAll('.aff-cat-pill').forEach(function(p) {
+                    p.classList.toggle('active', p.getAttribute('data-cat') === slug);
+                });
                 applyFilters();
-                // Scroll grid into view
-                document.querySelector('.aff-grid-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
+            catsContainer.appendChild(btn);
+        });
+    }
+
+    function cardHTML(item) {
+        var imgSrc = 'https://m.media-amazon.com/images/P/' + item.asin + '.jpg';
+        var href = appendTag(item.url);
+        var price = formatPrice(item.approx_price);
+
+        return '<div class="aff-card">' +
+            '<img class="aff-card-img" src="' + imgSrc + '" alt="' + (item.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+            '<div class="aff-card-fallback"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>' +
+            '<div class="aff-card-name">' + (item.product_name || 'Trade Show Product') + '</div>' +
+            (price ? '<div class="aff-card-price">' + price + '</div>' : '') +
+            '<a class="aff-card-btn" href="' + href + '" target="_blank" rel="noopener noreferrer nofollow sponsored">Shop on Amazon</a>' +
+        '</div>';
+    }
+
+    function renderSlice(start, end) {
+        var html = '';
+        for (var i = start; i < end && i < filtered.length; i++) {
+            html += cardHTML(filtered[i]);
         }
+        grid.insertAdjacentHTML('beforeend', html);
+    }
 
-        // Debounce helper
-        function debounce(fn, delay) {
-            var timer;
-            return function() {
-                clearTimeout(timer);
-                timer = setTimeout(fn, delay);
-            };
-        }
+    function applyFilters() {
+        var q = searchTerm.toLowerCase().trim();
 
-        // Search handler
-        searchInput.addEventListener('input', debounce(function() {
-            searchQuery = searchInput.value;
-            applyFilters();
-        }, 250));
-
-        // Load more handler
-        loadMoreBtn.addEventListener('click', function() {
-            visibleCount += BATCH_SIZE;
-            render();
+        filtered = allProducts.filter(function(item) {
+            if (activeCategory !== 'all' && item._category !== activeCategory) return false;
+            if (q) {
+                var name = (item.product_name || '').toLowerCase();
+                var cat = (item._categoryLabel || '').toLowerCase();
+                if (name.indexOf(q) === -1 && cat.indexOf(q) === -1) return false;
+            }
+            return true;
         });
 
-        // Fetch data and initialize
-        fetch('/products_data.json')
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-                var products = [];
-                var keys = Object.keys(data);
-                // Sort keys numerically
-                keys.sort(function(a, b) {
-                    var numA = parseInt((a.match(/^category_(\d+)_/) || [])[1]) || 0;
-                    var numB = parseInt((b.match(/^category_(\d+)_/) || [])[1]) || 0;
-                    return numA - numB;
+        visibleCount = 0;
+        grid.innerHTML = '';
+        showMore();
+    }
+
+    function showMore() {
+        var end = Math.min(visibleCount + PAGE_SIZE, filtered.length);
+        renderSlice(visibleCount, end);
+        visibleCount = end;
+        updateCount();
+        loadBtn.style.display = visibleCount < filtered.length ? '' : 'none';
+    }
+
+    function updateCount() {
+        countEl.textContent = 'Showing ' + visibleCount + ' of ' + filtered.length + ' products';
+    }
+
+    loadBtn.addEventListener('click', showMore);
+
+    var debounceTimer;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function() {
+            searchTerm = searchInput.value;
+            applyFilters();
+        }, 250);
+    });
+
+    fetch('/products_data.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            var catSlugs = [];
+            var keys = Object.keys(data);
+
+            keys.forEach(function(key) {
+                if (SKIP_KEYS[key]) return;
+                var items = data[key];
+                if (!Array.isArray(items)) return;
+                var slug = slugFromKey(key);
+                if (catSlugs.indexOf(slug) === -1) catSlugs.push(slug);
+                var label = CATEGORY_LABELS[slug] || slug.replace(/_/g, ' ');
+                items.forEach(function(item) {
+                    if (!item.asin || !item.url) return;
+                    item._category = slug;
+                    item._categoryLabel = label;
+                    allProducts.push(item);
                 });
-                keys.forEach(function(key) {
-                    if (!key.startsWith('category_')) return;
-                    var cleanKey = cleanCategoryKey(key);
-                    var items = data[key];
-                    if (!Array.isArray(items)) return;
-                    items.forEach(function(item) {
-                        products.push({
-                            product_name: item.product_name || '',
-                            asin: item.asin || '',
-                            approx_price: item.approx_price || '',
-                            url: item.url || '',
-                            search_query: item.search_query || '',
-                            category: cleanKey
-                        });
-                    });
-                });
-                allProducts = products;
-                filteredProducts = products.slice();
-                visibleCount = BATCH_SIZE;
-                buildFilterPills();
-                render();
-            })
-            .catch(function(err) {
-                console.error('Failed to load products:', err);
-                grid.innerHTML = '<div class="aff-no-results"><h3>Unable to load products</h3><p>Please try refreshing the page.</p></div>';
             });
-    })();
-    </script>
+
+            loadingEl.style.display = 'none';
+            buildCategoryPills(catSlugs);
+            filtered = allProducts.slice();
+            showMore();
+        })
+        .catch(function(err) {
+            loadingEl.innerHTML = '<p style="color:#737373">Unable to load products. Please try again later.</p>';
+            console.error('Failed to load products_data.json:', err);
+        });
+
+})();
+</script>
 
 </body>
 </html>

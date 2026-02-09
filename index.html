@@ -27,6 +27,176 @@
     <link rel="stylesheet" href="/styles.css">
     <link rel="canonical" href="https://showfloortips.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Advanced Filters Styles -->
+    <style>
+        .advanced-filters-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+        .advanced-filters-toggle:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+        }
+        .toggle-chevron {
+            transition: transform 0.3s ease;
+        }
+        .advanced-filters-toggle.open .toggle-chevron {
+            transform: rotate(180deg);
+        }
+        .filter-badge {
+            background: #fff;
+            color: #171717;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 50px;
+            line-height: 1.4;
+        }
+        .advanced-filters-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin 0.3s ease;
+            opacity: 0;
+            margin-top: 0;
+            width: 100%;
+            max-width: 680px;
+        }
+        .advanced-filters-panel.open {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+        .advanced-filters-inner {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        }
+        .af-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .af-row:last-of-type {
+            margin-bottom: 20px;
+        }
+        .af-group {
+            flex: 1;
+            min-width: 0;
+        }
+        .af-group-wide {
+            flex: 2;
+        }
+        .af-label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .af-input, .af-select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #171717;
+            background: #fff;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .af-select {
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+        .af-input:focus, .af-select:focus {
+            outline: none;
+            border-color: #171717;
+            box-shadow: 0 0 0 3px rgba(23,23,23,0.08);
+        }
+        .af-input::placeholder {
+            color: #9ca3af;
+        }
+        .af-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        .af-btn {
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+        .af-btn-clear {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .af-btn-clear:hover {
+            background: #e5e7eb;
+        }
+        .af-btn-apply {
+            background: #171717;
+            color: #fff;
+        }
+        .af-btn-apply:hover {
+            background: #333;
+        }
+        /* Mobile responsive */
+        @media (max-width: 640px) {
+            .af-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .af-group-wide {
+                flex: 1;
+            }
+            .advanced-filters-inner {
+                padding: 16px;
+                border-radius: 12px;
+            }
+            .advanced-filters-panel {
+                max-width: 100%;
+            }
+            .advanced-filters-panel.open {
+                max-height: 700px;
+            }
+            .af-actions {
+                flex-direction: column-reverse;
+            }
+            .af-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -55,6 +225,68 @@
             <div class="search-container">
                 <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 <input type="text" id="searchInput" placeholder="Search by show name, city, country, or industry..." autocomplete="off">
+            </div>
+            <!-- Advanced Filters Toggle -->
+            <button class="advanced-filters-toggle" id="advancedFiltersToggle" onclick="toggleAdvancedFilters()">
+                <span class="toggle-text">Advanced Filters</span>
+                <span class="filter-badge" id="filterBadge" style="display:none"></span>
+                <svg class="toggle-chevron" id="toggleChevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <!-- Advanced Filters Panel -->
+            <div class="advanced-filters-panel" id="advancedFiltersPanel">
+                <div class="advanced-filters-inner">
+                    <div class="af-row">
+                        <div class="af-group">
+                            <label class="af-label" for="afDateFrom">Date From</label>
+                            <input type="date" class="af-input" id="afDateFrom">
+                        </div>
+                        <div class="af-group">
+                            <label class="af-label" for="afDateTo">Date To</label>
+                            <input type="date" class="af-input" id="afDateTo">
+                        </div>
+                    </div>
+                    <div class="af-row">
+                        <div class="af-group af-group-wide">
+                            <label class="af-label" for="afLocation">Location / City</label>
+                            <input type="text" class="af-input" id="afLocation" placeholder="Search by city, venue, or state...">
+                        </div>
+                        <div class="af-group">
+                            <label class="af-label" for="afCountry">Country</label>
+                            <select class="af-select" id="afCountry">
+                                <option value="">All Countries</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="af-row">
+                        <div class="af-group">
+                            <label class="af-label" for="afAttendees">Attendees</label>
+                            <select class="af-select" id="afAttendees">
+                                <option value="">Any</option>
+                                <option value="0-1000">Under 1,000</option>
+                                <option value="1000-5000">1,000 - 5,000</option>
+                                <option value="5000-10000">5,000 - 10,000</option>
+                                <option value="10000-50000">10,000 - 50,000</option>
+                                <option value="50000-999999">50,000+</option>
+                                <option value="100000-999999">100,000+</option>
+                            </select>
+                        </div>
+                        <div class="af-group">
+                            <label class="af-label" for="afExhibitors">Exhibitors</label>
+                            <select class="af-select" id="afExhibitors">
+                                <option value="">Any</option>
+                                <option value="0-100">Under 100</option>
+                                <option value="100-500">100 - 500</option>
+                                <option value="500-1000">500 - 1,000</option>
+                                <option value="1000-5000">1,000 - 5,000</option>
+                                <option value="5000-999999">5,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="af-actions">
+                        <button class="af-btn af-btn-clear" id="afClearBtn" onclick="clearAdvancedFilters()">Clear Filters</button>
+                        <button class="af-btn af-btn-apply" id="afApplyBtn" onclick="applyAdvancedFilters()">Apply Filters</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -342,6 +574,14 @@
         let visibleCount = ITEMS_PER_PAGE;
         let filteredShows = [];
 
+        // Advanced filter state
+        let afDateFrom = '';
+        let afDateTo = '';
+        let afLocation = '';
+        let afCountry = '';
+        let afAttendees = '';
+        let afExhibitors = '';
+
         // Category colors
         const CAT_COLORS = {
             'Technology': '#171717',
@@ -402,6 +642,15 @@
                     countrySelect.appendChild(opt);
                 });
 
+            // Populate advanced filters country dropdown (alphabetical)
+            var afCountrySelect = document.getElementById('afCountry');
+            Object.keys(countryCounts).sort().forEach(function(country) {
+                var opt = document.createElement('option');
+                opt.value = country;
+                opt.textContent = country + ' (' + countryCounts[country] + ')';
+                afCountrySelect.appendChild(opt);
+            });
+
             applyFilters();
             bindEvents();
         }
@@ -457,6 +706,20 @@
                 if (e.key === 'Escape') closeModal();
             });
 
+            // Advanced filters - real-time filtering
+            var afDebounce;
+            ['afDateFrom','afDateTo','afLocation'].forEach(function(id) {
+                document.getElementById(id).addEventListener('input', function() {
+                    clearTimeout(afDebounce);
+                    afDebounce = setTimeout(function() { applyAdvancedFromInputs(); }, 300);
+                });
+            });
+            ['afCountry','afAttendees','afExhibitors'].forEach(function(id) {
+                document.getElementById(id).addEventListener('change', function() {
+                    applyAdvancedFromInputs();
+                });
+            });
+
             // Modal tabs
             document.querySelectorAll('.modal-tab').forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -468,6 +731,46 @@
             });
         }
 
+        function parseNumericValue(str) {
+            if (!str) return 0;
+            var cleaned = String(str).replace(/[^0-9]/g, '');
+            return parseInt(cleaned, 10) || 0;
+        }
+
+        function applyAdvancedFromInputs() {
+            afDateFrom = document.getElementById('afDateFrom').value;
+            afDateTo = document.getElementById('afDateTo').value;
+            afLocation = document.getElementById('afLocation').value.trim().toLowerCase();
+            afCountry = document.getElementById('afCountry').value;
+            afAttendees = document.getElementById('afAttendees').value;
+            afExhibitors = document.getElementById('afExhibitors').value;
+            visibleCount = ITEMS_PER_PAGE;
+            updateFilterBadge();
+            applyFilters();
+        }
+
+        function countActiveAdvancedFilters() {
+            var count = 0;
+            if (afDateFrom) count++;
+            if (afDateTo) count++;
+            if (afLocation) count++;
+            if (afCountry) count++;
+            if (afAttendees) count++;
+            if (afExhibitors) count++;
+            return count;
+        }
+
+        function updateFilterBadge() {
+            var count = countActiveAdvancedFilters();
+            var badge = document.getElementById('filterBadge');
+            if (count > 0) {
+                badge.textContent = count + ' filter' + (count > 1 ? 's' : '') + ' active';
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
         function applyFilters() {
             filteredShows = SHOWS_DATA.filter(show => {
                 if (currentFilter !== 'all' && show.category !== currentFilter) return false;
@@ -475,6 +778,28 @@
                 if (currentSearch) {
                     const text = (show.title + ' ' + show.city + ' ' + show.state + ' ' + show.category + ' ' + show.venue + ' ' + (show.country || '')).toLowerCase();
                     if (!text.includes(currentSearch)) return false;
+                }
+                // Advanced filters
+                if (afDateFrom && show.sort_date && show.sort_date < afDateFrom) return false;
+                if (afDateTo && show.sort_date && show.sort_date > afDateTo) return false;
+                if (afLocation) {
+                    var locText = ((show.city || '') + ' ' + (show.venue || '') + ' ' + (show.location || '') + ' ' + (show.state || '')).toLowerCase();
+                    if (locText.indexOf(afLocation) === -1) return false;
+                }
+                if (afCountry && show.country !== afCountry) return false;
+                if (afAttendees) {
+                    var parts = afAttendees.split('-');
+                    var minA = parseInt(parts[0], 10);
+                    var maxA = parseInt(parts[1], 10);
+                    var numA = parseNumericValue(show.attendees);
+                    if (numA < minA || numA > maxA) return false;
+                }
+                if (afExhibitors) {
+                    var partsE = afExhibitors.split('-');
+                    var minE = parseInt(partsE[0], 10);
+                    var maxE = parseInt(partsE[1], 10);
+                    var numE = parseNumericValue(show.exhibitors);
+                    if (numE < minE || numE > maxE) return false;
                 }
                 return true;
             });
@@ -503,6 +828,8 @@
             var countLabel = filteredShows.length.toLocaleString() + ' show' + (filteredShows.length !== 1 ? 's' : '');
             if (currentFilter !== 'all') countLabel += ' in ' + currentFilter;
             if (currentCountry !== 'all') countLabel += ' in ' + currentCountry;
+            var afCount = countActiveAdvancedFilters();
+            if (afCount > 0) countLabel += ' (' + afCount + ' filter' + (afCount > 1 ? 's' : '') + ' applied)';
             document.getElementById('showsCount').textContent = countLabel;
 
             if (visible.length === 0) {
@@ -613,15 +940,17 @@
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
             ).join('');
 
-            // Actions - Link to Google search to find official website
+            // Actions - Use Google "I'm Feeling Lucky" to redirect directly to the official website
             const websiteBtn = document.getElementById('modalWebsite');
             const searchBtn = document.getElementById('modalSearchWebsite');
-            const searchTerms = show.title + ' ' + (show.city || '') + ' ' + (show.state || show.country || '') + ' official website 2026';
-            const officialSearchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
+            const searchTerms = show.title + ' ' + (show.city || '') + ' ' + (show.state || show.country || '') + ' official site ' + (show.date ? show.date.split(' ').pop() : '2026');
+            const luckyUrl = 'https://www.google.com/search?btnI=1&q=' + encodeURIComponent(searchTerms);
+            const fallbackUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
 
-            websiteBtn.href = officialSearchUrl;
+            websiteBtn.href = luckyUrl;
             websiteBtn.style.display = 'inline-flex';
-            searchBtn.style.display = 'none';
+            searchBtn.href = fallbackUrl;
+            searchBtn.style.display = 'inline-flex';
             document.getElementById('modalShowPage').href = '/shows/' + show.slug;
 
             // Reset tabs
@@ -785,6 +1114,35 @@
             visibleCount = ITEMS_PER_PAGE;
             applyFilters();
             document.getElementById('shows').scrollIntoView({ behavior: 'smooth' });
+        };
+
+        window.toggleAdvancedFilters = function() {
+            var panel = document.getElementById('advancedFiltersPanel');
+            var toggle = document.getElementById('advancedFiltersToggle');
+            panel.classList.toggle('open');
+            toggle.classList.toggle('open');
+        };
+
+        window.clearAdvancedFilters = function() {
+            document.getElementById('afDateFrom').value = '';
+            document.getElementById('afDateTo').value = '';
+            document.getElementById('afLocation').value = '';
+            document.getElementById('afCountry').value = '';
+            document.getElementById('afAttendees').value = '';
+            document.getElementById('afExhibitors').value = '';
+            afDateFrom = '';
+            afDateTo = '';
+            afLocation = '';
+            afCountry = '';
+            afAttendees = '';
+            afExhibitors = '';
+            updateFilterBadge();
+            visibleCount = ITEMS_PER_PAGE;
+            applyFilters();
+        };
+
+        window.applyAdvancedFilters = function() {
+            applyAdvancedFromInputs();
         };
 
         window.handleSubscribe = function(e) {
