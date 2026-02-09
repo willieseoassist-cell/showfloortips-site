@@ -1039,17 +1039,27 @@
         return s;
     }
 
+    var ASIN_IMAGES = {};
+
+    function getProductImage(product) {
+        var imgId = ASIN_IMAGES[product.asin];
+        if (imgId) {
+            return 'https://m.media-amazon.com/images/I/' + imgId + '._AC_SX250_.jpg';
+        }
+        var catKey = product._categorySlug || '';
+        var photoId = CATEGORY_IMAGES[catKey] || 'photo-1540575467063-178a50c2df87';
+        return 'https://images.unsplash.com/' + photoId + '?w=300&h=300&fit=crop&auto=format';
+    }
+
     function createCard(product) {
         const card = document.createElement('div');
         card.className = 'amazon-card';
-        const catKey = product._categorySlug || '';
-        const photoId = CATEGORY_IMAGES[catKey] || 'photo-1540575467063-178a50c2df87';
-        const imgUrl = 'https://images.unsplash.com/' + photoId + '?w=300&h=300&fit=crop&auto=format';
+        const imgUrl = getProductImage(product);
         const affiliateUrl = addAffiliateTag(product.url);
 
         card.innerHTML =
             '<div class="amazon-card-img">' +
-                '<img src="' + imgUrl + '" alt="' + (product.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy">' +
+                '<img src="' + imgUrl + '" alt="' + (product.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=300&fit=crop&auto=format\'">' +
             '</div>' +
             '<div class="amazon-card-body">' +
                 '<div class="amazon-card-name">' + (product.product_name || '') + '</div>' +
@@ -1128,9 +1138,14 @@
         }, 250);
     });
 
-    fetch('/products_data.json')
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
+    Promise.all([
+        fetch('/products_data.json').then(function(r) { return r.json(); }),
+        fetch('/asin_images.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
+    ])
+        .then(function(results) {
+            var data = results[0];
+            ASIN_IMAGES = results[1] || {};
+
             var categories = [];
             var products = [];
 

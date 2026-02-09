@@ -491,15 +491,25 @@
         cleaning_maintenance: 'photo-1563453392212-326f5e854473'
     };
 
-    function cardHTML(item) {
+    var ASIN_IMAGES = {};
+
+    function getProductImage(item) {
+        var imgId = ASIN_IMAGES[item.asin];
+        if (imgId) {
+            return 'https://m.media-amazon.com/images/I/' + imgId + '._AC_SX250_.jpg';
+        }
         var catKey = item._category || '';
         var photoId = CATEGORY_IMAGES[catKey] || 'photo-1540575467063-178a50c2df87';
-        var imgSrc = 'https://images.unsplash.com/' + photoId + '?w=300&h=300&fit=crop&auto=format';
+        return 'https://images.unsplash.com/' + photoId + '?w=300&h=300&fit=crop&auto=format';
+    }
+
+    function cardHTML(item) {
+        var imgSrc = getProductImage(item);
         var href = appendTag(item.url);
         var price = formatPrice(item.approx_price);
 
         return '<div class="aff-card">' +
-            '<img class="aff-card-img" src="' + imgSrc + '" alt="' + (item.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy">' +
+            '<img class="aff-card-img" src="' + imgSrc + '" alt="' + (item.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=300&fit=crop&auto=format\'">' +
             '<div class="aff-card-name">' + (item.product_name || 'Trade Show Product') + '</div>' +
             (price ? '<div class="aff-card-price">' + price + '</div>' : '') +
             '<a class="aff-card-btn" href="' + href + '" target="_blank" rel="noopener noreferrer nofollow sponsored">Shop on Amazon</a>' +
@@ -555,9 +565,14 @@
         }, 250);
     });
 
-    fetch('/products_data.json')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
+    Promise.all([
+        fetch('/products_data.json').then(function(r) { return r.json(); }),
+        fetch('/asin_images.json').then(function(r) { return r.json(); }).catch(function() { return {}; })
+    ])
+        .then(function(results) {
+            var data = results[0];
+            ASIN_IMAGES = results[1] || {};
+
             var catSlugs = [];
             var keys = Object.keys(data);
 
