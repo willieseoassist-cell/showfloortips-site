@@ -476,7 +476,7 @@
                     <div class="hotel-list" id="hotelList"></div>
                     <a class="hotel-search-link" id="hotelSearchLink" href="#" target="_blank" rel="noopener">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        Search all hotels nearby
+                        Search All Hotels on Booking.com
                     </a>
                 </div>
                 <div class="modal-tab-content" id="tab-tips">
@@ -856,34 +856,38 @@
 
             // Hotels
             const hotelList = document.getElementById('hotelList');
+            const hotelCity = show.city || '';
+            const hotelVenue = show.venue || '';
             if (show.hotels && show.hotels.length > 0) {
-                hotelList.innerHTML = show.hotels.map(h =>
-                    '<div class="hotel-item">' +
+                hotelList.innerHTML = show.hotels.map(h => {
+                    const bookUrl = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(h.name + ' ' + hotelCity);
+                    return '<div class="hotel-item">' +
                         '<div class="hotel-info"><h4>' + escapeHtml(h.name) + '</h4><p>' + escapeHtml(h.distance) + ' from venue</p></div>' +
-                        '<span class="hotel-price">' + escapeHtml(h.price) + '</span>' +
-                    '</div>'
-                ).join('');
+                        '<div class="hotel-actions"><span class="hotel-price">' + escapeHtml(h.price) + '</span>' +
+                        '<a href="' + bookUrl + '" target="_blank" rel="noopener" class="hotel-book-btn">Book Hotel</a></div>' +
+                    '</div>';
+                }).join('');
             } else {
-                hotelList.innerHTML = '<p style="color:var(--text-secondary)">Hotel information will be updated as the show date approaches. Use the search link below to find accommodations.</p>';
+                hotelList.innerHTML = '<p style="color:var(--text-secondary)">Use the search link below to find the best hotel deals near the venue.</p>';
             }
 
-            const searchCity = encodeURIComponent(show.venue || show.city || show.location);
-            document.getElementById('hotelSearchLink').href = 'https://www.google.com/travel/hotels?q=hotels+near+' + searchCity;
+            const searchCity = encodeURIComponent((hotelVenue || show.title) + ' ' + hotelCity);
+            document.getElementById('hotelSearchLink').href = 'https://www.booking.com/searchresults.html?ss=' + searchCity;
 
             // Tips
             const tips = show.tips || getDefaultTips(show.category);
             document.getElementById('tipsList').innerHTML = tips.map((tip, i) =>
                 '<li><span class="tip-number">' + (i + 1) + '</span><span>' + escapeHtml(tip) + '</span></li>'
-            ).join('');
+            ).join('') +
+            '<li class="scannly-tip"><span class="tip-number" style="background:#6366f1;color:#fff">\u2713</span><span><strong>Pro Tip:</strong> Use <a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener" style="color:#6366f1;font-weight:600">Scannly</a> to capture leads instantly at your booth. Scan badges, share contact info via QR code, and export leads in seconds. <a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" rel="noopener" class="scannly-dl-btn">Download Scannly</a></span></li>';
 
-            // Actions - Google search to find official website
+            // Actions - use show.website (real URL or DDG redirect)
             const websiteBtn = document.getElementById('modalWebsite');
             const searchBtn = document.getElementById('modalSearchWebsite');
-            const searchTerms = show.title + ' ' + (show.city || '') + ' ' + (show.state || show.country || '') + ' official site ' + (show.date ? show.date.split(' ').pop() : '2026');
-            const searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(searchTerms);
+            const websiteUrl = show.website || 'https://duckduckgo.com/?q=' + encodeURIComponent('\\ ' + show.title + ' ' + (show.city || '') + ' official website');
 
-            websiteBtn.href = searchUrl;
-            websiteBtn.textContent = 'Find Official Website';
+            websiteBtn.href = websiteUrl;
+            websiteBtn.textContent = 'Visit Official Website';
             websiteBtn.style.display = 'inline-flex';
             searchBtn.style.display = 'none';
             document.getElementById('modalShowPage').href = '/shows/' + show.slug;

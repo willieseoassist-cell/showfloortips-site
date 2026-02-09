@@ -713,6 +713,31 @@ header {
     white-space: nowrap;
 }
 
+.hotel-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.hotel-book-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--black);
+    color: var(--white);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.hotel-book-btn:hover {
+    background: var(--gray-800);
+}
+
 .hotel-search-link {
     display: inline-flex;
     align-items: center;
@@ -766,6 +791,31 @@ header {
     font-size: 0.75rem;
     font-weight: 700;
     flex-shrink: 0;
+}
+
+.scannly-tip {
+    background: #eef2ff;
+    border-radius: var(--radius-sm);
+    margin-top: 0.5rem;
+    padding: 1.25rem !important;
+    border-bottom: none !important;
+}
+
+.scannly-dl-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: #6366f1;
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.scannly-dl-btn:hover {
+    background: #818cf8;
 }
 
 /* Modal Actions */
