@@ -50,7 +50,7 @@
         }
         .af-row {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             gap: 12px;
             margin-bottom: 16px;
         }
@@ -118,6 +118,13 @@
             transition: all 0.2s ease;
             border: none;
         }
+        .af-btn-search {
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .af-btn-search:hover {
+            background: #1e293b;
+        }
         .af-btn-clear {
             background: #f3f4f6;
             color: #374151;
@@ -126,7 +133,7 @@
             background: #e5e7eb;
         }
         /* Mobile responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .af-row {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -183,9 +190,17 @@
             <div class="advanced-filters-panel" id="advancedFiltersPanel">
                 <div class="advanced-filters-inner">
                     <div class="af-row">
-                        <div class="af-group af-group-wide">
-                            <label class="af-label" for="afLocation">Location / City</label>
-                            <input type="text" class="af-input" id="afLocation" placeholder="City, venue, or state..." oninput="applyAdvancedFilters()">
+                        <div class="af-group">
+                            <label class="af-label" for="afState">State</label>
+                            <select class="af-select" id="afState" onchange="updateCityDropdown(); applyAdvancedFilters()">
+                                <option value="">All States</option>
+                            </select>
+                        </div>
+                        <div class="af-group">
+                            <label class="af-label" for="afCity">City</label>
+                            <select class="af-select" id="afCity" onchange="applyAdvancedFilters()">
+                                <option value="">All Cities</option>
+                            </select>
                         </div>
                         <div class="af-group">
                             <label class="af-label" for="afCountry">Country</label>
@@ -218,6 +233,7 @@
                         </div>
                     </div>
                     <div class="af-actions">
+                        <button class="af-btn af-btn-search" onclick="applyAdvancedFilters()">Search</button>
                         <button class="af-btn af-btn-clear" id="afClearBtn" onclick="clearAdvancedFilters()">Clear Filters</button>
                     </div>
                 </div>
@@ -513,10 +529,14 @@
         // Advanced filter state
         let afDateFrom = '';
         let afDateTo = '';
-        let afLocation = '';
+        let afState = '';
+        let afCity = '';
         let afCountry = '';
         let afAttendees = '';
         let afExhibitors = '';
+
+        // State-to-cities lookup
+        let stateCitiesMap = {};
 
         // Category colors
         const CAT_COLORS = {
@@ -585,6 +605,23 @@
                 opt.value = country;
                 opt.textContent = country + ' (' + countryCounts[country] + ')';
                 afCountrySelect.appendChild(opt);
+            });
+
+            // Build state-to-cities map and populate State dropdown
+            stateCitiesMap = {};
+            SHOWS_DATA.forEach(function(s) {
+                if (s.state) {
+                    if (!stateCitiesMap[s.state]) stateCitiesMap[s.state] = {};
+                    if (s.city) stateCitiesMap[s.state][s.city] = (stateCitiesMap[s.state][s.city] || 0) + 1;
+                }
+            });
+            var afStateSelect = document.getElementById('afState');
+            Object.keys(stateCitiesMap).sort().forEach(function(state) {
+                var cityCount = Object.keys(stateCitiesMap[state]).length;
+                var opt = document.createElement('option');
+                opt.value = state;
+                opt.textContent = state + ' (' + cityCount + ' cities)';
+                afStateSelect.appendChild(opt);
             });
 
             applyFilters();
@@ -676,7 +713,8 @@
         function applyAdvancedFromInputs() {
             afDateFrom = document.getElementById('afDateFrom').value;
             afDateTo = document.getElementById('afDateTo').value;
-            afLocation = document.getElementById('afLocation').value.trim().toLowerCase();
+            afState = document.getElementById('afState').value;
+            afCity = document.getElementById('afCity').value;
             afCountry = document.getElementById('afCountry').value;
             afAttendees = document.getElementById('afAttendees').value;
             afExhibitors = document.getElementById('afExhibitors').value;
@@ -689,7 +727,8 @@
             var count = 0;
             if (afDateFrom) count++;
             if (afDateTo) count++;
-            if (afLocation) count++;
+            if (afState) count++;
+            if (afCity) count++;
             if (afCountry) count++;
             if (afAttendees) count++;
             if (afExhibitors) count++;
@@ -718,10 +757,8 @@
                 // Advanced filters
                 if (afDateFrom && show.sort_date && show.sort_date < afDateFrom) return false;
                 if (afDateTo && show.sort_date && show.sort_date > afDateTo) return false;
-                if (afLocation) {
-                    var locText = ((show.city || '') + ' ' + (show.venue || '') + ' ' + (show.location || '') + ' ' + (show.state || '')).toLowerCase();
-                    if (locText.indexOf(afLocation) === -1) return false;
-                }
+                if (afState && show.state !== afState) return false;
+                if (afCity && show.city !== afCity) return false;
                 if (afCountry && show.country !== afCountry) return false;
                 if (afAttendees) {
                     var parts = afAttendees.split('-');
@@ -1065,19 +1102,37 @@
         window.clearAdvancedFilters = function() {
             document.getElementById('afDateFrom').value = '';
             document.getElementById('afDateTo').value = '';
-            document.getElementById('afLocation').value = '';
+            document.getElementById('afState').value = '';
+            document.getElementById('afCity').value = '';
+            document.getElementById('afCity').innerHTML = '<option value="">All Cities</option>';
             document.getElementById('afCountry').value = '';
             document.getElementById('afAttendees').value = '';
             document.getElementById('afExhibitors').value = '';
             afDateFrom = '';
             afDateTo = '';
-            afLocation = '';
+            afState = '';
+            afCity = '';
             afCountry = '';
             afAttendees = '';
             afExhibitors = '';
             updateFilterBadge();
             visibleCount = ITEMS_PER_PAGE;
             applyFilters();
+        };
+
+        window.updateCityDropdown = function() {
+            var stateVal = document.getElementById('afState').value;
+            var citySelect = document.getElementById('afCity');
+            citySelect.innerHTML = '<option value="">All Cities</option>';
+            if (stateVal && stateCitiesMap[stateVal]) {
+                var cities = Object.keys(stateCitiesMap[stateVal]).sort();
+                cities.forEach(function(city) {
+                    var opt = document.createElement('option');
+                    opt.value = city;
+                    opt.textContent = city + ' (' + stateCitiesMap[stateVal][city] + ')';
+                    citySelect.appendChild(opt);
+                });
+            }
         };
 
         window.applyAdvancedFilters = function() {
