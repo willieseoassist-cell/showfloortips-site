@@ -50,7 +50,7 @@
         }
         .af-row {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             gap: 12px;
             margin-bottom: 16px;
         }
@@ -191,8 +191,14 @@
                 <div class="advanced-filters-inner">
                     <div class="af-row">
                         <div class="af-group">
+                            <label class="af-label" for="afCountry">Country</label>
+                            <select class="af-select" id="afCountry" onchange="onCountryChange(); applyAdvancedFilters()">
+                                <option value="">All Countries</option>
+                            </select>
+                        </div>
+                        <div class="af-group">
                             <label class="af-label" for="afState">State</label>
-                            <select class="af-select" id="afState" onchange="updateCityDropdown(); applyAdvancedFilters()">
+                            <select class="af-select" id="afState" onchange="onStateChange(); applyAdvancedFilters()">
                                 <option value="">All States</option>
                             </select>
                         </div>
@@ -200,12 +206,6 @@
                             <label class="af-label" for="afCity">City</label>
                             <select class="af-select" id="afCity" onchange="applyAdvancedFilters()">
                                 <option value="">All Cities</option>
-                            </select>
-                        </div>
-                        <div class="af-group">
-                            <label class="af-label" for="afCountry">Country</label>
-                            <select class="af-select" id="afCountry" onchange="applyAdvancedFilters()">
-                                <option value="">All Countries</option>
                             </select>
                         </div>
                         <div class="af-group">
@@ -220,6 +220,8 @@
                                 <option value="100000-999999">100,000+</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="af-row" style="margin-bottom:0">
                         <div class="af-group">
                             <label class="af-label" for="afExhibitors">Exhibitors</label>
                             <select class="af-select" id="afExhibitors" onchange="applyAdvancedFilters()">
@@ -231,10 +233,13 @@
                                 <option value="5000-999999">5,000+</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="af-actions">
-                        <button class="af-btn af-btn-search" onclick="applyAdvancedFilters()">Search</button>
-                        <button class="af-btn af-btn-clear" id="afClearBtn" onclick="clearAdvancedFilters()">Clear Filters</button>
+                        <div class="af-group" style="grid-column: 3 / 5">
+                            <label class="af-label">&nbsp;</label>
+                            <div class="af-actions" style="margin-top:0">
+                                <button class="af-btn af-btn-search" onclick="applyAdvancedFilters()">Search Shows</button>
+                                <button class="af-btn af-btn-clear" id="afClearBtn" onclick="clearAdvancedFilters()">Clear Filters</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -535,8 +540,25 @@
         let afAttendees = '';
         let afExhibitors = '';
 
-        // State-to-cities lookup
+        // Lookup maps
+        let countryCitiesMap = {};
         let stateCitiesMap = {};
+        let countryStatesMap = {};
+
+        // US state abbreviation to full name
+        const STATE_NAMES = {
+            'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California',
+            'CO':'Colorado','CT':'Connecticut','DE':'Delaware','DC':'District of Columbia',
+            'FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois',
+            'IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana',
+            'ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota',
+            'MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada',
+            'NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York',
+            'NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon',
+            'PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota',
+            'TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia',
+            'WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'
+        };
 
         // Category colors
         const CAT_COLORS = {
@@ -607,21 +629,26 @@
                 afCountrySelect.appendChild(opt);
             });
 
-            // Build state-to-cities map and populate State dropdown
+            // Build lookup maps: country->cities, country->states, state->cities
+            countryCitiesMap = {};
             stateCitiesMap = {};
+            countryStatesMap = {};
             SHOWS_DATA.forEach(function(s) {
-                if (s.state) {
-                    if (!stateCitiesMap[s.state]) stateCitiesMap[s.state] = {};
-                    if (s.city) stateCitiesMap[s.state][s.city] = (stateCitiesMap[s.state][s.city] || 0) + 1;
+                var c = s.country || '';
+                var city = s.city || '';
+                var st = s.state || '';
+                if (c && city) {
+                    if (!countryCitiesMap[c]) countryCitiesMap[c] = {};
+                    countryCitiesMap[c][city] = (countryCitiesMap[c][city] || 0) + 1;
                 }
-            });
-            var afStateSelect = document.getElementById('afState');
-            Object.keys(stateCitiesMap).sort().forEach(function(state) {
-                var cityCount = Object.keys(stateCitiesMap[state]).length;
-                var opt = document.createElement('option');
-                opt.value = state;
-                opt.textContent = state + ' (' + cityCount + ' cities)';
-                afStateSelect.appendChild(opt);
+                if (c && st) {
+                    if (!countryStatesMap[c]) countryStatesMap[c] = {};
+                    countryStatesMap[c][st] = (countryStatesMap[c][st] || 0) + 1;
+                }
+                if (st && city) {
+                    if (!stateCitiesMap[st]) stateCitiesMap[st] = {};
+                    stateCitiesMap[st][city] = (stateCitiesMap[st][city] || 0) + 1;
+                }
             });
 
             applyFilters();
@@ -1103,6 +1130,7 @@
             document.getElementById('afDateFrom').value = '';
             document.getElementById('afDateTo').value = '';
             document.getElementById('afState').value = '';
+            document.getElementById('afState').innerHTML = '<option value="">All States</option>';
             document.getElementById('afCity').value = '';
             document.getElementById('afCity').innerHTML = '<option value="">All Cities</option>';
             document.getElementById('afCountry').value = '';
@@ -1120,10 +1148,52 @@
             applyFilters();
         };
 
-        window.updateCityDropdown = function() {
+        // When country changes: populate State dropdown (if US) and City dropdown
+        window.onCountryChange = function() {
+            var countryVal = document.getElementById('afCountry').value;
+            var stateSelect = document.getElementById('afState');
+            var citySelect = document.getElementById('afCity');
+
+            // Reset state and city
+            stateSelect.innerHTML = '<option value="">All States</option>';
+            citySelect.innerHTML = '<option value="">All Cities</option>';
+            afState = '';
+            afCity = '';
+
+            // Populate states if this country has them
+            if (countryVal && countryStatesMap[countryVal]) {
+                var stateAbbrs = Object.keys(countryStatesMap[countryVal]).sort(function(a, b) {
+                    var nameA = STATE_NAMES[a] || a;
+                    var nameB = STATE_NAMES[b] || b;
+                    return nameA.localeCompare(nameB);
+                });
+                stateAbbrs.forEach(function(st) {
+                    var opt = document.createElement('option');
+                    opt.value = st;
+                    opt.textContent = (STATE_NAMES[st] || st) + ' (' + countryStatesMap[countryVal][st] + ')';
+                    stateSelect.appendChild(opt);
+                });
+            }
+
+            // Populate cities for this country
+            if (countryVal && countryCitiesMap[countryVal]) {
+                var cityList = Object.keys(countryCitiesMap[countryVal]).sort();
+                cityList.forEach(function(city) {
+                    var opt = document.createElement('option');
+                    opt.value = city;
+                    opt.textContent = city + ' (' + countryCitiesMap[countryVal][city] + ')';
+                    citySelect.appendChild(opt);
+                });
+            }
+        };
+
+        // When state changes: narrow City dropdown to cities in that state
+        window.onStateChange = function() {
             var stateVal = document.getElementById('afState').value;
             var citySelect = document.getElementById('afCity');
             citySelect.innerHTML = '<option value="">All Cities</option>';
+            afCity = '';
+
             if (stateVal && stateCitiesMap[stateVal]) {
                 var cities = Object.keys(stateCitiesMap[stateVal]).sort();
                 cities.forEach(function(city) {
@@ -1132,6 +1202,18 @@
                     opt.textContent = city + ' (' + stateCitiesMap[stateVal][city] + ')';
                     citySelect.appendChild(opt);
                 });
+            } else {
+                // No state selected - show all cities for the selected country
+                var countryVal = document.getElementById('afCountry').value;
+                if (countryVal && countryCitiesMap[countryVal]) {
+                    var cityList = Object.keys(countryCitiesMap[countryVal]).sort();
+                    cityList.forEach(function(city) {
+                        var opt = document.createElement('option');
+                        opt.value = city;
+                        opt.textContent = city + ' (' + countryCitiesMap[countryVal][city] + ')';
+                        citySelect.appendChild(opt);
+                    });
+                }
             }
         };
 
