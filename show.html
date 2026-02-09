@@ -203,10 +203,10 @@
         if (show.state) loc += ', ' + show.state;
         if (show.country && show.country !== 'United States') loc = show.location + (show.country ? ', ' + show.country : '');
 
-        // Official website link
-        var searchTerms = encodeURIComponent(show.title + ' ' + (show.city || '') + ' official website ' + (show.date ? show.date.split(' ').pop() : '2026'));
-        var websiteUrl = 'https://www.google.com/search?q=' + searchTerms;
-        var websiteBtn = '<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="btn-visit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:6px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Search Official Website</a>';
+        // Official website link - DuckDuckGo \ redirect goes directly to the first result
+        var searchTerms = encodeURIComponent('\\ ' + show.title + ' ' + (show.city || '') + ' official website');
+        var websiteUrl = 'https://duckduckgo.com/?q=' + searchTerms;
+        var websiteBtn = '<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="btn-visit">Visit Official Website</a>';
 
         var infoCards = '';
         if (show.date) infoCards += '<div class="info-card"><h4>Dates</h4><p>' + show.date + '</p></div>';
