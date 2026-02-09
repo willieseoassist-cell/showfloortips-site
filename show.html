@@ -184,7 +184,7 @@
             hotels = '<div class="section-block"><h2>Nearby Hotels</h2>';
             for (var h = 0; h < show.hotels.length; h++) {
                 var hotel = show.hotels[h];
-                hotels += '<div class="hotel-card"><h4>' + hotel.name + '</h4><div class="hotel-detail">' + hotel.distance + ' | ' + hotel.price + '</div></div>';
+                hotels += '<div class="hotel-card"><h4>' + hotel.name + '</h4><div class="hotel-detail">' + hotel.distance + ' | ' + (hotel.price_range || hotel.price || '') + '</div></div>';
             }
             hotels += '</div>';
         }
