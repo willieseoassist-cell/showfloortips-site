@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://showfloortips.com/sitemap.xml
+Sitemap: https://showfloortips.com/sitemap-index.xml
