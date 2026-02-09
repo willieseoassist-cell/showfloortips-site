@@ -203,9 +203,14 @@
         if (show.state) loc += ', ' + show.state;
         if (show.country && show.country !== 'United States') loc = show.location + (show.country ? ', ' + show.country : '');
 
-        // Official website link - DuckDuckGo \ redirect goes directly to the first result
-        var searchTerms = encodeURIComponent('\\ ' + show.title + ' ' + (show.city || '') + ' official website');
-        var websiteUrl = 'https://duckduckgo.com/?q=' + searchTerms;
+        // Official website link - use real URL if available, DuckDuckGo redirect as fallback
+        var websiteUrl;
+        if (show.website && show.website.indexOf('google.com/search') === -1) {
+            websiteUrl = show.website;
+        } else {
+            var searchTerms = encodeURIComponent('\\ ' + show.title + ' ' + (show.city || '') + ' official website');
+            websiteUrl = 'https://duckduckgo.com/?q=' + searchTerms;
+        }
         var websiteBtn = '<a href="' + websiteUrl + '" target="_blank" rel="noopener" class="btn-visit">Visit Official Website</a>';
 
         var infoCards = '';
