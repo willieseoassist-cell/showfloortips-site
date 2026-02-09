@@ -708,15 +708,11 @@
 
             // Advanced filters - real-time filtering
             var afDebounce;
-            ['afDateFrom','afDateTo','afLocation'].forEach(function(id) {
-                document.getElementById(id).addEventListener('input', function() {
+            ['afDateFrom','afDateTo'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if (el) el.addEventListener('input', function() {
                     clearTimeout(afDebounce);
                     afDebounce = setTimeout(function() { applyAdvancedFromInputs(); }, 300);
-                });
-            });
-            ['afCountry','afAttendees','afExhibitors'].forEach(function(id) {
-                document.getElementById(id).addEventListener('change', function() {
-                    applyAdvancedFromInputs();
                 });
             });
 
