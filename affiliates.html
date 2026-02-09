@@ -463,14 +463,43 @@
         });
     }
 
+    var CATEGORY_IMAGES = {
+        trade_show_displays: 'photo-1540575467063-178a50c2df87',
+        trade_show_giveaways: 'photo-1513885535751-8b9238bd345a',
+        lead_capture_tech: 'photo-1551288049-bebda4e38f71',
+        booth_accessories: 'photo-1581092918056-0c4c3acd3789',
+        lighting_electrical: 'photo-1565843708714-52ecf69ab81f',
+        furniture_seating: 'photo-1555041469-a586c61ea9bc',
+        flooring_mats: 'photo-1581858726788-75bc0f6a952d',
+        shipping_transport: 'photo-1586528116311-ad8dd3c8310d',
+        audio_visual: 'photo-1478737270239-2f02b77fc618',
+        printing_signage: 'photo-1504868584819-f8e8b4b6d7e3',
+        promotional_apparel: 'photo-1523381210434-271e8be1f52b',
+        drinkware_bottles: 'photo-1602143407151-7111542de6e8',
+        bags_totes: 'photo-1553062407-98eeb64c6a62',
+        office_writing: 'photo-1586281380349-632531db7ed4',
+        health_safety_wellness: 'photo-1584308666744-24d5c474f2ae',
+        food_service_hospitality: 'photo-1555244162-803834f70033',
+        eco_friendly_sustainable: 'photo-1542601906990-b4d3fb778b09',
+        tech_gadgets_phone: 'photo-1519389950473-47ba0277781c',
+        photography_video: 'photo-1516035069371-29a1b244cc32',
+        badges_credentials: 'photo-1611532736597-de2d4265fba3',
+        storage_organization: 'photo-1586023492125-27b2c045efd7',
+        outdoor_event_canopies: 'photo-1464207687429-7505649dae38',
+        premium_executive_gifts: 'photo-1512909006721-3d6018887383',
+        novelty_fun_promotional: 'photo-1513151233558-d860c5398176',
+        cleaning_maintenance: 'photo-1563453392212-326f5e854473'
+    };
+
     function cardHTML(item) {
-        var imgSrc = 'https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=' + item.asin + '&Format=_SL250_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=' + AFFILIATE_TAG;
+        var catKey = item._category || '';
+        var photoId = CATEGORY_IMAGES[catKey] || 'photo-1540575467063-178a50c2df87';
+        var imgSrc = 'https://images.unsplash.com/' + photoId + '?w=300&h=300&fit=crop&auto=format';
         var href = appendTag(item.url);
         var price = formatPrice(item.approx_price);
 
         return '<div class="aff-card">' +
-            '<img class="aff-card-img" src="' + imgSrc + '" alt="' + (item.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
-            '<div class="aff-card-fallback"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>' +
+            '<img class="aff-card-img" src="' + imgSrc + '" alt="' + (item.product_name || '').replace(/"/g, '&quot;') + '" loading="lazy">' +
             '<div class="aff-card-name">' + (item.product_name || 'Trade Show Product') + '</div>' +
             (price ? '<div class="aff-card-price">' + price + '</div>' : '') +
             '<a class="aff-card-btn" href="' + href + '" target="_blank" rel="noopener noreferrer nofollow sponsored">Shop on Amazon</a>' +
