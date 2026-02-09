@@ -218,9 +218,32 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 #### Sponsor Outreach
 - Received response from SXSW sales team (Lanesia, sales@sxsw.com) requesting partnership details
 - SXSW dates confirmed: SXSW EDU Mar 9-12, SXSW Mar 12-18, 2026
+- **Sent reply to sales@sxsw.com** with company details (ShowFloorTips, Willie Austin, info@showfloortips.com, (334) 327-0246) — awaiting account executive follow-up
 
 #### Orbus Monitoring
 - Orbus competitor page (orbus.com/about-us/usa-tradeshow-list) appears to be JS-rendered, not accessible via fetch — needs manual browser check next session
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
+
+### Feb 9, 2026 — Session 4
+
+#### Travel Section Built (Affiliate Revenue Play)
+- **Created `/travel.html` hub page** — city guide cards, travel tips, hotel booking advice, Amazon product recommendations
+- **10 city guide articles created in `/travel/`:**
+  - Las Vegas, Chicago, Orlando, New York City, Anaheim, San Francisco, Atlanta, Houston, Dallas, San Diego
+  - Each guide: hotels (Booking.com links), neighborhoods, transportation, restaurants, packing tips, pro tips
+  - Magazine-quality writing, JSON-LD SEO, self-contained inline CSS
+- **Amazon Associates integrated** — Tag: `showfloortips-20`, products: Anker power bank, Samsonite carry-on, banner stands, travel backpack, cable organizer, wrinkle releaser, business card holder, retractable banner
+- **Navigation updated across ALL 24,183+ pages** — "Travel" tab added to nav + "Travel Guides" added to footer on:
+  - 9 main pages (index, news, products, roi-calculator, city-shows, show, sponsor, media-kit, newsletter)
+  - 24,174 article pages in /news/
+- **Internal linking added:**
+  - city-shows.html: Travel guide banner appears on city pages for all 10 guide cities
+  - show.html: Travel guide link appears in hotel/travel section for shows in guide cities
+- **Purpose:** Build travel content layer for Travelpayouts/Booking.com affiliate reapplication + Amazon Associates revenue
 
 #### Deployment
 - Pushed all changes to GitHub (main branch)

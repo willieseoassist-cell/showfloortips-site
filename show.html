@@ -94,6 +94,7 @@
             <nav class="nav-links">
                 <a href="/#shows">Trade Shows</a>
                 <a href="/news.html">News</a>
+                <a href="/travel.html">Travel</a>
                 <a href="/roi-calculator.html">ROI Calculator</a>
                 <a href="/products.html">Products</a>
                 <a href="/scannly.html" class="nav-cta">Try Scannly</a>
@@ -251,6 +252,21 @@
         hotels += '<a href="' + generalBookingUrl + '" target="_blank" rel="noopener" class="btn-book">Search All Hotels</a>';
         hotels += '</div>';
         hotels += '</div>';
+
+        // --- TRAVEL GUIDE BANNER ---
+        var TRAVEL_GUIDE_SLUGS = {
+            'las vegas': 'las-vegas', 'chicago': 'chicago', 'orlando': 'orlando',
+            'new york': 'new-york', 'anaheim': 'anaheim', 'san francisco': 'san-francisco',
+            'atlanta': 'atlanta', 'houston': 'houston', 'dallas': 'dallas', 'san diego': 'san-diego'
+        };
+        var cityLower = (cityName || '').toLowerCase();
+        var travelSlug = TRAVEL_GUIDE_SLUGS[cityLower];
+        if (travelSlug) {
+            hotels += '<div style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:1.25rem 1.5rem;margin-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">';
+            hotels += '<span style="color:#525252;font-size:0.9rem">For more hotel tips, restaurants, and travel advice:</span>';
+            hotels += '<a href="/travel/' + travelSlug + '-trade-show-travel-guide.html" style="display:inline-block;padding:0.5rem 1.25rem;background:#0a0a0a;color:#fff;border-radius:8px;font-size:0.8rem;font-weight:600;text-decoration:none;white-space:nowrap">Read ' + cityName + ' Travel Guide</a>';
+            hotels += '</div>';
+        }
 
         // --- RENTAL CARS SECTION ---
         var rentalCars = '<div class="travel-section"><h2>Rental Cars</h2>';

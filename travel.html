@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Travel Guide — Hotels, Flights & City Tips | ShowFloorTips</title>
+    <meta name="description" content="The exhibitor's travel guide: best hotels near convention centers, city guides, flight tips, packing checklists, and ground transportation for every major trade show destination.">
+    <meta name="keywords" content="trade show travel, convention hotel guide, exhibitor travel tips, trade show packing list, convention center hotels, business travel guide 2026">
+
+    <meta property="og:title" content="Trade Show Travel Guide — Hotels, Flights & City Tips">
+    <meta property="og:description" content="The exhibitor's travel guide: best hotels near convention centers, city guides, packing checklists, and travel tips for every major trade show destination.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/travel.html">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1920&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Show Travel Guide",
+        "description": "Hotels, flights, city tips, and insider advice for trade show exhibitors on the road.",
+        "url": "https://showfloortips.com/travel.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://showfloortips.com/travel.html">
+
+    <style>
+        .travel-hero {
+            position: relative;
+            background: #fafafa;
+            overflow: hidden;
+            padding: 4rem 2rem 3rem;
+        }
+        .travel-hero-content {
+            position: relative;
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .travel-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .travel-hero .subtitle {
+            font-size: 1.1rem;
+            color: #525252;
+            max-width: 640px;
+            margin: 0 auto 1rem;
+        }
+
+        /* City Guide Cards */
+        .travel-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+        }
+        .travel-section-header {
+            margin-bottom: 2rem;
+        }
+        .travel-section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .travel-section-header p {
+            color: #525252;
+            font-size: 1rem;
+        }
+        .city-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .city-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .city-card:hover {
+            border-color: #a3a3a3;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .city-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .city-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .city-card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+        }
+        .city-card-image .city-name-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            color: #fff;
+            font-size: 1.35rem;
+            font-weight: 700;
+            z-index: 1;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .city-card-body {
+            padding: 1.25rem;
+        }
+        .city-card-body .city-tagline {
+            font-size: 0.875rem;
+            color: #525252;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .city-card-body .city-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #737373;
+            margin-bottom: 1rem;
+        }
+        .city-card-body .city-stats span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .city-card-body .read-guide {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: gap 0.2s;
+        }
+        .city-card:hover .read-guide {
+            gap: 0.6rem;
+        }
+
+        /* Travel Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .tip-card {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .tip-card:hover {
+            border-color: #a3a3a3;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .tip-card .tip-icon {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+        .tip-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+        }
+        .tip-card p {
+            font-size: 0.85rem;
+            color: #525252;
+            line-height: 1.6;
+        }
+
+        /* Hotel Booking Tips */
+        .booking-tips {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+        .booking-tips-inner {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 3rem;
+        }
+        .booking-tips-inner h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .booking-tips-inner > p {
+            color: #525252;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .booking-tip-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        .booking-tip-num {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .booking-tip-text h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 0.25rem;
+        }
+        .booking-tip-text p {
+            font-size: 0.9rem;
+            color: #525252;
+            line-height: 1.7;
+        }
+
+        /* Amazon Products Section */
+        .products-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+        .products-section h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .products-section > p {
+            color: #525252;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .product-card:hover {
+            border-color: #a3a3a3;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .product-card-image {
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .product-card-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .product-card-body {
+            padding: 1rem 1.25rem 1.25rem;
+        }
+        .product-card-body h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            line-height: 1.4;
+            margin-bottom: 0.35rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .product-card-body .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 0.35rem;
+        }
+        .product-card-body .product-rating {
+            font-size: 0.8rem;
+            color: #737373;
+            margin-bottom: 0.75rem;
+        }
+        .product-card-body .product-cta {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .product-card-body .product-cta:hover {
+            background: #262626;
+        }
+
+        /* Scannly CTA */
+        .scannly-cta {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+        .scannly-cta-box {
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .scannly-cta-content { flex: 1; }
+        .scannly-cta-content h3 { font-size: 1.25rem; font-weight: 700; color: #0a0a0a; margin-bottom: 0.5rem; }
+        .scannly-cta-content p { color: #525252; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
+        .scannly-cta-content .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .scannly-cta-content .btn:hover { background: #262626; }
+        .scannly-cta-icon { font-size: 3.5rem; flex-shrink: 0; }
+
+        /* Nav show state for mobile */
+        .nav-links.show {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 1rem 2rem 2rem;
+            border-top: 1px solid #e5e5e5;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        @media (max-width: 1024px) {
+            .city-grid { grid-template-columns: repeat(2, 1fr); }
+            .tips-grid { grid-template-columns: repeat(2, 1fr); }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .scannly-cta-box { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .travel-hero h1 { font-size: 2rem; }
+            .city-grid { grid-template-columns: 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .booking-tips-inner { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- Travel Hero -->
+    <section class="travel-hero">
+        <div class="travel-hero-content">
+            <h1>Trade Show Travel Guide</h1>
+            <p class="subtitle">Hotels, flights, city tips, and insider advice for exhibitors on the road. Everything you need to make your next show trip seamless.</p>
+        </div>
+    </section>
+
+    <!-- City Guides -->
+    <section class="travel-section">
+        <div class="travel-section-header">
+            <h2>City Guides for Exhibitors</h2>
+            <p>Insider travel guides for the top trade show destinations in the country.</p>
+        </div>
+        <div class="city-grid">
+            <div class="city-card">
+                <a href="/travel/las-vegas-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=800&q=80')">
+                        <span class="city-name-overlay">Las Vegas</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">The undisputed trade show capital of the world. Home to CES, CONEXPO, SHOT Show, and hundreds more.</p>
+                        <div class="city-stats">
+                            <span>500+ shows/year</span>
+                            <span>3 major venues</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/chicago-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=800&q=80')">
+                        <span class="city-name-overlay">Chicago</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">McCormick Place is the largest convention center in North America. NRA Show, IMTS, and RSNA call it home.</p>
+                        <div class="city-stats">
+                            <span>200+ shows/year</span>
+                            <span>2.6M sq ft venue</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/orlando-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?w=800&q=80')">
+                        <span class="city-name-overlay">Orlando</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Orange County Convention Center hosts IAAPA, I/ITSEC, and major healthcare shows. Theme parks for client entertainment.</p>
+                        <div class="city-stats">
+                            <span>150+ shows/year</span>
+                            <span>2 major venues</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/new-york-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80')">
+                        <span class="city-name-overlay">New York City</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Javits Center hosts NRF, NY Auto Show, Toy Fair, and Fancy Food Show. The media capital for product launches.</p>
+                        <div class="city-stats">
+                            <span>175+ shows/year</span>
+                            <span>Javits Center</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/anaheim-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1597466599360-3b9775841aec?w=800&q=80')">
+                        <span class="city-name-overlay">Anaheim</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Anaheim Convention Center hosts Expo West, NAMM, and WonderCon. Walkable to Disneyland for client events.</p>
+                        <div class="city-stats">
+                            <span>100+ shows/year</span>
+                            <span>1.8M sq ft</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/san-francisco-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80')">
+                        <span class="city-name-overlay">San Francisco</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Moscone Center is the hub for Dreamforce, RSA Conference, GDC, and the biggest tech shows on the West Coast.</p>
+                        <div class="city-stats">
+                            <span>80+ shows/year</span>
+                            <span>Moscone Center</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/atlanta-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1575917649121-4bdde9f2b4c6?w=800&q=80')">
+                        <span class="city-name-overlay">Atlanta</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Georgia World Congress Center hosts IWF, HIMSS, and Atlanta Market. The busiest airport in the world makes it easy to reach.</p>
+                        <div class="city-stats">
+                            <span>100+ shows/year</span>
+                            <span>GWCC + AmericasMart</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/houston-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1548519853-a40ae0201e41?w=800&q=80')">
+                        <span class="city-name-overlay">Houston</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">George R. Brown Convention Center hosts OTC, CERAWeek, and major energy shows. The energy capital of the world.</p>
+                        <div class="city-stats">
+                            <span>75+ shows/year</span>
+                            <span>Energy capital</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/dallas-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1545194445-dddb8f4487c6?w=800&q=80')">
+                        <span class="city-name-overlay">Dallas</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">Kay Bailey Hutchison Convention Center hosts Dallas Market, ISA, and major industry shows. Central location, easy flights.</p>
+                        <div class="city-stats">
+                            <span>80+ shows/year</span>
+                            <span>DFW hub</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <div class="city-card">
+                <a href="/travel/san-diego-trade-show-travel-guide.html">
+                    <div class="city-card-image" style="background-image:url('https://images.unsplash.com/photo-1538964173425-93423e8e2b86?w=800&q=80')">
+                        <span class="city-name-overlay">San Diego</span>
+                    </div>
+                    <div class="city-card-body">
+                        <p class="city-tagline">San Diego Convention Center hosts Comic-Con, BIO, AACR, and defense shows. Walkable Gaslamp Quarter for dining.</p>
+                        <div class="city-stats">
+                            <span>60+ shows/year</span>
+                            <span>Gaslamp Quarter</span>
+                        </div>
+                        <span class="read-guide">Read Guide &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="travel-section">
+        <div class="travel-section-header">
+            <h2>Exhibitor Travel Essentials</h2>
+            <p>Everything you need to know before hitting the road for your next show.</p>
+        </div>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <h3>Hotel Booking Tips</h3>
+                <p>Book 8-12 weeks early, choose walkable hotels, negotiate group rates, and always get free cancellation.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><circle cx="12" cy="15" r="1"/></svg>
+                </div>
+                <h3>Packing Checklist</h3>
+                <p>Business cards, chargers, comfortable shoes, booth supplies, wrinkle-release spray, and a portable power bank.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.5"><path d="M12 19V5m0 0l-3 3m3-3l3 3"/><path d="M5 12H3l9-9 9 9h-2"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                </div>
+                <h3>Flight Strategy</h3>
+                <p>Arrive the day before setup. Book direct flights when possible. Carry booth essentials in your carry-on.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <h3>Ground Transport</h3>
+                <p>Rideshare vs rental car depends on the city. Know surge pricing windows. Airport shuttles save money in Vegas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Booking Tips -->
+    <section class="booking-tips">
+        <div class="booking-tips-inner">
+            <h2>How to Book the Best Trade Show Hotels</h2>
+            <p>The difference between a productive show and a miserable one often comes down to where you sleep. Here are the rules.</p>
+
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">1</div>
+                <div class="booking-tip-text">
+                    <h3>Book 8-12 Weeks Before the Show</h3>
+                    <p>Major trade shows sell out nearby hotels fast. CES, CONEXPO, and NRF fill Las Vegas, Chicago, and New York hotels months in advance. The sweet spot is 8-12 weeks out: early enough for availability, late enough for rates to stabilize. Use <a href="https://www.booking.com/searchresults.html?ss=Las+Vegas+Convention+Center" target="_blank" rel="noopener">Booking.com</a> to compare rates across properties near your venue.</p>
+                </div>
+            </div>
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">2</div>
+                <div class="booking-tip-text">
+                    <h3>Stay Within Walking Distance</h3>
+                    <p>A hotel 0.5 miles from the convention center is worth $50/night more than one 3 miles away. You will make that back in saved Uber fares, reclaimed time, and the ability to drop off materials mid-day. Every city guide below includes hotels ranked by distance to the main venue.</p>
+                </div>
+            </div>
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">3</div>
+                <div class="booking-tip-text">
+                    <h3>Always Get Free Cancellation</h3>
+                    <p>Trade show plans change. Booth assignments shift. Entire shows get rescheduled. Never lock into a non-refundable rate. The price difference is typically $10-$20/night, and the flexibility is worth every penny. Filter for "free cancellation" on every booking search.</p>
+                </div>
+            </div>
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">4</div>
+                <div class="booking-tip-text">
+                    <h3>Check the Hotel's Business Amenities</h3>
+                    <p>You need fast Wi-Fi, a business center, early breakfast, and a lobby bar for evening meetings. Trade show days start at 6 AM and end at 10 PM. A hotel without early breakfast or a quiet workspace is a hotel that costs you productivity.</p>
+                </div>
+            </div>
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">5</div>
+                <div class="booking-tip-text">
+                    <h3>Negotiate Group Rates for Teams</h3>
+                    <p>If you are sending 3+ people, call the hotel directly and ask for a group rate. Most convention-area hotels have dedicated group sales teams accustomed to trade show bookings. You can typically save 15-25% off the published rate, and sometimes get complimentary meeting rooms thrown in.</p>
+                </div>
+            </div>
+            <div class="booking-tip-item">
+                <div class="booking-tip-num">6</div>
+                <div class="booking-tip-text">
+                    <h3>Book Arrivals the Day Before Setup</h3>
+                    <p>Flying in the morning of setup day is a recipe for disaster. Delayed flights, lost luggage, and rush-hour traffic can cost you your entire first day. Arrive the evening before, get a good night's sleep, and walk into setup day rested and prepared.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amazon Products -->
+    <section class="products-section">
+        <h2>Essential Gear for Exhibitors</h2>
+        <p>Top-rated trade show travel essentials, handpicked for exhibitors on the road.</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B0BN744Y71?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/61EuBNfiVnL._AC_SL1500_.jpg" alt="Anker 737 Power Bank" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Anker 737 Power Bank 24,000mAh</h3>
+                        <div class="product-price">$89.99</div>
+                        <div class="product-rating">4.5/5 stars &middot; 15,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B07PKPDN3N?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/61EB2jZJYXL._AC_SL1500_.jpg" alt="Backdrop Banner Stand 10x8" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Voilamart Backdrop Banner Stand 10' x 8'</h3>
+                        <div class="product-price">$39.99</div>
+                        <div class="product-rating">4.4/5 stars &middot; 5,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B09NNMBPMJ?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/71bFOjP+GPL._AC_SL1500_.jpg" alt="Samsonite Freeform Carry-On" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Samsonite Freeform Hardside Carry-On 21"</h3>
+                        <div class="product-price">$149.99</div>
+                        <div class="product-rating">4.6/5 stars &middot; 8,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B08LH59SXZ?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/71iwuXB+qpL._AC_SL1500_.jpg" alt="Downy Wrinkle Releaser" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Downy Wrinkle Releaser Spray Travel Size</h3>
+                        <div class="product-price">$4.97</div>
+                        <div class="product-rating">4.5/5 stars &middot; 20,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B0BSHF7WHJ?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/61iH6vKlqOL._AC_SL1500_.jpg" alt="MATEIN Business Travel Backpack" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>MATEIN Travel Laptop Backpack with USB Port</h3>
+                        <div class="product-price">$29.99</div>
+                        <div class="product-rating">4.5/5 stars &middot; 50,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B075Y3BTRN?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/81CjDdS0eZL._AC_SL1500_.jpg" alt="Cable Organizer Travel Bag" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>BAGSMART Electronic Organizer Travel Case</h3>
+                        <div class="product-price">$13.99</div>
+                        <div class="product-rating">4.6/5 stars &middot; 40,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B0BY8CY8B5?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/71VG2a83URL._AC_SL1500_.jpg" alt="Retractable Banner Stand" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Retractable Roll Up Banner Stand 33" x 81"</h3>
+                        <div class="product-price">$32.99</div>
+                        <div class="product-rating">4.3/5 stars &middot; 3,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+            <div class="product-card">
+                <a href="https://www.amazon.com/dp/B07VJYZGRL?tag=showfloortips-20" target="_blank" rel="noopener sponsored">
+                    <div class="product-card-image">
+                        <img src="https://m.media-amazon.com/images/I/71L+k6UfVuL._AC_SL1500_.jpg" alt="Business Card Holder Case" loading="lazy">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>MaxGear Business Card Holder Case, Professional</h3>
+                        <div class="product-price">$10.99</div>
+                        <div class="product-rating">4.5/5 stars &middot; 12,000+ ratings</div>
+                        <span class="product-cta">View on Amazon</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-cta">
+        <div class="scannly-cta-box">
+            <div class="scannly-cta-content">
+                <h3>Capture Every Lead at Your Next Trade Show</h3>
+                <p>Scannly replaces business cards with instant QR code contact exchange. Scan badges, share your info, and export leads in seconds.</p>
+                <a href="/scannly.html" class="btn">Learn About Scannly</a>
+            </div>
+            <div class="scannly-cta-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="3" height="3"/>
+                    <line x1="21" y1="14" x2="21" y2="17"/>
+                    <line x1="14" y1="21" x2="17" y2="21"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/products.html">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Top Destinations</h4>
+                    <ul>
+                        <li><a href="/travel/las-vegas-trade-show-travel-guide.html">Las Vegas</a></li>
+                        <li><a href="/travel/chicago-trade-show-travel-guide.html">Chicago</a></li>
+                        <li><a href="/travel/orlando-trade-show-travel-guide.html">Orlando</a></li>
+                        <li><a href="/travel/new-york-trade-show-travel-guide.html">New York</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

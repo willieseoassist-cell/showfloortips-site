@@ -58,6 +58,7 @@
             <nav class="nav-links">
                 <a href="/#shows">Trade Shows</a>
                 <a href="/news.html">News</a>
+                <a href="/travel.html">Travel</a>
                 <a href="/roi-calculator.html">ROI Calculator</a>
                 <a href="/products.html">Products</a>
                 <a href="/scannly.html" class="nav-cta">Try Scannly</a>
@@ -297,6 +298,19 @@
         html += '<div class="city-content">';
         if (introText) {
             html += '<div class="city-intro">' + escapeHtml(introText) + '</div>';
+        }
+
+        // Travel Guide Banner
+        var TRAVEL_GUIDE_CITIES = {
+            'las-vegas': 'Las Vegas', 'chicago': 'Chicago', 'orlando': 'Orlando',
+            'new-york': 'New York City', 'anaheim': 'Anaheim', 'san-francisco': 'San Francisco',
+            'atlanta': 'Atlanta', 'houston': 'Houston', 'dallas': 'Dallas', 'san-diego': 'San Diego'
+        };
+        if (TRAVEL_GUIDE_CITIES[citySlug]) {
+            html += '<div style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:1.5rem 2rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">';
+            html += '<div><strong style="color:#0a0a0a;font-size:1rem">Planning your trip?</strong><span style="color:#525252;font-size:0.9rem;margin-left:0.5rem">Read our complete exhibitor travel guide to ' + escapeHtml(TRAVEL_GUIDE_CITIES[citySlug]) + ' — hotels, flights, restaurants, and insider tips.</span></div>';
+            html += '<a href="/travel/' + citySlug + '-trade-show-travel-guide.html" style="display:inline-block;padding:0.6rem 1.5rem;background:#0a0a0a;color:#fff;border-radius:8px;font-size:0.85rem;font-weight:600;white-space:nowrap;text-decoration:none">Read Travel Guide</a>';
+            html += '</div>';
         }
 
         // Cards
