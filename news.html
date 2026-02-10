@@ -71,11 +71,80 @@
             color: #a3a3a3;
         }
 
+        /* Enhanced Filter Section */
+        .news-filter-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+        }
+        .news-filter-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .news-search-box {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+        .news-search-box input {
+            width: 100%;
+            padding: 0.625rem 1rem 0.625rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--bg);
+            transition: var(--transition);
+            outline: none;
+            box-sizing: border-box;
+        }
+        .news-search-box input:focus {
+            border-color: #0a0a0a;
+            box-shadow: 0 0 0 3px rgba(10,10,10,0.06);
+        }
+        .news-search-box input::placeholder {
+            color: var(--text-light);
+        }
+        .news-search-icon {
+            position: absolute;
+            left: 0.875rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a3a3a3;
+            pointer-events: none;
+        }
+        .news-filter-select {
+            padding: 0.625rem 2rem 0.625rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-family: inherit;
+            color: var(--text-secondary);
+            background: var(--bg);
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .news-filter-select:hover,
+        .news-filter-select:focus {
+            border-color: #0a0a0a;
+        }
+
         /* Category Filter Pills */
         .news-filters {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 1.5rem 2rem 0;
+            padding: 0 2rem;
         }
         .news-filter-bar {
             display: flex;
@@ -106,6 +175,20 @@
             background: #0a0a0a;
             color: #fff;
             border-color: #0a0a0a;
+        }
+        .news-filter-pill .pill-count {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.1rem 0.45rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: rgba(0,0,0,0.08);
+            color: var(--text-secondary);
+        }
+        .news-filter-pill.active .pill-count {
+            background: rgba(255,255,255,0.25);
+            color: #fff;
         }
 
         /* News Grid */
@@ -412,6 +495,16 @@
                 flex-wrap: nowrap;
                 -webkit-overflow-scrolling: touch;
             }
+            .news-filter-controls {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .news-search-box {
+                min-width: 100%;
+            }
+            .news-filter-select {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -440,19 +533,42 @@
         <div class="news-hero-content">
             <h1>Trade Show Industry News</h1>
             <p class="subtitle">The latest headlines, trends, and insights from across the exhibition industry.</p>
-            <p class="news-last-updated">Last updated: <time datetime="2026-02-07T15:28:57Z" id="lastUpdated">February 07, 2026 at 03:28 PM UTC</time></p>
+            <p class="news-last-updated">Last updated: <time datetime="2026-02-10T12:00:00Z" id="lastUpdated">February 10, 2026 at 12:00 PM UTC</time></p>
         </div>
     </section>
+
+    <!-- Enhanced Filter Section -->
+    <div class="news-filter-section">
+        <div class="news-filter-controls">
+            <div class="news-search-box">
+                <svg class="news-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="newsSearchInput" placeholder="Search articles by title or keyword...">
+            </div>
+            <select class="news-filter-select" id="newsDateFilter">
+                <option value="all">All Time</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+            </select>
+            <select class="news-filter-select" id="newsSortSelect">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+            </select>
+        </div>
+    </div>
 
     <!-- Category Filters -->
     <div class="news-filters">
         <div class="news-filter-bar" id="newsFilterBar">
             <button class="news-filter-pill active" data-category="all">All News</button>
-            <button class="news-filter-pill" data-category="Industry News">Industry News</button>
+            <button class="news-filter-pill" data-category="Industry Insight">Industry Insight</button>
+            <button class="news-filter-pill" data-category="Networking Guide">Networking Guide</button>
+            <button class="news-filter-pill" data-category="Comparison">Comparison</button>
+            <button class="news-filter-pill" data-category="Business & Trade">Business &amp; Trade</button>
             <button class="news-filter-pill" data-category="Show Updates">Show Updates</button>
-            <button class="news-filter-pill" data-category="Technology">Technology</button>
             <button class="news-filter-pill" data-category="Marketing">Marketing</button>
             <button class="news-filter-pill" data-category="Data & Trends">Data &amp; Trends</button>
+            <button class="news-filter-pill" data-category="Industry News">Industry News</button>
         </div>
     </div>
 
@@ -556,18 +672,23 @@
 
         var ITEMS_PER_PAGE = 12;
         var currentFilter = 'all';
+        var currentSearch = '';
+        var currentDateRange = 'all';
+        var currentSort = 'newest';
         var visibleCount = ITEMS_PER_PAGE;
         var filteredArticles = [];
 
         var CAT_CLASSES = {
             'Industry News': 'cat-industry-news',
+            'Industry Insight': 'cat-industry-news',
             'Show Updates': 'cat-show-updates',
             'Technology': 'cat-technology',
             'Marketing': 'cat-marketing',
-            'Data & Trends': 'cat-data-trends'
+            'Data & Trends': 'cat-data-trends',
+            'Networking Guide': 'cat-industry-news',
+            'Business & Trade': 'cat-show-updates',
+            'Comparison': 'cat-show-updates'
         };
-
-        var PLACEHOLDER_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>';
 
         function init() {
             if (typeof NEWS_DATA === 'undefined' || !NEWS_DATA.length) {
@@ -577,8 +698,28 @@
                 return;
             }
 
+            updatePillCounts();
             applyFilter();
             bindEvents();
+        }
+
+        function updatePillCounts() {
+            document.querySelectorAll('.news-filter-pill').forEach(function(pill) {
+                var cat = pill.dataset.category;
+                var count;
+                if (cat === 'all') {
+                    count = NEWS_DATA.length;
+                } else {
+                    count = NEWS_DATA.filter(function(a) { return a.category === cat; }).length;
+                }
+                var countEl = pill.querySelector('.pill-count');
+                if (!countEl) {
+                    countEl = document.createElement('span');
+                    countEl.className = 'pill-count';
+                    pill.appendChild(countEl);
+                }
+                countEl.textContent = count.toLocaleString();
+            });
         }
 
         function bindEvents() {
@@ -595,6 +736,32 @@
                 });
             });
 
+            // Search input
+            var searchTimer;
+            document.getElementById('newsSearchInput').addEventListener('input', function() {
+                clearTimeout(searchTimer);
+                var val = this.value;
+                searchTimer = setTimeout(function() {
+                    currentSearch = val.trim().toLowerCase();
+                    visibleCount = ITEMS_PER_PAGE;
+                    applyFilter();
+                }, 300);
+            });
+
+            // Date range filter
+            document.getElementById('newsDateFilter').addEventListener('change', function() {
+                currentDateRange = this.value;
+                visibleCount = ITEMS_PER_PAGE;
+                applyFilter();
+            });
+
+            // Sort select
+            document.getElementById('newsSortSelect').addEventListener('change', function() {
+                currentSort = this.value;
+                visibleCount = ITEMS_PER_PAGE;
+                applyFilter();
+            });
+
             // Load more
             document.getElementById('newsLoadMoreBtn').addEventListener('click', function() {
                 visibleCount += ITEMS_PER_PAGE;
@@ -602,20 +769,50 @@
             });
         }
 
-        function applyFilter() {
-            if (currentFilter === 'all') {
-                filteredArticles = NEWS_DATA.slice();
-            } else {
-                filteredArticles = NEWS_DATA.filter(function(a) {
-                    return a.category === currentFilter;
-                });
+        function getDateCutoff(range) {
+            var now = new Date();
+            var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            switch (range) {
+                case 'today':
+                    return today.getTime();
+                case 'week':
+                    return today.getTime() - (7 * 24 * 60 * 60 * 1000);
+                case 'month':
+                    return today.getTime() - (30 * 24 * 60 * 60 * 1000);
+                default:
+                    return 0;
             }
-            // Sort newest first
+        }
+
+        function applyFilter() {
+            var cutoff = getDateCutoff(currentDateRange);
+
+            filteredArticles = NEWS_DATA.filter(function(a) {
+                // Category filter
+                if (currentFilter !== 'all' && a.category !== currentFilter) return false;
+
+                // Date filter
+                if (currentDateRange !== 'all') {
+                    var aDate = a.published_date ? new Date(a.published_date).getTime() : 0;
+                    if (aDate < cutoff) return false;
+                }
+
+                // Search filter
+                if (currentSearch) {
+                    var haystack = ((a.title || '') + ' ' + (a.summary || '') + ' ' + (a.category || '')).toLowerCase();
+                    if (haystack.indexOf(currentSearch) === -1) return false;
+                }
+
+                return true;
+            });
+
+            // Sort
             filteredArticles.sort(function(a, b) {
                 var da = a.published_date ? new Date(a.published_date).getTime() : 0;
                 var db = b.published_date ? new Date(b.published_date).getTime() : 0;
-                return db - da;
+                return currentSort === 'newest' ? (db - da) : (da - db);
             });
+
             visibleCount = ITEMS_PER_PAGE;
             renderCards();
         }
@@ -624,21 +821,28 @@
             var grid = document.getElementById('newsGrid');
             var visible = filteredArticles.slice(0, visibleCount);
 
-            var countText = filteredArticles.length + ' article' + (filteredArticles.length !== 1 ? 's' : '');
+            var countText = filteredArticles.length.toLocaleString() + ' article' + (filteredArticles.length !== 1 ? 's' : '');
             if (currentFilter !== 'all') {
                 countText += ' in ' + currentFilter;
+            }
+            if (currentSearch) {
+                countText += ' matching "' + currentSearch + '"';
+            }
+            if (currentDateRange !== 'all') {
+                var rangeLabels = { today: 'today', week: 'this week', month: 'this month' };
+                countText += ' from ' + (rangeLabels[currentDateRange] || currentDateRange);
             }
             document.getElementById('newsCount').textContent = countText;
 
             if (visible.length === 0) {
-                grid.innerHTML = '<div class="news-no-results"><h3>No articles found</h3><p>Try selecting a different category.</p></div>';
+                grid.innerHTML = '<div class="news-no-results"><h3>No articles found</h3><p>Try adjusting your search, date range, or category filter.</p></div>';
                 document.getElementById('newsLoadMore').style.display = 'none';
                 return;
             }
 
             grid.innerHTML = visible.map(function(article, i) {
                 var catClass = CAT_CLASSES[article.category] || 'cat-industry-news';
-                var isFeatured = (i === 0 && currentFilter === 'all') ? ' featured' : '';
+                var isFeatured = (i === 0 && currentFilter === 'all' && !currentSearch) ? ' featured' : '';
 
                 var imageHtml;
                 if (article.image_url) {
@@ -652,7 +856,7 @@
                 var inlineBadge = !article.image_url ? '<span class="news-card-category ' + catClass + '">' + escapeHtml(article.category) + '</span>' : '';
 
                 return '<div class="news-card' + isFeatured + '">' +
-                    '<a href="' + escapeAttr(article.url) + '" target="_blank" rel="noopener noreferrer">' +
+                    '<a href="' + escapeAttr(article.url) + '">' +
                         imageHtml +
                         '<div class="news-card-body">' +
                             inlineBadge +
