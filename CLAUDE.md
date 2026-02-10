@@ -20,9 +20,10 @@
   - **Domain:** showfloortips.com (verified, DKIM + SPF confirmed)
   - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
   - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
-- **Newsletter:** Beehiiv (pub ID: `3ced7630-50d2-4bb9-8f43-728c48a80034`)
-  - **Embed URL:** `https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true`
-  - Integrated on: newsletter.html (2x), index.html, news.html, travel.html
+- **Newsletter:** Beehiiv (pub ID: `pub_3ced7630-50d2-4bb9-8f43-728c48a80034`)
+  - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
+  - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
+  - Forms on: newsletter.html (2x), index.html, news.html, travel.html
 - **Data files:** `shows.js` (exhibit records, 29MB, 24,615+ shows), `news.js` (article index, 14MB)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
@@ -446,14 +447,25 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 - Replaced old localStorage-only fake form with real Beehiiv embeds
 - Removed ~210 lines of dead code (old form handler JS, unused CSS for success/error states, input styling)
 
-#### Pages Updated with Beehiiv Embeds (4 pages)
-- **newsletter.html** — 2 embeds: main signup card + bottom CTA section (replaced old `scrollToForm` link)
-- **index.html** — 1 embed: replaced old fake `handleSubscribe` newsletter form in homepage newsletter section
-- **news.html** — 1 embed: new dark CTA section added above footer ("Get the Latest Trade Show News")
-- **travel.html** — 1 embed: new dark CTA section added above footer ("Get Travel Tips for Your Next Show")
+#### Beehiiv Iframe Embeds Failed → Rebuilt with Serverless API
+- Beehiiv iframe embeds (`embeds.beehiiv.com`) showed "Not Found" on all pages (403 from Cloudflare)
+- **Solution:** Built Vercel serverless function `api/subscribe.js` that calls Beehiiv Subscriptions API server-side
+- API key stays secure on server (never exposed to frontend)
+- Endpoint: `POST /api/subscribe` → calls `api.beehiiv.com/v2/publications/{pub_id}/subscriptions`
+- Sends welcome email, sets `utm_source: showfloortips.com`, reactivates existing subs
+- Tested: subscription confirmed in Beehiiv dashboard
+
+#### Pages Updated with Custom Subscribe Forms (4 pages)
+- **newsletter.html** — 2 forms: main signup card + bottom CTA section
+- **index.html** — 1 form: homepage newsletter section (replaced old fake alert-only form)
+- **news.html** — 1 form: dark CTA section above footer ("Get the Latest Trade Show News")
+- **travel.html** — 1 form: dark CTA section above footer ("Get Travel Tips for Your Next Show")
+- All forms: email input + subscribe button, success/error states, matches site design
 
 #### Deployment
 - Pushed all changes to GitHub (main branch)
-- Deployed to Vercel with `--archive=tgz` (24,308 files)
-- Verified all 4 embeds present on live site via curl
+- Deployed to Vercel with `--archive=tgz` (24,309 files)
+- Serverless function compiled ESM → CommonJS automatically
+- API endpoint tested: `curl -X POST /api/subscribe` → `{"success": true}`
+- Subscription verified in Beehiiv dashboard
 - Live at https://showfloortips.com
