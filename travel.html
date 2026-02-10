@@ -817,12 +817,16 @@
         </div>
     </section>
 
-    <!-- Newsletter CTA — Powered by Beehiiv -->
+    <!-- Newsletter CTA — Powered by Beehiiv API -->
     <section style="padding:3rem 2rem;background:#0a0a0a;text-align:center;">
         <div style="max-width:540px;margin:0 auto;">
             <h3 style="font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Get Travel Tips for Your Next Show</h3>
             <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:#a3a3a3;margin-bottom:1.25rem;">Weekly city guides, flight deals, and hotel tips for trade show exhibitors.</p>
-            <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
+            <form style="display:flex;gap:0.5rem;max-width:440px;margin:0 auto;" onsubmit="return sftSubscribe(event, this)">
+                <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.2);border-radius:8px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#0a0a0a;background:#fff;outline:none;box-sizing:border-box;">
+                <button type="submit" style="padding:0.75rem 1.5rem;background:#fff;color:#0a0a0a;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;">Subscribe</button>
+            </form>
+            <p class="sft-form-msg" style="display:none;text-align:center;font-size:0.85rem;margin-top:0.75rem;color:#a3a3a3;"></p>
         </div>
     </section>
 
@@ -872,6 +876,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    window.sftSubscribe = function(e, form) {
+        e.preventDefault();
+        var email = form.querySelector('input[name="email"]').value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+        var msg = form.closest('section').querySelector('.sft-form-msg');
+        if (!email) return false;
+        btn.disabled = true; btn.textContent = 'Subscribing...';
+        fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+        .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+        .then(function(res) {
+            if (res.ok) {
+                form.querySelector('input[name="email"]').value = '';
+                btn.textContent = 'Subscribed!'; btn.style.background = '#16a34a'; btn.style.color = '#fff';
+                if (msg) { msg.style.display = 'block'; msg.style.color = '#16a34a'; msg.textContent = 'Welcome aboard! Check your inbox.'; }
+                setTimeout(function() { btn.disabled = false; btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+            } else {
+                btn.disabled = false; btn.textContent = 'Subscribe';
+                if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = res.data.error || 'Something went wrong.'; }
+            }
+        })
+        .catch(function() { btn.disabled = false; btn.textContent = 'Subscribe'; if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = 'Connection error. Try again.'; } });
+        return false;
+    };
+    </script>
 
 </body>
 </html>

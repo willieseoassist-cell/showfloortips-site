@@ -732,14 +732,16 @@
         </div>
     </section>
 
-    <!-- Newsletter — Powered by Beehiiv -->
+    <!-- Newsletter — Powered by Beehiiv API -->
     <section class="newsletter-section" id="newsletter">
         <div class="newsletter-box">
             <h2>Weekly Trade Show Intel</h2>
             <p>Join exhibitors who get actionable tips every Tuesday. No spam, just strategies that work.</p>
-            <div style="max-width:480px;margin:0 auto;">
-                <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
-            </div>
+            <form class="newsletter-form" onsubmit="return sftSubscribe(event, this)">
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="sft-form-msg" style="display:none;text-align:center;font-size:0.85rem;margin-top:0.75rem;"></p>
         </div>
     </section>
 
@@ -1570,7 +1572,30 @@
             applyAdvancedFromInputs();
         };
 
-        // Newsletter handled by Beehiiv embed
+        // Newsletter — Beehiiv API
+        window.sftSubscribe = function(e, form) {
+            e.preventDefault();
+            var email = form.querySelector('input[name="email"]').value.trim();
+            var btn = form.querySelector('button[type="submit"]');
+            var msg = form.parentElement.querySelector('.sft-form-msg');
+            if (!email) return false;
+            btn.disabled = true; btn.textContent = 'Subscribing...';
+            fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+            .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+            .then(function(res) {
+                if (res.ok) {
+                    form.querySelector('input[name="email"]').value = '';
+                    btn.textContent = 'Subscribed!'; btn.style.background = '#16a34a';
+                    if (msg) { msg.style.display = 'block'; msg.style.color = '#16a34a'; msg.textContent = 'Welcome aboard! Check your inbox.'; }
+                    setTimeout(function() { btn.disabled = false; btn.textContent = 'Subscribe'; btn.style.background = ''; }, 4000);
+                } else {
+                    btn.disabled = false; btn.textContent = 'Subscribe';
+                    if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = res.data.error || 'Something went wrong.'; }
+                }
+            })
+            .catch(function() { btn.disabled = false; btn.textContent = 'Subscribe'; if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = 'Connection error. Try again.'; } });
+            return false;
+        };
 
         // ── Addiction Features ──
 

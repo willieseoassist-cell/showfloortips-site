@@ -494,10 +494,16 @@
         </div>
     </section>
 
-    <!-- Signup Form — Powered by Beehiiv -->
+    <!-- Signup Form — Powered by Beehiiv API -->
     <section class="nl-form-section">
         <div class="nl-form-card">
-            <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
+            <form id="nlForm" onsubmit="return sftSubscribe(event, this)">
+                <div style="display:flex;gap:0.5rem;">
+                    <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.85rem 1.15rem;border:1px solid #e5e5e5;border-radius:10px;font-family:'Inter',sans-serif;font-size:1rem;color:#0a0a0a;background:#fafafa;outline:none;box-sizing:border-box;">
+                    <button type="submit" style="padding:0.85rem 1.75rem;background:#0a0a0a;color:#fff;border:none;border-radius:10px;font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;white-space:nowrap;">Subscribe Free</button>
+                </div>
+                <p class="sft-form-msg" style="display:none;text-align:center;font-size:0.85rem;margin-top:0.75rem;"></p>
+            </form>
             <p class="nl-form-fine-print">Join 10,000+ exhibitors. Unsubscribe anytime.</p>
         </div>
     </section>
@@ -582,9 +588,11 @@
         <div class="nl-bottom-cta-inner">
             <h2>Ready to Exhibit Smarter?</h2>
             <p>Join thousands of exhibitors who start their week with ShowFloorTips.</p>
-            <div style="max-width:440px;margin:1rem auto 0;">
-                <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
-            </div>
+            <form style="max-width:440px;margin:1rem auto 0;display:flex;gap:0.5rem;" onsubmit="return sftSubscribe(event, this)">
+                <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.2);border-radius:8px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#0a0a0a;background:#fff;outline:none;box-sizing:border-box;">
+                <button type="submit" style="padding:0.75rem 1.5rem;background:#fff;color:#0a0a0a;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;">Subscribe</button>
+            </form>
+            <p class="sft-form-msg" style="display:none;text-align:center;font-size:0.85rem;margin-top:0.75rem;color:#a3a3a3;"></p>
         </div>
     </section>
 
@@ -641,6 +649,45 @@
     <script>
     (function() {
         'use strict';
+
+        // Beehiiv subscribe via API
+        window.sftSubscribe = function(e, form) {
+            e.preventDefault();
+            var email = form.querySelector('input[name="email"]').value.trim();
+            var btn = form.querySelector('button[type="submit"]');
+            var msg = form.closest('section').querySelector('.sft-form-msg') || form.nextElementSibling;
+            if (!email) return false;
+
+            btn.disabled = true;
+            btn.textContent = 'Subscribing...';
+
+            fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(function(res) { return res.json().then(function(d) { return { ok: res.ok, data: d }; }); })
+            .then(function(result) {
+                if (result.ok) {
+                    form.querySelector('input[name="email"]').value = '';
+                    btn.textContent = 'Subscribed!';
+                    btn.style.background = '#16a34a';
+                    if (msg) { msg.style.display = 'block'; msg.style.color = '#16a34a'; msg.textContent = 'Welcome aboard! Check your inbox.'; }
+                    setTimeout(function() { btn.disabled = false; btn.textContent = 'Subscribe Free'; btn.style.background = ''; }, 4000);
+                } else {
+                    btn.disabled = false;
+                    btn.textContent = 'Subscribe Free';
+                    if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = result.data.error || 'Something went wrong. Try again.'; }
+                }
+            })
+            .catch(function() {
+                btn.disabled = false;
+                btn.textContent = 'Subscribe Free';
+                if (msg) { msg.style.display = 'block'; msg.style.color = '#dc2626'; msg.textContent = 'Connection error. Please try again.'; }
+            });
+
+            return false;
+        };
 
         // Scroll to form from bottom CTA
         window.scrollToForm = function() {
