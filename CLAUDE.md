@@ -20,6 +20,9 @@
   - **Domain:** showfloortips.com (verified, DKIM + SPF confirmed)
   - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
   - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
+- **Newsletter:** Beehiiv (pub ID: `3ced7630-50d2-4bb9-8f43-728c48a80034`)
+  - **Embed URL:** `https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true`
+  - Integrated on: newsletter.html (2x), index.html, news.html, travel.html
 - **Data files:** `shows.js` (exhibit records, 29MB, 24,615+ shows), `news.js` (article index, 14MB)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
@@ -433,4 +436,24 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 #### Deployment
 - Pushed all changes to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,308 files)
+- Live at https://showfloortips.com
+
+### Feb 10, 2026 — Session 9
+
+#### Beehiiv Newsletter Integration
+- **Publication ID:** `3ced7630-50d2-4bb9-8f43-728c48a80034`
+- **Embed type:** Slim iframe (`?slim=true`) — single-line email input + subscribe button
+- Replaced old localStorage-only fake form with real Beehiiv embeds
+- Removed ~210 lines of dead code (old form handler JS, unused CSS for success/error states, input styling)
+
+#### Pages Updated with Beehiiv Embeds (4 pages)
+- **newsletter.html** — 2 embeds: main signup card + bottom CTA section (replaced old `scrollToForm` link)
+- **index.html** — 1 embed: replaced old fake `handleSubscribe` newsletter form in homepage newsletter section
+- **news.html** — 1 embed: new dark CTA section added above footer ("Get the Latest Trade Show News")
+- **travel.html** — 1 embed: new dark CTA section added above footer ("Get Travel Tips for Your Next Show")
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,308 files)
+- Verified all 4 embeds present on live site via curl
 - Live at https://showfloortips.com
