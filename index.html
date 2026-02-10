@@ -1144,7 +1144,17 @@
 
             // Sort
             filteredShows.sort((a, b) => {
-                if (currentSort === 'date') return (a.sort_date || '').localeCompare(b.sort_date || '');
+                if (currentSort === 'date') {
+                    var today = new Date().toISOString().slice(0, 10);
+                    var aDate = a.sort_date || '';
+                    var bDate = b.sort_date || '';
+                    var aFuture = aDate >= today;
+                    var bFuture = bDate >= today;
+                    if (aFuture && !bFuture) return -1;
+                    if (!aFuture && bFuture) return 1;
+                    if (aFuture && bFuture) return aDate.localeCompare(bDate);
+                    return bDate.localeCompare(aDate);
+                }
                 if (currentSort === 'name') return a.title.localeCompare(b.title);
                 if (currentSort === 'category') return a.category.localeCompare(b.category);
                 if (currentSort === 'country') return (a.country || '').localeCompare(b.country || '');
