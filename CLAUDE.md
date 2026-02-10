@@ -489,3 +489,71 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
   - Extracts recipient list from CLAUDE.md outreach section automatically
 - **Beehiiv Send API not available** (requires Enterprise plan) — using Resend API for sends instead
 - **Important:** Always use `User-Agent: ShowFloorTips/1.0` header with Resend (Cloudflare blocks default Python UA)
+
+### Feb 10, 2026 — Session 10
+
+#### Sponsor Pitch Outreach
+- Built `send-sponsor-pitch.py` — resumable sender that reads contacts from CLAUDE.md, tracks sent in `sponsor-pitch-sent.json`
+- `email-sponsor-pitch.html` — HTML pitch email template
+- Sent 8/157 pitches before hitting Resend 100/day rate limit (rolling 24h window)
+- 64 new industry contacts added (booth builders, event tech, logistics, AV, associations, media)
+- All 64 added to Beehiiv as subscribers (157 total subscribers)
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/tariff-surge-exhibitor-costs-booth-materials-2026.html`
+- `news/winter-olympics-milan-2026-hotel-venue-competition-exhibitors.html`
+- `news/grammy-awards-2026-live-event-production-trade-show-booths.html`
+- `news/ice-enforcement-surge-trade-show-workforce-travel-2026.html`
+- `news/euroshop-2026-retail-trade-show-exhibitor-guide.html`
+
+**Networking Guides (3):**
+- `news/networking-guide-mobile-world-congress-mwc-barcelona.html`
+- `news/networking-guide-conexpo-conagg.html`
+- `news/networking-guide-healthcare-information-management-systems-himss.html`
+
+**Comparison Articles (2):**
+- `news/himss-vs-hlth-comparison.html`
+- `news/nrf-vs-shoptalk-comparison.html`
+
+#### New Shows Added (18 international)
+- Singapore Airshow, BETT UK, Gulfood, DOMOTEX, Aero India, Didacta, OTC Asia, FinovateSpring, BIO International, IDEF, FinovateFall, LOUPE Europe, Sibos, CEATEC Japan, SIAL Paris, FABTECH, EuroTier, Arab Health
+
+#### Mobile Menu Bug Fix
+- `.nav-links.show` CSS rule was completely missing — hamburger toggle added class but nothing displayed
+- Added full mobile dropdown styling to `styles.css` (position absolute, flex column, dark mode support)
+- Added missing hamburger button to `show.html` (was absent entirely)
+
+#### Homepage Show Sorting Fixed
+- Today's and upcoming shows now appear first (nearest upcoming date at top)
+- Past/expired shows pushed to end (most recently passed first)
+- Rule saved to CLAUDE.md as Rule #5
+
+#### New Pages Built
+- **`/this-week.html`** — "What's Happening This Week" live roundup
+  - Dynamically shows all shows this week grouped by day (Mon-Sun)
+  - "TODAY" badge on current day, category filter buttons, week navigation (prev/next)
+  - Shows sorted by attendee count within each day
+  - 629+ shows displayed for current week
+  - Links use `/shows/slug` path format (fixed from broken `/show.html?slug=` format)
+- **`/venue-maps.html`** — Convention Center Floor Plans
+  - 10 major US venues with official PDF floor plan downloads
+  - McCormick Place (5 PDFs), LVCC (2), OCCC (3), Javits (3), Moscone (3), Anaheim (1), GWCCA (1), GRB Houston (web), Kay Bailey Hutchison Dallas (3), San Diego (3)
+  - All links to official venue sources, no login required
+  - Pro tip about show-specific maps via A to Z / Map Your Show
+
+#### Navigation Updates (all 17+ pages)
+- Added **"This Week"** tab (between Trade Shows and News)
+- Added **"Maps"** tab (between Travel and ROI Calculator)
+- Full nav order: Trade Shows | This Week | News | Travel | Maps | ROI Calculator | Products | Try Scannly
+- Updated desktop nav, mobile nav overlays, and inline-styled navs across all page patterns
+
+#### Homepage "This Week" Banner
+- Black banner below search hero showing live count: "629 trade shows this week (Feb 9 - Feb 15) — X starting today"
+- Links to `/this-week.html`
+- Dynamically calculated from SHOWS_DATA on page load
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,326 files)
+- Live at https://showfloortips.com
