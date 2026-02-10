@@ -392,3 +392,45 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 - Pushed all changes to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Feb 10, 2026 — Session 8
+
+#### News Page Enhanced with Filter Section (news.html)
+- **Search bar** — real-time keyword search across article titles, summaries, and categories (300ms debounce)
+- **Date range filter** — Today, This Week, This Month, All Time dropdown
+- **Sort control** — Newest First / Oldest First dropdown
+- **Updated category pills** — Now matches actual article categories: Industry Insight, Networking Guide, Comparison, Business & Trade, Show Updates, Marketing, Data & Trends, Industry News
+- **Article count badges** — Each pill shows live count of articles in that category
+- **Result context** — Shows active filters in count (e.g., "42 articles in Industry Insight matching 'CES' from this week")
+- **Updated timestamp** — February 10, 2026
+- **Responsive** — Stacks vertically on mobile
+
+#### News Sourcing Methodology Established
+- Articles now sourced from top-tier outlets: Reuters, AP, Bloomberg, WSJ, CNBC, TechCrunch, VentureBeat, Forbes, Business Insider, BBC, NYT, The Guardian, CNN, Al Jazeera, Financial Times
+- Each story scanned for trade show angle, then rewritten through exhibitor lens
+- Magazine-quality writing with real data points and actionable takeaways
+
+#### Articles Created (10 total, all dated Feb 10, 2026)
+**Source-Based News Insight Articles (5) — from real trending news:**
+- `news/super-bowl-lx-ai-companies-trade-show-spending-2026.html` — AI companies dominated Super Bowl ads at $8M/spot; same spending reshaping trade show floors (Source: CNBC)
+- `news/milan-olympics-2026-sustainability-convention-centers.html` — Milan Winter Olympics sustainability pledges and what it means for convention centers (Source: BBC)
+- `news/openai-enterprise-ai-agents-trade-show-booths-2026.html` — OpenAI's Frontier platform and AI agents replacing/augmenting booth staff (Source: TechCrunch)
+- `news/us-manufacturing-retreat-trade-show-impact-2026.html` — U.S. manufacturing PMI contraction visible on IMTS/FABTECH show floors (Source: WSJ)
+- `news/small-business-cyberattacks-cybersecurity-trade-shows-2026.html` — 59% of SMBs hacked; RSA and Black Hat seeing record attendance (Source: Forbes/Hiscox)
+
+**General Topic News Insight Articles (5):**
+- `news/ai-agents-replacing-booth-staff-trade-shows-2026.html` — AI avatar technology, conversational kiosks, $22,400 savings per show, 5 deployment models
+- `news/super-bowl-lx-economic-impact-lessons-trade-show-organizers-2026.html` — $630M Bay Area impact, 7 lessons for trade show organizers
+- `news/tariff-uncertainty-international-exhibitors-2026.html` — 35% Canadian/30% Chinese/15% EU tariffs, 18% decline in international exhibitors
+- `news/sustainability-requirements-mandatory-convention-centers-2026.html` — 73% of top 25 venues now mandatory sustainability, $1,200 non-compliance surcharges
+- `news/rise-of-micro-shows-niche-trade-events-2026.html` — Micro-shows delivering 4.7x ROI advantage, $218 vs $780 cost per qualified lead
+
+#### news.js Updated
+- 23 new entries added (10 new articles + 13 Session 7 backfill)
+- Total entries now: 24,356+
+- JSON validated successfully
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,308 files)
+- Live at https://showfloortips.com
