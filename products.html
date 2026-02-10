@@ -36,6 +36,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: relative;
         }
         .logo {
             font-size: 1.25rem;
@@ -87,6 +88,7 @@
                 padding: 16px 24px;
                 border-bottom: 1px solid #e5e5e5;
                 gap: 4px;
+                z-index: 999;
             }
             .nav-links.show { display: flex; }
             .nav-links a { padding: 12px 14px; }
@@ -420,7 +422,7 @@
                 <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <button class="mobile-menu-btn" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
 </header>
 
