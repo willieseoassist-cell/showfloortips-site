@@ -387,6 +387,7 @@
                     <li><a href="/this-week.html">This Week</a></li>
                     <li><a href="/news.html">News</a></li>
                     <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/venue-maps.html">Maps</a></li>
                     <li><a href="/roi-calculator.html">ROI Calculator</a></li>
                     <li><a href="/products.html">Products</a></li>
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
@@ -472,6 +473,15 @@
             <input type="hidden" id="afDateTo">
         </div>
     </section>
+
+    <!-- This Week Banner -->
+    <a href="/this-week.html" id="thisWeekBanner" style="display:block;background:#0a0a0a;padding:14px 24px;text-decoration:none;transition:background 0.2s">
+        <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">
+            <span style="font-family:'Inter',sans-serif;font-size:0.85rem;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:0.5px">This Week</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:600;color:#fff" id="thisWeekText">Loading...</span>
+            <span style="font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;color:#a3a3a3;display:flex;align-items:center;gap:4px">View All <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+    </a>
 
     <!-- Stats Bar -->
     <div class="stats-bar">
@@ -937,6 +947,24 @@
                 document.getElementById('showsGrid').innerHTML = '<div class="no-results"><h3>Loading show data...</h3><p>Shows data is being generated. Check back soon.</p></div>';
                 return;
             }
+
+            // This Week banner
+            (function() {
+                var now = new Date();
+                var dow = now.getDay();
+                var mon = new Date(now); mon.setDate(now.getDate() - (dow === 0 ? 6 : dow - 1));
+                var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
+                var ws = mon.toISOString().slice(0,10);
+                var we = sun.toISOString().slice(0,10);
+                var todayStr = now.toISOString().slice(0,10);
+                var weekShows = SHOWS_DATA.filter(function(s) { return s.sort_date >= ws && s.sort_date <= we; });
+                var todayShows = weekShows.filter(function(s) { return s.sort_date === todayStr; });
+                var el = document.getElementById('thisWeekText');
+                if (el) {
+                    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    el.textContent = weekShows.length.toLocaleString() + ' trade shows this week (' + months[mon.getMonth()] + ' ' + mon.getDate() + ' - ' + months[sun.getMonth()] + ' ' + sun.getDate() + ') \u2014 ' + todayShows.length + ' starting today';
+                }
+            })();
 
             // Stats
             const cities = new Set(SHOWS_DATA.map(s => s.city).filter(Boolean));
