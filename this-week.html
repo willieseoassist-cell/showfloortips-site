@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Shows Happening This Week - ShowFloorTips</title>
+    <meta name="description" content="See every trade show, expo, and convention happening this week. Live weekly roundup updated automatically with dates, venues, cities, and exhibitor details.">
+    <meta name="keywords" content="trade shows this week, expos this week, conventions today, upcoming trade shows, weekly trade show calendar 2026">
+
+    <meta property="og:title" content="Trade Shows Happening This Week - ShowFloorTips">
+    <meta property="og:description" content="Live weekly roundup of every trade show happening right now. Updated automatically.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/this-week.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Trade Shows This Week",
+        "description": "Weekly roundup of trade shows, expos, and conventions happening this week",
+        "url": "https://showfloortips.com/this-week.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://showfloortips.com/this-week.html">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .tw-hero {
+            background: #fafafa;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+        .tw-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+        .tw-hero .tw-date-range {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+        }
+        .tw-hero p {
+            font-size: 1.05rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .tw-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .tw-stat {
+            text-align: center;
+        }
+        .tw-stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0a0a0a;
+        }
+        .tw-stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .tw-nav-weeks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 64px;
+            z-index: 50;
+        }
+        .tw-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tw-nav-btn:hover {
+            background: #f3f4f6;
+            border-color: #9ca3af;
+        }
+        .tw-nav-btn.active {
+            background: #0a0a0a;
+            color: #fff;
+            border-color: #0a0a0a;
+        }
+        .tw-week-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #0a0a0a;
+        }
+
+        .tw-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            flex-wrap: wrap;
+        }
+        .tw-filter-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tw-filter-btn:hover {
+            border-color: #0a0a0a;
+            color: #0a0a0a;
+        }
+        .tw-filter-btn.active {
+            background: #0a0a0a;
+            color: #fff;
+            border-color: #0a0a0a;
+        }
+
+        .tw-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+        }
+        .tw-day-section {
+            margin-bottom: 2rem;
+        }
+        .tw-day-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #0a0a0a;
+        }
+        .tw-day-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0a0a0a;
+        }
+        .tw-day-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .tw-day-count {
+            margin-left: auto;
+            background: #f3f4f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        .tw-day-today .tw-day-header {
+            border-bottom-color: #10b981;
+        }
+        .tw-day-today .tw-day-name::after {
+            content: 'TODAY';
+            margin-left: 0.5rem;
+            font-size: 0.65rem;
+            background: #10b981;
+            color: #fff;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            vertical-align: middle;
+        }
+
+        .tw-shows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .tw-show-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .tw-show-card:hover {
+            border-color: #0a0a0a;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+        }
+        .tw-show-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            line-height: 1.3;
+        }
+        .tw-show-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .tw-show-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            color: #6b7280;
+        }
+        .tw-show-meta-item svg {
+            flex-shrink: 0;
+        }
+        .tw-show-category {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #fff;
+            align-self: flex-start;
+        }
+        .tw-show-attendees {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .tw-show-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f3f4f6;
+        }
+        .tw-show-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .tw-show-link:hover {
+            text-decoration: underline;
+        }
+
+        .tw-empty {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #6b7280;
+        }
+        .tw-empty h3 {
+            font-size: 1.2rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .tw-load-more {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        .tw-load-more button {
+            padding: 0.75rem 2rem;
+            background: #0a0a0a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .tw-load-more button:hover {
+            background: #1a1a1a;
+        }
+
+        .tw-newsletter {
+            max-width: 640px;
+            margin: 2rem auto;
+            text-align: center;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+        }
+        .tw-newsletter h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+        }
+        .tw-newsletter p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        /* Dark mode */
+        html[data-theme="dark"] .tw-hero { background: #111; }
+        html[data-theme="dark"] .tw-hero h1 { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-hero .tw-date-range { color: #e5e5e5; }
+        html[data-theme="dark"] .tw-hero p { color: #9ca3af; }
+        html[data-theme="dark"] .tw-stat-num { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-nav-weeks { background: #1a1a1a; border-bottom-color: #333; }
+        html[data-theme="dark"] .tw-nav-btn { background: #1a1a1a; border-color: #444; color: #ccc; }
+        html[data-theme="dark"] .tw-nav-btn:hover { background: #2a2a2a; }
+        html[data-theme="dark"] .tw-nav-btn.active { background: #fff; color: #0a0a0a; }
+        html[data-theme="dark"] .tw-week-label { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-filter-btn { background: #1a1a1a; border-color: #333; color: #aaa; }
+        html[data-theme="dark"] .tw-filter-btn:hover { border-color: #fff; color: #fff; }
+        html[data-theme="dark"] .tw-filter-btn.active { background: #fff; color: #0a0a0a; }
+        html[data-theme="dark"] .tw-day-name { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-day-header { border-bottom-color: #fff; }
+        html[data-theme="dark"] .tw-day-count { background: #2a2a2a; color: #ccc; }
+        html[data-theme="dark"] .tw-show-card { background: #1a1a1a; border-color: #333; }
+        html[data-theme="dark"] .tw-show-card:hover { border-color: #fff; }
+        html[data-theme="dark"] .tw-show-title { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-show-meta-item { color: #9ca3af; }
+        html[data-theme="dark"] .tw-show-footer { border-top-color: #2a2a2a; }
+        html[data-theme="dark"] .tw-show-link { color: #f5f5f5; }
+        html[data-theme="dark"] .tw-newsletter { background: #1a1a1a; border-color: #333; }
+        html[data-theme="dark"] .tw-newsletter h3 { color: #f5f5f5; }
+
+        @media (max-width: 768px) {
+            .tw-hero h1 { font-size: 1.8rem; }
+            .tw-hero .tw-date-range { font-size: 1rem; }
+            .tw-stats { gap: 1.25rem; }
+            .tw-stat-num { font-size: 1.5rem; }
+            .tw-nav-weeks { gap: 0.5rem; flex-wrap: wrap; }
+            .tw-nav-btn { padding: 0.5rem 0.8rem; font-size: 0.78rem; }
+            .tw-shows-grid { grid-template-columns: 1fr; }
+            .tw-content { padding: 1rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <section class="tw-hero">
+        <h1>Trade Shows This Week</h1>
+        <div class="tw-date-range" id="twDateRange">Loading...</div>
+        <p>Every trade show, expo, and convention happening right now — updated live.</p>
+        <div class="tw-stats">
+            <div class="tw-stat">
+                <div class="tw-stat-num" id="twTotalCount">--</div>
+                <div class="tw-stat-label">Shows This Week</div>
+            </div>
+            <div class="tw-stat">
+                <div class="tw-stat-num" id="twCountryCount">--</div>
+                <div class="tw-stat-label">Countries</div>
+            </div>
+            <div class="tw-stat">
+                <div class="tw-stat-num" id="twCategoryCount">--</div>
+                <div class="tw-stat-label">Industries</div>
+            </div>
+            <div class="tw-stat">
+                <div class="tw-stat-num" id="twTodayCount">--</div>
+                <div class="tw-stat-label">Starting Today</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="tw-nav-weeks">
+        <button class="tw-nav-btn" id="twPrevWeek" onclick="changeWeek(-1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            Last Week
+        </button>
+        <span class="tw-week-label" id="twWeekLabel">This Week</span>
+        <button class="tw-nav-btn" id="twNextWeek" onclick="changeWeek(1)">
+            Next Week
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button class="tw-nav-btn" id="twThisWeekBtn" onclick="changeWeek(0)" style="display:none">Today</button>
+    </div>
+
+    <div class="tw-filters" id="twFilters"></div>
+
+    <div class="tw-content" id="twContent">
+        <div class="tw-empty"><p>Loading shows...</p></div>
+    </div>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-cta">
+        <div class="scannly-cta-box">
+            <div class="scannly-cta-content">
+                <h3>Capture Every Lead at Your Next Trade Show</h3>
+                <p>Scannly replaces business cards with instant QR code contact exchange. Scan badges, share your info, and export leads in seconds.</p>
+                <a href="/scannly.html" class="btn">Learn About Scannly</a>
+            </div>
+            <div class="scannly-cta-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent-hover)" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="3" height="3"/>
+                    <line x1="21" y1="14" x2="21" y2="17"/>
+                    <line x1="14" y1="21" x2="17" y2="21"/>
+                    <line x1="21" y1="21" x2="21" y2="21.01"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section style="padding:3rem 2rem;background:#0a0a0a;text-align:center;">
+        <div style="max-width:540px;margin:0 auto;">
+            <h3 style="font-family:'Inter',sans-serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Get Weekly Show Roundups</h3>
+            <p style="font-family:'Inter',sans-serif;font-size:0.95rem;color:#a3a3a3;margin-bottom:1.25rem;">Every Monday: what's happening this week in trade shows. Never miss an event.</p>
+            <form style="display:flex;gap:0.5rem;max-width:440px;margin:0 auto;" onsubmit="return sftSubscribe(event, this)">
+                <input type="email" name="email" placeholder="your@email.com" required style="flex:1;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.2);border-radius:8px;font-family:'Inter',sans-serif;font-size:0.95rem;color:#0a0a0a;background:#fff;outline:none;box-sizing:border-box;">
+                <button type="submit" style="padding:0.75rem 1.5rem;background:#fff;color:#0a0a0a;border:none;border-radius:8px;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:700;cursor:pointer;white-space:nowrap;">Subscribe</button>
+            </form>
+            <p class="sft-form-msg" style="display:none;text-align:center;font-size:0.85rem;margin-top:0.75rem;color:#a3a3a3;"></p>
+        </div>
+    </section>
+
+    <div class="powered-by">
+        Powered by <a href="https://showfloortips.com">ShowFloorTips</a> &mdash; Trade Show Intelligence for Exhibitors
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/this-week.html">This Week</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/sponsor.html">Sponsor With Us</a></li>
+                        <li><a href="/media-kit.html">Media Kit</a></li>
+                        <li><a href="/newsletter.html">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shows.js"></script>
+
+    <!-- Newsletter Subscribe -->
+    <script>
+    window.sftSubscribe = function(e, form) {
+        e.preventDefault();
+        var email = form.querySelector('input[name="email"]').value.trim();
+        var btn = form.querySelector('button[type="submit"]');
+        var msg = form.closest('section').querySelector('.sft-form-msg');
+        if (!email) return false;
+        btn.disabled = true; btn.textContent = 'Subscribing...';
+        fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email: email})
+        }).then(function(r) { return r.json(); }).then(function(d) {
+            if (d.success) {
+                msg.textContent = 'You\'re in! Check your email.';
+                msg.style.color = '#10b981';
+            } else {
+                msg.textContent = d.error || 'Something went wrong.';
+                msg.style.color = '#ef4444';
+            }
+            msg.style.display = 'block';
+            btn.disabled = false; btn.textContent = 'Subscribe';
+        }).catch(function() {
+            msg.textContent = 'Network error. Try again.';
+            msg.style.color = '#ef4444';
+            msg.style.display = 'block';
+            btn.disabled = false; btn.textContent = 'Subscribe';
+        });
+        return false;
+    };
+    </script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var CAT_COLORS = {
+            'Technology': '#2563eb', 'Healthcare': '#dc2626', 'Manufacturing': '#d97706',
+            'Construction': '#ea580c', 'Food & Beverage': '#16a34a', 'Energy': '#f59e0b',
+            'Automotive': '#7c3aed', 'Fashion & Beauty': '#ec4899', 'Defense & Security': '#475569',
+            'Agriculture': '#65a30d', 'Education': '#0891b2', 'Travel & Hospitality': '#0d9488',
+            'Real Estate': '#b45309', 'Finance': '#1d4ed8', 'Sports & Recreation': '#e11d48',
+            'Arts & Entertainment': '#9333ea', 'Retail': '#0ea5e9', 'Logistics': '#64748b',
+            'Telecommunications': '#6366f1', 'Aerospace': '#334155'
+        };
+
+        var weekOffset = 0;
+        var currentCategory = 'all';
+
+        function getWeekDates(offset) {
+            var now = new Date();
+            var dayOfWeek = now.getDay();
+            var monday = new Date(now);
+            monday.setDate(now.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1) + (offset * 7));
+            monday.setHours(0, 0, 0, 0);
+
+            var days = [];
+            for (var i = 0; i < 7; i++) {
+                var d = new Date(monday);
+                d.setDate(monday.getDate() + i);
+                days.push(d);
+            }
+            return days;
+        }
+
+        function formatDateStr(d) {
+            return d.toISOString().slice(0, 10);
+        }
+
+        function formatDisplay(d) {
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return months[d.getMonth()] + ' ' + d.getDate();
+        }
+
+        function formatDayName(d) {
+            var names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return names[d.getDay()];
+        }
+
+        function escapeHtml(s) {
+            if (!s) return '';
+            return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        function getShowsForWeek(weekDays) {
+            var weekStart = formatDateStr(weekDays[0]);
+            var weekEnd = formatDateStr(weekDays[6]);
+
+            return SHOWS_DATA.filter(function(show) {
+                var sd = show.sort_date || '';
+                if (!sd) return false;
+                return sd >= weekStart && sd <= weekEnd;
+            });
+        }
+
+        function renderWeek() {
+            var weekDays = getWeekDates(weekOffset);
+            var shows = getShowsForWeek(weekDays);
+            var todayStr = formatDateStr(new Date());
+
+            // Update header
+            var rangeStart = formatDisplay(weekDays[0]);
+            var rangeEnd = formatDisplay(weekDays[6]);
+            var year = weekDays[0].getFullYear();
+            document.getElementById('twDateRange').textContent = rangeStart + ' - ' + rangeEnd + ', ' + year;
+
+            // Week label
+            var label = 'This Week';
+            if (weekOffset === -1) label = 'Last Week';
+            else if (weekOffset === 1) label = 'Next Week';
+            else if (weekOffset < -1) label = Math.abs(weekOffset) + ' Weeks Ago';
+            else if (weekOffset > 1) label = weekOffset + ' Weeks Ahead';
+            document.getElementById('twWeekLabel').textContent = label;
+
+            // Show/hide Today button
+            document.getElementById('twThisWeekBtn').style.display = weekOffset === 0 ? 'none' : 'inline-flex';
+
+            // Category filter
+            if (currentCategory !== 'all') {
+                shows = shows.filter(function(s) { return s.category === currentCategory; });
+            }
+
+            // Stats
+            var countries = {};
+            var categories = {};
+            var todayShows = 0;
+            var allWeekShows = getShowsForWeek(weekDays);
+            allWeekShows.forEach(function(s) {
+                if (s.country) countries[s.country] = true;
+                if (s.category) categories[s.category] = true;
+                if (s.sort_date === todayStr) todayShows++;
+            });
+
+            document.getElementById('twTotalCount').textContent = allWeekShows.length.toLocaleString();
+            document.getElementById('twCountryCount').textContent = Object.keys(countries).length;
+            document.getElementById('twCategoryCount').textContent = Object.keys(categories).length;
+            document.getElementById('twTodayCount').textContent = todayShows;
+
+            // Build category filter buttons
+            var catCounts = {};
+            allWeekShows.forEach(function(s) {
+                if (s.category) catCounts[s.category] = (catCounts[s.category] || 0) + 1;
+            });
+            var sortedCats = Object.keys(catCounts).sort(function(a, b) { return catCounts[b] - catCounts[a]; });
+            var filtersHtml = '<button class="tw-filter-btn' + (currentCategory === 'all' ? ' active' : '') + '" onclick="setCategory(\'all\')">All (' + allWeekShows.length + ')</button>';
+            sortedCats.slice(0, 10).forEach(function(cat) {
+                filtersHtml += '<button class="tw-filter-btn' + (currentCategory === cat ? ' active' : '') + '" onclick="setCategory(\'' + escapeHtml(cat) + '\')">' + escapeHtml(cat) + ' (' + catCounts[cat] + ')</button>';
+            });
+            document.getElementById('twFilters').innerHTML = filtersHtml;
+
+            // Group by day
+            var content = document.getElementById('twContent');
+
+            if (shows.length === 0) {
+                content.innerHTML = '<div class="tw-empty"><h3>No shows found</h3><p>' +
+                    (currentCategory !== 'all' ? 'No ' + escapeHtml(currentCategory) + ' shows this week. Try a different filter.' : 'No trade shows scheduled for this week.') +
+                    '</p></div>';
+                return;
+            }
+
+            var dayGroups = {};
+            weekDays.forEach(function(d) {
+                dayGroups[formatDateStr(d)] = [];
+            });
+
+            shows.forEach(function(show) {
+                var sd = show.sort_date;
+                if (dayGroups[sd]) {
+                    dayGroups[sd].push(show);
+                }
+            });
+
+            var html = '';
+            weekDays.forEach(function(d) {
+                var ds = formatDateStr(d);
+                var dayShows = dayGroups[ds] || [];
+                if (dayShows.length === 0) return;
+
+                var isToday = ds === todayStr;
+                html += '<div class="tw-day-section' + (isToday ? ' tw-day-today' : '') + '">';
+                html += '<div class="tw-day-header">';
+                html += '<span class="tw-day-name">' + formatDayName(d) + '</span>';
+                html += '<span class="tw-day-date">' + formatDisplay(d) + '</span>';
+                html += '<span class="tw-day-count">' + dayShows.length + ' show' + (dayShows.length !== 1 ? 's' : '') + '</span>';
+                html += '</div>';
+
+                html += '<div class="tw-shows-grid">';
+                dayShows.sort(function(a, b) {
+                    var na = parseInt((a.attendees || '0').replace(/[^0-9]/g, '')) || 0;
+                    var nb = parseInt((b.attendees || '0').replace(/[^0-9]/g, '')) || 0;
+                    return nb - na;
+                });
+
+                dayShows.forEach(function(show) {
+                    var color = CAT_COLORS[show.category] || '#64748b';
+                    var loc = show.city || show.location || '';
+                    if (show.state) loc += ', ' + show.state;
+                    if (show.country && show.country !== 'United States') {
+                        loc = show.city || show.location || '';
+                        if (show.country) loc += ', ' + show.country;
+                    }
+
+                    html += '<a href="/show.html?slug=' + encodeURIComponent(show.slug) + '" class="tw-show-card" style="text-decoration:none;color:inherit;">';
+                    html += '<span class="tw-show-category" style="background:' + color + '">' + escapeHtml(show.category) + '</span>';
+                    html += '<div class="tw-show-title">' + escapeHtml(show.title) + '</div>';
+                    html += '<div class="tw-show-meta">';
+                    html += '<div class="tw-show-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>' + escapeHtml(show.date) + '</span></div>';
+                    if (loc) {
+                        html += '<div class="tw-show-meta-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>' + escapeHtml(loc) + '</span></div>';
+                    }
+                    html += '</div>';
+                    if (show.attendees) {
+                        html += '<div class="tw-show-attendees"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> ' + escapeHtml(show.attendees) + ' attendees</div>';
+                    }
+                    html += '<div class="tw-show-footer">';
+                    if (show.venue) {
+                        html += '<span class="tw-show-meta-item" style="font-size:0.75rem">' + escapeHtml(show.venue) + '</span>';
+                    } else {
+                        html += '<span></span>';
+                    }
+                    html += '<span class="tw-show-link">View Details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>';
+                    html += '</div>';
+                    html += '</a>';
+                });
+
+                html += '</div></div>';
+            });
+
+            content.innerHTML = html;
+        }
+
+        window.changeWeek = function(dir) {
+            if (dir === 0) weekOffset = 0;
+            else weekOffset += dir;
+            renderWeek();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        window.setCategory = function(cat) {
+            currentCategory = cat;
+            renderWeek();
+        };
+
+        // Dark mode
+        (function() {
+            var saved = localStorage.getItem('sft-theme');
+            if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+
+        // Init
+        renderWeek();
+    })();
+    </script>
+</body>
+</html>

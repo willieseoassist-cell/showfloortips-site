@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convention Center Floor Plans & Venue Maps - ShowFloorTips</title>
+    <meta name="description" content="Download official floor plans and venue maps for the top 10 US convention centers. McCormick Place, LVCC, Javits Center, OCCC, Moscone, and more — free PDF downloads.">
+    <meta name="keywords" content="convention center floor plans, venue maps, exhibit hall layout, McCormick Place floor plan, LVCC map, Javits Center layout, trade show venue maps 2026">
+
+    <meta property="og:title" content="Convention Center Floor Plans & Venue Maps - ShowFloorTips">
+    <meta property="og:description" content="Download official floor plans for the top 10 US convention centers. Free PDFs for McCormick Place, LVCC, Javits, Moscone & more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/venue-maps.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Convention Center Floor Plans & Venue Maps",
+        "description": "Official floor plans and venue maps for the top 10 US convention centers",
+        "url": "https://showfloortips.com/venue-maps.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://showfloortips.com/venue-maps.html">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .vm-hero {
+            background: #fafafa;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+        .vm-hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+        .vm-hero p {
+            font-size: 1.05rem;
+            color: #6b7280;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .vm-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3rem;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .vm-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .vm-card:hover {
+            border-color: #0a0a0a;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .vm-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .vm-card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4));
+        }
+        .vm-card-city {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            z-index: 2;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+        }
+
+        .vm-card-body {
+            padding: 1.5rem;
+        }
+        .vm-card-body h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .vm-card-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .vm-card-stat {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .vm-card-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .vm-card-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.75rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .vm-card-link:hover {
+            background: #f3f4f6;
+            border-color: #0a0a0a;
+            color: #0a0a0a;
+        }
+        .vm-card-link svg {
+            flex-shrink: 0;
+        }
+        .vm-card-link-label {
+            flex: 1;
+        }
+        .vm-card-link-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #dc2626;
+            color: #fff;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+        }
+        .vm-card-link-badge.official {
+            background: #16a34a;
+        }
+
+        .vm-card-website {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .vm-card-website:hover {
+            background: #1a1a1a;
+        }
+
+        .vm-tip {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem 2rem;
+            background: #fffbeb;
+            border: 1px solid #fbbf24;
+            border-radius: 12px;
+        }
+        .vm-tip h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        .vm-tip p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #78350f;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Dark mode */
+        html[data-theme="dark"] .vm-hero { background: #111; }
+        html[data-theme="dark"] .vm-hero h1 { color: #f5f5f5; }
+        html[data-theme="dark"] .vm-hero p { color: #9ca3af; }
+        html[data-theme="dark"] .vm-card { background: #1a1a1a; border-color: #333; }
+        html[data-theme="dark"] .vm-card:hover { border-color: #fff; }
+        html[data-theme="dark"] .vm-card-body h2 { color: #f5f5f5; }
+        html[data-theme="dark"] .vm-card-link { background: #222; border-color: #444; color: #ccc; }
+        html[data-theme="dark"] .vm-card-link:hover { background: #2a2a2a; border-color: #fff; color: #fff; }
+        html[data-theme="dark"] .vm-card-website { background: #fff; color: #0a0a0a; }
+        html[data-theme="dark"] .vm-tip { background: #1a1800; border-color: #665e00; }
+        html[data-theme="dark"] .vm-tip h3 { color: #fbbf24; }
+        html[data-theme="dark"] .vm-tip p { color: #d4a800; }
+
+        @media (max-width: 768px) {
+            .vm-hero h1 { font-size: 1.8rem; }
+            .vm-grid { grid-template-columns: 1fr; }
+            .vm-content { padding: 1.5rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/this-week.html">This Week</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <section class="vm-hero">
+        <h1>Convention Center Floor Plans</h1>
+        <p>Official floor plans and venue maps for the 10 biggest US convention centers. Download PDFs, view exhibit hall layouts, and plan your booth location before you arrive.</p>
+    </section>
+
+    <div class="vm-content">
+        <div class="vm-tip">
+            <h3>Pro Tip: Request Your Specific Hall Map</h3>
+            <p>These are general venue floor plans. For show-specific booth maps with exhibitor locations, check the individual trade show's website 4-6 weeks before the event. Most shows publish interactive floor plans through services like a2z or Map Your Show.</p>
+        </div>
+
+        <div class="vm-grid">
+
+            <!-- McCormick Place -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80')">
+                    <span class="vm-card-city">Chicago, IL</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>McCormick Place</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 2.6M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 4 buildings</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://mccormickplace.com/wp-content/uploads/floor-plan-images/pdfs/mccormick-place-floorplans.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Complete Floor Plans (All Buildings)</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://mccormickplace.com/wp-content/uploads/floor-plan-images/pdfs/North-Building.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">North Building</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://mccormickplace.com/wp-content/uploads/floor-plan-images/pdfs/South-Building.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">South Building</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://mccormickplace.com/wp-content/uploads/floor-plan-images/pdfs/West-Building.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">West Building</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://mccormickplace.com/wp-content/uploads/floor-plan-images/pdfs/Lakeside-Center.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Lakeside Center</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.mccormickplace.com/floor-plans/" target="_blank" rel="noopener" class="vm-card-website">Visit Official Floor Plans Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Las Vegas Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=800&q=80')">
+                    <span class="vm-card-city">Las Vegas, NV</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Las Vegas Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 2.5M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 3 halls</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://assets.simpleviewcms.com/simpleview/image/upload/v1/clients/lasvegas/122946_01_LVCVA_21_LVCC_FloorPlanMap_Updates_2021_VMBcom_12d38285-05ee-4c04-9ec8-169441741e90.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">LVCC Floor Plan Map</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://assets.simpleviewcms.com/simpleview/image/upload/v1/clients/lasvegas/LVCC_Brochure_Jan2023_0d2acfc5-f6ef-41da-ba5b-e7772bfb0100.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">LVCC Facility Brochure</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.vegasmeansbusiness.com/convention-centers/las-vegas-convention-center/" target="_blank" rel="noopener" class="vm-card-website">Visit Official Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Orange County Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?w=800&q=80')">
+                    <span class="vm-card-city">Orlando, FL</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Orange County Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 2.1M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 2 buildings</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="http://occc.net/Portals/0/Library/docs/OCCC_FacilityFloorPlans.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Full Facility Floor Plans</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://occc.net/Portals/0/Library/docs/01-28-20%20OCCC%2011x17%20West%20Building%20Floor%20Plan.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">West Building</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.occc.net/Portals/0/Library/docs/01-28-20%20OCCC%2011x17%20North-South%20Building%20Floor%20Plan.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">North-South Building</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.occc.net/Planner-Interactive-Floor-Plans" target="_blank" rel="noopener" class="vm-card-website">Interactive Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Javits Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80')">
+                    <span class="vm-card-city">New York, NY</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Jacob K. Javits Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 840K sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 4 levels</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://issuu.com/javitscenter/docs/full_floorplan_brochure_9-23-24_final" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            <span class="vm-card-link-label">Full Floor Plan Brochure</span>
+                            <span class="vm-card-link-badge official">VIEW</span>
+                        </a>
+                        <a href="https://www.javitscenter.com/media/zbei0pjp/river_pavillion.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">River Pavilion</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.javitscenter.com/media/midbffe2/3e.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Hall 3E</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://javitscenter.com/plan/floor-plans/" target="_blank" rel="noopener" class="vm-card-website">All Hall Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Moscone Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80')">
+                    <span class="vm-card-city">San Francisco, CA</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Moscone Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 504K sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 3 buildings</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://www.moscone.com/file-download/download/public/731" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Moscone Brochure 2025 (with Floor Plans)</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.moscone.com/floorplans/moscone-northsouth-exhibit-level-floor-plan" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                            <span class="vm-card-link-label">North/South Exhibit Level</span>
+                            <span class="vm-card-link-badge official">WEB</span>
+                        </a>
+                        <a href="https://www.moscone.com/floorplans/moscone-west-level-1-floor-plans" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                            <span class="vm-card-link-label">West Building Level 1</span>
+                            <span class="vm-card-link-badge official">WEB</span>
+                        </a>
+                    </div>
+                    <a href="https://www.moscone.com/guidelines/floor-plans" target="_blank" rel="noopener" class="vm-card-website">All Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Anaheim Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1597732868555-5765f83065b3?w=800&q=80')">
+                    <span class="vm-card-city">Anaheim, CA</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Anaheim Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 1.1M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 5 exhibit halls</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/anaheimca/ACC_Spec_Guide_2025_v8_final_reduced_77890cd3-63c3-48e9-886d-703bc25dfb33.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">ACC Specification Guide 2025 (with Floor Plans)</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.visitanaheim.org/meetings/anaheim-convention-center/floor-plans-and-specifications/" target="_blank" rel="noopener" class="vm-card-website">Visit Official Page <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Georgia World Congress Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1575917649705-5b59aaa12e6b?w=800&q=80')">
+                    <span class="vm-card-city">Atlanta, GA</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Georgia World Congress Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 1.4M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 3 buildings</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://www.gwcca.org/docs/GWCCA-Floorplans.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Complete GWCCA Floor Plans</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.gwcca.org/floor-plans" target="_blank" rel="noopener" class="vm-card-website">Official Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- George R. Brown Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1530089711124-9ca31fb9e863?w=800&q=80')">
+                    <span class="vm-card-city">Houston, TX</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>George R. Brown Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 862K sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 5 halls</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://www.grbhouston.com/planners/floor-plans/" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                            <span class="vm-card-link-label">All Hall Floor Plans (A-E + Meeting Rooms)</span>
+                            <span class="vm-card-link-badge official">WEB</span>
+                        </a>
+                    </div>
+                    <a href="https://www.grbhouston.com/planners/floor-plans/" target="_blank" rel="noopener" class="vm-card-website">Official Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- Kay Bailey Hutchison Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1545194445-dddb8f4487c6?w=800&q=80')">
+                    <span class="vm-card-city">Dallas, TX</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>Kay Bailey Hutchison Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 1M sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 3 levels</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://www.dallasconventioncenter.com/assets/doc/KBHCCD_FloorPlans_Level1_Updated071425-4516f881f6.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Level 1 Floor Plan</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.dallasconventioncenter.com/assets/doc/KBHCCD_FloorPlans_Level2_Updated071425-fa9f83b1b7.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Level 2 Floor Plan</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.dallasconventioncenter.com/assets/doc/KBHCCD_FloorPlans_Level3_Updated071425-fc66bd6ee3.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Level 3 Floor Plan</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.dallasconventioncenter.com/planners/facility-floor-plans" target="_blank" rel="noopener" class="vm-card-website">Official Floor Plans <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+            <!-- San Diego Convention Center -->
+            <div class="vm-card">
+                <div class="vm-card-image" style="background-image:url('https://images.unsplash.com/photo-1538097304804-2a1b932466a9?w=800&q=80')">
+                    <span class="vm-card-city">San Diego, CA</span>
+                </div>
+                <div class="vm-card-body">
+                    <h2>San Diego Convention Center</h2>
+                    <div class="vm-card-stats">
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> 615K sq ft exhibit space</span>
+                        <span class="vm-card-stat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg> 5 halls</span>
+                    </div>
+                    <div class="vm-card-links">
+                        <a href="https://www.visitsandiego.com/images/sdconvctr-floor-plans.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Floor Plan Overview</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.visitsandiego.com/images/SDCC_Building-Map.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Building Map</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                        <a href="https://www.visitsandiego.com/images/2022/general-docs/sdconvctr_facility-guide.pdf" target="_blank" rel="noopener" class="vm-card-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+                            <span class="vm-card-link-label">Facility Guide</span>
+                            <span class="vm-card-link-badge official">PDF</span>
+                        </a>
+                    </div>
+                    <a href="https://www.visitsandiego.com/building-map" target="_blank" rel="noopener" class="vm-card-website">Official Building Map <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-cta">
+        <div class="scannly-cta-box">
+            <div class="scannly-cta-content">
+                <h3>Capture Every Lead at Your Next Trade Show</h3>
+                <p>Scannly replaces business cards with instant QR code contact exchange. Scan badges, share your info, and export leads in seconds.</p>
+                <a href="/scannly.html" class="btn">Learn About Scannly</a>
+            </div>
+            <div class="scannly-cta-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--accent-hover)" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="3" height="3"/>
+                    <line x1="21" y1="14" x2="21" y2="17"/>
+                    <line x1="14" y1="21" x2="17" y2="21"/>
+                    <line x1="21" y1="21" x2="21" y2="21.01"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <div class="powered-by">
+        Powered by <a href="https://showfloortips.com">ShowFloorTips</a> &mdash; Trade Show Intelligence for Exhibitors
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/this-week.html">This Week</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/venue-maps.html">Venue Maps</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/sponsor.html">Sponsor With Us</a></li>
+                        <li><a href="/media-kit.html">Media Kit</a></li>
+                        <li><a href="/newsletter.html">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var saved = localStorage.getItem('sft-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    })();
+    </script>
+</body>
+</html>

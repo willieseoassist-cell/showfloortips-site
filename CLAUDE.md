@@ -8,6 +8,7 @@
 2. **Compact after every code change**
 3. **Never store or make changes locally** — all work happens on the drive (`/Volumes/Willie Extr/tradeshow-website`)
 4. **Update this file** after completing any task — log what was done in the Achievement Log below
+5. **Homepage show sorting:** Today's and upcoming exhibits ALWAYS appear first (nearest date first). Past/expired exhibits go to the end (most recently passed first). Never show an expired exhibit at the top — no one needs to see what already happened before what's coming up.
 
 ## Project Setup
 - **Repo:** `willieseoassist-cell/showfloortips-site` on GitHub (main branch)
