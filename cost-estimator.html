@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Cost Estimator | ShowFloorTips</title>
+    <meta name="description" content="Estimate your total trade show exhibiting cost before you commit. Input destination city, team size, booth requirements, and get a detailed budget breakdown instantly.">
+    <meta name="keywords" content="trade show cost estimator, exhibitor cost calculator, trade show budget, booth cost estimate, trade show travel cost, exhibiting expenses, trade show planning tool">
+
+    <meta property="og:title" content="Trade Show Cost Estimator - ShowFloorTips">
+    <meta property="og:description" content="Free trade show cost estimator. Input your destination, team size, and booth requirements to get a detailed budget breakdown.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/cost-estimator.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Cost Estimator - ShowFloorTips">
+    <meta name="twitter:description" content="Free trade show cost estimator. Input your destination, team size, and booth requirements to get a detailed budget breakdown.">
+
+    <link rel="canonical" href="https://showfloortips.com/cost-estimator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Cost Estimator",
+        "url": "https://showfloortips.com/cost-estimator.html",
+        "description": "Free interactive trade show cost estimator. Input destination city, team size, booth size, duration, and marketing budget to get a complete exhibiting cost breakdown.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "City-based cost estimation",
+            "Team size scaling",
+            "Booth size options",
+            "Real-time budget breakdown",
+            "Cost per person calculation",
+            "Cost per day calculation",
+            "Visual cost distribution chart",
+            "City-specific pro tips"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #171717;
+            --accent: #0a0a0a;
+            --accent-hover: #171717;
+            --accent-light: #f5f5f5;
+            --accent-bg: rgba(10, 10, 10, 0.06);
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0a0a0a;
+            --border: #e5e5e5;
+            --border-light: #f1f5f9;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --green: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.08);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59, 130, 246, 0.08);
+            --amber: #f59e0b;
+            --amber-bg: rgba(245, 158, 11, 0.08);
+            --violet: #8b5cf6;
+            --violet-bg: rgba(139, 92, 246, 0.08);
+            --rose: #f43f5e;
+            --rose-bg: rgba(244, 63, 94, 0.08);
+            --cyan: #06b6d4;
+            --cyan-bg: rgba(6, 182, 212, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ========== HEADER ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: #737373; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #525252;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0a0a0a;
+            background: #f5f5f5;
+        }
+
+        .nav-links .nav-cta {
+            background: #0a0a0a;
+            color: #fff;
+            font-weight: 700;
+            padding: 8px 18px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: #171717;
+            color: #fff;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #0a0a0a;
+            padding: 4px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding: 72px 24px 56px;
+            text-align: center;
+            background: #fafafa;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #525252;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #0a0a0a, #525252);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #737373;
+            line-height: 1.7;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ========== ESTIMATOR LAYOUT ========== */
+        .estimator-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .estimator-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* ========== INPUT PANEL ========== */
+        .input-panel {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 24px 28px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .panel-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a0a0a;
+            letter-spacing: -0.3px;
+        }
+
+        .panel-header p {
+            font-size: 13px;
+            color: #737373;
+            margin-top: 4px;
+        }
+
+        .input-body {
+            padding: 24px 28px 28px;
+        }
+
+        .field {
+            margin-bottom: 24px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #737373;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .field select,
+        .field input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: 500;
+            color: #0a0a0a;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: all 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .field select {
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 38px;
+            cursor: pointer;
+        }
+
+        .field select:focus,
+        .field input[type="number"]:focus {
+            border-color: #0a0a0a;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.06);
+        }
+
+        /* Slider field */
+        .slider-field {
+            margin-bottom: 24px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .slider-header label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #737373;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .slider-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0a0a0a;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .slider-track {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 3px;
+            background: #e5e5e5;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .slider-track::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0a0a0a;
+            border: 3px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+
+        .slider-track::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        .slider-track::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0a0a0a;
+            border: 3px solid #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        /* Duration pills */
+        .duration-pills {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+
+        .duration-pill {
+            padding: 10px 0;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            color: #737373;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .duration-pill:hover {
+            border-color: #a3a3a3;
+            color: #0a0a0a;
+        }
+
+        .duration-pill.active {
+            background: #0a0a0a;
+            color: #fff;
+            border-color: #0a0a0a;
+        }
+
+        /* ========== RESULTS PANEL ========== */
+        .results-panel {
+            position: sticky;
+            top: 96px;
+        }
+
+        .results-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .total-cost-header {
+            padding: 32px 28px;
+            background: #0a0a0a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .total-cost-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+        }
+
+        .total-cost-value {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .total-cost-sub {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .total-cost-sub .metric {
+            text-align: center;
+        }
+
+        .total-cost-sub .metric-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.45);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .total-cost-sub .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 2px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Breakdown items */
+        .breakdown-list {
+            padding: 20px 28px;
+        }
+
+        .breakdown-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .breakdown-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .breakdown-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #525252;
+        }
+
+        .breakdown-amount {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0a0a0a;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Stacked bar chart */
+        .cost-chart-section {
+            padding: 0 28px 24px;
+        }
+
+        .chart-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #737373;
+            margin-bottom: 10px;
+        }
+
+        .stacked-bar {
+            display: flex;
+            height: 28px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .stacked-bar .segment {
+            height: 100%;
+            transition: width 0.4s ease;
+            position: relative;
+            min-width: 0;
+        }
+
+        .stacked-bar .segment:hover {
+            opacity: 0.85;
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            color: #737373;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* Pro tip */
+        .pro-tip-section {
+            padding: 0 28px 24px;
+        }
+
+        .pro-tip {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-sm);
+            padding: 16px;
+        }
+
+        .pro-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .pro-tip-header span {
+            font-size: 12px;
+            font-weight: 700;
+            color: #92400e;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pro-tip p {
+            font-size: 13px;
+            color: #78350f;
+            line-height: 1.6;
+        }
+
+        /* Scannly CTA in results */
+        .scannly-cta {
+            margin: 0 28px 24px;
+            background: #fafafa;
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            border: 1px solid #e5e5e5;
+        }
+
+        .scannly-cta h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .scannly-cta p {
+            font-size: 13px;
+            color: #525252;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .scannly-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .scannly-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== TIPS GRID ========== */
+        .tips-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .tips-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tips-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .tips-header p {
+            font-size: 15px;
+            color: #737373;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .tip-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: #d4d4d4;
+        }
+
+        .tip-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        .tip-card p {
+            font-size: 13px;
+            color: #737373;
+            line-height: 1.6;
+        }
+
+        .tip-icon {
+            width: 36px;
+            height: 36px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        /* ========== SCANNLY FULL CTA ========== */
+        .scannly-full-cta {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .scannly-full-cta-inner {
+            background: #0a0a0a;
+            border-radius: var(--radius-lg);
+            padding: 64px 40px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .scannly-full-cta-inner h2 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .scannly-full-cta-inner p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.6);
+            max-width: 480px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
+        }
+
+        .scannly-full-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: #fff;
+            color: #0a0a0a;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .scannly-full-btn:hover {
+            background: #f5f5f5;
+            transform: translateY(-1px);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            border-top: 1px solid #e5e5e5;
+            background: #fafafa;
+            padding: 48px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+
+        .footer-brand .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #737373;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0a0a0a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li { margin-bottom: 10px; }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #525252;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: #0a0a0a; }
+
+        .footer-bottom {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: #737373;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 960px) {
+            .estimator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-panel {
+                position: static;
+            }
+
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px 24px;
+                border-top: 1px solid #e5e5e5;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 56px 24px 48px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .estimator-section {
+                padding: 32px 16px 64px;
+            }
+
+            .input-body {
+                padding: 20px;
+            }
+
+            .panel-header {
+                padding: 20px;
+            }
+
+            .duration-pills {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .total-cost-value {
+                font-size: 36px;
+            }
+
+            .total-cost-sub {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .breakdown-list {
+                padding: 16px 20px;
+            }
+
+            .cost-chart-section,
+            .pro-tip-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .scannly-cta {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scannly-full-cta-inner {
+                padding: 40px 24px;
+            }
+
+            .scannly-full-cta-inner h2 {
+                font-size: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        /* ========== PRINT ========== */
+        @media print {
+            header, footer, .hero, .tips-section,
+            .scannly-cta, .scannly-full-cta,
+            .mobile-menu-btn, nav { display: none !important; }
+
+            .estimator-grid {
+                display: block;
+            }
+
+            .input-panel {
+                page-break-after: always;
+            }
+
+            .results-panel {
+                position: static;
+            }
+
+            body {
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                Free Tool
+            </div>
+            <h1>Trade Show <span>Cost Estimator</span></h1>
+            <p>Estimate your total exhibiting cost before you commit. Input your destination, team size, and booth requirements to get a detailed budget breakdown.</p>
+        </div>
+    </section>
+
+    <!-- Estimator -->
+    <section class="estimator-section">
+        <div class="estimator-grid">
+
+            <!-- Input Panel -->
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h2>Your Show Details</h2>
+                    <p>Adjust inputs to see costs update in real time</p>
+                </div>
+                <div class="input-body">
+
+                    <!-- City -->
+                    <div class="field">
+                        <label for="city">Destination City</label>
+                        <select id="city" onchange="calculate()">
+                            <option value="">Select a city...</option>
+                            <optgroup label="United States">
+                                <option value="Las Vegas" selected>Las Vegas</option>
+                                <option value="Chicago">Chicago</option>
+                                <option value="Orlando">Orlando</option>
+                                <option value="New York">New York</option>
+                                <option value="Anaheim">Anaheim</option>
+                                <option value="San Francisco">San Francisco</option>
+                                <option value="Atlanta">Atlanta</option>
+                                <option value="Houston">Houston</option>
+                                <option value="Dallas">Dallas</option>
+                                <option value="San Diego">San Diego</option>
+                                <option value="Miami">Miami</option>
+                                <option value="Boston">Boston</option>
+                            </optgroup>
+                            <optgroup label="International">
+                                <option value="London">London</option>
+                                <option value="Paris">Paris</option>
+                                <option value="Dubai">Dubai</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Tokyo">Tokyo</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Team Size -->
+                    <div class="slider-field">
+                        <div class="slider-header">
+                            <label for="teamSize">Team Size</label>
+                            <span class="slider-value" id="teamSizeValue">3 people</span>
+                        </div>
+                        <input type="range" id="teamSize" class="slider-track" min="1" max="20" value="3" oninput="updateTeamSize(); calculate()">
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="field">
+                        <label>Show Duration</label>
+                        <div class="duration-pills">
+                            <button class="duration-pill" data-days="1" onclick="setDuration(1)">1 Day</button>
+                            <button class="duration-pill active" data-days="2" onclick="setDuration(2)">2 Days</button>
+                            <button class="duration-pill" data-days="3" onclick="setDuration(3)">3 Days</button>
+                            <button class="duration-pill" data-days="4" onclick="setDuration(4)">4 Days</button>
+                            <button class="duration-pill" data-days="5" onclick="setDuration(5)">5 Days</button>
+                        </div>
+                    </div>
+
+                    <!-- Booth Size -->
+                    <div class="field">
+                        <label for="boothSize">Booth Size</label>
+                        <select id="boothSize" onchange="calculate()">
+                            <option value="0">No booth (attendee only) - $0</option>
+                            <option value="1500">Tabletop (6ft) - $1,500 avg</option>
+                            <option value="4500" selected>Standard 10x10 - $4,500 avg</option>
+                            <option value="9000">Premium 10x20 - $9,000 avg</option>
+                            <option value="18000">Large 20x20 - $18,000 avg</option>
+                            <option value="35000">Island 20x30+ - $35,000 avg</option>
+                        </select>
+                    </div>
+
+                    <!-- Marketing Budget -->
+                    <div class="slider-field">
+                        <div class="slider-header">
+                            <label for="marketing">Marketing Budget</label>
+                            <span class="slider-value" id="marketingValue">$1,500</span>
+                        </div>
+                        <input type="range" id="marketing" class="slider-track" min="0" max="10000" value="1500" step="250" oninput="updateMarketing(); calculate()">
+                    </div>
+
+                    <!-- Shipping -->
+                    <div class="field">
+                        <label for="shipping">Shipping / Logistics</label>
+                        <select id="shipping" onchange="calculate()">
+                            <option value="0">None - $0</option>
+                            <option value="500">Light - $500</option>
+                            <option value="1500" selected>Standard - $1,500</option>
+                            <option value="3500">Heavy - $3,500</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel">
+                <div class="results-card">
+
+                    <!-- Total cost -->
+                    <div class="total-cost-header">
+                        <div class="total-cost-label">Estimated Total Cost</div>
+                        <div class="total-cost-value" id="totalCost">$0</div>
+                        <div class="total-cost-sub">
+                            <div class="metric">
+                                <div class="metric-label">Per Person</div>
+                                <div class="metric-value" id="costPerPerson">$0</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Per Day</div>
+                                <div class="metric-value" id="costPerDay">$0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Breakdown -->
+                    <div class="breakdown-list">
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #0a0a0a;"></div>
+                                <span class="breakdown-name">Booth Space</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkBooth">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #3b82f6;"></div>
+                                <span class="breakdown-name">Travel (Flights)</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkTravel">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #8b5cf6;"></div>
+                                <span class="breakdown-name">Hotels</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkHotel">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #10b981;"></div>
+                                <span class="breakdown-name">Meals</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkMeals">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #f59e0b;"></div>
+                                <span class="breakdown-name">Ground Transport</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkTransport">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #f43f5e;"></div>
+                                <span class="breakdown-name">Marketing Materials</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkMarketing">$0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-left">
+                                <div class="breakdown-dot" style="background: #06b6d4;"></div>
+                                <span class="breakdown-name">Shipping / Logistics</span>
+                            </div>
+                            <span class="breakdown-amount" id="brkShipping">$0</span>
+                        </div>
+                    </div>
+
+                    <!-- Stacked bar chart -->
+                    <div class="cost-chart-section">
+                        <div class="chart-label">Cost Distribution</div>
+                        <div class="stacked-bar" id="stackedBar"></div>
+                        <div class="chart-legend" id="chartLegend"></div>
+                    </div>
+
+                    <!-- Pro Tip -->
+                    <div class="pro-tip-section" id="proTipSection">
+                        <div class="pro-tip">
+                            <div class="pro-tip-header">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#92400e" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                <span>Pro Tip</span>
+                            </div>
+                            <p id="proTipText">Select a city to see destination-specific cost-saving advice.</p>
+                        </div>
+                    </div>
+
+                    <!-- Scannly mini CTA -->
+                    <div class="scannly-cta">
+                        <h3>Capture Every Lead at the Show</h3>
+                        <p>You're investing thousands to exhibit. Don't lose leads to sticky notes and fishbowls. Scannly captures contacts instantly via QR code.</p>
+                        <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-btn" target="_blank" rel="noopener">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                            Download on App Store
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Budget Tips Section -->
+    <section class="tips-section">
+        <div class="tips-header">
+            <h2>Smart Budget Tips for Exhibitors</h2>
+            <p>Proven strategies to reduce your trade show costs without cutting impact</p>
+        </div>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <h3>Book Hotels Early</h3>
+                <p>Convention-block hotel rates sell out fast. Book 3-6 months ahead and check for rates on the show's official housing page before going to third-party sites.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                </div>
+                <h3>Share Booth Costs</h3>
+                <p>Partnering with a complementary company on a larger booth can reduce per-company costs by 30-40% while doubling your foot traffic and lead pool.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                </div>
+                <h3>Ship Smart</h3>
+                <p>Use the show's official drayage vendor for heavy items but ship lightweight materials via FedEx/UPS directly to the hotel. Saves up to 60% on logistics.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Right-Size Your Team</h3>
+                <p>One staffer per 50 sq ft of booth space is the industry standard. Sending extra people inflates travel costs without improving lead capture rate.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Fly on Off-Peak Days</h3>
+                <p>Arriving a day before setup and departing the morning after the show ends can save 25-40% on airfare versus flying on peak travel days.</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                </div>
+                <h3>Track ROI Religiously</h3>
+                <p>Use our <a href="/roi-calculator.html" style="color:#0a0a0a; font-weight:600; text-decoration:underline;">ROI Calculator</a> after each show. Companies that track ROI spend 23% less per qualified lead over time by cutting underperforming shows.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scannly Full CTA -->
+    <section class="scannly-full-cta">
+        <div class="scannly-full-cta-inner">
+            <h2>Make Every Dollar Count with Scannly</h2>
+            <p>You're about to invest thousands in exhibiting. Capture every lead instantly with QR-based scanning - no more lost contacts, no more manual entry.</p>
+            <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-full-btn" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Get Scannly Free on iOS
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/scannly.html">About Scannly</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ========== CITY COST DATA ==========
+        var CITY_COSTS = {
+            'Las Vegas': { hotel: 189, meals: 75, flight: 350, taxi: 45 },
+            'Chicago': { hotel: 219, meals: 80, flight: 320, taxi: 55 },
+            'Orlando': { hotel: 179, meals: 70, flight: 280, taxi: 50 },
+            'New York': { hotel: 299, meals: 95, flight: 350, taxi: 65 },
+            'Anaheim': { hotel: 169, meals: 70, flight: 310, taxi: 40 },
+            'San Francisco': { hotel: 279, meals: 85, flight: 330, taxi: 55 },
+            'Atlanta': { hotel: 169, meals: 65, flight: 290, taxi: 45 },
+            'Houston': { hotel: 159, meals: 65, flight: 270, taxi: 50 },
+            'Dallas': { hotel: 169, meals: 65, flight: 280, taxi: 45 },
+            'San Diego': { hotel: 199, meals: 75, flight: 310, taxi: 45 },
+            'Miami': { hotel: 229, meals: 80, flight: 300, taxi: 55 },
+            'Boston': { hotel: 249, meals: 85, flight: 310, taxi: 50 },
+            'London': { hotel: 259, meals: 90, flight: 850, taxi: 70 },
+            'Paris': { hotel: 239, meals: 85, flight: 800, taxi: 60 },
+            'Dubai': { hotel: 199, meals: 75, flight: 950, taxi: 35 },
+            'Berlin': { hotel: 169, meals: 70, flight: 750, taxi: 50 },
+            'Singapore': { hotel: 219, meals: 65, flight: 1100, taxi: 30 },
+            'Tokyo': { hotel: 189, meals: 80, flight: 1200, taxi: 40 }
+        };
+
+        // ========== PRO TIPS ==========
+        var CITY_TIPS = {
+            'Las Vegas': 'Book early - hotel room rates spike 3x during major shows like CES and SEMA. The official housing block is almost always the best deal.',
+            'Chicago': 'McCormick Place is huge. Budget extra time and taxi fare between halls. Staying in the South Loop cuts commute costs significantly.',
+            'Orlando': 'Convention center hotels fill fast for big shows. Consider International Drive properties for 30% lower rates with free shuttles.',
+            'New York': 'Consider NJ hotels across the Hudson for 40% savings. The PATH train to Javits-area is quick and costs a fraction of Manhattan taxis.',
+            'Anaheim': 'The Anaheim Convention Center is walking distance from many hotels. Skip the rental car and save $60+/day on parking fees.',
+            'San Francisco': 'Moscone Center shows come with premium pricing on everything. Book flights 8+ weeks out and eat in SoMa/Mission for cheaper meals.',
+            'Atlanta': 'The Georgia World Congress Center is MARTA-accessible. Skip rental cars and use transit - your team saves $40+/day each in parking and gas.',
+            'Houston': 'One of the most affordable major show cities. George R. Brown Convention Center has affordable hotels within walking distance.',
+            'Dallas': 'Kay Bailey Hutchison Center is near several budget-friendly hotels. Book the DART rail from DFW airport to save on taxi fares.',
+            'San Diego': 'The Gaslamp Quarter near the convention center is walkable but pricey for meals. Head a few blocks north for restaurants at half the price.',
+            'Miami': 'Beach hotels near the convention center are expensive. Stay in Brickell or Coral Gables for significantly lower rates with short Uber rides.',
+            'Boston': 'BCEC shows coincide with high hotel demand. Book 4+ months early. Logan Airport is close, so flight-to-show transit costs are minimal.',
+            'London': 'ExCeL London has good DLR access. Stay in Canary Wharf or Stratford for lower rates. Budget for the 20% VAT on most expenses.',
+            'Paris': 'Porte de Versailles shows are Metro-accessible. Stay in the 14th or 15th arrondissement for lower hotel rates near the venue.',
+            'Dubai': 'Hotels near the World Trade Centre are surprisingly affordable off-season. Taxis are cheap, but the Metro is even cheaper for daily commutes.',
+            'Berlin': 'One of Europe\'s most affordable trade show cities. Messe Berlin is well-connected by U-Bahn. Stay in Charlottenburg for best value.',
+            'Singapore': 'Marina Bay Sands shows are premium. Stay in Bugis or Lavender for 50% lower hotel rates. MRT makes the entire city accessible for under $2.',
+            'Tokyo': 'Tokyo Big Sight is in Odaiba - hotels there are limited. Stay near Shinbashi or Shimbashi station and take the Yurikamome line (15 min).'
+        };
+
+        // ========== STATE ==========
+        var currentDays = 2;
+
+        // ========== HELPERS ==========
+        function fmt(n) {
+            return '$' + Math.round(n).toLocaleString('en-US');
+        }
+
+        function el(id) {
+            return document.getElementById(id);
+        }
+
+        // ========== SLIDER UPDATES ==========
+        window.updateTeamSize = function() {
+            var v = el('teamSize').value;
+            el('teamSizeValue').textContent = v + (v === '1' ? ' person' : ' people');
+        };
+
+        window.updateMarketing = function() {
+            el('marketingValue').textContent = fmt(parseInt(el('marketing').value));
+        };
+
+        // ========== DURATION ==========
+        window.setDuration = function(days) {
+            currentDays = days;
+            var pills = document.querySelectorAll('.duration-pill');
+            pills.forEach(function(pill) {
+                pill.classList.remove('active');
+                if (parseInt(pill.getAttribute('data-days')) === days) {
+                    pill.classList.add('active');
+                }
+            });
+            calculate();
+        };
+
+        // ========== CATEGORY COLORS ==========
+        var COLORS = {
+            booth: '#0a0a0a',
+            travel: '#3b82f6',
+            hotel: '#8b5cf6',
+            meals: '#10b981',
+            transport: '#f59e0b',
+            marketing: '#f43f5e',
+            shipping: '#06b6d4'
+        };
+
+        var LABELS = {
+            booth: 'Booth',
+            travel: 'Travel',
+            hotel: 'Hotels',
+            meals: 'Meals',
+            transport: 'Transport',
+            marketing: 'Marketing',
+            shipping: 'Shipping'
+        };
+
+        // ========== MAIN CALCULATION ==========
+        window.calculate = function() {
+            var city = el('city').value;
+            var teamSize = parseInt(el('teamSize').value);
+            var boothCost = parseInt(el('boothSize').value);
+            var marketingBudget = parseInt(el('marketing').value);
+            var shippingCost = parseInt(el('shipping').value);
+            var days = currentDays;
+
+            // Hotel nights = days (arrive night before, stay through show)
+            var hotelNights = days;
+
+            var costs = {
+                booth: 0,
+                travel: 0,
+                hotel: 0,
+                meals: 0,
+                transport: 0,
+                marketing: 0,
+                shipping: 0
+            };
+
+            if (city && CITY_COSTS[city]) {
+                var c = CITY_COSTS[city];
+                costs.booth = boothCost;
+                costs.travel = c.flight * teamSize;
+                costs.hotel = c.hotel * hotelNights * teamSize;
+                costs.meals = c.meals * days * teamSize;
+                costs.transport = c.taxi * days * teamSize;
+                costs.marketing = marketingBudget;
+                costs.shipping = shippingCost;
+            }
+
+            var total = 0;
+            for (var k in costs) {
+                total += costs[k];
+            }
+
+            // Update total
+            el('totalCost').textContent = fmt(total);
+            el('costPerPerson').textContent = teamSize > 0 ? fmt(total / teamSize) : '$0';
+            el('costPerDay').textContent = days > 0 ? fmt(total / days) : '$0';
+
+            // Update breakdown
+            el('brkBooth').textContent = fmt(costs.booth);
+            el('brkTravel').textContent = fmt(costs.travel);
+            el('brkHotel').textContent = fmt(costs.hotel);
+            el('brkMeals').textContent = fmt(costs.meals);
+            el('brkTransport').textContent = fmt(costs.transport);
+            el('brkMarketing').textContent = fmt(costs.marketing);
+            el('brkShipping').textContent = fmt(costs.shipping);
+
+            // Update stacked bar chart
+            var bar = el('stackedBar');
+            var legend = el('chartLegend');
+            bar.innerHTML = '';
+            legend.innerHTML = '';
+
+            if (total > 0) {
+                var categories = ['booth', 'travel', 'hotel', 'meals', 'transport', 'marketing', 'shipping'];
+                categories.forEach(function(cat) {
+                    if (costs[cat] > 0) {
+                        var pct = (costs[cat] / total) * 100;
+                        var seg = document.createElement('div');
+                        seg.className = 'segment';
+                        seg.style.width = pct + '%';
+                        seg.style.background = COLORS[cat];
+                        seg.title = LABELS[cat] + ': ' + fmt(costs[cat]) + ' (' + Math.round(pct) + '%)';
+                        bar.appendChild(seg);
+
+                        var li = document.createElement('div');
+                        li.className = 'legend-item';
+                        li.innerHTML = '<div class="legend-dot" style="background:' + COLORS[cat] + '"></div>' + LABELS[cat] + ' ' + Math.round(pct) + '%';
+                        legend.appendChild(li);
+                    }
+                });
+            }
+
+            // Update pro tip
+            if (city && CITY_TIPS[city]) {
+                el('proTipText').textContent = CITY_TIPS[city];
+                el('proTipSection').style.display = 'block';
+            } else {
+                el('proTipText').textContent = 'Select a city to see destination-specific cost-saving advice.';
+            }
+        };
+
+        // ========== INIT ==========
+        updateTeamSize();
+        updateMarketing();
+        calculate();
+
+    })();
+    </script>
+
+</body>
+</html>

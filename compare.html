@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Trade Shows Side by Side - Booth Costs, Attendance & More | ShowFloorTips</title>
+    <meta name="description" content="Compare up to 3 trade shows side by side. Evaluate booth costs, attendance, dates, venues, and more to make smarter exhibiting decisions. Free comparison tool.">
+    <meta name="keywords" content="compare trade shows, trade show comparison, booth cost comparison, trade show attendance, exhibitor comparison tool, trade show planning, side by side trade show">
+
+    <meta property="og:title" content="Compare Trade Shows Side by Side - ShowFloorTips">
+    <meta property="og:description" content="Compare up to 3 trade shows side by side. Evaluate booth costs, attendance, dates, venues, and more to make smarter exhibiting decisions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/compare.html">
+    <meta property="og:site_name" content="ShowFloorTips">
+    <meta property="og:image" content="https://showfloortips.com/images/compare-og.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Compare Trade Shows Side by Side - ShowFloorTips">
+    <meta name="twitter:description" content="Compare up to 3 trade shows side by side. Evaluate booth costs, attendance, dates, venues, and more to make smarter exhibiting decisions.">
+    <meta name="twitter:image" content="https://showfloortips.com/images/compare-og.png">
+
+    <link rel="canonical" href="https://showfloortips.com/compare.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Comparison Tool",
+        "url": "https://showfloortips.com/compare.html",
+        "description": "Compare up to 3 trade shows side by side. Evaluate booth costs, attendance, dates, venues, and more to make smarter exhibiting decisions.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "Side-by-side trade show comparison",
+            "Booth cost comparison",
+            "Attendance comparison",
+            "Venue and location details",
+            "Industry category filtering",
+            "Compare up to 3 shows"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #171717;
+            --accent: #0a0a0a;
+            --accent-hover: #171717;
+            --text: #0a0a0a;
+            --text-secondary: #737373;
+            --text-muted: #a3a3a3;
+            --bg: #ffffff;
+            --bg-alt: #fafafa;
+            --bg-dark: #0a0a0a;
+            --border: #e5e5e5;
+            --border-light: #f5f5f5;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --green: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --green-border: rgba(16, 185, 129, 0.2);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59, 130, 246, 0.08);
+            --amber: #f59e0b;
+            --amber-bg: rgba(245, 158, 11, 0.08);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-cta {
+            background: var(--primary) !important;
+            color: #fff !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-light) !important;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding: 80px 2rem 60px;
+            text-align: center;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-inner {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.1;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== SELECTION SECTION ========== */
+        .selection-section {
+            padding: 48px 2rem;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .selection-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .selection-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .selection-header p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .selectors-grid {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .selector-card {
+            flex: 1;
+            min-width: 260px;
+            max-width: 340px;
+            background: var(--bg);
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .selector-card.has-show {
+            border-style: solid;
+            border-color: var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .selector-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 10px;
+        }
+
+        .selector-search-wrap {
+            position: relative;
+        }
+
+        .selector-search {
+            width: 100%;
+            padding: 10px 14px 10px 36px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--bg);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .selector-search:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(10,10,10,0.06);
+        }
+
+        .selector-search::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .selector-dropdown {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-lg);
+            max-height: 240px;
+            overflow-y: auto;
+            z-index: 50;
+            display: none;
+        }
+
+        .selector-dropdown.open {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--text);
+            cursor: pointer;
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-alt);
+        }
+
+        .dropdown-item-thumb {
+            width: 36px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .dropdown-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .dropdown-item-title {
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-item-meta {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .dropdown-empty {
+            padding: 20px 14px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .selected-show-preview {
+            display: none;
+            margin-top: 12px;
+        }
+
+        .selector-card.has-show .selected-show-preview {
+            display: block;
+        }
+
+        .selector-card.has-show .selector-search-wrap {
+            display: none;
+        }
+
+        .selected-preview-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+        }
+
+        .selected-preview-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .selected-preview-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .selected-preview-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            line-height: 1;
+        }
+
+        .selected-preview-remove:hover {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            color: #ef4444;
+        }
+
+        .selector-card.has-show .selected-preview-remove {
+            display: flex;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-add-show {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-add-show:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        .btn-add-show:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-compare {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 32px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            letter-spacing: -0.01em;
+        }
+
+        .btn-compare:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-compare:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ========== COMPARISON TABLE ========== */
+        .comparison-section {
+            padding: 0 2rem 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .comparison-section.visible {
+            display: block;
+        }
+
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comparison-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .comparison-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .comparison-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        .badge-green {
+            background: var(--green-bg);
+            color: #059669;
+            border: 1px solid var(--green-border);
+        }
+
+        .badge-blue {
+            background: var(--blue-bg);
+            color: #2563eb;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .badge-amber {
+            background: var(--amber-bg);
+            color: #d97706;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .comparison-table-wrap {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table thead th {
+            padding: 0;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .comparison-table thead th:first-child {
+            width: 180px;
+            min-width: 150px;
+        }
+
+        .col-header {
+            padding: 20px;
+        }
+
+        .col-header-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+        }
+
+        .col-header-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .col-header-category {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .col-header-badge {
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .label-cell {
+            width: 180px;
+        }
+
+        .comparison-table th.label-cell {
+            background: var(--bg-alt);
+            padding: 20px;
+        }
+
+        .comparison-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .comparison-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: rgba(250,250,250,0.5);
+        }
+
+        .comparison-table td {
+            padding: 16px 20px;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--bg-alt);
+            border-right: 1px solid var(--border-light);
+        }
+
+        .comparison-table td.winner-cell {
+            background: var(--green-bg);
+        }
+
+        .winner-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #059669;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+
+        .value-primary {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .value-secondary {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .comparison-table td a.show-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .comparison-table td a.show-link:hover {
+            border-bottom-color: var(--primary);
+        }
+
+        /* ========== SCANNLY CTA ========== */
+        .scannly-section {
+            padding: 60px 2rem;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+        }
+
+        .scannly-inner {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .scannly-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+
+        .scannly-section p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .scannly-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .scannly-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--bg-dark);
+            color: #d4d4d4;
+            padding: 48px 2rem 32px;
+        }
+
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: #a3a3a3;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            font-size: 13px;
+            color: #a3a3a3;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #262626;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #737373;
+        }
+
+        /* ========== NO RESULTS / EMPTY STATE ========== */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-state-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--bg-alt);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            border: 1px solid var(--border);
+        }
+
+        .empty-state h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .empty-state p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 1.25rem 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .selectors-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .selector-card {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .selection-section {
+                padding: 32px 1.25rem;
+            }
+
+            .comparison-section {
+                padding: 0 1rem 40px;
+            }
+
+            .comparison-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .comparison-table {
+                min-width: 600px;
+            }
+
+            .col-header-img {
+                height: 100px;
+            }
+
+            .comparison-header {
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 6px;
+                text-align: center;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            header .header-inner nav ul {
+                gap: 1rem !important;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .header-inner {
+                padding: 0 1rem !important;
+            }
+
+            header .header-inner nav ul li:not(:last-child) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .comparison-table {
+                min-width: 500px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner" style="max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:64px">
+            <a href="/" style="font-size:1.25rem;font-weight:700;color:#0a0a0a;letter-spacing:-0.025em;text-decoration:none">ShowFloorTips</a>
+            <nav>
+                <ul style="display:flex;gap:2rem;align-items:center;list-style:none;margin:0;padding:0">
+                    <li><a href="/#shows" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Trade Shows</a></li>
+                    <li><a href="/news.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">News</a></li>
+                    <li><a href="/travel.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Travel</a></li>
+                    <li><a href="/roi-calculator.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">ROI Calculator</a></li>
+                    <li><a href="/products.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Products</a></li>
+                    <li><a href="/scannly.html" style="background:#0a0a0a;color:#fff;padding:0.5rem 1.25rem;border-radius:6px;font-weight:600;font-size:0.875rem;text-decoration:none">Try Scannly</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
+                Comparison Tool
+            </div>
+            <h1>Compare Trade Shows</h1>
+            <p>Compare up to 3 trade shows side by side. Evaluate booth costs, attendance, dates, and more to make smarter exhibiting decisions.</p>
+        </div>
+    </section>
+
+    <!-- Show Selection -->
+    <section class="selection-section">
+        <div class="selection-header">
+            <h2>Select Shows to Compare</h2>
+            <p>Search and select 2 or 3 trade shows to see a detailed side-by-side breakdown.</p>
+        </div>
+
+        <div class="selectors-grid" id="selectorsGrid">
+            <!-- Selector 1 -->
+            <div class="selector-card" id="selector-0">
+                <div class="selector-label">Show 1</div>
+                <div class="selector-search-wrap">
+                    <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="text" class="selector-search" placeholder="Search trade shows..." data-index="0" autocomplete="off">
+                    <div class="selector-dropdown" id="dropdown-0"></div>
+                </div>
+                <div class="selected-show-preview" id="preview-0"></div>
+                <button class="selected-preview-remove" onclick="removeShow(0)" title="Remove show">&times;</button>
+            </div>
+
+            <!-- Selector 2 -->
+            <div class="selector-card" id="selector-1">
+                <div class="selector-label">Show 2</div>
+                <div class="selector-search-wrap">
+                    <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="text" class="selector-search" placeholder="Search trade shows..." data-index="1" autocomplete="off">
+                    <div class="selector-dropdown" id="dropdown-1"></div>
+                </div>
+                <div class="selected-show-preview" id="preview-1"></div>
+                <button class="selected-preview-remove" onclick="removeShow(1)" title="Remove show">&times;</button>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-add-show" id="btnAddShow" onclick="addShowSlot()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                Add Another Show
+            </button>
+            <button class="btn-compare" id="btnCompare" onclick="runComparison()" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
+                Compare Shows
+            </button>
+        </div>
+    </section>
+
+    <!-- Comparison Results -->
+    <section class="comparison-section" id="comparisonSection">
+        <div class="comparison-header">
+            <h2>Side-by-Side Comparison</h2>
+            <div class="comparison-badges" id="comparisonBadges"></div>
+        </div>
+        <div class="comparison-table-wrap">
+            <table class="comparison-table" id="comparisonTable">
+                <thead id="compTableHead"></thead>
+                <tbody id="compTableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-section">
+        <div class="scannly-inner">
+            <h2>Capture More Leads with Scannly</h2>
+            <p>Once you pick the right show, make sure you capture every lead. Scannly's QR-based lead capture ensures every booth visitor is logged instantly -- no more lost contacts or messy spreadsheets.</p>
+            <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-btn" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on App Store
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/scannly.html">About Scannly</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Shows Data -->
+    <script src="/shows.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ========== STATE ==========
+        var selectedShows = [null, null]; // up to 3 slots
+        var slotsCount = 2;
+        var maxSlots = 3;
+
+        // ========== HELPERS ==========
+        function parseNumber(str) {
+            if (!str) return 0;
+            var cleaned = str.replace(/[^0-9.,]/g, '');
+            // Handle ranges like "2,000 - 10,000" - take the lower value for comparison
+            var parts = str.split(/\s*-\s*/);
+            if (parts.length > 1) {
+                cleaned = parts[0].replace(/[^0-9.,]/g, '');
+            }
+            var num = parseFloat(cleaned.replace(/,/g, ''));
+            return isNaN(num) ? 0 : num;
+        }
+
+        function parseDateForSort(show) {
+            if (show.sort_date) return new Date(show.sort_date);
+            return new Date(9999, 11, 31);
+        }
+
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ========== SEARCH & DROPDOWN ==========
+        var searchInputs = document.querySelectorAll('.selector-search');
+        searchInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                var idx = parseInt(this.getAttribute('data-index'));
+                filterDropdown(idx, this.value);
+            });
+
+            input.addEventListener('focus', function() {
+                var idx = parseInt(this.getAttribute('data-index'));
+                filterDropdown(idx, this.value);
+            });
+        });
+
+        // Close dropdowns on outside click
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.selector-search-wrap')) {
+                document.querySelectorAll('.selector-dropdown').forEach(function(d) {
+                    d.classList.remove('open');
+                });
+            }
+        });
+
+        function filterDropdown(index, query) {
+            var dropdown = document.getElementById('dropdown-' + index);
+            if (!dropdown) return;
+
+            if (typeof SHOWS_DATA === 'undefined' || !SHOWS_DATA) {
+                dropdown.innerHTML = '<div class="dropdown-empty">Shows data not loaded yet.</div>';
+                dropdown.classList.add('open');
+                return;
+            }
+
+            var q = query.toLowerCase().trim();
+            var results = SHOWS_DATA.filter(function(show) {
+                // Don't show already selected shows
+                for (var i = 0; i < selectedShows.length; i++) {
+                    if (selectedShows[i] && selectedShows[i].slug === show.slug) return false;
+                }
+                if (!q) return true;
+                var searchText = (show.title + ' ' + (show.category || '') + ' ' + (show.city || '') + ' ' + (show.country || '')).toLowerCase();
+                return searchText.indexOf(q) !== -1;
+            });
+
+            // Limit results
+            var limited = results.slice(0, 50);
+
+            if (limited.length === 0) {
+                dropdown.innerHTML = '<div class="dropdown-empty">No shows found matching "' + escapeHtml(query) + '"</div>';
+            } else {
+                var html = '';
+                limited.forEach(function(show) {
+                    html += '<div class="dropdown-item" data-slug="' + escapeHtml(show.slug) + '" data-index="' + index + '">';
+                    if (show.image) {
+                        html += '<img class="dropdown-item-thumb" src="' + escapeHtml(show.image) + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">';
+                    }
+                    html += '<div class="dropdown-item-info">';
+                    html += '<div class="dropdown-item-title">' + escapeHtml(show.title) + '</div>';
+                    html += '<div class="dropdown-item-meta">' + escapeHtml((show.category || '') + (show.city ? ' \u2022 ' + show.city : '')) + '</div>';
+                    html += '</div></div>';
+                });
+                dropdown.innerHTML = html;
+
+                // Attach click handlers
+                dropdown.querySelectorAll('.dropdown-item').forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        var slug = this.getAttribute('data-slug');
+                        var idx = parseInt(this.getAttribute('data-index'));
+                        selectShow(idx, slug);
+                    });
+                });
+            }
+
+            dropdown.classList.add('open');
+        }
+
+        function selectShow(index, slug) {
+            var show = SHOWS_DATA.find(function(s) { return s.slug === slug; });
+            if (!show) return;
+
+            selectedShows[index] = show;
+
+            var card = document.getElementById('selector-' + index);
+            card.classList.add('has-show');
+
+            var preview = document.getElementById('preview-' + index);
+            preview.innerHTML =
+                (show.image ? '<img class="selected-preview-img" src="' + escapeHtml(show.image) + '" alt="' + escapeHtml(show.title) + '" onerror="this.style.display=\'none\'">' : '') +
+                '<div class="selected-preview-title">' + escapeHtml(show.title) + '</div>' +
+                '<div class="selected-preview-meta">' + escapeHtml((show.date || '') + (show.city ? ' \u2022 ' + show.city : '')) + '</div>';
+
+            // Close dropdown
+            var dropdown = document.getElementById('dropdown-' + index);
+            dropdown.classList.remove('open');
+
+            updateCompareButton();
+        }
+
+        window.removeShow = function(index) {
+            selectedShows[index] = null;
+
+            var card = document.getElementById('selector-' + index);
+            card.classList.remove('has-show');
+
+            var preview = document.getElementById('preview-' + index);
+            preview.innerHTML = '';
+
+            // Reset search input
+            var input = card.querySelector('.selector-search');
+            if (input) input.value = '';
+
+            updateCompareButton();
+
+            // Hide comparison if it was showing
+            document.getElementById('comparisonSection').classList.remove('visible');
+        };
+
+        function updateCompareButton() {
+            var count = selectedShows.filter(function(s) { return s !== null; }).length;
+            var btn = document.getElementById('btnCompare');
+            btn.disabled = count < 2;
+        }
+
+        // ========== ADD SHOW SLOT ==========
+        window.addShowSlot = function() {
+            if (slotsCount >= maxSlots) return;
+
+            var index = slotsCount;
+            slotsCount++;
+            selectedShows.push(null);
+
+            var card = document.createElement('div');
+            card.className = 'selector-card';
+            card.id = 'selector-' + index;
+            card.innerHTML =
+                '<div class="selector-label">Show ' + (index + 1) + '</div>' +
+                '<div class="selector-search-wrap">' +
+                    '<svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>' +
+                    '<input type="text" class="selector-search" placeholder="Search trade shows..." data-index="' + index + '" autocomplete="off">' +
+                    '<div class="selector-dropdown" id="dropdown-' + index + '"></div>' +
+                '</div>' +
+                '<div class="selected-show-preview" id="preview-' + index + '"></div>' +
+                '<button class="selected-preview-remove" onclick="removeShow(' + index + ')" title="Remove show">&times;</button>';
+
+            document.getElementById('selectorsGrid').appendChild(card);
+
+            // Attach search handlers
+            var input = card.querySelector('.selector-search');
+            input.addEventListener('input', function() {
+                filterDropdown(index, this.value);
+            });
+            input.addEventListener('focus', function() {
+                filterDropdown(index, this.value);
+            });
+
+            // Disable button if at max
+            if (slotsCount >= maxSlots) {
+                document.getElementById('btnAddShow').disabled = true;
+            }
+        };
+
+        // ========== COMPARISON ENGINE ==========
+        window.runComparison = function() {
+            var shows = selectedShows.filter(function(s) { return s !== null; });
+            if (shows.length < 2) return;
+
+            buildComparisonTable(shows);
+            buildBadges(shows);
+
+            var section = document.getElementById('comparisonSection');
+            section.classList.add('visible');
+
+            // Scroll to comparison
+            setTimeout(function() {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        };
+
+        function buildBadges(shows) {
+            var badgesContainer = document.getElementById('comparisonBadges');
+            var badges = [];
+
+            // Largest show by attendance
+            var maxAttendance = 0;
+            var largestShow = null;
+            shows.forEach(function(s) {
+                var att = parseNumber(s.attendees);
+                if (att > maxAttendance) {
+                    maxAttendance = att;
+                    largestShow = s;
+                }
+            });
+            if (largestShow && maxAttendance > 0) {
+                badges.push('<span class="comparison-badge badge-blue"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Largest: ' + escapeHtml(largestShow.title.length > 25 ? largestShow.title.substring(0, 25) + '...' : largestShow.title) + '</span>');
+            }
+
+            // Best value (lowest booth price)
+            var minBooth = Infinity;
+            var bestValueShow = null;
+            shows.forEach(function(s) {
+                var price = parseNumber(s.booth_price);
+                if (price > 0 && price < minBooth) {
+                    minBooth = price;
+                    bestValueShow = s;
+                }
+            });
+            if (bestValueShow) {
+                badges.push('<span class="comparison-badge badge-green"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Best Value: ' + escapeHtml(bestValueShow.title.length > 25 ? bestValueShow.title.substring(0, 25) + '...' : bestValueShow.title) + '</span>');
+            }
+
+            // Soonest
+            var soonestDate = new Date(9999, 11, 31);
+            var soonestShow = null;
+            var now = new Date();
+            shows.forEach(function(s) {
+                var d = parseDateForSort(s);
+                if (d >= now && d < soonestDate) {
+                    soonestDate = d;
+                    soonestShow = s;
+                }
+            });
+            if (soonestShow) {
+                badges.push('<span class="comparison-badge badge-amber"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Soonest: ' + escapeHtml(soonestShow.title.length > 25 ? soonestShow.title.substring(0, 25) + '...' : soonestShow.title) + '</span>');
+            }
+
+            badgesContainer.innerHTML = badges.join('');
+        }
+
+        function buildComparisonTable(shows) {
+            var thead = document.getElementById('compTableHead');
+            var tbody = document.getElementById('compTableBody');
+
+            // === HEADER ROW ===
+            var headerHtml = '<tr><th class="label-cell"></th>';
+            shows.forEach(function(show) {
+                headerHtml += '<th><div class="col-header">';
+                if (show.image) {
+                    headerHtml += '<img class="col-header-img" src="' + escapeHtml(show.image) + '" alt="' + escapeHtml(show.title) + '" onerror="this.style.display=\'none\'">';
+                }
+                headerHtml += '<div class="col-header-title">' + escapeHtml(show.title) + '</div>';
+                headerHtml += '<div class="col-header-category">' + escapeHtml(show.category || 'N/A') + '</div>';
+                headerHtml += '</div></th>';
+            });
+            headerHtml += '</tr>';
+            thead.innerHTML = headerHtml;
+
+            // === DATA ROWS ===
+            var rows = [
+                {
+                    label: 'Date',
+                    key: 'date',
+                    format: function(show) { return show.date || 'TBA'; },
+                    winner: function(shows) {
+                        // Soonest upcoming date wins
+                        var now = new Date();
+                        var bestIdx = -1;
+                        var bestDate = new Date(9999, 11, 31);
+                        shows.forEach(function(s, i) {
+                            var d = parseDateForSort(s);
+                            if (d >= now && d < bestDate) {
+                                bestDate = d;
+                                bestIdx = i;
+                            }
+                        });
+                        return bestIdx;
+                    },
+                    winnerLabel: 'Soonest'
+                },
+                {
+                    label: 'Location',
+                    key: 'location',
+                    format: function(show) {
+                        var parts = [];
+                        if (show.city) parts.push(show.city);
+                        if (show.state) parts.push(show.state);
+                        if (show.country) parts.push(show.country);
+                        return parts.join(', ') || 'TBA';
+                    },
+                    winner: null
+                },
+                {
+                    label: 'Venue',
+                    key: 'venue',
+                    format: function(show) { return show.venue || 'TBA'; },
+                    winner: null
+                },
+                {
+                    label: 'Industry',
+                    key: 'category',
+                    format: function(show) { return show.category || 'N/A'; },
+                    winner: null
+                },
+                {
+                    label: 'Attendance',
+                    key: 'attendees',
+                    format: function(show) { return show.attendees || 'N/A'; },
+                    winner: function(shows) {
+                        var best = -1;
+                        var bestIdx = -1;
+                        shows.forEach(function(s, i) {
+                            var val = parseNumber(s.attendees);
+                            if (val > best) {
+                                best = val;
+                                bestIdx = i;
+                            }
+                        });
+                        return best > 0 ? bestIdx : -1;
+                    },
+                    winnerLabel: 'Most Attended'
+                },
+                {
+                    label: 'Exhibitors',
+                    key: 'exhibitors',
+                    format: function(show) { return show.exhibitors || 'N/A'; },
+                    winner: function(shows) {
+                        var best = -1;
+                        var bestIdx = -1;
+                        shows.forEach(function(s, i) {
+                            var val = parseNumber(s.exhibitors);
+                            if (val > best) {
+                                best = val;
+                                bestIdx = i;
+                            }
+                        });
+                        return best > 0 ? bestIdx : -1;
+                    },
+                    winnerLabel: 'Most Exhibitors'
+                },
+                {
+                    label: 'Booth Cost',
+                    key: 'booth_price',
+                    format: function(show) { return show.booth_price || 'Contact Organizer'; },
+                    winner: function(shows) {
+                        var best = Infinity;
+                        var bestIdx = -1;
+                        shows.forEach(function(s, i) {
+                            var val = parseNumber(s.booth_price);
+                            if (val > 0 && val < best) {
+                                best = val;
+                                bestIdx = i;
+                            }
+                        });
+                        return best < Infinity ? bestIdx : -1;
+                    },
+                    winnerLabel: 'Best Value'
+                },
+                {
+                    label: 'Organizer',
+                    key: 'host',
+                    format: function(show) { return show.host || 'N/A'; },
+                    winner: null
+                },
+                {
+                    label: 'Website',
+                    key: 'website',
+                    format: function(show) {
+                        if (show.website) {
+                            var domain = show.website.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+                            return '<a class="show-link" href="' + escapeHtml(show.website) + '" target="_blank" rel="noopener">' + escapeHtml(domain) + '</a>';
+                        }
+                        return 'N/A';
+                    },
+                    isHtml: true,
+                    winner: null
+                },
+                {
+                    label: 'Show Page',
+                    key: 'slug',
+                    format: function(show) {
+                        if (show.slug) {
+                            return '<a class="show-link" href="/shows/' + escapeHtml(show.slug) + '">View Details &rarr;</a>';
+                        }
+                        return 'N/A';
+                    },
+                    isHtml: true,
+                    winner: null
+                }
+            ];
+
+            var bodyHtml = '';
+            rows.forEach(function(row) {
+                var winnerIdx = row.winner ? row.winner(shows) : -1;
+
+                bodyHtml += '<tr>';
+                bodyHtml += '<td>' + escapeHtml(row.label) + '</td>';
+
+                shows.forEach(function(show, i) {
+                    var value = row.format(show);
+                    var isWinner = winnerIdx === i;
+                    var cellClass = isWinner ? ' class="winner-cell"' : '';
+
+                    bodyHtml += '<td' + cellClass + '>';
+                    if (row.isHtml) {
+                        bodyHtml += '<div class="value-primary">' + value + '</div>';
+                    } else {
+                        bodyHtml += '<div class="value-primary">' + escapeHtml(value) + '</div>';
+                    }
+                    if (isWinner && row.winnerLabel) {
+                        bodyHtml += '<span class="winner-indicator"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> ' + row.winnerLabel + '</span>';
+                    }
+                    bodyHtml += '</td>';
+                });
+
+                bodyHtml += '</tr>';
+            });
+
+            tbody.innerHTML = bodyHtml;
+        }
+
+        // ========== URL PARAMS SUPPORT ==========
+        function loadFromURL() {
+            if (typeof SHOWS_DATA === 'undefined' || !SHOWS_DATA) return;
+
+            var params = new URLSearchParams(window.location.search);
+            var slugs = [];
+            for (var i = 1; i <= 3; i++) {
+                var slug = params.get('show' + i);
+                if (slug) slugs.push(slug);
+            }
+
+            if (slugs.length >= 2) {
+                slugs.forEach(function(slug, i) {
+                    if (i >= 2) {
+                        addShowSlot();
+                    }
+                    selectShow(i, slug);
+                });
+                setTimeout(function() {
+                    runComparison();
+                }, 200);
+            }
+        }
+
+        // Run on load
+        if (document.readyState === 'complete') {
+            loadFromURL();
+        } else {
+            window.addEventListener('load', loadFromURL);
+        }
+
+    })();
+    </script>
+
+</body>
+</html>

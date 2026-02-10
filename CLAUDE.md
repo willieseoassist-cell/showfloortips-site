@@ -320,3 +320,75 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 - Pushed all changes to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Feb 9, 2026 — Session 7
+
+#### Major Feature Build — 6 New Interactive Tool Pages
+- **`/compare.html`** (1,540 lines) — Show Comparison Tool: compare 2-3 shows side by side, winner highlighting, badges ("Largest", "Best Value", "Soonest"), URL parameter support for sharing
+- **`/map.html`** (1,239 lines) — Interactive World Map: Leaflet.js + MarkerCluster, 156 city coordinates + 77 country fallbacks, filter bar (industry/country/date), sidebar panel, 24,600+ show markers with chunked loading
+- **`/lead-calculator.html`** (2,274 lines) — Lead Value Calculator: 3-section input form, real-time results dashboard with CPL/Pipeline/ROI/Payback, bar charts, ROI gauge, downloadable HTML report, localStorage save/load, industry benchmarks
+- **`/packing-list.html`** (2,018 lines) — Smart Packing List Generator: city/duration/role/season/booth inputs, 30 cities (20 US + 10 international), 18+ city-specific tips, collapsible categories, progress bar, localStorage persistence, print/email/reset, Amazon affiliate links (`showfloortips-20`)
+- **`/cost-estimator.html`** (1,526 lines) — Trip Cost Estimator: 18 cities (US + international), team size slider, booth size dropdown, stacked bar chart visualization, city-specific pro tips, print stylesheet
+- **`/flight-deals.html`** (1,040 lines) — Flight & Travel Deals: 3-column quick booking (Google Flights, Booking.com, Google Cars), 7 money-saving tips, flight cost table, Amazon travel gear, city guide links
+
+#### Homepage Enhancements (index.html)
+- **Dark Mode** — Toggle button in header, `html[data-theme="dark"]` CSS variable overrides, localStorage persistence, smooth transitions
+- **PWA Support** — `manifest.json` (standalone, #0a0a0a theme), `sw.js` service worker (network-first, cache fallback)
+- **Search Autocomplete** — Dropdown suggestions filtering SHOWS_DATA by title, 8 results max, click-to-navigate
+- **Recently Viewed** — Horizontal scrollable strip of last 6 viewed shows, localStorage persistence
+- **Bookmark/Save Shows** — Heart icon on cards, "Saved Shows" filter pill, localStorage persistence, toast notifications
+- **Calendar Export** — "Add to Calendar" button in show modal, generates .ics file download with VCALENDAR/VEVENT
+
+#### Show Page Enhancements (show.html)
+- **Similar Shows Recommendations** — "Similar Shows You Might Like" section, filters by same category, sorted by date proximity, top 4 cards with responsive grid
+- **Exhibitor Reviews** — Full review system: 1-5 star rating, role dropdown, year selector, text review, "worth it" toggle, localStorage persistence per show, sort controls (recent/highest/lowest), average rating display, XSS-safe via DOM text nodes
+
+#### Dark Mode CSS (styles.css)
+- ~300 lines of dark mode CSS added (line 1576+)
+- Inverted all CSS custom properties for `html[data-theme="dark"]`
+- Covers: header, hero, search, stats, filters, cards, modals, buttons, footer, and all component variants
+
+#### Articles Created (13 total)
+**Cost-of-Exhibiting City Guides (4):**
+- `news/cost-of-exhibiting-las-vegas-2026.html` — Comprehensive Las Vegas exhibiting cost breakdown
+- `news/cost-of-exhibiting-chicago-2026.html` — McCormick Place union labor focus
+- `news/cost-of-exhibiting-orlando-2026.html` — Orange County Convention Center costs
+- `news/cost-of-exhibiting-new-york-2026.html` — Javits Center premium pricing
+
+**Exhibitor Spotlight Case Studies (3):**
+- `news/exhibitor-spotlight-saas-startup-ces-2026.html` — SaaS startup CES case study
+- `news/exhibitor-spotlight-manufacturer-pack-expo-2026.html` — GreenPack PACK EXPO case study (200 leads, $1.2M orders, 18.5x ROI)
+- `news/exhibitor-spotlight-healthcare-himss-2026.html` — Healthcare company HIMSS case study
+
+**FAQ Exhibitor Guides (3):**
+- `news/faq-ces-2026-exhibitor-guide.html` — 16 FAQ items with accordion
+- `news/faq-sxsw-2026-exhibitor-guide.html` — 14 FAQ items covering brand activations, badges, networking
+- `news/faq-nab-show-2026-exhibitor-guide.html` — NAB Show exhibitor FAQ guide
+
+**Industry Trend Reports (3):**
+- `news/trade-show-industry-trends-q1-2026.html` — Q1 2026 industry trends (AI, sustainability, hybrid decline, rising costs)
+- `news/technology-trade-show-landscape-2026.html` — Tech show landscape: AI/ML, Enterprise, Consumer, Cybersecurity, Cloud, Gaming categories
+- `news/exhibitor-spending-trends-2026.html` — Budget trends & benchmarks by company size and industry
+
+#### Navigation & Footer Updates (20+ files)
+- **Main pages updated (9):** index.html, news.html, travel.html, products.html, city-shows.html, sponsor.html, media-kit.html, newsletter.html, vendors.html
+- **Tool pages updated (11):** compare.html, map.html, lead-calculator.html, packing-list.html, cost-estimator.html, flight-deals.html, roi-calculator.html, budget-planner.html, checklist.html, toolkit.html, qr-generator.html
+- **Standard footer now includes:**
+  - Resources: Trade Shows, Products/News, Exhibitor Tips, Newsletter, Travel Guides, Flight Deals
+  - Tools: Scannly, ROI Calculator, Cost Estimator, Lead Calculator, Show Comparison, Interactive Map, Packing List
+
+#### New Files Added
+- `/compare.html` — Show comparison tool
+- `/map.html` — Interactive world map
+- `/lead-calculator.html` — Lead value calculator
+- `/packing-list.html` — Smart packing list generator
+- `/cost-estimator.html` — Trip cost estimator
+- `/flight-deals.html` — Flight & travel deals
+- `/manifest.json` — PWA manifest
+- `/sw.js` — Service worker (network-first cache)
+- 13 new article HTML files in `/news/`
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com

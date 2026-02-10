@@ -77,11 +77,69 @@
         .nearby-show h4 { font-size:0.9rem; font-weight:600; color:#1e293b; margin-bottom:0.2rem; line-height:1.3 }
         .nearby-show .nearby-detail { font-size:0.8rem; color:#64748b }
 
+        /* Similar Shows Section */
+        .similar-shows-section { max-width:1120px; margin:0 auto; padding:2rem 2rem 0 }
+        .similar-shows-section h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1.25rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .similar-shows-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem }
+        .similar-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; transition:border-color 0.2s, box-shadow 0.2s }
+        .similar-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
+        .similar-card h4 { font-size:0.95rem; font-weight:700; color:#0a0a0a; margin-bottom:0.5rem; line-height:1.3 }
+        .similar-card .similar-date { font-size:0.82rem; color:#64748b; margin-bottom:0.25rem }
+        .similar-card .similar-city { font-size:0.82rem; color:#64748b; margin-bottom:0.25rem }
+        .similar-card .similar-attendees { font-size:0.78rem; color:#94a3b8; margin-bottom:0.75rem }
+        .similar-card .similar-link { display:inline-block; padding:0.4rem 1rem; background:#0a0a0a; color:#fff; border-radius:6px; font-size:0.8rem; font-weight:600; text-decoration:none; transition:background 0.2s }
+        .similar-card .similar-link:hover { background:#334155 }
+
+        /* Reviews Section */
+        .reviews-section { max-width:1120px; margin:0 auto; padding:2rem }
+        .reviews-section h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1.25rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .reviews-summary { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap }
+        .reviews-avg-stars { font-size:1.5rem; letter-spacing:1px; color:#f59e0b }
+        .reviews-avg-num { font-size:1.75rem; font-weight:800; color:#0a0a0a }
+        .reviews-count { font-size:0.9rem; color:#64748b }
+        .reviews-sort { margin-bottom:1rem }
+        .reviews-sort label { font-size:0.85rem; color:#64748b; margin-right:0.5rem }
+        .reviews-sort select { padding:0.35rem 0.75rem; border:1px solid #e2e8f0; border-radius:6px; font-size:0.85rem; color:#1e293b; background:#fff; cursor:pointer }
+        .review-item { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; margin-bottom:0.75rem }
+        .review-item-header { display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.5rem }
+        .review-stars { color:#f59e0b; font-size:1rem; letter-spacing:1px }
+        .review-role-badge { display:inline-block; padding:0.15rem 0.6rem; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:50px; font-size:0.72rem; font-weight:600; color:#475569 }
+        .review-year { font-size:0.8rem; color:#94a3b8 }
+        .review-text { font-size:0.9rem; color:#334155; line-height:1.7; margin-bottom:0.5rem }
+        .review-worth { display:inline-block; padding:0.2rem 0.6rem; border-radius:50px; font-size:0.72rem; font-weight:600 }
+        .review-worth-yes { background:#f0fdf4; color:#16a34a; border:1px solid #bbf7d0 }
+        .review-worth-no { background:#fef2f2; color:#dc2626; border:1px solid #fecaca }
+        .review-worth-maybe { background:#fefce8; color:#ca8a04; border:1px solid #fef08a }
+
+        /* Review Form */
+        .review-form-wrap { background:#fafafa; border:1px solid #e2e8f0; border-radius:12px; padding:1.5rem; margin-bottom:1.5rem }
+        .review-form-wrap h3 { font-size:1.05rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem }
+        .review-form-row { margin-bottom:1rem }
+        .review-form-row label { display:block; font-size:0.82rem; font-weight:600; color:#475569; margin-bottom:0.35rem; text-transform:uppercase; letter-spacing:0.03em }
+        .review-form-row select, .review-form-row textarea { width:100%; padding:0.6rem 0.75rem; border:1px solid #e2e8f0; border-radius:8px; font-size:0.9rem; font-family:inherit; color:#1e293b; background:#fff; transition:border-color 0.2s }
+        .review-form-row select:focus, .review-form-row textarea:focus { outline:none; border-color:#94a3b8 }
+        .review-form-row textarea { resize:vertical; min-height:80px }
+        .star-input { display:flex; gap:0.25rem; cursor:pointer }
+        .star-input span { font-size:1.5rem; color:#d4d4d4; transition:color 0.15s; user-select:none }
+        .star-input span.active { color:#f59e0b }
+        .star-input span:hover, .star-input span:hover ~ span { color:#f59e0b }
+        .worth-toggle { display:flex; gap:0.5rem }
+        .worth-toggle button { padding:0.5rem 1.25rem; border:1px solid #e2e8f0; border-radius:8px; background:#fff; font-size:0.85rem; font-weight:600; color:#64748b; cursor:pointer; transition:all 0.15s }
+        .worth-toggle button.selected { background:#0a0a0a; color:#fff; border-color:#0a0a0a }
+        .btn-submit-review { padding:0.75rem 2rem; background:#0a0a0a; color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 0.2s }
+        .btn-submit-review:hover { background:#1e293b }
+        .review-success { padding:0.75rem 1rem; background:#f0fdf4; border:1px solid #bbf7d0; color:#16a34a; border-radius:8px; font-size:0.9rem; margin-bottom:1rem; display:none }
+        .no-reviews { text-align:center; padding:2rem; color:#94a3b8; font-size:0.9rem }
+
+        @media(max-width:1024px) {
+            .similar-shows-grid { grid-template-columns:repeat(2,1fr) }
+        }
         @media(max-width:768px) {
             .show-body { grid-template-columns:1fr }
             .show-hero h1 { font-size:1.75rem }
             .show-hero { height:260px }
             .transport-grid { grid-template-columns:1fr }
+            .similar-shows-grid { grid-template-columns:1fr }
 
             .hotel-card { flex-direction:column; align-items:flex-start }
         }
@@ -107,6 +165,9 @@
     <div id="show-content">
         <div class="loading">Loading show details...</div>
     </div>
+
+    <div id="similar-shows-container"></div>
+    <div id="reviews-container"></div>
 
     <footer class="footer">
         <div class="footer-inner">
@@ -495,6 +556,336 @@
         html += '</div></div>';
 
         document.getElementById('show-content').innerHTML = html;
+
+    })();
+    </script>
+
+    <script>
+    // ============================================================
+    // Feature 1: Similar Shows You Might Like
+    // Feature 2: Exhibitor Reviews with localStorage
+    // ============================================================
+    (function() {
+        // --- Resolve slug and current show ---
+        var slug = '';
+        var path = window.location.pathname;
+        var m = path.match(/\/shows\/([^\/]+?)(?:\.html)?$/);
+        if (m) slug = m[1];
+        if (!slug || typeof SHOWS_DATA === 'undefined') return;
+
+        var currentShow = null;
+        for (var i = 0; i < SHOWS_DATA.length; i++) {
+            if (SHOWS_DATA[i].slug === slug) { currentShow = SHOWS_DATA[i]; break; }
+        }
+        if (!currentShow) return;
+
+        // ============================================================
+        // SIMILAR SHOWS
+        // ============================================================
+        (function buildSimilarShows() {
+            var category = currentShow.category;
+            if (!category) return;
+
+            // Filter same-category shows, exclude current
+            var sameCategory = [];
+            for (var i = 0; i < SHOWS_DATA.length; i++) {
+                var s = SHOWS_DATA[i];
+                if (s.slug !== currentShow.slug && s.category === category) {
+                    sameCategory.push(s);
+                }
+            }
+            if (sameCategory.length === 0) return;
+
+            // Sort by closest date to current show
+            var currentSortDate = currentShow.sort_date || '2026-01-01';
+            sameCategory.sort(function(a, b) {
+                var da = a.sort_date || '2099-12-31';
+                var db = b.sort_date || '2099-12-31';
+                var diffA = Math.abs(new Date(da) - new Date(currentSortDate));
+                var diffB = Math.abs(new Date(db) - new Date(currentSortDate));
+                return diffA - diffB;
+            });
+
+            // Take first 4
+            var shows = sameCategory.slice(0, 4);
+
+            var html = '<div class="similar-shows-section">';
+            html += '<h2>Similar Shows You Might Like</h2>';
+            html += '<div class="similar-shows-grid">';
+
+            for (var j = 0; j < shows.length; j++) {
+                var s = shows[j];
+                var city = s.city || '';
+                if (s.state) city += ', ' + s.state;
+                if (!city && s.location) city = s.location;
+
+                html += '<div class="similar-card">';
+                html += '<h4>' + s.title + '</h4>';
+                html += '<div class="similar-date">' + (s.date || 'TBA') + '</div>';
+                html += '<div class="similar-city">' + city + '</div>';
+                if (s.attendees) html += '<div class="similar-attendees">' + s.attendees + ' attendees</div>';
+                html += '<a href="/shows/' + s.slug + '" class="similar-link">View Guide</a>';
+                html += '</div>';
+            }
+
+            html += '</div></div>';
+            document.getElementById('similar-shows-container').innerHTML = html;
+        })();
+
+        // ============================================================
+        // EXHIBITOR REVIEWS
+        // ============================================================
+        (function buildReviews() {
+            var storageKey = 'reviews_' + slug;
+
+            function getReviews() {
+                try {
+                    var data = localStorage.getItem(storageKey);
+                    return data ? JSON.parse(data) : [];
+                } catch(e) { return []; }
+            }
+
+            function saveReviews(reviews) {
+                try { localStorage.setItem(storageKey, JSON.stringify(reviews)); } catch(e) {}
+            }
+
+            function renderStars(count) {
+                var s = '';
+                for (var i = 1; i <= 5; i++) {
+                    s += i <= count ? '\u2605' : '\u2606';
+                }
+                return s;
+            }
+
+            function getAvgRating(reviews) {
+                if (reviews.length === 0) return 0;
+                var sum = 0;
+                for (var i = 0; i < reviews.length; i++) sum += reviews[i].rating;
+                return (sum / reviews.length).toFixed(1);
+            }
+
+            function worthClass(val) {
+                if (val === 'Yes') return 'review-worth-yes';
+                if (val === 'No') return 'review-worth-no';
+                return 'review-worth-maybe';
+            }
+
+            function renderAll() {
+                var reviews = getReviews();
+                var container = document.getElementById('reviews-container');
+
+                var html = '<div class="reviews-section">';
+                html += '<h2>Exhibitor Reviews</h2>';
+
+                // --- Summary ---
+                if (reviews.length > 0) {
+                    var avg = getAvgRating(reviews);
+                    html += '<div class="reviews-summary">';
+                    html += '<span class="reviews-avg-num">' + avg + '</span>';
+                    html += '<span class="reviews-avg-stars">' + renderStars(Math.round(avg)) + '</span>';
+                    html += '<span class="reviews-count">' + reviews.length + ' review' + (reviews.length !== 1 ? 's' : '') + '</span>';
+                    html += '</div>';
+                }
+
+                // --- Review Form ---
+                html += '<div class="review-form-wrap">';
+                html += '<h3>Write a Review</h3>';
+                html += '<div id="review-success" class="review-success">Your review has been submitted. Thank you!</div>';
+
+                html += '<div class="review-form-row"><label>Star Rating</label>';
+                html += '<div class="star-input" id="star-input">';
+                for (var si = 1; si <= 5; si++) {
+                    html += '<span data-value="' + si + '">\u2606</span>';
+                }
+                html += '</div></div>';
+
+                html += '<div class="review-form-row"><label>Your Role</label>';
+                html += '<select id="review-role"><option value="">Select your role</option>';
+                html += '<option value="Exhibitor">Exhibitor</option>';
+                html += '<option value="Attendee">Attendee</option>';
+                html += '<option value="Speaker">Speaker</option>';
+                html += '<option value="Organizer">Organizer</option>';
+                html += '</select></div>';
+
+                html += '<div class="review-form-row"><label>Year Attended</label>';
+                html += '<select id="review-year"><option value="">Select year</option>';
+                html += '<option value="2024">2024</option>';
+                html += '<option value="2025">2025</option>';
+                html += '<option value="2026">2026</option>';
+                html += '</select></div>';
+
+                html += '<div class="review-form-row"><label>Your Review</label>';
+                html += '<textarea id="review-text" placeholder="Share your experience at this show..."></textarea></div>';
+
+                html += '<div class="review-form-row"><label>Was it worth the investment?</label>';
+                html += '<div class="worth-toggle" id="worth-toggle">';
+                html += '<button type="button" data-value="Yes">Yes</button>';
+                html += '<button type="button" data-value="No">No</button>';
+                html += '<button type="button" data-value="Maybe">Maybe</button>';
+                html += '</div></div>';
+
+                html += '<button class="btn-submit-review" id="btn-submit-review">Submit Review</button>';
+                html += '</div>';
+
+                // --- Sort Controls ---
+                if (reviews.length > 1) {
+                    html += '<div class="reviews-sort">';
+                    html += '<label for="review-sort">Sort by:</label>';
+                    html += '<select id="review-sort">';
+                    html += '<option value="recent">Most Recent</option>';
+                    html += '<option value="highest">Highest Rated</option>';
+                    html += '<option value="lowest">Lowest Rated</option>';
+                    html += '</select></div>';
+                }
+
+                // --- Review List ---
+                if (reviews.length === 0) {
+                    html += '<div class="no-reviews">No reviews yet. Be the first to share your experience!</div>';
+                } else {
+                    html += '<div id="review-list">';
+                    html += renderReviewList(reviews, 'recent');
+                    html += '</div>';
+                }
+
+                html += '</div>';
+                container.innerHTML = html;
+
+                // --- Attach Event Listeners ---
+                attachFormEvents();
+            }
+
+            function renderReviewList(reviews, sortBy) {
+                var sorted = reviews.slice();
+                if (sortBy === 'highest') {
+                    sorted.sort(function(a, b) { return b.rating - a.rating; });
+                } else if (sortBy === 'lowest') {
+                    sorted.sort(function(a, b) { return a.rating - b.rating; });
+                } else {
+                    sorted.sort(function(a, b) { return (b.timestamp || 0) - (a.timestamp || 0); });
+                }
+
+                var html = '';
+                for (var i = 0; i < sorted.length; i++) {
+                    var r = sorted[i];
+                    html += '<div class="review-item">';
+                    html += '<div class="review-item-header">';
+                    html += '<span class="review-stars">' + renderStars(r.rating) + '</span>';
+                    if (r.role) html += '<span class="review-role-badge">' + r.role + '</span>';
+                    if (r.year) html += '<span class="review-year">' + r.year + '</span>';
+                    html += '</div>';
+                    html += '<div class="review-text">' + escapeHtml(r.text) + '</div>';
+                    if (r.worth) html += '<span class="review-worth ' + worthClass(r.worth) + '">Worth it: ' + r.worth + '</span>';
+                    html += '</div>';
+                }
+                return html;
+            }
+
+            function escapeHtml(str) {
+                var div = document.createElement('div');
+                div.appendChild(document.createTextNode(str));
+                return div.innerHTML;
+            }
+
+            function attachFormEvents() {
+                // Star input
+                var starInput = document.getElementById('star-input');
+                var selectedRating = 0;
+                if (starInput) {
+                    var stars = starInput.querySelectorAll('span');
+                    for (var si = 0; si < stars.length; si++) {
+                        (function(star, idx) {
+                            star.addEventListener('mouseenter', function() {
+                                for (var k = 0; k < stars.length; k++) {
+                                    stars[k].textContent = k <= idx ? '\u2605' : '\u2606';
+                                    stars[k].classList.toggle('active', k <= idx);
+                                }
+                            });
+                            star.addEventListener('click', function() {
+                                selectedRating = idx + 1;
+                                for (var k = 0; k < stars.length; k++) {
+                                    stars[k].textContent = k <= idx ? '\u2605' : '\u2606';
+                                    stars[k].classList.toggle('active', k <= idx);
+                                }
+                            });
+                        })(stars[si], si);
+                    }
+                    starInput.addEventListener('mouseleave', function() {
+                        for (var k = 0; k < stars.length; k++) {
+                            stars[k].textContent = k < selectedRating ? '\u2605' : '\u2606';
+                            stars[k].classList.toggle('active', k < selectedRating);
+                        }
+                    });
+                }
+
+                // Worth toggle
+                var worthToggle = document.getElementById('worth-toggle');
+                var selectedWorth = '';
+                if (worthToggle) {
+                    var btns = worthToggle.querySelectorAll('button');
+                    for (var w = 0; w < btns.length; w++) {
+                        (function(btn) {
+                            btn.addEventListener('click', function() {
+                                selectedWorth = btn.getAttribute('data-value');
+                                for (var bk = 0; bk < btns.length; bk++) {
+                                    btns[bk].classList.toggle('selected', btns[bk] === btn);
+                                }
+                            });
+                        })(btns[w]);
+                    }
+                }
+
+                // Submit
+                var submitBtn = document.getElementById('btn-submit-review');
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', function() {
+                        var role = document.getElementById('review-role').value;
+                        var year = document.getElementById('review-year').value;
+                        var text = document.getElementById('review-text').value.trim();
+
+                        // Validation
+                        if (!selectedRating) { alert('Please select a star rating.'); return; }
+                        if (!role) { alert('Please select your role.'); return; }
+                        if (!year) { alert('Please select the year attended.'); return; }
+                        if (!text) { alert('Please write a review.'); return; }
+
+                        var review = {
+                            rating: selectedRating,
+                            role: role,
+                            year: year,
+                            text: text,
+                            worth: selectedWorth || null,
+                            timestamp: Date.now()
+                        };
+
+                        var reviews = getReviews();
+                        reviews.push(review);
+                        saveReviews(reviews);
+
+                        // Re-render entire section
+                        renderAll();
+
+                        // Show success message
+                        var successEl = document.getElementById('review-success');
+                        if (successEl) { successEl.style.display = 'block'; }
+                    });
+                }
+
+                // Sort change
+                var sortSelect = document.getElementById('review-sort');
+                if (sortSelect) {
+                    sortSelect.addEventListener('change', function() {
+                        var reviews = getReviews();
+                        var listEl = document.getElementById('review-list');
+                        if (listEl) {
+                            listEl.innerHTML = renderReviewList(reviews, sortSelect.value);
+                        }
+                    });
+                }
+            }
+
+            // Initial render
+            renderAll();
+        })();
 
     })();
     </script>

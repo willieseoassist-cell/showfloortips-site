@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Lead Value Calculator | ShowFloorTips</title>
+    <meta name="description" content="Calculate the true value of every trade show lead. Measure cost per lead, projected pipeline, and expected ROI from any show. Free post-show analysis tool.">
+    <meta name="keywords" content="lead value calculator, trade show lead cost, cost per lead calculator, trade show ROI, lead pipeline calculator, exhibitor lead analysis, trade show metrics">
+
+    <meta property="og:title" content="Trade Show Lead Value Calculator - ShowFloorTips">
+    <meta property="og:description" content="Calculate the true value of every trade show lead. Measure cost per lead, projected pipeline, and expected ROI from any show.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/lead-calculator.html">
+    <meta property="og:site_name" content="ShowFloorTips">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Lead Value Calculator - ShowFloorTips">
+    <meta name="twitter:description" content="Calculate the true value of every trade show lead. Measure cost per lead, projected pipeline, and expected ROI from any show.">
+
+    <link rel="canonical" href="https://showfloortips.com/lead-calculator.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Lead Value Calculator",
+        "url": "https://showfloortips.com/lead-calculator.html",
+        "description": "Free interactive calculator to determine the true value of trade show leads. Analyze cost per lead, projected pipeline revenue, expected ROI, and payback period with breakdown by lead type.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "Cost per lead calculation",
+            "Projected pipeline revenue",
+            "Expected ROI percentage",
+            "Payback period estimation",
+            "Lead type breakdown analysis",
+            "Investment vs revenue comparison",
+            "Downloadable report",
+            "LocalStorage save and restore",
+            "Industry benchmark comparison"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #171717;
+            --accent: #0a0a0a;
+            --accent-hover: #171717;
+            --accent-light: #f5f5f5;
+            --accent-bg: rgba(10, 10, 10, 0.06);
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0a0a0a;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --green: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.08);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59, 130, 246, 0.08);
+            --amber: #f59e0b;
+            --amber-bg: rgba(245, 158, 11, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ========== HEADER ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #525252;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0a0a0a;
+            background: rgba(0,0,0,0.04);
+        }
+
+        .nav-links .nav-cta {
+            background: #0a0a0a;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 8px 20px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #0a0a0a;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: #fafafa;
+            padding: 80px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: none;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            color: #0a0a0a;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: #0a0a0a;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #525252;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== MAIN LAYOUT ========== */
+        .calculator-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        /* ========== SHOW NAME BAR ========== */
+        .show-name-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 32px;
+            padding: 16px 24px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .show-name-bar label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .show-name-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .show-name-bar input::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ========== FORM SECTIONS ========== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .form-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .form-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .card-icon.investment { background: #dbeafe; }
+        .card-icon.leads { background: #dcfce7; }
+        .card-icon.conversion { background: #fef3c7; }
+
+        .card-header-text h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.2px;
+        }
+
+        .card-header-text p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .input-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .input-group {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap .prefix {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .input-wrap .suffix {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--text);
+            background: var(--bg);
+            transition: all 0.2s;
+            -moz-appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0a0a0a;
+            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
+        }
+
+        .has-prefix input { padding-left: 28px; }
+        .has-suffix input { padding-right: 36px; }
+
+        .input-hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* Total Investment Row */
+        .total-row {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-row span:first-child {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .total-row span:last-child {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        /* ========== ACTION BAR ========== */
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .btn-calculate {
+            display: none; /* hidden since we calc real-time */
+        }
+
+        .btn-reset {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-reset:hover {
+            border-color: var(--text-secondary);
+            color: var(--text);
+        }
+
+        .btn-save {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-save:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-load {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-load:hover {
+            border-color: var(--text-secondary);
+            color: var(--text);
+        }
+
+        /* ========== RESULTS DASHBOARD ========== */
+        .results-dashboard {
+            margin-bottom: 48px;
+        }
+
+        .results-dashboard.hidden {
+            display: none;
+        }
+
+        .dashboard-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* Key Metrics Cards */
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .metric-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .metric-card:hover {
+            border-color: #0a0a0a;
+            box-shadow: var(--shadow-md);
+        }
+
+        .metric-card .metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .metric-card .metric-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .metric-card .metric-value.positive { color: var(--green); }
+        .metric-card .metric-value.negative { color: var(--red); }
+        .metric-card .metric-value.neutral { color: var(--text-muted); }
+
+        .metric-card .metric-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Breakdown Table */
+        .breakdown-section {
+            margin-bottom: 32px;
+        }
+
+        .section-heading {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+            margin-bottom: 16px;
+        }
+
+        .breakdown-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .breakdown-table th {
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: var(--bg-alt);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breakdown-table th:last-child,
+        .breakdown-table td:last-child {
+            text-align: right;
+        }
+
+        .breakdown-table td {
+            padding: 14px 20px;
+            font-size: 14px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .breakdown-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .breakdown-table .total-row-table td {
+            font-weight: 700;
+            border-top: 2px solid var(--primary);
+            background: var(--bg-alt);
+        }
+
+        .lead-type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        .lead-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .lead-dot.hot { background: var(--red); }
+        .lead-dot.warm { background: var(--amber); }
+        .lead-dot.cold { background: var(--blue); }
+
+        /* ========== CHARTS ========== */
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .chart-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+        }
+
+        .chart-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.2px;
+            margin-bottom: 24px;
+        }
+
+        /* Bar Chart */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 48px;
+            justify-content: center;
+            height: 220px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .bar-chart::before {
+            content: '';
+            position: absolute;
+            bottom: 36px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bar {
+            width: 80px;
+            border-radius: 6px 6px 0 0;
+            transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 4px;
+            position: relative;
+        }
+
+        .bar.investment {
+            background: #0a0a0a;
+        }
+
+        .bar.revenue {
+            background: var(--green);
+        }
+
+        .bar-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .bar-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ROI Gauge */
+        .gauge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+        }
+
+        .gauge {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .gauge-bg {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 20px solid #e5e5e5;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(-45deg);
+            clip-path: inset(0 0 50% 0);
+        }
+
+        .gauge-fill {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 20px solid transparent;
+            border-top-color: var(--green);
+            border-right-color: var(--green);
+            transform: rotate(-45deg);
+            clip-path: inset(0 0 50% 0);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gauge-fill.negative {
+            border-top-color: var(--red);
+            border-right-color: var(--red);
+        }
+
+        .gauge-center {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        .gauge-value {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .gauge-value.positive { color: var(--green); }
+        .gauge-value.negative { color: var(--red); }
+
+        .gauge-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 4px;
+        }
+
+        .gauge-markers {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin-top: 8px;
+        }
+
+        .gauge-markers span {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ========== RECOMMENDATION BOX ========== */
+        .recommendation-box {
+            padding: 24px 28px;
+            border-radius: var(--radius);
+            margin-bottom: 32px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .recommendation-box.excellent {
+            background: var(--green-bg);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .recommendation-box.good {
+            background: var(--blue-bg);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .recommendation-box.marginal {
+            background: var(--amber-bg);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .recommendation-box.poor {
+            background: var(--red-bg);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .rec-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+        }
+
+        .excellent .rec-icon { background: rgba(16, 185, 129, 0.15); }
+        .good .rec-icon { background: rgba(59, 130, 246, 0.15); }
+        .marginal .rec-icon { background: rgba(245, 158, 11, 0.15); }
+        .poor .rec-icon { background: rgba(239, 68, 68, 0.15); }
+
+        .rec-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .rec-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== REPORT ACTIONS ========== */
+        .report-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-download svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .btn-compare {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-compare:hover {
+            border-color: var(--text-secondary);
+            color: var(--text);
+        }
+
+        /* ========== BENCHMARKS SECTION ========== */
+        .benchmarks-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .benchmarks-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .benchmarks-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.8px;
+            margin-bottom: 8px;
+        }
+
+        .benchmarks-header p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .benchmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .benchmark-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .benchmark-card:hover {
+            border-color: #0a0a0a;
+            box-shadow: var(--shadow-md);
+        }
+
+        .benchmark-industry {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .benchmark-range {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .benchmark-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .benchmark-bar-outer {
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .benchmark-bar-inner {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+
+        /* ========== SCANNLY CTA ========== */
+        .scannly-section {
+            background: var(--bg-alt);
+            padding: 64px 24px;
+        }
+
+        .scannly-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .scannly-inner h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.8px;
+            margin-bottom: 12px;
+        }
+
+        .scannly-inner p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .scannly-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .scannly-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #fafafa;
+            color: #525252;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0a0a0a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #525252;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: #0a0a0a; }
+
+        .footer-bottom {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .benchmarks-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-row {
+                grid-template-columns: 1fr;
+            }
+
+            .benchmarks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .breakdown-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px 24px;
+                border-top: 1px solid #e5e5e5;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 56px 24px 48px;
+            }
+
+            .hero h1 { font-size: 28px; }
+            .hero p { font-size: 16px; }
+
+            .calculator-section {
+                padding: 32px 16px 64px;
+            }
+
+            .input-grid,
+            .input-grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-row {
+                grid-template-columns: 1fr;
+            }
+
+            .benchmarks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benchmarks-section {
+                padding: 0 16px 64px;
+            }
+
+            .report-actions,
+            .action-bar {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .bar-chart {
+                gap: 24px;
+            }
+
+            .bar {
+                width: 60px;
+            }
+
+            .show-name-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .show-name-bar input {
+                width: 100%;
+            }
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            header, footer, .hero, .benchmarks-section, .scannly-section,
+            .btn-download, .btn-compare, .btn-reset, .btn-save, .btn-load,
+            .action-bar, .report-actions, .mobile-menu-btn, nav { display: none !important; }
+
+            .form-grid { display: block; }
+
+            .results-dashboard { page-break-before: always; }
+
+            .metric-card, .chart-card, .breakdown-table, .recommendation-box {
+                break-inside: avoid;
+            }
+
+            body {
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                Post-Show Analysis
+            </div>
+            <h1>Lead Value Calculator</h1>
+            <p>Calculate the true value of every trade show lead. Measure your cost per lead, projected pipeline, and expected ROI from any show.</p>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+
+        <!-- Show Name -->
+        <div class="show-name-bar">
+            <label for="showName">Show Name</label>
+            <input type="text" id="showName" placeholder="e.g., CES 2026, NAB Show, HIMSS..." oninput="calculate()">
+        </div>
+
+        <!-- Form Grid -->
+        <div class="form-grid">
+
+            <!-- Section 1: Show Investment -->
+            <div class="form-card">
+                <div class="card-header">
+                    <div class="card-icon investment">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="card-header-text">
+                        <h3>Show Investment</h3>
+                        <p>Total costs for this trade show</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="boothCost">Total Booth Cost</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="boothCost" placeholder="8,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Space rental + design + build</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="travelCost">Travel & Lodging</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="travelCost" placeholder="4,500" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Flights, hotels, ground transport</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="marketingCost">Marketing Materials</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="marketingCost" placeholder="2,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Brochures, banners, swag</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="staffCost">Staff Time Cost</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="staffCost" placeholder="6,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint"># staff x days x daily rate</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="shippingCost">Shipping & Logistics</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="shippingCost" placeholder="1,500" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Freight, drayage, I&D</div>
+                        </div>
+                        <div class="input-group">
+                            <label for="miscCost">Miscellaneous</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="miscCost" placeholder="1,000" min="0" oninput="calculate()">
+                            </div>
+                            <div class="input-hint">Wi-Fi, electric, meals, etc.</div>
+                        </div>
+                    </div>
+                    <div class="total-row">
+                        <span>Total Investment</span>
+                        <span id="totalInvestmentDisplay">$0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Lead Results -->
+            <div class="form-card">
+                <div class="card-header">
+                    <div class="card-icon leads">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="card-header-text">
+                        <h3>Lead Results</h3>
+                        <p>Leads captured at the show</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="input-group" style="margin-bottom:16px">
+                        <label for="totalLeads">Total Leads Captured</label>
+                        <div class="input-wrap has-suffix">
+                            <input type="number" id="totalLeads" placeholder="150" min="0" oninput="calculate()">
+                            <span class="suffix">leads</span>
+                        </div>
+                    </div>
+                    <div class="input-grid" style="margin-bottom:16px">
+                        <div class="input-group">
+                            <label for="hotLeads">Hot Leads (ready to buy)</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="hotLeads" placeholder="15" min="0" oninput="calculate()">
+                                <span class="suffix">#</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="warmLeads">Warm Leads (interested)</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="warmLeads" placeholder="50" min="0" oninput="calculate()">
+                                <span class="suffix">#</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="coldLeads">Cold Leads (info only)</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="coldLeads" placeholder="85" min="0" oninput="calculate()">
+                                <span class="suffix">#</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="meetingsScheduled">Meetings Scheduled</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="meetingsScheduled" placeholder="12" min="0" oninput="calculate()">
+                                <span class="suffix">#</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:16px;padding:12px 16px;background:var(--bg-alt);border-radius:var(--radius-sm);border:1px solid var(--border-light);">
+                        <div style="display:flex;justify-content:space-between;align-items:center;">
+                            <span style="font-size:12px;color:var(--text-muted);font-weight:500;">Lead total check:</span>
+                            <span style="font-size:13px;font-weight:600;color:var(--text-secondary);" id="leadCheck">0 / 0 categorized</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Conversion Assumptions -->
+            <div class="form-card full-width">
+                <div class="card-header">
+                    <div class="card-icon conversion">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="card-header-text">
+                        <h3>Conversion Assumptions</h3>
+                        <p>Expected close rates and deal values</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:16px;">
+                        <div class="input-group">
+                            <label for="avgDealSize">Average Deal Size</label>
+                            <div class="input-wrap has-prefix">
+                                <span class="prefix">$</span>
+                                <input type="number" id="avgDealSize" placeholder="10,000" min="0" oninput="calculate()">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="hotConvRate">Hot Lead Conv. Rate</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="hotConvRate" placeholder="25" min="0" max="100" step="0.5" value="25" oninput="calculate()">
+                                <span class="suffix">%</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="warmConvRate">Warm Lead Conv. Rate</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="warmConvRate" placeholder="10" min="0" max="100" step="0.5" value="10" oninput="calculate()">
+                                <span class="suffix">%</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="coldConvRate">Cold Lead Conv. Rate</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="coldConvRate" placeholder="2" min="0" max="100" step="0.5" value="2" oninput="calculate()">
+                                <span class="suffix">%</span>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="salesCycle">Avg. Sales Cycle</label>
+                            <div class="input-wrap has-suffix">
+                                <input type="number" id="salesCycle" placeholder="3" min="0" step="0.5" value="3" oninput="calculate()">
+                                <span class="suffix">mo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <button class="btn-save" onclick="saveResults()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save Results
+            </button>
+            <button class="btn-load" onclick="loadResults()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Load Saved
+            </button>
+            <button class="btn-reset" onclick="resetCalculator()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                Reset All
+            </button>
+        </div>
+
+        <!-- Results Dashboard -->
+        <div class="results-dashboard" id="resultsDashboard">
+            <h2 class="dashboard-title">Results Dashboard</h2>
+            <p class="dashboard-subtitle">Your lead value analysis and projected ROI</p>
+
+            <!-- Key Metrics Cards -->
+            <div class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-label">Cost Per Lead</div>
+                    <div class="metric-value neutral" id="cplValue">--</div>
+                    <div class="metric-note" id="cplNote">Enter data above</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Projected Pipeline</div>
+                    <div class="metric-value neutral" id="pipelineValue">--</div>
+                    <div class="metric-note" id="pipelineNote">Expected revenue from leads</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Expected ROI</div>
+                    <div class="metric-value neutral" id="roiValue">--</div>
+                    <div class="metric-note" id="roiNote">Return on investment</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Payback Period</div>
+                    <div class="metric-value neutral" id="paybackValue">--</div>
+                    <div class="metric-note" id="paybackNote">Estimated time to recoup</div>
+                </div>
+            </div>
+
+            <!-- Breakdown Table -->
+            <div class="breakdown-section">
+                <h3 class="section-heading">Lead Breakdown</h3>
+                <table class="breakdown-table">
+                    <thead>
+                        <tr>
+                            <th>Lead Type</th>
+                            <th>Count</th>
+                            <th>Conv. Rate</th>
+                            <th>Expected Deals</th>
+                            <th>Projected Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody id="breakdownBody">
+                        <tr>
+                            <td><span class="lead-type-badge"><span class="lead-dot hot"></span> Hot</span></td>
+                            <td id="tblHotCount">0</td>
+                            <td id="tblHotRate">25%</td>
+                            <td id="tblHotDeals">0</td>
+                            <td id="tblHotRevenue">$0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="lead-type-badge"><span class="lead-dot warm"></span> Warm</span></td>
+                            <td id="tblWarmCount">0</td>
+                            <td id="tblWarmRate">10%</td>
+                            <td id="tblWarmDeals">0</td>
+                            <td id="tblWarmRevenue">$0</td>
+                        </tr>
+                        <tr>
+                            <td><span class="lead-type-badge"><span class="lead-dot cold"></span> Cold</span></td>
+                            <td id="tblColdCount">0</td>
+                            <td id="tblColdRate">2%</td>
+                            <td id="tblColdDeals">0</td>
+                            <td id="tblColdRevenue">$0</td>
+                        </tr>
+                        <tr class="total-row-table">
+                            <td><strong>Total</strong></td>
+                            <td id="tblTotalCount"><strong>0</strong></td>
+                            <td></td>
+                            <td id="tblTotalDeals"><strong>0</strong></td>
+                            <td id="tblTotalRevenue"><strong>$0</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-row">
+                <!-- Bar Chart: Investment vs Revenue -->
+                <div class="chart-card">
+                    <div class="chart-title">Investment vs. Projected Revenue</div>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar-value" id="barInvestmentVal">$0</div>
+                            <div class="bar investment" id="barInvestment" style="height:4px;"></div>
+                            <div class="bar-label">Investment</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-value" id="barRevenueVal">$0</div>
+                            <div class="bar revenue" id="barRevenue" style="height:4px;"></div>
+                            <div class="bar-label">Pipeline</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROI Gauge -->
+                <div class="chart-card">
+                    <div class="chart-title">ROI Gauge</div>
+                    <div class="gauge-container">
+                        <div class="gauge">
+                            <div class="gauge-bg"></div>
+                            <div class="gauge-fill" id="gaugeFill"></div>
+                            <div class="gauge-center">
+                                <div class="gauge-value neutral" id="gaugeValue">0%</div>
+                                <div class="gauge-label">Return on Investment</div>
+                            </div>
+                        </div>
+                        <div class="gauge-markers">
+                            <span>-100%</span>
+                            <span>0%</span>
+                            <span>500%+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="recommendation-box marginal" id="recommendationBox">
+                <div class="rec-icon" id="recIcon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                </div>
+                <div class="rec-content">
+                    <h4 id="recTitle">Enter Your Data</h4>
+                    <p id="recText">Fill in the investment and lead data above to get a personalized recommendation for this show.</p>
+                </div>
+            </div>
+
+            <!-- Report Actions -->
+            <div class="report-actions">
+                <button class="btn-download" onclick="downloadReport()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download Report
+                </button>
+                <a href="/compare.html" class="btn-compare">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    Compare Shows
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Benchmarks -->
+    <section class="benchmarks-section">
+        <div class="benchmarks-header">
+            <h2>Industry Benchmarks: Cost Per Lead</h2>
+            <p>How your cost per lead compares to industry averages</p>
+        </div>
+        <div class="benchmarks-grid">
+            <div class="benchmark-card">
+                <div class="benchmark-industry">Technology</div>
+                <div class="benchmark-range">$150 - $300</div>
+                <div class="benchmark-note">Avg. cost per lead</div>
+                <div class="benchmark-bar-outer">
+                    <div class="benchmark-bar-inner" style="width:60%"></div>
+                </div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-industry">Healthcare</div>
+                <div class="benchmark-range">$200 - $400</div>
+                <div class="benchmark-note">Avg. cost per lead</div>
+                <div class="benchmark-bar-outer">
+                    <div class="benchmark-bar-inner" style="width:75%"></div>
+                </div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-industry">Manufacturing</div>
+                <div class="benchmark-range">$100 - $250</div>
+                <div class="benchmark-note">Avg. cost per lead</div>
+                <div class="benchmark-bar-outer">
+                    <div class="benchmark-bar-inner" style="width:45%"></div>
+                </div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-industry">Food & Beverage</div>
+                <div class="benchmark-range">$75 - $200</div>
+                <div class="benchmark-note">Avg. cost per lead</div>
+                <div class="benchmark-bar-outer">
+                    <div class="benchmark-bar-inner" style="width:35%"></div>
+                </div>
+            </div>
+            <div class="benchmark-card">
+                <div class="benchmark-industry">Construction</div>
+                <div class="benchmark-range">$100 - $300</div>
+                <div class="benchmark-note">Avg. cost per lead</div>
+                <div class="benchmark-bar-outer">
+                    <div class="benchmark-bar-inner" style="width:50%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <section class="scannly-section">
+        <div class="scannly-inner">
+            <h2>Capture More Leads with Scannly</h2>
+            <p>The average exhibitor misses 40% of booth visitors. Scannly's QR-based lead capture ensures every contact is logged instantly -- so your cost per lead drops and your pipeline grows.</p>
+            <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-btn" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download on App Store
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/scannly.html">About Scannly</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ========== UTILITY FUNCTIONS ==========
+        function getVal(id) {
+            var el = document.getElementById(id);
+            if (!el) return 0;
+            var v = parseFloat(el.value);
+            return isNaN(v) ? 0 : v;
+        }
+
+        function formatCurrency(n) {
+            if (n === 0) return '$0';
+            var neg = n < 0;
+            n = Math.abs(n);
+            var formatted;
+            if (n >= 1000000) {
+                formatted = '$' + (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+            } else if (n >= 100000) {
+                formatted = '$' + Math.round(n).toLocaleString();
+            } else {
+                formatted = '$' + n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: n < 10 ? 2 : 0 });
+            }
+            return neg ? '-' + formatted : formatted;
+        }
+
+        function formatPercent(n) {
+            if (Math.abs(n) >= 1000) {
+                return (n > 0 ? '+' : '') + Math.round(n).toLocaleString() + '%';
+            }
+            return (n > 0 ? '+' : '') + n.toFixed(1) + '%';
+        }
+
+        // ========== MAIN CALCULATION ENGINE ==========
+        window.calculate = function() {
+            // Gather investment inputs
+            var boothCost = getVal('boothCost');
+            var travelCost = getVal('travelCost');
+            var marketingCost = getVal('marketingCost');
+            var staffCost = getVal('staffCost');
+            var shippingCost = getVal('shippingCost');
+            var miscCost = getVal('miscCost');
+            var totalInvestment = boothCost + travelCost + marketingCost + staffCost + shippingCost + miscCost;
+
+            // Gather lead inputs
+            var totalLeads = getVal('totalLeads');
+            var hotLeads = getVal('hotLeads');
+            var warmLeads = getVal('warmLeads');
+            var coldLeads = getVal('coldLeads');
+            var meetingsScheduled = getVal('meetingsScheduled');
+
+            // Gather conversion inputs
+            var avgDealSize = getVal('avgDealSize');
+            var hotConvRate = getVal('hotConvRate') / 100;
+            var warmConvRate = getVal('warmConvRate') / 100;
+            var coldConvRate = getVal('coldConvRate') / 100;
+            var salesCycle = getVal('salesCycle');
+
+            // Update total investment display
+            document.getElementById('totalInvestmentDisplay').textContent = formatCurrency(totalInvestment);
+
+            // Lead check
+            var categorized = hotLeads + warmLeads + coldLeads;
+            var checkEl = document.getElementById('leadCheck');
+            if (totalLeads > 0 && categorized > 0) {
+                checkEl.textContent = categorized + ' / ' + totalLeads + ' categorized';
+                checkEl.style.color = (categorized === totalLeads) ? 'var(--green)' : 'var(--amber)';
+            } else {
+                checkEl.textContent = '0 / 0 categorized';
+                checkEl.style.color = 'var(--text-secondary)';
+            }
+
+            // Calculate expected deals and revenue by lead type
+            var hotDeals = hotLeads * hotConvRate;
+            var warmDeals = warmLeads * warmConvRate;
+            var coldDeals = coldLeads * coldConvRate;
+            var totalDeals = hotDeals + warmDeals + coldDeals;
+
+            var hotRevenue = hotDeals * avgDealSize;
+            var warmRevenue = warmDeals * avgDealSize;
+            var coldRevenue = coldDeals * avgDealSize;
+            var totalPipeline = hotRevenue + warmRevenue + coldRevenue;
+
+            // Key metrics
+            var costPerLead = totalLeads > 0 ? totalInvestment / totalLeads : 0;
+            var roiPercent = totalInvestment > 0 ? ((totalPipeline - totalInvestment) / totalInvestment) * 100 : 0;
+            var paybackMonths = 0;
+            if (totalPipeline > 0 && salesCycle > 0) {
+                // Revenue comes in over the sales cycle; payback = investment / (pipeline / salesCycle) months
+                var monthlyRevenue = totalPipeline / salesCycle;
+                paybackMonths = monthlyRevenue > 0 ? totalInvestment / monthlyRevenue : 0;
+            }
+
+            // ---- Update Key Metrics Cards ----
+            var cplEl = document.getElementById('cplValue');
+            var cplNoteEl = document.getElementById('cplNote');
+            if (totalLeads > 0 && totalInvestment > 0) {
+                cplEl.textContent = formatCurrency(costPerLead);
+                cplEl.className = 'metric-value';
+                cplNoteEl.textContent = 'Total investment / ' + totalLeads + ' leads';
+            } else {
+                cplEl.textContent = '--';
+                cplEl.className = 'metric-value neutral';
+                cplNoteEl.textContent = 'Enter data above';
+            }
+
+            var pipeEl = document.getElementById('pipelineValue');
+            var pipeNoteEl = document.getElementById('pipelineNote');
+            if (totalPipeline > 0) {
+                pipeEl.textContent = formatCurrency(totalPipeline);
+                pipeEl.className = 'metric-value positive';
+                pipeNoteEl.textContent = totalDeals.toFixed(1) + ' expected deals';
+            } else {
+                pipeEl.textContent = '--';
+                pipeEl.className = 'metric-value neutral';
+                pipeNoteEl.textContent = 'Expected revenue from leads';
+            }
+
+            var roiEl = document.getElementById('roiValue');
+            var roiNoteEl = document.getElementById('roiNote');
+            if (totalInvestment > 0 && (totalPipeline > 0 || categorized > 0)) {
+                roiEl.textContent = formatPercent(roiPercent);
+                roiEl.className = 'metric-value ' + (roiPercent > 0 ? 'positive' : (roiPercent < 0 ? 'negative' : 'neutral'));
+                if (roiPercent > 0) {
+                    roiNoteEl.textContent = 'Profitable show';
+                } else if (roiPercent < 0) {
+                    roiNoteEl.textContent = 'Below break-even';
+                } else {
+                    roiNoteEl.textContent = 'Break-even';
+                }
+            } else {
+                roiEl.textContent = '--';
+                roiEl.className = 'metric-value neutral';
+                roiNoteEl.textContent = 'Return on investment';
+            }
+
+            var payEl = document.getElementById('paybackValue');
+            var payNoteEl = document.getElementById('paybackNote');
+            if (paybackMonths > 0 && totalInvestment > 0) {
+                if (paybackMonths < 1) {
+                    payEl.textContent = '< 1 mo';
+                } else if (paybackMonths > 36) {
+                    payEl.textContent = '36+ mo';
+                } else {
+                    payEl.textContent = paybackMonths.toFixed(1) + ' mo';
+                }
+                payEl.className = 'metric-value ' + (paybackMonths <= salesCycle ? 'positive' : '');
+                payNoteEl.textContent = 'Based on ' + salesCycle + '-month sales cycle';
+            } else {
+                payEl.textContent = '--';
+                payEl.className = 'metric-value neutral';
+                payNoteEl.textContent = 'Estimated time to recoup';
+            }
+
+            // ---- Update Breakdown Table ----
+            document.getElementById('tblHotCount').textContent = hotLeads;
+            document.getElementById('tblHotRate').textContent = (hotConvRate * 100).toFixed(0) + '%';
+            document.getElementById('tblHotDeals').textContent = hotDeals.toFixed(1);
+            document.getElementById('tblHotRevenue').textContent = formatCurrency(hotRevenue);
+
+            document.getElementById('tblWarmCount').textContent = warmLeads;
+            document.getElementById('tblWarmRate').textContent = (warmConvRate * 100).toFixed(0) + '%';
+            document.getElementById('tblWarmDeals').textContent = warmDeals.toFixed(1);
+            document.getElementById('tblWarmRevenue').textContent = formatCurrency(warmRevenue);
+
+            document.getElementById('tblColdCount').textContent = coldLeads;
+            document.getElementById('tblColdRate').textContent = (coldConvRate * 100).toFixed(0) + '%';
+            document.getElementById('tblColdDeals').textContent = coldDeals.toFixed(1);
+            document.getElementById('tblColdRevenue').textContent = formatCurrency(coldRevenue);
+
+            document.getElementById('tblTotalCount').innerHTML = '<strong>' + categorized + '</strong>';
+            document.getElementById('tblTotalDeals').innerHTML = '<strong>' + totalDeals.toFixed(1) + '</strong>';
+            document.getElementById('tblTotalRevenue').innerHTML = '<strong>' + formatCurrency(totalPipeline) + '</strong>';
+
+            // ---- Update Bar Chart ----
+            var maxVal = Math.max(totalInvestment, totalPipeline, 1);
+            var maxBarHeight = 160;
+            var investHeight = Math.max(4, (totalInvestment / maxVal) * maxBarHeight);
+            var revenueHeight = Math.max(4, (totalPipeline / maxVal) * maxBarHeight);
+            if (totalInvestment === 0 && totalPipeline === 0) {
+                investHeight = 4;
+                revenueHeight = 4;
+            }
+            document.getElementById('barInvestment').style.height = investHeight + 'px';
+            document.getElementById('barRevenue').style.height = revenueHeight + 'px';
+            document.getElementById('barInvestmentVal').textContent = formatCurrency(totalInvestment);
+            document.getElementById('barRevenueVal').textContent = formatCurrency(totalPipeline);
+
+            // ---- Update ROI Gauge ----
+            var gaugeEl = document.getElementById('gaugeFill');
+            var gaugeValEl = document.getElementById('gaugeValue');
+            // Map ROI from -100% to 500% onto 0 to 180 degrees
+            var clampedRoi = Math.max(-100, Math.min(500, roiPercent));
+            var degrees = ((clampedRoi + 100) / 600) * 180;
+            // The gauge is a half-circle; we clip and rotate to show the fill
+            // We use a CSS clip approach: rotate the fill arc
+            var rotation = -45 + (degrees * (270 / 180));
+            // Simpler approach: use a conic-gradient-like effect via border rotation
+            var fillPercent = degrees / 180; // 0 to 1
+            gaugeEl.style.clipPath = 'inset(0 ' + ((1 - fillPercent) * 50) + '% 50% 0)';
+
+            if (totalInvestment > 0 && (totalPipeline > 0 || categorized > 0)) {
+                gaugeValEl.textContent = formatPercent(roiPercent);
+                if (roiPercent >= 0) {
+                    gaugeValEl.className = 'gauge-value positive';
+                    gaugeEl.className = 'gauge-fill';
+                } else {
+                    gaugeValEl.className = 'gauge-value negative';
+                    gaugeEl.className = 'gauge-fill negative';
+                }
+            } else {
+                gaugeValEl.textContent = '0%';
+                gaugeValEl.className = 'gauge-value neutral';
+                gaugeEl.className = 'gauge-fill';
+                gaugeEl.style.clipPath = 'inset(0 50% 50% 0)';
+            }
+
+            // ---- Update Recommendation Box ----
+            var recBox = document.getElementById('recommendationBox');
+            var recIcon = document.getElementById('recIcon');
+            var recTitle = document.getElementById('recTitle');
+            var recText = document.getElementById('recText');
+
+            if (totalInvestment === 0 || (categorized === 0 && totalLeads === 0)) {
+                recBox.className = 'recommendation-box marginal';
+                recIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>';
+                recTitle.textContent = 'Enter Your Data';
+                recText.textContent = 'Fill in the investment and lead data above to get a personalized recommendation for this show.';
+            } else if (roiPercent > 200) {
+                recBox.className = 'recommendation-box excellent';
+                recIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+                recTitle.textContent = 'Excellent ROI';
+                recText.textContent = 'This show is a strong performer. Your projected returns far exceed your investment. Consider increasing booth presence next year, expanding your team, or investing in a larger space to capture even more leads.';
+            } else if (roiPercent >= 50) {
+                recBox.className = 'recommendation-box good';
+                recIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>';
+                recTitle.textContent = 'Good ROI';
+                recText.textContent = 'Solid return on your investment. Consider increasing booth presence next year or investing in better lead capture tools to push this into excellent territory. Focus on improving follow-up speed to convert more warm leads.';
+            } else if (roiPercent >= 0) {
+                recBox.className = 'recommendation-box marginal';
+                recIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+                recTitle.textContent = 'Marginal ROI';
+                recText.textContent = 'The show is generating a return but barely covering costs. Review your lead quality and follow-up process. Consider whether a smaller booth or fewer staff could reduce investment without impacting lead volume significantly.';
+            } else {
+                recBox.className = 'recommendation-box poor';
+                recIcon.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                recTitle.textContent = 'Negative ROI';
+                recText.textContent = 'This show is costing more than it returns. Evaluate whether the show aligns with your target audience. Consider renegotiating booth costs, reducing staff, or shifting budget to shows with better-qualified attendees.';
+            }
+        };
+
+        // ========== RESET ==========
+        window.resetCalculator = function() {
+            var allInputs = document.querySelectorAll('input[type="number"]');
+            for (var i = 0; i < allInputs.length; i++) {
+                if (allInputs[i].id === 'hotConvRate') {
+                    allInputs[i].value = 25;
+                } else if (allInputs[i].id === 'warmConvRate') {
+                    allInputs[i].value = 10;
+                } else if (allInputs[i].id === 'coldConvRate') {
+                    allInputs[i].value = 2;
+                } else if (allInputs[i].id === 'salesCycle') {
+                    allInputs[i].value = 3;
+                } else {
+                    allInputs[i].value = '';
+                }
+            }
+            document.getElementById('showName').value = '';
+            calculate();
+        };
+
+        // ========== SAVE TO LOCALSTORAGE ==========
+        window.saveResults = function() {
+            var data = {};
+            var fields = ['showName', 'boothCost', 'travelCost', 'marketingCost', 'staffCost', 'shippingCost', 'miscCost',
+                          'totalLeads', 'hotLeads', 'warmLeads', 'coldLeads', 'meetingsScheduled',
+                          'avgDealSize', 'hotConvRate', 'warmConvRate', 'coldConvRate', 'salesCycle'];
+            for (var i = 0; i < fields.length; i++) {
+                var el = document.getElementById(fields[i]);
+                if (el) data[fields[i]] = el.value;
+            }
+            data.savedAt = new Date().toISOString();
+
+            // Save by show name or as default
+            var showName = document.getElementById('showName').value.trim() || 'Default';
+            var saved = JSON.parse(localStorage.getItem('sft_lead_calcs') || '{}');
+            saved[showName] = data;
+            localStorage.setItem('sft_lead_calcs', JSON.stringify(saved));
+
+            // Feedback
+            var btn = document.querySelector('.btn-save');
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Saved!';
+            btn.style.background = '#10b981';
+            setTimeout(function() {
+                btn.innerHTML = original;
+                btn.style.background = '';
+            }, 2000);
+        };
+
+        // ========== LOAD FROM LOCALSTORAGE ==========
+        window.loadResults = function() {
+            var saved = JSON.parse(localStorage.getItem('sft_lead_calcs') || '{}');
+            var keys = Object.keys(saved);
+            if (keys.length === 0) {
+                alert('No saved calculations found. Save your current data first.');
+                return;
+            }
+
+            // If multiple saves, let user pick
+            var choice;
+            if (keys.length === 1) {
+                choice = keys[0];
+            } else {
+                var msg = 'Choose a saved calculation:\n\n';
+                for (var i = 0; i < keys.length; i++) {
+                    var d = saved[keys[i]].savedAt ? new Date(saved[keys[i]].savedAt).toLocaleDateString() : '';
+                    msg += (i + 1) + '. ' + keys[i] + (d ? ' (' + d + ')' : '') + '\n';
+                }
+                msg += '\nEnter number:';
+                var input = prompt(msg);
+                if (!input) return;
+                var idx = parseInt(input) - 1;
+                if (idx < 0 || idx >= keys.length) {
+                    alert('Invalid selection.');
+                    return;
+                }
+                choice = keys[idx];
+            }
+
+            var data = saved[choice];
+            var fields = ['showName', 'boothCost', 'travelCost', 'marketingCost', 'staffCost', 'shippingCost', 'miscCost',
+                          'totalLeads', 'hotLeads', 'warmLeads', 'coldLeads', 'meetingsScheduled',
+                          'avgDealSize', 'hotConvRate', 'warmConvRate', 'coldConvRate', 'salesCycle'];
+            for (var i = 0; i < fields.length; i++) {
+                var el = document.getElementById(fields[i]);
+                if (el && data[fields[i]] !== undefined) {
+                    el.value = data[fields[i]];
+                }
+            }
+            calculate();
+
+            // Feedback
+            var btn = document.querySelector('.btn-load');
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Loaded!';
+            btn.style.borderColor = '#10b981';
+            btn.style.color = '#10b981';
+            setTimeout(function() {
+                btn.innerHTML = original;
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 2000);
+        };
+
+        // ========== DOWNLOAD REPORT ==========
+        window.downloadReport = function() {
+            var boothCost = getVal('boothCost');
+            var travelCost = getVal('travelCost');
+            var marketingCost = getVal('marketingCost');
+            var staffCost = getVal('staffCost');
+            var shippingCost = getVal('shippingCost');
+            var miscCost = getVal('miscCost');
+            var totalInvestment = boothCost + travelCost + marketingCost + staffCost + shippingCost + miscCost;
+
+            var totalLeads = getVal('totalLeads');
+            var hotLeads = getVal('hotLeads');
+            var warmLeads = getVal('warmLeads');
+            var coldLeads = getVal('coldLeads');
+            var meetingsScheduled = getVal('meetingsScheduled');
+
+            var avgDealSize = getVal('avgDealSize');
+            var hotConvRate = getVal('hotConvRate') / 100;
+            var warmConvRate = getVal('warmConvRate') / 100;
+            var coldConvRate = getVal('coldConvRate') / 100;
+            var salesCycle = getVal('salesCycle');
+
+            var hotDeals = hotLeads * hotConvRate;
+            var warmDeals = warmLeads * warmConvRate;
+            var coldDeals = coldLeads * coldConvRate;
+            var totalDeals = hotDeals + warmDeals + coldDeals;
+            var hotRevenue = hotDeals * avgDealSize;
+            var warmRevenue = warmDeals * avgDealSize;
+            var coldRevenue = coldDeals * avgDealSize;
+            var totalPipeline = hotRevenue + warmRevenue + coldRevenue;
+
+            var costPerLead = totalLeads > 0 ? totalInvestment / totalLeads : 0;
+            var roiPercent = totalInvestment > 0 ? ((totalPipeline - totalInvestment) / totalInvestment) * 100 : 0;
+
+            var showName = document.getElementById('showName').value.trim() || 'Trade Show';
+            var today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Lead Value Report - ' + showName + '</title>';
+            html += '<style>';
+            html += 'body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;color:#1e293b;max-width:800px;margin:0 auto;padding:40px;line-height:1.6}';
+            html += 'h1{font-size:24px;color:#0f172a;margin-bottom:4px;letter-spacing:-0.5px}';
+            html += 'h2{font-size:18px;color:#0f172a;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid #0a0a0a;letter-spacing:-0.3px}';
+            html += '.subtitle{color:#64748b;font-size:14px;margin-bottom:32px}';
+            html += '.logo{font-size:12px;color:#64748b;margin-bottom:24px}.logo b{color:#0f172a}';
+            html += 'table{width:100%;border-collapse:collapse;margin:12px 0}';
+            html += 'th,td{text-align:left;padding:10px 12px;font-size:14px}';
+            html += 'th{font-weight:600;color:#64748b;font-size:12px;text-transform:uppercase;letter-spacing:0.05em}';
+            html += 'tr{border-bottom:1px solid #e2e8f0}';
+            html += 'td:last-child{text-align:right;font-weight:600}';
+            html += '.total td{font-weight:700;font-size:15px;border-top:2px solid #0f172a;border-bottom:none}';
+            html += '.roi-box{background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:24px;text-align:center;margin:24px 0}';
+            html += '.roi-number{font-size:48px;font-weight:800;letter-spacing:-2px}';
+            html += '.roi-number.pos{color:#10b981}.roi-number.neg{color:#ef4444}';
+            html += '.roi-label{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:#64748b;margin-bottom:8px}';
+            html += '.metrics-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin:20px 0}';
+            html += '.metric{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;text-align:center}';
+            html += '.metric-val{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:2px}';
+            html += '.metric-lbl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.06em}';
+            html += '.footer{margin-top:40px;padding-top:16px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;text-align:center}';
+            html += '@media print{body{padding:20px}.roi-box{break-inside:avoid}}';
+            html += '</style></head><body>';
+            html += '<div class="logo"><b>ShowFloorTips</b> -- Lead Value Report</div>';
+            html += '<h1>' + showName + ' -- Lead Value Report</h1>';
+            html += '<div class="subtitle">Generated on ' + today + '</div>';
+
+            html += '<div class="roi-box">';
+            html += '<div class="roi-label">Expected Return on Investment</div>';
+            html += '<div class="roi-number ' + (roiPercent >= 0 ? 'pos' : 'neg') + '">' + formatPercent(roiPercent) + '</div>';
+            html += '</div>';
+
+            html += '<div class="metrics-grid">';
+            html += '<div class="metric"><div class="metric-val">' + (totalLeads > 0 ? formatCurrency(costPerLead) : 'N/A') + '</div><div class="metric-lbl">Cost per Lead</div></div>';
+            html += '<div class="metric"><div class="metric-val">' + formatCurrency(totalPipeline) + '</div><div class="metric-lbl">Projected Pipeline</div></div>';
+            html += '<div class="metric"><div class="metric-val">' + formatCurrency(totalInvestment) + '</div><div class="metric-lbl">Total Investment</div></div>';
+            html += '<div class="metric"><div class="metric-val">' + totalDeals.toFixed(1) + '</div><div class="metric-lbl">Expected Deals</div></div>';
+            html += '</div>';
+
+            html += '<h2>Investment Breakdown</h2>';
+            html += '<table>';
+            html += '<tr><th>Category</th><th>Amount</th></tr>';
+            html += '<tr><td>Booth Cost</td><td>' + formatCurrency(boothCost) + '</td></tr>';
+            html += '<tr><td>Travel & Lodging</td><td>' + formatCurrency(travelCost) + '</td></tr>';
+            html += '<tr><td>Marketing Materials</td><td>' + formatCurrency(marketingCost) + '</td></tr>';
+            html += '<tr><td>Staff Time</td><td>' + formatCurrency(staffCost) + '</td></tr>';
+            html += '<tr><td>Shipping & Logistics</td><td>' + formatCurrency(shippingCost) + '</td></tr>';
+            html += '<tr><td>Miscellaneous</td><td>' + formatCurrency(miscCost) + '</td></tr>';
+            html += '<tr class="total"><td>Total Investment</td><td>' + formatCurrency(totalInvestment) + '</td></tr>';
+            html += '</table>';
+
+            html += '<h2>Lead Breakdown</h2>';
+            html += '<table>';
+            html += '<tr><th>Lead Type</th><th>Count</th><th>Conv. Rate</th><th>Deals</th><th>Revenue</th></tr>';
+            html += '<tr><td>Hot</td><td>' + hotLeads + '</td><td>' + (hotConvRate * 100).toFixed(0) + '%</td><td>' + hotDeals.toFixed(1) + '</td><td>' + formatCurrency(hotRevenue) + '</td></tr>';
+            html += '<tr><td>Warm</td><td>' + warmLeads + '</td><td>' + (warmConvRate * 100).toFixed(0) + '%</td><td>' + warmDeals.toFixed(1) + '</td><td>' + formatCurrency(warmRevenue) + '</td></tr>';
+            html += '<tr><td>Cold</td><td>' + coldLeads + '</td><td>' + (coldConvRate * 100).toFixed(0) + '%</td><td>' + coldDeals.toFixed(1) + '</td><td>' + formatCurrency(coldRevenue) + '</td></tr>';
+            html += '<tr class="total"><td>Total</td><td>' + (hotLeads + warmLeads + coldLeads) + '</td><td></td><td>' + totalDeals.toFixed(1) + '</td><td>' + formatCurrency(totalPipeline) + '</td></tr>';
+            html += '</table>';
+
+            html += '<h2>Summary</h2>';
+            html += '<table>';
+            html += '<tr><td>Total Leads Captured</td><td>' + totalLeads + '</td></tr>';
+            html += '<tr><td>Meetings Scheduled</td><td>' + meetingsScheduled + '</td></tr>';
+            html += '<tr><td>Cost per Lead</td><td>' + (totalLeads > 0 ? formatCurrency(costPerLead) : 'N/A') + '</td></tr>';
+            html += '<tr><td>Average Deal Size</td><td>' + formatCurrency(avgDealSize) + '</td></tr>';
+            html += '<tr><td>Average Sales Cycle</td><td>' + salesCycle + ' months</td></tr>';
+            html += '<tr><td>Projected Pipeline</td><td>' + formatCurrency(totalPipeline) + '</td></tr>';
+            html += '<tr><td>Net Return</td><td>' + formatCurrency(totalPipeline - totalInvestment) + '</td></tr>';
+            html += '<tr><td>ROI</td><td>' + formatPercent(roiPercent) + '</td></tr>';
+            html += '</table>';
+
+            html += '<div class="footer">';
+            html += 'Generated by ShowFloorTips.com Lead Value Calculator<br>';
+            html += 'Capture more leads at your next show with <a href="https://apps.apple.com/us/app/scannly/id6746970463">Scannly</a>';
+            html += '</div>';
+            html += '</body></html>';
+
+            var blob = new Blob([html], { type: 'text/html' });
+            var url = URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = showName.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-lead-value-report.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        };
+
+        // ========== LOAD FROM URL PARAMS ==========
+        function loadFromURL() {
+            var params = new URLSearchParams(window.location.search);
+            var fields = ['showName', 'boothCost', 'travelCost', 'marketingCost', 'staffCost', 'shippingCost', 'miscCost',
+                          'totalLeads', 'hotLeads', 'warmLeads', 'coldLeads', 'meetingsScheduled',
+                          'avgDealSize', 'hotConvRate', 'warmConvRate', 'coldConvRate', 'salesCycle'];
+            var hasData = false;
+            for (var i = 0; i < fields.length; i++) {
+                var val = params.get(fields[i]);
+                if (val !== null && val !== '') {
+                    var el = document.getElementById(fields[i]);
+                    if (el) {
+                        el.value = val;
+                        hasData = true;
+                    }
+                }
+            }
+            if (hasData) {
+                calculate();
+            }
+        }
+
+        // ========== INIT ==========
+        calculate();
+        loadFromURL();
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show Packing List Generator | ShowFloorTips</title>
+    <meta name="description" content="Free smart packing list generator for trade shows. Get a customized checklist based on your destination, show type, duration, and role. Never forget essential items again.">
+    <meta name="keywords" content="trade show packing list, exhibitor packing checklist, convention packing list, trade show essentials, what to pack for trade show, exhibitor travel checklist">
+
+    <meta property="og:title" content="Trade Show Packing List Generator | ShowFloorTips">
+    <meta property="og:description" content="Get a customized trade show packing list based on your destination, role, and show type. Never forget a thing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/packing-list.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show Packing List Generator | ShowFloorTips">
+    <meta name="twitter:description" content="Get a customized trade show packing list based on your destination, role, and show type. Never forget a thing.">
+
+    <link rel="canonical" href="https://showfloortips.com/packing-list.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Trade Show Packing List Generator",
+        "url": "https://showfloortips.com/packing-list.html",
+        "description": "Free smart packing list generator for trade shows. Get a customized checklist based on your destination city, show duration, role, season, booth type, and special needs.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        },
+        "featureList": [
+            "Customized packing lists by role",
+            "City-specific recommendations",
+            "Weather-aware clothing suggestions",
+            "Booth materials checklist",
+            "Interactive checkboxes with auto-save",
+            "Print and email options",
+            "Amazon product suggestions"
+        ]
+    }
+    </script>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #171717;
+            --accent: #0a0a0a;
+            --accent-hover: #171717;
+            --accent-light: #f5f5f5;
+            --accent-bg: rgba(10, 10, 10, 0.06);
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-dark: #0a0a0a;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --green: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --red: #ef4444;
+            --red-bg: rgba(239, 68, 68, 0.08);
+            --blue: #3b82f6;
+            --blue-bg: rgba(59, 130, 246, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ========== HEADER ========== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: #0a0a0a; }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #525252;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0a0a0a;
+            background: rgba(0,0,0,0.04);
+        }
+
+        .nav-links .nav-cta {
+            background: #0a0a0a;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 8px 20px;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: var(--accent-hover);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #0a0a0a;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: #fafafa;
+            padding: 80px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            color: #0a0a0a;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: #0a0a0a;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #525252;
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ========== FORM SECTION ========== */
+        .generator-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .form-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .form-card > p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .form-group select,
+        .form-group input {
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--bg);
+            transition: all 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+            cursor: pointer;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #0a0a0a;
+            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.06);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #0a0a0a;
+            cursor: pointer;
+        }
+
+        .checkbox-item span {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        .generate-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 32px;
+            background: #0a0a0a;
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .generate-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ========== RESULTS SECTION ========== */
+        .results-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+            display: none;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .results-header h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.8px;
+        }
+
+        .results-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            font-family: inherit;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            border-color: #0a0a0a;
+            color: #0a0a0a;
+            background: #fafafa;
+        }
+
+        .action-btn svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .progress-bar-wrap {
+            background: #f5f5f5;
+            border-radius: 100px;
+            height: 8px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #0a0a0a;
+            border-radius: 100px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* ========== LIST CATEGORIES ========== */
+        .list-category {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .category-header:hover {
+            background: #fafafa;
+        }
+
+        .category-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .category-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.3px;
+        }
+
+        .category-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .category-toggle {
+            font-size: 12px;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+
+        .category-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .category-items {
+            padding: 0 20px 16px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .category-items.collapsed {
+            display: none;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #0a0a0a;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .item-name.checked {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .item-note {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            line-height: 1.4;
+        }
+
+        .item-link {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .item-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            padding: 3px 8px;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+
+        .item-link a:hover {
+            color: #0a0a0a;
+            border-color: #0a0a0a;
+            background: #fafafa;
+        }
+
+        /* ========== SCANNLY CTA ========== */
+        .scannly-cta {
+            max-width: 900px;
+            margin: 0 auto 48px;
+            padding: 0 24px;
+        }
+
+        .scannly-cta-inner {
+            background: #fafafa;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            text-align: center;
+            border: 1px solid #e5e5e5;
+        }
+
+        .scannly-cta-inner h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .scannly-cta-inner p {
+            font-size: 14px;
+            color: #525252;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scannly-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 700;
+            transition: all 0.2s;
+        }
+
+        .scannly-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #fafafa;
+            color: #525252;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0a0a0a;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .footer-brand .logo span { color: #0a0a0a; }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0a0a0a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { list-style: none; }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: #525252;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: #0a0a0a; }
+
+        .footer-bottom {
+            border-top: 1px solid #e5e5e5;
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 900px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                flex-direction: column;
+                padding: 16px 24px;
+                border-top: 1px solid #e5e5e5;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 56px 24px 48px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .generator-section {
+                padding: 32px 16px 64px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .results-section {
+                padding: 0 16px 64px;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .results-actions {
+                width: 100%;
+            }
+
+            .results-actions .action-btn {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            header, footer, .hero, .generator-section,
+            .scannly-cta, .results-actions, .progress-bar-wrap,
+            .progress-text, .mobile-menu-btn, nav,
+            .item-link, .results-meta { display: none !important; }
+
+            .results-section {
+                display: block !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .results-header {
+                margin-bottom: 16px;
+            }
+
+            .results-header h2 {
+                font-size: 20px;
+            }
+
+            body {
+                font-size: 12px;
+                color: #000;
+            }
+
+            .list-category {
+                border: 1px solid #ccc;
+                margin-bottom: 12px;
+                break-inside: avoid;
+            }
+
+            .category-items {
+                display: block !important;
+            }
+
+            .category-items.collapsed {
+                display: block !important;
+            }
+
+            .list-item input[type="checkbox"] {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 14px;
+                height: 14px;
+                border: 1.5px solid #333;
+                border-radius: 2px;
+                position: relative;
+            }
+
+            .list-item input[type="checkbox"]:checked::after {
+                content: '\\2713';
+                position: absolute;
+                top: -2px;
+                left: 1px;
+                font-size: 12px;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                Free Tool
+            </div>
+            <h1>Trade Show Packing List Generator</h1>
+            <p>Get a customized packing list based on your destination, show type, duration, and role. Never forget a thing.</p>
+        </div>
+    </section>
+
+    <!-- Generator Form -->
+    <section class="generator-section">
+        <div class="form-card">
+            <h2>Tell us about your trip</h2>
+            <p>Fill in the details below and we'll generate a personalized packing checklist.</p>
+
+            <div class="form-grid">
+                <!-- Destination City -->
+                <div class="form-group">
+                    <label for="city">Destination City</label>
+                    <select id="city">
+                        <option value="">Select a city...</option>
+                        <optgroup label="United States">
+                            <option value="las-vegas">Las Vegas, NV</option>
+                            <option value="chicago">Chicago, IL</option>
+                            <option value="orlando">Orlando, FL</option>
+                            <option value="nyc">New York City, NY</option>
+                            <option value="anaheim">Anaheim, CA</option>
+                            <option value="san-francisco">San Francisco, CA</option>
+                            <option value="atlanta">Atlanta, GA</option>
+                            <option value="houston">Houston, TX</option>
+                            <option value="dallas">Dallas, TX</option>
+                            <option value="san-diego">San Diego, CA</option>
+                            <option value="miami">Miami, FL</option>
+                            <option value="los-angeles">Los Angeles, CA</option>
+                            <option value="boston">Boston, MA</option>
+                            <option value="nashville">Nashville, TN</option>
+                            <option value="new-orleans">New Orleans, LA</option>
+                            <option value="denver">Denver, CO</option>
+                            <option value="phoenix">Phoenix, AZ</option>
+                            <option value="seattle">Seattle, WA</option>
+                            <option value="washington-dc">Washington, D.C.</option>
+                            <option value="minneapolis">Minneapolis, MN</option>
+                        </optgroup>
+                        <optgroup label="International">
+                            <option value="london">London, UK</option>
+                            <option value="paris">Paris, France</option>
+                            <option value="dubai">Dubai, UAE</option>
+                            <option value="barcelona">Barcelona, Spain</option>
+                            <option value="munich">Munich, Germany</option>
+                            <option value="shanghai">Shanghai, China</option>
+                            <option value="tokyo">Tokyo, Japan</option>
+                            <option value="singapore">Singapore</option>
+                            <option value="toronto">Toronto, Canada</option>
+                            <option value="sao-paulo">Sao Paulo, Brazil</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- Show Duration -->
+                <div class="form-group">
+                    <label for="duration">Show Duration</label>
+                    <select id="duration">
+                        <option value="">Select duration...</option>
+                        <option value="1">1 day</option>
+                        <option value="2-3">2-3 days</option>
+                        <option value="4-5">4-5 days</option>
+                        <option value="7+">1 week+</option>
+                    </select>
+                </div>
+
+                <!-- Your Role -->
+                <div class="form-group">
+                    <label for="role">Your Role</label>
+                    <select id="role">
+                        <option value="">Select your role...</option>
+                        <option value="exhibitor">Exhibitor (with booth)</option>
+                        <option value="attendee">Attendee only</option>
+                        <option value="speaker">Speaker / Presenter</option>
+                        <option value="booth-staff">Booth Staff</option>
+                    </select>
+                </div>
+
+                <!-- Season/Weather -->
+                <div class="form-group">
+                    <label for="season">Season / Weather</label>
+                    <select id="season">
+                        <option value="">Select season...</option>
+                        <option value="spring">Spring (Mar-May)</option>
+                        <option value="summer">Summer (Jun-Aug)</option>
+                        <option value="fall">Fall (Sep-Nov)</option>
+                        <option value="winter">Winter (Dec-Feb)</option>
+                    </select>
+                </div>
+
+                <!-- Booth Type -->
+                <div class="form-group">
+                    <label for="booth">Booth Type</label>
+                    <select id="booth">
+                        <option value="none">No booth</option>
+                        <option value="tabletop">Tabletop (6ft)</option>
+                        <option value="standard">Standard (10x10)</option>
+                        <option value="large">Large (10x20+)</option>
+                        <option value="island">Island booth</option>
+                    </select>
+                </div>
+
+                <!-- Special Needs -->
+                <div class="form-group full-width">
+                    <label>Special Needs</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-intl" value="international">
+                            <span>International travel</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-demo" value="demo">
+                            <span>Demo equipment</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-samples" value="samples">
+                            <span>Product samples</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-formal" value="formal">
+                            <span>Formal events</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-golf" value="golf">
+                            <span>Golf / networking events</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="need-media" value="media">
+                            <span>Media / press interviews</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="generate-btn" onclick="generateList()">
+                Generate My Packing List
+            </button>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results">
+        <div class="results-header">
+            <div>
+                <h2 id="results-title">Your Packing List</h2>
+                <div class="results-meta" id="results-meta"></div>
+            </div>
+            <div class="results-actions">
+                <button class="action-btn" onclick="printList()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Print List
+                </button>
+                <button class="action-btn" onclick="emailList()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email List
+                </button>
+                <button class="action-btn" onclick="clearAllChecks()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-text" id="progress-text">0 of 0 items packed</div>
+        <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="progress-bar"></div>
+        </div>
+
+        <div id="list-container"></div>
+    </section>
+
+    <!-- Scannly CTA -->
+    <div class="scannly-cta">
+        <div class="scannly-cta-inner">
+            <h3>Capture Every Lead at Your Next Show</h3>
+            <p>The average exhibitor misses 40% of booth visitors. Scannly's QR-based lead capture ensures every contact is logged instantly and synced to your CRM.</p>
+            <a href="https://apps.apple.com/us/app/scannly/id6746970463" class="scannly-btn" target="_blank" rel="noopener">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download Scannly on App Store
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/news.html">Industry News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/scannly.html">About Scannly</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* =====================================================
+           DATA: City Tips, Amazon Links, Packing Items
+           ===================================================== */
+
+        const AFFILIATE_TAG = 'showfloortips-20';
+
+        const amazonLinks = {
+            'power-bank':       { name: 'Anker 10000mAh Power Bank',     url: 'https://www.amazon.com/dp/B0B9R43MY5?tag=' + AFFILIATE_TAG },
+            'luggage':          { name: 'Travelpro Carry-On Spinner',    url: 'https://www.amazon.com/dp/B0CZG7B64M?tag=' + AFFILIATE_TAG },
+            'packing-cubes':    { name: 'Packing Cubes (6-Set)',         url: 'https://www.amazon.com/dp/B014VBIEWC?tag=' + AFFILIATE_TAG },
+            'power-strip':      { name: 'Travel Power Strip w/ USB',     url: 'https://www.amazon.com/dp/B0C7CSYRPF?tag=' + AFFILIATE_TAG },
+            'insoles':          { name: 'Dr. Scholl\'s Insoles',         url: 'https://www.amazon.com/dp/B07JN4Z4ZT?tag=' + AFFILIATE_TAG },
+            'wrinkle-spray':    { name: 'Downy Wrinkle Releaser',        url: 'https://www.amazon.com/dp/B07BGZPFK9?tag=' + AFFILIATE_TAG },
+            'usb-hub':          { name: 'USB-C Hub Adapter',             url: 'https://www.amazon.com/dp/B07WPTG6NN?tag=' + AFFILIATE_TAG },
+            'clicker':          { name: 'Logitech Presenter Remote',     url: 'https://www.amazon.com/dp/B00B6MODOA?tag=' + AFFILIATE_TAG },
+            'business-card-holder': { name: 'Leather Card Holder',       url: 'https://www.amazon.com/dp/B076BRT1JN?tag=' + AFFILIATE_TAG },
+            'gaffer-tape':      { name: 'Gaffer Tape (Black)',           url: 'https://www.amazon.com/dp/B00GZE3UJ4?tag=' + AFFILIATE_TAG },
+            'zip-ties':         { name: 'Cable Zip Ties (200-Pack)',     url: 'https://www.amazon.com/dp/B0BVNP4W31?tag=' + AFFILIATE_TAG },
+            'hand-sanitizer':   { name: 'Purell Travel Size (6-Pack)',   url: 'https://www.amazon.com/dp/B00BQ8RHR2?tag=' + AFFILIATE_TAG },
+            'throat-lozenges':  { name: 'Ricola Throat Drops',           url: 'https://www.amazon.com/dp/B09NCDHGMN?tag=' + AFFILIATE_TAG },
+            'sunscreen':        { name: 'Neutrogena SPF 50 Travel',     url: 'https://www.amazon.com/dp/B004D282D8?tag=' + AFFILIATE_TAG },
+            'umbrella':         { name: 'Compact Travel Umbrella',       url: 'https://www.amazon.com/dp/B0160HYB8S?tag=' + AFFILIATE_TAG },
+            'lip-balm':         { name: 'Burt\'s Bees Lip Balm',        url: 'https://www.amazon.com/dp/B0054LHI5A?tag=' + AFFILIATE_TAG },
+            'portable-wifi':    { name: 'GlocalMe Portable Wi-Fi',      url: 'https://www.amazon.com/dp/B0BHXLMP42?tag=' + AFFILIATE_TAG },
+            'dopp-kit':         { name: 'Toiletry Bag',                  url: 'https://www.amazon.com/dp/B01LXPN6T0?tag=' + AFFILIATE_TAG },
+            'eye-mask':         { name: 'Sleep Eye Mask',                url: 'https://www.amazon.com/dp/B078L64BFC?tag=' + AFFILIATE_TAG },
+            'compression-socks':{ name: 'Compression Socks (3-Pack)',    url: 'https://www.amazon.com/dp/B0CMT7KL2V?tag=' + AFFILIATE_TAG },
+            'banner-stand':     { name: 'Retractable Banner Stand',      url: 'https://www.amazon.com/dp/B0CYD7LF8R?tag=' + AFFILIATE_TAG },
+            'tablecloth':       { name: 'Trade Show Tablecloth 6ft',     url: 'https://www.amazon.com/dp/B08JG5PNYZ?tag=' + AFFILIATE_TAG },
+            'led-lights':       { name: 'Booth LED Spot Lights',         url: 'https://www.amazon.com/dp/B08T5ZPP6D?tag=' + AFFILIATE_TAG },
+            'multi-tool':       { name: 'Leatherman Pocket Multi-Tool',  url: 'https://www.amazon.com/dp/B09MJ9GSXD?tag=' + AFFILIATE_TAG },
+        };
+
+        const cityTips = {
+            'las-vegas': {
+                name: 'Las Vegas',
+                tips: [
+                    { item: 'Sunscreen (SPF 50+)', note: 'Desert sun is brutal, even for short walks between venues', affiliate: 'sunscreen' },
+                    { item: 'Lip balm with SPF', note: 'Extremely dry climate dehydrates lips fast', affiliate: 'lip-balm' },
+                    { item: 'Comfortable walking shoes', note: 'Convention centers and casinos mean 15,000+ steps/day', affiliate: 'insoles' },
+                    { item: 'Refillable water bottle', note: 'Stay hydrated - the dry air and AC compound dehydration' },
+                    { item: 'Light layers for aggressive AC', note: 'Convention halls are kept very cold despite desert heat' },
+                    { item: 'Cash for tips', note: 'Vegas service culture expects gratuities everywhere' },
+                    { item: 'Eye drops', note: 'Dry desert air and smoke in casinos irritate eyes' },
+                ],
+                seasonNote: { summer: 'Temps exceed 110F - minimize outdoor time. Carry water everywhere.', winter: 'Desert nights drop to 30-40F. Bring a warm jacket for evening outings.' }
+            },
+            'chicago': {
+                name: 'Chicago',
+                tips: [
+                    { item: 'Layerable clothing', note: 'Lake Michigan creates unpredictable microclimates downtown' },
+                    { item: 'Windproof jacket', note: 'The "Windy City" earns its name, especially near McCormick Place' },
+                    { item: 'Compact umbrella', note: 'Rain can hit suddenly any time of year', affiliate: 'umbrella' },
+                    { item: 'Warm scarf or buff (fall/winter)', note: 'Wind chill makes temperatures feel 10-20 degrees colder' },
+                    { item: 'Ventra card / transit app', note: 'L train is the best way to get around; avoid cab surge pricing' },
+                ],
+                seasonNote: { winter: 'Wind chill can reach -20F. Pack heavy coat, thermal layers, hat, and gloves.', summer: 'Humid highs near 90F. Pack light, breathable fabrics.' }
+            },
+            'orlando': {
+                name: 'Orlando',
+                tips: [
+                    { item: 'Sunscreen', note: 'Florida sun is strong even in winter months', affiliate: 'sunscreen' },
+                    { item: 'Rain jacket or compact umbrella', note: 'Afternoon thunderstorms are nearly daily May through October', affiliate: 'umbrella' },
+                    { item: 'Comfortable walking shoes', note: 'Orange County Convention Center is massive - lots of walking', affiliate: 'insoles' },
+                    { item: 'Bug spray', note: 'Mosquitoes are active year-round in Florida' },
+                    { item: 'Light, breathable clothing', note: 'High humidity makes even mild temps feel warmer' },
+                ],
+                seasonNote: { summer: 'Expect 95F+ with extreme humidity. Daily afternoon storms. Bring moisture-wicking clothing.', winter: 'Mild 60-75F but bring a light jacket for cool mornings.' }
+            },
+            'nyc': {
+                name: 'New York City',
+                tips: [
+                    { item: 'Compact umbrella', note: 'NYC weather changes quickly - always have one handy', affiliate: 'umbrella' },
+                    { item: 'Comfortable walking shoes', note: 'You will walk significantly more than you expect', affiliate: 'insoles' },
+                    { item: 'MetroCard / OMNY-ready payment', note: 'Subway is fastest transport. Tap-to-pay works on all turnstiles.' },
+                    { item: 'Backpack (not rolling bag)', note: 'Stairs everywhere - subway, buildings, walkups' },
+                    { item: 'Layers', note: 'Indoor/outdoor temperature swings are dramatic' },
+                ],
+                seasonNote: { winter: 'Pack heavy coat, scarf, gloves. Wind tunnels between buildings feel arctic.', summer: 'Hot and humid. Subway platforms are even hotter. Pack light fabrics.' }
+            },
+            'anaheim': {
+                name: 'Anaheim',
+                tips: [
+                    { item: 'Sunscreen', note: 'Southern California sun is strong year-round', affiliate: 'sunscreen' },
+                    { item: 'Light layers', note: 'Warm days but convention centers are heavily air conditioned' },
+                    { item: 'Car/rideshare budget', note: 'Public transit is limited - plan for Uber/Lyft costs' },
+                    { item: 'Comfortable shoes', note: 'Anaheim Convention Center campus sprawls across multiple halls' },
+                ],
+                seasonNote: { summer: 'Dry heat, 85-100F. Sunscreen and hydration essential.', winter: 'Mild 60-70F. Light jacket for evenings.' }
+            },
+            'san-francisco': {
+                name: 'San Francisco',
+                tips: [
+                    { item: 'Layerable clothing (essential)', note: 'Microclimates mean 20-degree temp swings in a few blocks' },
+                    { item: 'Light jacket or fleece', note: '"The coldest winter I ever spent was a summer in San Francisco"' },
+                    { item: 'Comfortable walking shoes', note: 'Steep hills are unavoidable downtown', affiliate: 'insoles' },
+                    { item: 'Clipper card / transit app', note: 'BART + Muni are efficient for getting around' },
+                ],
+                seasonNote: { summer: 'Famously foggy and cool (55-65F). Bring warm layers.', winter: 'Rainy season. Pack waterproof jacket and layers.' }
+            },
+            'atlanta': {
+                name: 'Atlanta',
+                tips: [
+                    { item: 'Light, breathable clothing', note: 'Southern humidity is significant most of the year' },
+                    { item: 'Umbrella', note: 'Rain is common and often sudden', affiliate: 'umbrella' },
+                    { item: 'MARTA pass', note: 'Transit connects airport to downtown convention areas' },
+                    { item: 'Comfortable shoes', note: 'Georgia World Congress Center is one of the largest in the US' },
+                ],
+                seasonNote: { summer: 'Oppressive heat and humidity (90F+). Moisture-wicking clothing is essential.', winter: 'Mild but can dip to 30s. Bring a medium-weight jacket.' }
+            },
+            'houston': {
+                name: 'Houston',
+                tips: [
+                    { item: 'Light, moisture-wicking clothing', note: 'Houston humidity is legendary' },
+                    { item: 'Umbrella', note: 'Sudden downpours happen frequently', affiliate: 'umbrella' },
+                    { item: 'Car/rideshare plan', note: 'Houston is very spread out with limited walkability' },
+                    { item: 'Sunscreen', note: 'Texas sun is strong even on cloudy days', affiliate: 'sunscreen' },
+                ],
+                seasonNote: { summer: 'Extreme heat and humidity (95F+). Limit outdoor time. Hydrate aggressively.', winter: 'Mild 50-65F but occasional cold fronts can drop temps sharply.' }
+            },
+            'dallas': {
+                name: 'Dallas',
+                tips: [
+                    { item: 'Layers (weather is unpredictable)', note: 'Dallas weather can change 30+ degrees in a single day' },
+                    { item: 'Sunscreen', note: 'Texas sun is fierce in warm months', affiliate: 'sunscreen' },
+                    { item: 'Car/rideshare plan', note: 'Limited walkability between venues and hotels' },
+                    { item: 'Business casual mindset', note: 'Dallas convention culture tends slightly dressier' },
+                ],
+                seasonNote: { summer: 'Very hot (100F+). Stay indoors when possible.', winter: 'Usually mild but ice storms can occur. Pack backup warm layers.' }
+            },
+            'san-diego': {
+                name: 'San Diego',
+                tips: [
+                    { item: 'Sunscreen', note: 'Perfect weather means sun exposure all day', affiliate: 'sunscreen' },
+                    { item: 'Light layers', note: 'Evenings cool down near the coast' },
+                    { item: 'Comfortable shoes', note: 'Gaslamp Quarter is very walkable from convention center' },
+                    { item: 'Casual attire welcome', note: 'San Diego vibe is relaxed compared to most convention cities' },
+                ],
+                seasonNote: { summer: '75-85F, mostly sunny. Bring sunglasses and sunscreen.', winter: '55-65F. Light jacket for mornings and evenings.' }
+            },
+            'miami': {
+                name: 'Miami',
+                tips: [
+                    { item: 'Sunscreen (high SPF)', note: 'Tropical sun plus humidity accelerates burns', affiliate: 'sunscreen' },
+                    { item: 'Light, breathable fabrics', note: 'Heat and humidity are intense most of the year' },
+                    { item: 'Rain jacket', note: 'Tropical rain showers are frequent and sudden', affiliate: 'umbrella' },
+                    { item: 'Smart casual for evening events', note: 'Miami nightlife culture trends dressy' },
+                    { item: 'Bug spray', note: 'Mosquitoes are aggressive, especially near water' },
+                ],
+                seasonNote: { summer: 'Hot, humid, daily storms (90F+). Carry umbrella always.', winter: 'Pleasant 70-80F. Best time to visit.' }
+            },
+            'los-angeles': {
+                name: 'Los Angeles',
+                tips: [
+                    { item: 'Sunscreen', note: 'LA sun is deceptively strong', affiliate: 'sunscreen' },
+                    { item: 'Car/rideshare plan', note: 'Public transit is limited for convention areas - budget for rides' },
+                    { item: 'Layers', note: 'Warm days, cool evenings, freezing convention halls' },
+                    { item: 'Casual business attire', note: 'LA convention culture is more relaxed' },
+                ],
+                seasonNote: { summer: 'Hot and dry, 85-100F. Sunscreen essential.', winter: 'Mild 55-70F with occasional rain.' }
+            },
+            'boston': {
+                name: 'Boston',
+                tips: [
+                    { item: 'Layers (essential)', note: 'New England weather changes by the hour' },
+                    { item: 'Comfortable walking shoes', note: 'Brick sidewalks and cobblestone streets are uneven', affiliate: 'insoles' },
+                    { item: 'Umbrella', note: 'Rain is possible any day of the year', affiliate: 'umbrella' },
+                    { item: 'Charlie Card / transit app', note: 'The T (subway) is best for getting around' },
+                ],
+                seasonNote: { winter: 'Cold and snowy (20-35F). Insulated waterproof boots recommended.', summer: 'Warm and humid (80-90F). Lighter layers.' }
+            },
+            'nashville': {
+                name: 'Nashville',
+                tips: [
+                    { item: 'Comfortable shoes', note: 'Broadway and convention center areas are very walkable' },
+                    { item: 'Layers', note: 'Nashville weather shifts rapidly between warm and cool' },
+                    { item: 'Casual smart attire', note: 'Nashville blends business and Southern charm' },
+                    { item: 'Umbrella', note: 'Rain is common year-round', affiliate: 'umbrella' },
+                ],
+                seasonNote: { summer: 'Hot and humid (90F+). Moisture-wicking fabrics recommended.', winter: 'Cool to cold (30-50F). Pack a warm jacket.' }
+            },
+            'new-orleans': {
+                name: 'New Orleans',
+                tips: [
+                    { item: 'Lightweight breathable clothing', note: 'Humidity is always high in New Orleans' },
+                    { item: 'Comfortable walking shoes', note: 'French Quarter sidewalks are uneven and you will walk a lot' },
+                    { item: 'Umbrella', note: 'Afternoon showers are nearly daily in warm months', affiliate: 'umbrella' },
+                    { item: 'Bug spray', note: 'Mosquitoes thrive in the bayou climate' },
+                ],
+                seasonNote: { summer: 'Oppressive heat and humidity (95F+). Limit outdoor walking midday.', winter: 'Mild 50-65F. Perfect trade show weather with light jacket.' }
+            },
+            'denver': {
+                name: 'Denver',
+                tips: [
+                    { item: 'Lip balm and moisturizer', note: 'High altitude = extremely dry air', affiliate: 'lip-balm' },
+                    { item: 'Refillable water bottle', note: 'You need more water at altitude - drink more than usual' },
+                    { item: 'Sunscreen', note: 'UV rays are stronger at 5,280ft elevation', affiliate: 'sunscreen' },
+                    { item: 'Layers', note: 'Weather can swing 40 degrees in a day' },
+                ],
+                seasonNote: { winter: 'Cold and snowy (15-45F). Warm layers essential but sun still shines often.', summer: 'Dry heat (85-95F). Intense sun. Hydrate aggressively.' }
+            },
+            'phoenix': {
+                name: 'Phoenix',
+                tips: [
+                    { item: 'Sunscreen (high SPF)', note: 'Desert sun is extreme - reapply frequently', affiliate: 'sunscreen' },
+                    { item: 'Refillable water bottle', note: 'Dehydration risk is very real in Arizona dry heat' },
+                    { item: 'Lip balm', note: 'Dry air will crack lips quickly', affiliate: 'lip-balm' },
+                    { item: 'Light layers for indoors', note: 'AC is aggressive everywhere to counter the heat' },
+                ],
+                seasonNote: { summer: 'Extreme heat (110F+). Minimize outdoor time. Hydrate constantly.', winter: 'Perfect weather (60-75F). Light layers for evening.' }
+            },
+            'seattle': {
+                name: 'Seattle',
+                tips: [
+                    { item: 'Waterproof jacket (not umbrella)', note: 'Seattle rain is a constant drizzle - locals don\'t use umbrellas' },
+                    { item: 'Layers', note: 'Temps are mild but highly variable' },
+                    { item: 'Comfortable waterproof shoes', note: 'Wet sidewalks are the norm October through May' },
+                    { item: 'ORCA card / transit app', note: 'Light rail and buses are excellent' },
+                ],
+                seasonNote: { winter: 'Cold and perpetually drizzly (35-45F). Waterproof everything.', summer: 'Gorgeous 70-80F. Seattle\'s best-kept secret. Light layers for evening.' }
+            },
+            'washington-dc': {
+                name: 'Washington, D.C.',
+                tips: [
+                    { item: 'Business professional attire', note: 'D.C. conventions tend to be dressier than most cities' },
+                    { item: 'Comfortable walking shoes', note: 'National Mall area and Metro involve lots of walking', affiliate: 'insoles' },
+                    { item: 'SmarTrip card', note: 'Metro is the best way to navigate the city' },
+                    { item: 'Umbrella', note: 'D.C. gets rain year-round', affiliate: 'umbrella' },
+                ],
+                seasonNote: { summer: 'Very hot and humid (90F+). Former swampland. Hydrate and dress light.', winter: 'Cold (25-45F) with occasional snow. Warm coat needed.' }
+            },
+            'minneapolis': {
+                name: 'Minneapolis',
+                tips: [
+                    { item: 'Skyway map (downloaded)', note: 'Minneapolis skyway system connects 80 blocks - walk indoors' },
+                    { item: 'Heavy winter gear (Oct-Apr)', note: 'Minnesota winters are among the coldest in the US' },
+                    { item: 'Layers', note: 'Indoor venues are warm; outdoor temps vary dramatically by season' },
+                    { item: 'Comfortable shoes', note: 'Minneapolis Convention Center is large and walkable' },
+                ],
+                seasonNote: { winter: 'Bitter cold (-10 to 25F). Heavy coat, hat, gloves, boots essential.', summer: 'Pleasant 75-85F. Enjoy the lakes!' }
+            },
+            'london': {
+                name: 'London',
+                tips: [
+                    { item: 'Waterproof jacket', note: 'London drizzle is near-constant; compact umbrella as backup', affiliate: 'umbrella' },
+                    { item: 'Oyster card or contactless payment', note: 'Tube + buses are excellent and far cheaper than taxis' },
+                    { item: 'UK power adapter (Type G)', note: 'British plugs are different from EU and US' },
+                    { item: 'Comfortable walking shoes', note: 'London exhibitions at ExCeL and Olympia involve extensive walking' },
+                    { item: 'Slightly dressier attire', note: 'UK business culture trends more formal than US' },
+                ],
+                seasonNote: { summer: 'Mild 60-75F. Rare hot spells. Always pack a rain layer.', winter: 'Cold and damp (35-45F). Layer up and waterproof.' }
+            },
+            'paris': {
+                name: 'Paris',
+                tips: [
+                    { item: 'EU power adapter (Type C/E)', note: 'French plugs differ from UK and US standards' },
+                    { item: 'Comfortable stylish shoes', note: 'Parisians walk everywhere; cobblestones are hard on shoes' },
+                    { item: 'Navigo Easy card', note: 'Metro system is efficient and covers all exhibition venues' },
+                    { item: 'Smart casual attire', note: 'French business culture appreciates polished presentation' },
+                    { item: 'Light scarf', note: 'Versatile for warmth, style, and sudden weather changes' },
+                ],
+                seasonNote: { summer: 'Warm 70-85F. Light layers. AC is not universal in France.', winter: 'Cold and gray (35-45F). Warm coat and waterproof shoes.' }
+            },
+            'dubai': {
+                name: 'Dubai',
+                tips: [
+                    { item: 'Modest clothing options', note: 'Respectful dress is appreciated in public spaces outside hotels' },
+                    { item: 'Very light breathable fabrics', note: 'Heat is extreme; you will move between AC and outdoor heat' },
+                    { item: 'Sunscreen (extreme SPF)', note: 'Desert sun at sea level is incredibly intense', affiliate: 'sunscreen' },
+                    { item: 'UAE power adapter (Type G)', note: 'Same plug style as UK' },
+                    { item: 'Refillable water bottle', note: 'Staying hydrated is critical in desert climate' },
+                    { item: 'Light cardigan for indoors', note: 'AC in Dubai is extremely cold compared to outdoor temps' },
+                ],
+                seasonNote: { summer: 'Extreme heat (110F+) with high humidity. Minimize outdoor time.', winter: 'Perfect 70-85F. Best time for trade shows in Dubai.' }
+            },
+            'barcelona': {
+                name: 'Barcelona',
+                tips: [
+                    { item: 'EU power adapter (Type C/F)', note: 'Spanish outlets differ from US and UK' },
+                    { item: 'Anti-theft bag/wallet', note: 'Pickpocketing is common in tourist/convention areas' },
+                    { item: 'Comfortable walking shoes', note: 'Fira Barcelona campuses involve significant walking' },
+                    { item: 'T-Casual transit card', note: 'Metro is excellent for reaching Fira Gran Via' },
+                    { item: 'Business casual attire', note: 'Spanish business culture is slightly relaxed but polished' },
+                ],
+                seasonNote: { summer: 'Hot and Mediterranean humid (85-95F). Light fabrics essential.', winter: 'Mild 45-60F. Light jacket sufficient most days.' }
+            },
+            'munich': {
+                name: 'Munich',
+                tips: [
+                    { item: 'EU power adapter (Type C/F)', note: 'German outlets differ from US and UK' },
+                    { item: 'Comfortable shoes for Messe Munchen', note: 'Exhibition grounds are extensive with long walks between halls' },
+                    { item: 'Cash (Euros)', note: 'Germany is more cash-friendly than other EU countries' },
+                    { item: 'Warm layers', note: 'Munich is colder than most German cities due to alpine proximity' },
+                ],
+                seasonNote: { summer: 'Warm 70-85F. Afternoon thunderstorms possible.', winter: 'Cold and snowy (25-40F). Warm coat and waterproof boots.' }
+            },
+            'shanghai': {
+                name: 'Shanghai',
+                tips: [
+                    { item: 'VPN app (pre-installed)', note: 'Google, Gmail, WhatsApp are blocked. Install VPN before arrival.' },
+                    { item: 'WeChat app (essential)', note: 'Used for communication, payments, and business contacts in China' },
+                    { item: 'Chinese power adapter', note: 'Type A/C/I plugs used. Universal adapter recommended.' },
+                    { item: 'Business cards (bilingual)', note: 'Card exchange culture is formal. Have Chinese translation on back.' },
+                    { item: 'Cash + WeChat Pay setup', note: 'Many places don\'t accept international credit cards' },
+                ],
+                seasonNote: { summer: 'Very hot and humid (90-100F). Rain season June-July.', winter: 'Cold and damp (30-45F). No central heating in many buildings.' }
+            },
+            'tokyo': {
+                name: 'Tokyo',
+                tips: [
+                    { item: 'Pocket Wi-Fi rental or eSIM', note: 'English signage is limited outside convention areas', affiliate: 'portable-wifi' },
+                    { item: 'Cash (Yen)', note: 'Many businesses, especially small restaurants, are cash-only' },
+                    { item: 'Business cards (bilingual)', note: 'Meishi exchange is a formal ritual. Present with both hands.' },
+                    { item: 'IC card (Suica/Pasmo)', note: 'Essential for trains and accepted at many convenience stores' },
+                    { item: 'Slip-on shoes', note: 'You may need to remove shoes at some venues and restaurants' },
+                    { item: 'Compact umbrella', note: 'Rain is common, especially during rainy season (June-July)', affiliate: 'umbrella' },
+                ],
+                seasonNote: { summer: 'Hot and very humid (85-95F). Rainy season in June.', winter: 'Cold and dry (35-50F). Layers and warm coat needed.' }
+            },
+            'singapore': {
+                name: 'Singapore',
+                tips: [
+                    { item: 'Light breathable clothing', note: 'Tropical heat and humidity year-round (85-95F)' },
+                    { item: 'Compact umbrella', note: 'Daily tropical downpours are normal', affiliate: 'umbrella' },
+                    { item: 'Power adapter (Type G)', note: 'Same as UK plugs' },
+                    { item: 'EZ-Link card', note: 'MRT system is world-class and connects all convention venues' },
+                    { item: 'Light cardigan for indoors', note: 'Singapore cranks the AC to arctic levels indoors' },
+                ],
+                seasonNote: { summer: 'Hot and humid year-round (85-95F). No real seasons.', winter: 'Hot and humid year-round (85-95F). Monsoon season Nov-Jan.' }
+            },
+            'toronto': {
+                name: 'Toronto',
+                tips: [
+                    { item: 'PRESTO card', note: 'TTC subway and streetcars are efficient' },
+                    { item: 'PATH map', note: 'Underground walkway system connects convention center to downtown' },
+                    { item: 'Layers (essential)', note: 'Temperature swings are dramatic, especially spring and fall' },
+                    { item: 'Comfortable walking shoes', note: 'Metro Toronto Convention Centre is downtown and walkable' },
+                ],
+                seasonNote: { winter: 'Very cold (-5 to 30F). Heavy winter gear essential.', summer: 'Warm and humid (75-85F). Light layers.' }
+            },
+            'sao-paulo': {
+                name: 'Sao Paulo',
+                tips: [
+                    { item: 'Portuguese phrasebook or translation app', note: 'English is not widely spoken outside business settings' },
+                    { item: 'Anti-theft bag', note: 'Keep valuables secure, especially in transit areas' },
+                    { item: 'Umbrella', note: 'Afternoon storms are common in warm months', affiliate: 'umbrella' },
+                    { item: 'Brazilian power adapter (Type N)', note: 'Unique to Brazil - not compatible with US, EU, or UK plugs' },
+                    { item: 'Cash (Reais)', note: 'Credit cards widely accepted but carry cash for taxis and small vendors' },
+                ],
+                seasonNote: { summer: 'Hot and rainy (85-95F). Daily afternoon storms Dec-Mar.', winter: 'Mild and dry (55-70F). Pleasant for conventions.' }
+            }
+        };
+
+        /* =====================================================
+           HELPER: Determine if city is international
+           ===================================================== */
+        const intlCities = ['london','paris','dubai','barcelona','munich','shanghai','tokyo','singapore','toronto','sao-paulo'];
+
+        function isInternational(city) {
+            return intlCities.includes(city);
+        }
+
+        /* =====================================================
+           AUTO-SUGGEST SEASON BASED ON CITY + CURRENT MONTH
+           ===================================================== */
+        const citySelect = document.getElementById('city');
+        const seasonSelect = document.getElementById('season');
+
+        citySelect.addEventListener('change', function() {
+            const city = this.value;
+            if (!city) return;
+
+            // Auto-suggest season based on current month
+            const month = new Date().getMonth(); // 0-indexed
+            let suggestedSeason = '';
+            if (month >= 2 && month <= 4) suggestedSeason = 'spring';
+            else if (month >= 5 && month <= 7) suggestedSeason = 'summer';
+            else if (month >= 8 && month <= 10) suggestedSeason = 'fall';
+            else suggestedSeason = 'winter';
+
+            // For southern hemisphere, flip seasons
+            if (['sao-paulo'].includes(city)) {
+                const flipMap = { spring: 'fall', summer: 'winter', fall: 'spring', winter: 'summer' };
+                suggestedSeason = flipMap[suggestedSeason];
+            }
+
+            // For tropical cities, default to the closest
+            if (['singapore','dubai'].includes(city) && (suggestedSeason === 'spring' || suggestedSeason === 'fall')) {
+                suggestedSeason = 'summer'; // Tropical cities are always warm
+            }
+
+            if (!seasonSelect.value) {
+                seasonSelect.value = suggestedSeason;
+            }
+
+            // Auto-check international if needed
+            if (isInternational(city)) {
+                document.getElementById('need-intl').checked = true;
+            }
+        });
+
+        /* =====================================================
+           GENERATE LIST
+           ===================================================== */
+        window.generateList = function() {
+            const city = document.getElementById('city').value;
+            const duration = document.getElementById('duration').value;
+            const role = document.getElementById('role').value;
+            const season = document.getElementById('season').value;
+            const booth = document.getElementById('booth').value;
+
+            if (!city || !duration || !role || !season) {
+                // Highlight missing fields
+                ['city','duration','role','season'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (!el.value) {
+                        el.style.borderColor = '#ef4444';
+                        el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.1)';
+                        setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2000);
+                    }
+                });
+                return;
+            }
+
+            const needIntl = document.getElementById('need-intl').checked;
+            const needDemo = document.getElementById('need-demo').checked;
+            const needSamples = document.getElementById('need-samples').checked;
+            const needFormal = document.getElementById('need-formal').checked;
+            const needGolf = document.getElementById('need-golf').checked;
+            const needMedia = document.getElementById('need-media').checked;
+
+            const hasBooth = booth !== 'none';
+            const isExhibitor = role === 'exhibitor' || role === 'booth-staff';
+            const isSpeaker = role === 'speaker';
+
+            // Determine clothing count
+            let clothingDays;
+            if (duration === '1') clothingDays = 1;
+            else if (duration === '2-3') clothingDays = 3;
+            else if (duration === '4-5') clothingDays = 5;
+            else clothingDays = 7;
+
+            // Determine business card qty
+            let cardQty;
+            if (duration === '1') cardQty = '50-100';
+            else if (duration === '2-3') cardQty = '100-200';
+            else if (duration === '4-5') cardQty = '200-300';
+            else cardQty = '300-500';
+
+            // Build categories
+            const categories = [];
+
+            // ---- ESSENTIAL DOCUMENTS ----
+            const docs = [
+                { item: 'Business cards (' + cardQty + ')', note: 'More than you think you need - you will run out otherwise', affiliate: 'business-card-holder' },
+                { item: 'Show registration confirmation', note: 'Screenshot or printout - don\'t rely on Wi-Fi at registration' },
+                { item: 'Hotel confirmation', note: 'Print or screenshot with confirmation number' },
+                { item: 'Flight details / itinerary', note: 'Boarding passes, airline app, or printouts' },
+                { item: 'Government-issued ID', note: 'Required for flights and some show badge pickups' },
+            ];
+
+            if (needIntl || isInternational(city)) {
+                docs.push({ item: 'Passport (check expiration: 6+ months)', note: 'Many countries require 6 months validity beyond travel dates' });
+                docs.push({ item: 'Visa (if required)', note: 'Check entry requirements for your nationality well in advance' });
+                docs.push({ item: 'Travel insurance documents', note: 'Medical coverage abroad can save thousands in emergencies' });
+                docs.push({ item: 'Copy of passport (separate from original)', note: 'Keep a photo on your phone and a printed copy in a different bag' });
+                docs.push({ item: 'International health card / vaccinations', note: 'Some countries require proof of specific vaccinations' });
+            }
+
+            docs.push({ item: 'Expense report forms / receipts envelope', note: 'Track spending from day one to make reimbursement painless' });
+            docs.push({ item: 'Company credit card', note: 'Confirm card works internationally if traveling abroad' });
+
+            if (hasBooth) {
+                docs.push({ item: 'Booth assignment / floor plan', note: 'Know your booth number, hall, and nearest entrance' });
+                docs.push({ item: 'Exhibitor service kit / drayage info', note: 'Deadlines, contact numbers, and order confirmations' });
+                docs.push({ item: 'Shipping tracking numbers', note: 'For all crates and boxes shipped to the venue' });
+            }
+
+            if (isSpeaker) {
+                docs.push({ item: 'Speaker confirmation / schedule', note: 'Session time, room number, AV contact info' });
+                docs.push({ item: 'Presentation slides (USB + cloud backup)', note: 'Never rely on a single copy - email yourself a backup too' });
+            }
+
+            categories.push({ title: 'Essential Documents', icon: '\uD83D\uDCC4', items: docs });
+
+            // ---- BOOTH MATERIALS ----
+            if (hasBooth) {
+                const boothItems = [];
+
+                if (booth === 'tabletop') {
+                    boothItems.push({ item: 'Tabletop display / banner', note: '6ft table displays, retractable banner stands', affiliate: 'banner-stand' });
+                    boothItems.push({ item: 'Tablecloth (branded if possible)', note: 'Fitted 6ft cloth looks much more professional than draped', affiliate: 'tablecloth' });
+                } else {
+                    boothItems.push({ item: 'Banner stands / pop-up displays', note: 'Retractable banners are the most portable booth graphics option', affiliate: 'banner-stand' });
+                    boothItems.push({ item: 'Tablecloth(s)', note: 'Branded covers for demo tables and counters', affiliate: 'tablecloth' });
+                    boothItems.push({ item: 'Backdrop / wall graphics', note: 'Ensure you have mounting hardware and know the booth dimensions' });
+                }
+
+                boothItems.push({ item: 'Marketing collateral / brochures', note: 'Pack 25-50% more than you think you need' });
+                boothItems.push({ item: 'Giveaways / swag items', note: 'Branded items draw traffic - pens, totes, and candy are proven winners' });
+
+                if (booth === 'large' || booth === 'island') {
+                    boothItems.push({ item: 'Booth lighting / LED spots', note: 'Trade show hall lighting is dim - good lighting makes your booth pop', affiliate: 'led-lights' });
+                    boothItems.push({ item: 'Monitor / display screen', note: 'With mount/stand, cables, and video content loaded' });
+                    boothItems.push({ item: 'Carpet or flooring (if not included)', note: 'Check with show decorator what\'s included with your space' });
+                }
+
+                boothItems.push({ item: 'Extension cords / power strips', note: 'Convention power outlets are always in the wrong place', affiliate: 'power-strip' });
+                boothItems.push({ item: 'Gaffer tape (black)', note: 'Essential for taping down cables and fixing everything', affiliate: 'gaffer-tape' });
+                boothItems.push({ item: 'Double-sided tape', note: 'For mounting signs, fixing tablecloths, and quick repairs' });
+                boothItems.push({ item: 'Zip ties (assorted sizes)', note: 'Cable management, banner rigging, emergency repairs', affiliate: 'zip-ties' });
+                boothItems.push({ item: 'Scissors', note: 'You will need them more than you expect' });
+                boothItems.push({ item: 'Multi-tool (screwdriver, pliers)', note: 'For booth assembly and last-minute fixes', affiliate: 'multi-tool' });
+                boothItems.push({ item: 'Pens + notepad for booth', note: 'For taking notes during conversations with leads' });
+                boothItems.push({ item: 'Lead capture device / app', note: 'Badge scanner, app, or Scannly for QR-based capture' });
+                boothItems.push({ item: 'Candy / mints bowl', note: 'Simple but effective for drawing foot traffic to your booth' });
+
+                if (needSamples) {
+                    boothItems.push({ item: 'Product samples (packed securely)', note: 'Ship separately if heavy. Bring extras for VIP meetings.' });
+                    boothItems.push({ item: 'Sample display stands / risers', note: 'Elevate products for visibility and professional presentation' });
+                }
+
+                if (needDemo) {
+                    boothItems.push({ item: 'Demo equipment (tested)', note: 'Run a full demo test before packing. Pack fragile items carefully.' });
+                    boothItems.push({ item: 'Demo backup equipment', note: 'Critical demos need redundancy - spare cables, backup device' });
+                    boothItems.push({ item: 'Cleaning supplies for demos', note: 'Microfiber cloths, screen wipes for touchscreens' });
+                }
+
+                categories.push({ title: 'Booth Materials', icon: '\uD83C\uDFEA', items: boothItems });
+            }
+
+            // ---- TECHNOLOGY ----
+            const tech = [
+                { item: 'Laptop + charger', note: 'Fully charged before leaving. Test charger works.' },
+                { item: 'Phone charger cable', note: 'Pack a spare - cables fail at the worst moments' },
+                { item: 'Portable power bank (10,000mAh+)', note: 'Essential for all-day events away from outlets', affiliate: 'power-bank' },
+                { item: 'USB-C / HDMI adapter hub', note: 'For presentations, charging, connecting to displays', affiliate: 'usb-hub' },
+                { item: 'Earbuds / headphones', note: 'For calls, travel, and drowning out the show floor noise' },
+            ];
+
+            if (isSpeaker) {
+                tech.push({ item: 'Presentation clicker / remote', note: 'Don\'t rely on the venue providing one', affiliate: 'clicker' });
+                tech.push({ item: 'Backup of slides on USB drive', note: 'Multiple formats (PPT, PDF) for compatibility' });
+                tech.push({ item: 'HDMI cable (own backup)', note: 'Venue AV equipment is not always reliable' });
+            }
+
+            if (hasBooth || isSpeaker) {
+                tech.push({ item: 'Portable Wi-Fi hotspot or eSIM', note: 'Convention center Wi-Fi is notoriously slow and unreliable', affiliate: 'portable-wifi' });
+            }
+
+            if (needIntl || isInternational(city)) {
+                tech.push({ item: 'International power adapter', note: 'Check plug type for your destination. Universal adapter recommended.' });
+                tech.push({ item: 'International eSIM or SIM card', note: 'Avoid roaming charges. Set up before departure.' });
+            }
+
+            tech.push({ item: 'Camera or smartphone (charged)', note: 'Document the show floor, competitors, and your own booth' });
+
+            categories.push({ title: 'Technology', icon: '\uD83D\uDCBB', items: tech });
+
+            // ---- CLOTHING ----
+            const clothing = [];
+
+            clothing.push({ item: 'Business attire (' + clothingDays + ' outfits)', note: 'One per show day. Coordinate tops and bottoms for mix-and-match.' });
+            clothing.push({ item: 'Comfortable shoes (broken in!)', note: 'You will walk 10,000-20,000 steps per day. This is the #1 item.', affiliate: 'insoles' });
+
+            if (clothingDays > 1) {
+                clothing.push({ item: 'Casual dinner outfit (' + Math.ceil(clothingDays * 0.5) + ')', note: 'For networking dinners, after-show events, and team outings' });
+            }
+
+            clothing.push({ item: 'Light jacket or blazer', note: 'Convention halls are always aggressively air conditioned' });
+
+            if (season === 'winter') {
+                clothing.push({ item: 'Warm coat / heavy jacket', note: 'For outdoor commute between hotel and venue' });
+                clothing.push({ item: 'Warm hat, gloves, and scarf', note: 'Essential for cold-weather convention cities' });
+                clothing.push({ item: 'Thermal base layers', note: 'Thin enough to wear under business attire' });
+            } else if (season === 'fall' || season === 'spring') {
+                clothing.push({ item: 'Medium-weight jacket', note: 'Mornings and evenings can be cool in transitional seasons' });
+                clothing.push({ item: 'Layers (sweater or cardigan)', note: 'Temperatures vary throughout the day' });
+            } else {
+                clothing.push({ item: 'Light layers for indoor AC', note: 'Summer heat outside but arctic temperatures inside convention halls' });
+            }
+
+            clothing.push({ item: 'Undergarments (' + (clothingDays + 1) + ' sets)', note: 'Always pack one extra set as a buffer' });
+            clothing.push({ item: 'Socks (' + (clothingDays + 1) + ' pairs)', note: 'Extra pair in your bag for midday changes - your feet will thank you' });
+            clothing.push({ item: 'Sleepwear', note: 'Hotel room comfort matters for good rest' });
+            clothing.push({ item: 'Workout clothes + shoes (optional)', note: 'Hotel gyms help burn off dinner calories and manage show stress' });
+            clothing.push({ item: 'Comfortable insoles', note: 'Trade show floors are concrete. Insoles are a game-changer.', affiliate: 'insoles' });
+            clothing.push({ item: 'Compression socks', note: 'Reduce swelling from long days on your feet and flights', affiliate: 'compression-socks' });
+
+            if (needFormal) {
+                clothing.push({ item: 'Formal attire (suit/dress)', note: 'For gala dinners, awards ceremonies, or VIP receptions' });
+                clothing.push({ item: 'Dress shoes', note: 'Separate from your comfortable show floor shoes' });
+                clothing.push({ item: 'Tie, cufflinks, or jewelry', note: 'Finishing touches for formal events' });
+            }
+
+            if (needGolf) {
+                clothing.push({ item: 'Golf attire (polo, slacks)', note: 'Collared shirt and appropriate pants/shorts required on most courses' });
+                clothing.push({ item: 'Golf shoes or athletic shoes', note: 'Some courses require soft spikes' });
+                clothing.push({ item: 'Golf glove', note: 'Even if you borrow clubs, bring your own glove' });
+            }
+
+            categories.push({ title: 'Clothing', icon: '\uD83D\uDC54', items: clothing });
+
+            // ---- PERSONAL CARE ----
+            const care = [
+                { item: 'Prescription medications (carry-on)', note: 'Always pack meds in carry-on luggage, never checked bags' },
+                { item: 'Pain relievers (ibuprofen, etc.)', note: 'Headaches from noise, dehydration, and long days are common' },
+                { item: 'Hand sanitizer', note: 'Thousands of handshakes per show. Protect yourself.', affiliate: 'hand-sanitizer' },
+                { item: 'Throat lozenges', note: 'Your voice will be strained from talking over show floor noise all day', affiliate: 'throat-lozenges' },
+                { item: 'Wrinkle releaser spray', note: 'Hotel irons are unreliable. This saves packed clothes every time.', affiliate: 'wrinkle-spray' },
+                { item: 'Breath mints or gum', note: 'Essential for close-quarters booth conversations' },
+                { item: 'Toiletries (TSA-compliant if flying)', note: 'Toothbrush, toothpaste, deodorant, shampoo, etc.', affiliate: 'dopp-kit' },
+                { item: 'Moisturizer / lip balm', note: 'Convention centers and airplanes have very dry air', affiliate: 'lip-balm' },
+                { item: 'Stain remover pen', note: 'Coffee spills and lunch accidents happen at the worst moments' },
+            ];
+
+            if (clothingDays >= 3) {
+                care.push({ item: 'Sleep eye mask + ear plugs', note: 'Hotel rooms are never as dark or quiet as home', affiliate: 'eye-mask' });
+            }
+
+            if (needMedia) {
+                care.push({ item: 'Grooming kit (comb, hair product)', note: 'Camera-ready for press interviews and photo opportunities' });
+                care.push({ item: 'Blotting papers / translucent powder', note: 'Reduce shine under studio lights' });
+            }
+
+            categories.push({ title: 'Personal Care', icon: '\uD83E\uDDF4', items: care });
+
+            // ---- TRAVEL COMFORT ----
+            const travel = [
+                { item: 'Carry-on bag (fits overhead)', note: 'Keep essentials accessible. Pack a change of clothes in case luggage is delayed.', affiliate: 'luggage' },
+                { item: 'Packing cubes', note: 'Organization is worth the small investment', affiliate: 'packing-cubes' },
+            ];
+
+            if (duration !== '1') {
+                travel.push({ item: 'Checked luggage (if needed)', note: 'Weigh bags before leaving. Airlines enforce limits strictly.' });
+                travel.push({ item: 'Laundry bag', note: 'Keep worn clothes separate from clean ones' });
+            }
+
+            travel.push({ item: 'Snacks for travel days', note: 'Airport food is expensive and show floor options are limited' });
+            travel.push({ item: 'Refillable water bottle', note: 'Staying hydrated prevents fatigue and headaches' });
+            travel.push({ item: 'Neck pillow (long flights)', note: 'Sleep quality on red-eyes makes a huge difference' });
+
+            if (needIntl || isInternational(city)) {
+                travel.push({ item: 'Currency (local + USD backup)', note: 'Have small bills for tips and transit on arrival' });
+                travel.push({ item: 'Translation app (downloaded offline)', note: 'Google Translate or Apple Translate with offline language packs' });
+            }
+
+            categories.push({ title: 'Travel Comfort', icon: '\u2708\uFE0F', items: travel });
+
+            // ---- NETWORKING & BUSINESS ----
+            const networking = [
+                { item: 'Elevator pitch (practiced)', note: 'Rehearse a 30-second and 60-second version before you go' },
+                { item: 'LinkedIn profile updated', note: 'People will look you up immediately after meeting you' },
+                { item: 'Target list of contacts/booths to visit', note: 'Plan your must-see list before arriving to use time efficiently' },
+                { item: 'CRM app on phone', note: 'Log contacts immediately rather than sorting stacks of cards later' },
+            ];
+
+            if (isSpeaker) {
+                networking.push({ item: 'Speaker bio + headshot (digital)', note: 'Event organizers may need updated versions last minute' });
+                networking.push({ item: 'Copies of speaking slides for handout', note: 'Some attendees prefer physical handouts' });
+            }
+
+            if (needMedia) {
+                networking.push({ item: 'Press kit (digital + printed)', note: 'Company overview, product sheets, high-res images' });
+                networking.push({ item: 'Talking points document', note: 'Key messages for interviews - keep consistent' });
+            }
+
+            categories.push({ title: 'Networking & Business', icon: '\uD83E\uDD1D', items: networking });
+
+            // ---- CITY-SPECIFIC ITEMS ----
+            if (cityTips[city]) {
+                const cityData = cityTips[city];
+                const cityItems = [...cityData.tips];
+
+                // Add season-specific note if available
+                if (cityData.seasonNote && cityData.seasonNote[season]) {
+                    cityItems.unshift({
+                        item: 'Season advisory: ' + season.charAt(0).toUpperCase() + season.slice(1) + ' in ' + cityData.name,
+                        note: cityData.seasonNote[season]
+                    });
+                }
+
+                categories.push({ title: cityData.name + ' Essentials', icon: '\uD83D\uDCCD', items: cityItems });
+            }
+
+            // ---- LAST-MINUTE CHECKLIST ----
+            const lastMinute = [
+                { item: 'Charge all devices overnight', note: 'Laptop, phone, power bank, headphones, clicker' },
+                { item: 'Download offline maps', note: 'Google Maps or Apple Maps - convention center Wi-Fi is unreliable' },
+                { item: 'Set out-of-office email', note: 'Let people know you are at a trade show and when you will return' },
+                { item: 'Share itinerary with colleague/family', note: 'Safety and coordination - someone should know your schedule' },
+                { item: 'Check venue bag policy', note: 'Some shows restrict bag sizes or require clear bags' },
+                { item: 'Confirm reservations (hotel, flights, dinner)', note: 'Reconfirm 24 hours before departure' },
+                { item: 'Pack snacks and water for day one', note: 'You may not have time to find food during setup or first sessions' },
+            ];
+
+            if (hasBooth) {
+                lastMinute.push({ item: 'Confirm shipment delivery to venue', note: 'Call the freight carrier AND the venue to verify arrival' });
+                lastMinute.push({ item: 'Test all demo equipment one final time', note: 'Run through the complete demo at home before packing' });
+            }
+
+            categories.push({ title: 'Last-Minute Checklist', icon: '\u2705', items: lastMinute });
+
+            // ---- RENDER ----
+            renderList(categories, city, duration, role, season, booth);
+        };
+
+        /* =====================================================
+           RENDER LIST
+           ===================================================== */
+        function renderList(categories, city, duration, role, season, booth) {
+            const container = document.getElementById('list-container');
+            const resultsSection = document.getElementById('results');
+            const resultsMeta = document.getElementById('results-meta');
+
+            // Count total items
+            let totalItems = 0;
+            categories.forEach(c => totalItems += c.items.length);
+
+            // Update meta
+            const cityName = cityTips[city] ? cityTips[city].name : city;
+            resultsMeta.textContent = totalItems + ' items \u00B7 ' + cityName + ' \u00B7 ' + duration + (duration === '1' ? ' day' : (duration === '7+' ? '' : ' days')) + ' \u00B7 ' + role.replace('-', ' ');
+
+            // Build HTML
+            let html = '';
+            const storageKey = 'sft-packing-' + city + '-' + duration + '-' + role;
+
+            // Load saved checks
+            let savedChecks = {};
+            try {
+                const stored = localStorage.getItem(storageKey);
+                if (stored) savedChecks = JSON.parse(stored);
+            } catch(e) {}
+
+            categories.forEach((cat, catIdx) => {
+                html += '<div class="list-category">';
+                html += '<div class="category-header" onclick="toggleCategory(this)">';
+                html += '<div class="category-header-left">';
+                html += '<div class="category-icon">' + cat.icon + '</div>';
+                html += '<div>';
+                html += '<div class="category-title">' + cat.title + '</div>';
+                html += '<div class="category-count">' + cat.items.length + ' items</div>';
+                html += '</div></div>';
+                html += '<div class="category-toggle">';
+                html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>';
+                html += '</div></div>';
+
+                html += '<div class="category-items">';
+                cat.items.forEach((item, itemIdx) => {
+                    const itemId = 'item-' + catIdx + '-' + itemIdx;
+                    const isChecked = savedChecks[itemId] === true;
+                    html += '<div class="list-item">';
+                    html += '<input type="checkbox" id="' + itemId + '" ' + (isChecked ? 'checked' : '') + ' onchange="onCheckChange(this)">';
+                    html += '<div class="item-content">';
+                    html += '<div class="item-name' + (isChecked ? ' checked' : '') + '" id="label-' + itemId + '">' + escapeHtml(item.item) + '</div>';
+                    if (item.note) {
+                        html += '<div class="item-note">' + escapeHtml(item.note) + '</div>';
+                    }
+                    html += '</div>';
+                    if (item.affiliate && amazonLinks[item.affiliate]) {
+                        const link = amazonLinks[item.affiliate];
+                        html += '<div class="item-link"><a href="' + link.url + '" target="_blank" rel="noopener nofollow sponsored">';
+                        html += '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> ';
+                        html += 'Buy</a></div>';
+                    }
+                    html += '</div>';
+                });
+                html += '</div></div>';
+            });
+
+            container.innerHTML = html;
+            resultsSection.classList.add('visible');
+
+            // Store current key for saving
+            container.dataset.storageKey = storageKey;
+
+            // Update progress
+            updateProgress();
+
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        /* =====================================================
+           CHECKBOX HANDLING + LOCALSTORAGE
+           ===================================================== */
+        window.onCheckChange = function(checkbox) {
+            const label = document.getElementById('label-' + checkbox.id);
+            if (label) {
+                if (checkbox.checked) {
+                    label.classList.add('checked');
+                } else {
+                    label.classList.remove('checked');
+                }
+            }
+            saveChecks();
+            updateProgress();
+        };
+
+        function saveChecks() {
+            const container = document.getElementById('list-container');
+            const key = container.dataset.storageKey;
+            if (!key) return;
+
+            const checks = {};
+            container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                if (cb.checked) checks[cb.id] = true;
+            });
+
+            try {
+                localStorage.setItem(key, JSON.stringify(checks));
+            } catch(e) {}
+        }
+
+        function updateProgress() {
+            const container = document.getElementById('list-container');
+            const allBoxes = container.querySelectorAll('input[type="checkbox"]');
+            const checkedBoxes = container.querySelectorAll('input[type="checkbox"]:checked');
+            const total = allBoxes.length;
+            const checked = checkedBoxes.length;
+
+            const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('progress-text').textContent = checked + ' of ' + total + ' items packed (' + pct + '%)';
+        }
+
+        /* =====================================================
+           TOGGLE CATEGORY
+           ===================================================== */
+        window.toggleCategory = function(header) {
+            const items = header.nextElementSibling;
+            const toggle = header.querySelector('.category-toggle');
+            items.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        };
+
+        /* =====================================================
+           PRINT LIST
+           ===================================================== */
+        window.printList = function() {
+            window.print();
+        };
+
+        /* =====================================================
+           EMAIL LIST
+           ===================================================== */
+        window.emailList = function() {
+            const container = document.getElementById('list-container');
+            const categories = container.querySelectorAll('.list-category');
+            let body = 'My Trade Show Packing List\n';
+            body += '========================\n\n';
+
+            categories.forEach(cat => {
+                const title = cat.querySelector('.category-title').textContent;
+                body += title.toUpperCase() + '\n';
+                body += '-'.repeat(title.length) + '\n';
+
+                const items = cat.querySelectorAll('.list-item');
+                items.forEach(item => {
+                    const cb = item.querySelector('input[type="checkbox"]');
+                    const name = item.querySelector('.item-name').textContent;
+                    const note = item.querySelector('.item-note');
+                    body += (cb.checked ? '[x] ' : '[ ] ') + name;
+                    if (note) body += ' - ' + note.textContent;
+                    body += '\n';
+                });
+                body += '\n';
+            });
+
+            body += '\n---\nGenerated by ShowFloorTips.com/packing-list.html\n';
+
+            const subject = 'My Trade Show Packing List - ShowFloorTips';
+            window.location.href = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        };
+
+        /* =====================================================
+           CLEAR ALL CHECKS
+           ===================================================== */
+        window.clearAllChecks = function() {
+            if (!confirm('Reset all checked items? This cannot be undone.')) return;
+
+            const container = document.getElementById('list-container');
+            container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+                const label = document.getElementById('label-' + cb.id);
+                if (label) label.classList.remove('checked');
+            });
+
+            const key = container.dataset.storageKey;
+            if (key) {
+                try { localStorage.removeItem(key); } catch(e) {}
+            }
+
+            updateProgress();
+        };
+
+    })();
+    </script>
+
+</body>
+</html>

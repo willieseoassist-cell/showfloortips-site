@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Show World Map - Browse 24,000+ Events Worldwide | ShowFloorTips</title>
+    <meta name="description" content="Explore trade shows and exhibitions worldwide on our interactive map. Filter by industry, country, and date to find the perfect events for your business.">
+    <meta name="keywords" content="trade show map, exhibition finder, convention map, trade show locations, global trade shows, event map">
+    <link rel="canonical" href="https://showfloortips.com/map.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Trade Show World Map - Browse 24,000+ Events Worldwide">
+    <meta property="og:description" content="Explore trade shows and exhibitions worldwide on our interactive map. Filter by industry, country, and date.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://showfloortips.com/map.html">
+    <meta property="og:site_name" content="ShowFloorTips">
+    <meta property="og:image" content="https://showfloortips.com/images/map-og.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trade Show World Map - Browse 24,000+ Events Worldwide">
+    <meta name="twitter:description" content="Explore trade shows and exhibitions worldwide on our interactive map.">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ShowFloorTips Trade Show Map",
+        "url": "https://showfloortips.com/map.html",
+        "description": "Interactive world map to browse and discover trade shows and exhibitions worldwide.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "ShowFloorTips",
+            "url": "https://showfloortips.com"
+        }
+    }
+    </script>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #0a0a0a;
+            background: #fafafa;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 0.75rem 2rem;
+        }
+        .filter-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .filter-group label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            white-space: nowrap;
+        }
+        .filter-group select,
+        .filter-group input[type="text"] {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8125rem;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            background: #fff;
+            color: #0a0a0a;
+            outline: none;
+            transition: border-color 0.15s;
+            min-width: 160px;
+        }
+        .filter-group select:focus,
+        .filter-group input[type="text"]:focus {
+            border-color: #0a0a0a;
+        }
+        .filter-group input[type="text"] {
+            min-width: 140px;
+        }
+        .show-count {
+            margin-left: auto;
+            font-size: 0.8125rem;
+            color: #737373;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .show-count strong {
+            color: #0a0a0a;
+            font-weight: 700;
+        }
+        .reset-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            background: #fff;
+            color: #737373;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        .reset-btn:hover {
+            border-color: #0a0a0a;
+            color: #0a0a0a;
+        }
+
+        /* Map Container */
+        .map-wrapper {
+            position: relative;
+            display: flex;
+        }
+        #map {
+            flex: 1;
+            height: calc(100vh - 200px);
+            min-height: 400px;
+            z-index: 1;
+        }
+
+        /* Sidebar Panel */
+        .sidebar-panel {
+            width: 380px;
+            height: calc(100vh - 200px);
+            min-height: 400px;
+            background: #fff;
+            border-left: 1px solid #e5e5e5;
+            overflow-y: auto;
+            display: none;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+        .sidebar-panel.active {
+            display: block;
+        }
+        .sidebar-header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+        .sidebar-header h3 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            letter-spacing: -0.01em;
+        }
+        .sidebar-header span {
+            font-size: 0.75rem;
+            color: #737373;
+            font-weight: 500;
+        }
+        .sidebar-close {
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #737373;
+            transition: all 0.15s;
+            flex-shrink: 0;
+            margin-left: 0.75rem;
+        }
+        .sidebar-close:hover {
+            background: #e5e5e5;
+            color: #0a0a0a;
+        }
+        .sidebar-list {
+            padding: 0.5rem;
+        }
+        .sidebar-show {
+            padding: 0.875rem 0.75rem;
+            border-radius: 8px;
+            transition: background 0.15s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+        .sidebar-show:hover {
+            background: #f5f5f5;
+        }
+        .sidebar-show-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #0a0a0a;
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        .sidebar-show-meta {
+            font-size: 0.75rem;
+            color: #737373;
+            line-height: 1.5;
+        }
+        .sidebar-show-meta .tag {
+            display: inline-block;
+            background: #f5f5f5;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: #525252;
+            margin-top: 0.375rem;
+        }
+
+        /* Leaflet Popup Styling */
+        .leaflet-popup-content-wrapper {
+            border-radius: 10px !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+            padding: 0 !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+        .leaflet-popup-content {
+            margin: 0 !important;
+            min-width: 260px !important;
+            max-width: 300px !important;
+        }
+        .leaflet-popup-tip {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+        }
+        .popup-card {
+            padding: 1rem 1.25rem;
+        }
+        .popup-card h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+        .popup-card .popup-meta {
+            font-size: 0.75rem;
+            color: #737373;
+            line-height: 1.6;
+        }
+        .popup-card .popup-meta span {
+            display: block;
+        }
+        .popup-card .popup-meta .popup-icon {
+            display: inline-block;
+            width: 14px;
+            text-align: center;
+            margin-right: 4px;
+            opacity: 0.6;
+        }
+        .popup-card .popup-tag {
+            display: inline-block;
+            background: #f5f5f5;
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: #525252;
+            margin-top: 0.5rem;
+        }
+        .popup-card .popup-link {
+            display: inline-block;
+            margin-top: 0.625rem;
+            padding: 0.375rem 0.875rem;
+            background: #0a0a0a;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+        .popup-card .popup-link:hover {
+            background: #262626;
+        }
+
+        /* Custom Cluster Styling */
+        .marker-cluster-small,
+        .marker-cluster-medium,
+        .marker-cluster-large {
+            background: rgba(10, 10, 10, 0.15) !important;
+        }
+        .marker-cluster-small div,
+        .marker-cluster-medium div,
+        .marker-cluster-large div {
+            background: #0a0a0a !important;
+            color: #fff !important;
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 12px !important;
+        }
+
+        /* Loading overlay */
+        .map-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(250, 250, 250, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .map-loading.hidden { display: none; }
+        .loader {
+            width: 36px;
+            height: 36px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #0a0a0a;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .map-loading p {
+            font-size: 0.875rem;
+            color: #737373;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .map-footer {
+            background: #fff;
+            border-top: 1px solid #e5e5e5;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .map-footer p {
+            font-size: 0.75rem;
+            color: #a3a3a3;
+        }
+        .map-footer a {
+            color: #737373;
+            text-decoration: none;
+        }
+        .map-footer a:hover {
+            color: #0a0a0a;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .filter-bar { padding: 0.75rem 1rem; }
+            .filter-bar-inner {
+                gap: 0.5rem;
+            }
+            .filter-group {
+                flex: 1 1 calc(50% - 0.25rem);
+                min-width: 0;
+            }
+            .filter-group label {
+                display: none;
+            }
+            .filter-group select,
+            .filter-group input[type="text"] {
+                min-width: 0;
+                width: 100%;
+            }
+            .show-count {
+                flex: 1 1 100%;
+                margin-left: 0;
+                text-align: center;
+                padding-top: 0.25rem;
+            }
+            #map {
+                height: calc(100vh - 260px);
+            }
+            .sidebar-panel {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                max-width: 380px;
+                height: calc(100vh - 260px);
+                box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+            }
+            .map-wrapper {
+                position: relative;
+            }
+        }
+        @media (max-width: 480px) {
+            .filter-group {
+                flex: 1 1 100%;
+            }
+            #map {
+                height: calc(100vh - 300px);
+            }
+            .sidebar-panel {
+                height: calc(100vh - 300px);
+                max-width: 100%;
+            }
+        }
+
+        /* Nav mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: #0a0a0a;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .main-nav { display: none; }
+            .main-nav.open {
+                display: block;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 1rem 2rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            }
+            .main-nav.open ul {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header style="background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid #e5e5e5">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:64px">
+        <a href="/" style="font-size:1.25rem;font-weight:700;color:#0a0a0a;letter-spacing:-0.025em;text-decoration:none">ShowFloorTips</a>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="main-nav">
+            <ul style="display:flex;gap:2rem;align-items:center;list-style:none;margin:0;padding:0">
+                <li><a href="/#shows" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Trade Shows</a></li>
+                <li><a href="/news.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">News</a></li>
+                <li><a href="/travel.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Travel</a></li>
+                <li><a href="/roi-calculator.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">ROI Calculator</a></li>
+                <li><a href="/products.html" style="color:#737373;font-size:0.875rem;font-weight:500;text-decoration:none">Products</a></li>
+                <li><a href="/scannly.html" style="background:#0a0a0a;color:#fff;padding:0.5rem 1.25rem;border-radius:6px;font-weight:600;font-size:0.875rem;text-decoration:none">Try Scannly</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+    <div class="filter-bar-inner">
+        <div class="filter-group">
+            <label for="filter-industry">Industry</label>
+            <select id="filter-industry">
+                <option value="">All Industries</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="filter-country">Country</label>
+            <input type="text" id="filter-country" placeholder="Search country..." autocomplete="off">
+        </div>
+        <div class="filter-group">
+            <label for="filter-date">Date Range</label>
+            <select id="filter-date">
+                <option value="all">All Dates</option>
+                <option value="30">Next 30 Days</option>
+                <option value="60">Next 60 Days</option>
+                <option value="90">Next 90 Days</option>
+                <option value="180">Next 6 Months</option>
+                <option value="365">Next 12 Months</option>
+            </select>
+        </div>
+        <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+        <div class="show-count">
+            Showing <strong id="visible-count">0</strong> of <strong id="total-count">0</strong> shows
+        </div>
+    </div>
+</div>
+
+<!-- Map + Sidebar -->
+<div class="map-wrapper">
+    <div id="map">
+        <div class="map-loading" id="map-loading">
+            <div class="loader"></div>
+            <p>Loading trade shows...</p>
+        </div>
+    </div>
+    <div class="sidebar-panel" id="sidebar">
+        <div class="sidebar-header">
+            <div>
+                <h3 id="sidebar-title">Shows</h3>
+                <span id="sidebar-subtitle"></span>
+            </div>
+            <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close panel">&times;</button>
+        </div>
+        <div class="sidebar-list" id="sidebar-list"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:#0a0a0a;color:#d4d4d4;padding:48px 2rem 32px">
+    <div style="max-width:1080px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px">
+            <div>
+                <div style="font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-0.02em">ShowFloorTips</div>
+                <p style="font-size:13px;color:#a3a3a3;line-height:1.6">Expert intelligence and resources for trade show exhibitors. Make every show count.</p>
+            </div>
+            <div>
+                <h4 style="font-size:12px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">Resources</h4>
+                <ul style="list-style:none">
+                    <li style="margin-bottom:8px"><a href="/#shows" style="font-size:13px;color:#a3a3a3;text-decoration:none">Trade Shows</a></li>
+                    <li style="margin-bottom:8px"><a href="/news.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Industry News</a></li>
+                    <li style="margin-bottom:8px"><a href="/travel.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Travel Guides</a></li>
+                    <li style="margin-bottom:8px"><a href="/flight-deals.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Flight Deals</a></li>
+                    <li style="margin-bottom:8px"><a href="/roi-calculator.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">ROI Calculator</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:12px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">Tools</h4>
+                <ul style="list-style:none">
+                    <li style="margin-bottom:8px"><a href="/scannly.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Scannly - Lead Capture</a></li>
+                    <li style="margin-bottom:8px"><a href="/roi-calculator.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">ROI Calculator</a></li>
+                    <li style="margin-bottom:8px"><a href="/cost-estimator.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Cost Estimator</a></li>
+                    <li style="margin-bottom:8px"><a href="/lead-calculator.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Lead Calculator</a></li>
+                    <li style="margin-bottom:8px"><a href="/compare.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Show Comparison</a></li>
+                    <li style="margin-bottom:8px"><a href="/map.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Interactive Map</a></li>
+                    <li style="margin-bottom:8px"><a href="/packing-list.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">Packing List</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="font-size:12px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px">Company</h4>
+                <ul style="list-style:none">
+                    <li style="margin-bottom:8px"><a href="/" style="font-size:13px;color:#a3a3a3;text-decoration:none">Home</a></li>
+                    <li style="margin-bottom:8px"><a href="/scannly.html" style="font-size:13px;color:#a3a3a3;text-decoration:none">About Scannly</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="border-top:1px solid #262626;padding-top:20px;display:flex;justify-content:space-between;align-items:center">
+            <p style="font-size:12px;color:#737373">&copy; 2026 ShowFloorTips.com</p>
+            <p style="font-size:12px;color:#737373">Built for exhibitors, by exhibitors</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="/shows.js"></script>
+
+<script>
+(function() {
+    'use strict';
+
+    // =========================================================================
+    // City Geocoding Lookup Table
+    // =========================================================================
+    const CITY_COORDS = {
+        // --- North America: United States ---
+        'Las Vegas': [36.17, -115.14],
+        'Orlando': [28.54, -81.38],
+        'Chicago': [41.88, -87.63],
+        'New York': [40.71, -74.01],
+        'San Francisco': [37.77, -122.42],
+        'Los Angeles': [34.05, -118.24],
+        'Houston': [29.76, -95.37],
+        'Dallas': [32.78, -96.80],
+        'San Diego': [32.72, -117.16],
+        'Boston': [42.36, -71.06],
+        'Miami': [25.76, -80.19],
+        'Atlanta': [33.75, -84.39],
+        'Denver': [39.74, -104.99],
+        'Phoenix': [33.45, -112.07],
+        'Seattle': [47.61, -122.33],
+        'Nashville': [36.16, -86.78],
+        'New Orleans': [29.95, -90.07],
+        'Washington': [38.91, -77.04],
+        'Philadelphia': [39.95, -75.17],
+        'Minneapolis': [44.98, -93.27],
+        'San Antonio': [29.42, -98.49],
+        'Detroit': [42.33, -83.05],
+        'Portland': [45.52, -122.68],
+        'Charlotte': [35.23, -80.84],
+        'Indianapolis': [39.77, -86.16],
+        'Milwaukee': [43.04, -87.91],
+        'Columbus': [39.96, -82.99],
+        'Pittsburgh': [40.44, -79.99],
+        'Kansas City': [39.10, -94.58],
+        'Salt Lake City': [40.76, -111.89],
+        'Anaheim': [33.84, -117.91],
+        'Rosemont': [41.99, -87.87],
+        'Ft. Lauderdale': [26.12, -80.14],
+        'Tampa': [27.95, -82.46],
+        'Cleveland': [41.50, -81.69],
+        'Louisville': [38.25, -85.76],
+        'Reno': [39.53, -119.81],
+        'Palm Beach': [26.71, -80.05],
+        'Ft. Worth': [32.76, -97.33],
+        'Atlantic City': [39.36, -74.42],
+        'Baltimore': [39.29, -76.61],
+        'St. Louis': [38.63, -90.20],
+        'Savannah': [32.08, -81.09],
+        'Oklahoma City': [35.47, -97.52],
+        'Raleigh': [35.78, -78.64],
+        'Omaha': [41.26, -95.94],
+        'Santa Clara': [37.35, -121.95],
+        'Long Beach': [33.77, -118.19],
+        'Austin': [30.27, -97.74],
+        'Schaumburg': [42.03, -88.08],
+        'Novi': [42.48, -83.47],
+        'Providence': [41.82, -71.41],
+        'Arlington': [32.74, -97.11],
+        'River Grove': [41.92, -87.84],
+
+        // --- North America: Canada ---
+        'Toronto': [43.65, -79.38],
+        'Montreal': [45.50, -73.57],
+        'Vancouver': [49.28, -123.12],
+        'ON': [43.65, -79.38],
+        'BC': [49.28, -123.12],
+        'AB': [51.05, -114.07],
+        'QC': [45.50, -73.57],
+
+        // --- North America: Mexico ---
+        'Mexico City': [19.43, -99.13],
+        'Guadalajara': [20.67, -103.35],
+
+        // --- Central America & Caribbean ---
+        'Panama City': [9.00, -79.52],
+        'San Jose': [9.93, -84.08],
+
+        // --- South America ---
+        'Buenos Aires': [-34.60, -58.38],
+        'Sao Paulo': [-23.55, -46.63],
+        'Rio de Janeiro': [-22.91, -43.17],
+        'Lima': [-12.05, -77.04],
+        'Bogota': [4.71, -74.07],
+        'Santiago': [-33.45, -70.67],
+        'Quito': [-0.18, -78.47],
+
+        // --- Europe: UK & Ireland ---
+        'London': [51.51, -0.13],
+        'Birmingham': [52.49, -1.89],
+        'Manchester': [53.48, -2.24],
+        'Edinburgh': [55.95, -3.19],
+        'Glasgow': [55.86, -4.25],
+        'Coventry': [52.41, -1.51],
+        'Farnborough': [51.28, -0.75],
+        'Harrogate': [53.99, -1.54],
+        'Telford': [52.68, -2.45],
+        'Liverpool': [53.41, -2.98],
+        'Dublin': [53.35, -6.26],
+
+        // --- Europe: France ---
+        'Paris': [48.86, 2.35],
+        'Lyon': [45.76, 4.84],
+        'Cannes': [43.55, 7.02],
+        'Marseille': [43.30, 5.37],
+
+        // --- Europe: Germany ---
+        'Berlin': [52.52, 13.40],
+        'Munich': [48.14, 11.58],
+        'Frankfurt': [50.11, 8.68],
+        'Hamburg': [53.55, 9.99],
+        'Cologne': [50.94, 6.96],
+        'Dusseldorf': [51.23, 6.77],
+        'Stuttgart': [48.78, 9.18],
+        'Hannover': [52.37, 9.74],
+        'Nuremberg': [49.45, 11.08],
+        'Leipzig': [51.34, 12.37],
+        'Essen': [51.46, 7.01],
+        'Dortmund': [51.51, 7.47],
+        'Friedrichshafen': [47.65, 9.48],
+        'Offenburg': [48.47, 7.94],
+
+        // --- Europe: Italy ---
+        'Milan': [45.46, 9.19],
+        'Rome': [41.90, 12.50],
+        'Bologna': [44.49, 11.34],
+        'Verona': [45.44, 10.99],
+        'Rimini': [44.06, 12.57],
+        'Rho': [45.53, 9.04],
+
+        // --- Europe: Spain & Portugal ---
+        'Barcelona': [41.39, 2.17],
+        'Madrid': [40.42, -3.70],
+        'Valencia': [39.47, -0.38],
+        'Bilbao': [43.26, -2.93],
+        'Lisbon': [38.72, -9.14],
+
+        // --- Europe: Benelux ---
+        'Amsterdam': [52.37, 4.90],
+        'Rotterdam': [51.92, 4.48],
+        'Utrecht': [52.09, 5.12],
+        'Gorinchem': [51.83, 4.97],
+        'Brussels': [50.85, 4.35],
+        'Antwerp': [51.22, 4.40],
+        'Luxembourg': [49.61, 6.13],
+
+        // --- Europe: Nordics ---
+        'Stockholm': [59.33, 18.07],
+        'Gothenburg': [57.71, 11.97],
+        'Copenhagen': [55.68, 12.57],
+        'Helsinki': [60.17, 24.94],
+        'Oslo': [59.91, 10.75],
+
+        // --- Europe: Central & Eastern ---
+        'Vienna': [48.21, 16.37],
+        'Prague': [50.08, 14.44],
+        'Warsaw': [52.23, 21.01],
+        'Budapest': [47.50, 19.04],
+        'Zurich': [47.38, 8.54],
+        'Geneva': [46.20, 6.14],
+        'Basel': [47.56, 7.59],
+        'Salzburg': [47.80, 13.04],
+        'Poznan': [52.41, 16.93],
+        'Kielce': [50.87, 20.63],
+        'Brno': [49.20, 16.61],
+
+        // --- Europe: South & East ---
+        'Athens': [37.98, 23.73],
+        'Istanbul': [41.01, 28.98],
+        'Izmir': [38.42, 27.13],
+        'Moscow': [55.76, 37.62],
+        'Plovdiv': [42.70, 24.75],
+        'Riga': [56.95, 24.11],
+        'Kiev': [50.45, 30.52],
+        'Krasnogorsk': [55.82, 37.33],
+        'Monaco': [43.74, 7.43],
+
+        // --- Middle East ---
+        'Dubai': [25.20, 55.27],
+        'Abu Dhabi': [24.45, 54.65],
+        'Riyadh': [24.71, 46.67],
+        'Jeddah': [21.49, 39.19],
+        'Doha': [25.29, 51.53],
+        'Muscat': [23.59, 58.38],
+        'Manama': [26.23, 50.59],
+        'Cairo': [30.04, 31.24],
+
+        // --- Africa ---
+        'Lagos': [6.52, 3.38],
+        'Nairobi': [-1.29, 36.82],
+        'Johannesburg': [-26.20, 28.05],
+        'Cape Town': [-33.93, 18.42],
+        'Casablanca': [33.57, -7.59],
+        'Marrakech': [31.63, -8.00],
+        'Algiers': [36.74, 3.06],
+        'Dar-es-Salaam': [-6.79, 39.28],
+
+        // --- Asia: East ---
+        'Tokyo': [35.68, 139.69],
+        'Osaka': [34.69, 135.50],
+        'Nagoya': [35.18, 136.91],
+        'Seoul': [37.57, 126.98],
+        'Busan': [35.18, 129.08],
+        'Beijing': [39.90, 116.40],
+        'Shanghai': [31.23, 121.47],
+        'Shenzhen': [22.54, 114.06],
+        'Guangzhou': [23.13, 113.26],
+        'Chengdu': [30.57, 104.07],
+        'Tianjin': [39.13, 117.20],
+        'Hong Kong': [22.32, 114.17],
+        'Taipei': [25.03, 121.57],
+
+        // --- Asia: Southeast ---
+        'Singapore': [1.35, 103.82],
+        'Bangkok': [13.76, 100.50],
+        'Jakarta': [-6.21, 106.85],
+        'Kuala Lumpur': [3.14, 101.69],
+        'Ho Chi Minh City': [10.82, 106.63],
+        'Manila': [14.60, 120.98],
+
+        // --- Asia: South ---
+        'Mumbai': [19.08, 72.88],
+        'New Delhi': [28.61, 77.21],
+        'Bangalore': [12.97, 77.59],
+        'Bengaluru': [12.97, 77.59],
+        'Chennai': [13.08, 80.27],
+        'Pune': [18.52, 73.86],
+        'Kolkata': [22.57, 88.36],
+        'Gandhinagar': [23.22, 72.64],
+        'Karachi': [24.86, 67.01],
+
+        // --- Asia: Central ---
+        'Tashkent': [41.30, 69.24],
+        'Almaty': [43.24, 76.95],
+        'Astana': [51.17, 71.43],
+        'Baku': [40.41, 49.87],
+        'Yerevan': [40.18, 44.51],
+
+        // --- Oceania ---
+        'Sydney': [-33.87, 151.21],
+        'Melbourne': [-37.81, 144.96],
+        'Brisbane': [-27.47, 153.03],
+        'Perth': [-31.95, 115.86],
+        'Auckland': [-36.85, 174.76]
+    };
+
+    // Country center fallback coordinates
+    const COUNTRY_COORDS = {
+        'United States': [39.83, -98.58],
+        'Canada': [56.13, -106.35],
+        'Mexico': [23.63, -102.55],
+        'Brazil': [-14.24, -51.93],
+        'Argentina': [-38.42, -63.62],
+        'Colombia': [4.57, -74.30],
+        'Peru': [-9.19, -75.02],
+        'Chile': [-35.68, -71.54],
+        'Ecuador': [-1.83, -78.18],
+        'Panama': [8.54, -80.78],
+        'Costa Rica': [9.75, -83.75],
+        'United Kingdom': [55.38, -3.44],
+        'Germany': [51.17, 10.45],
+        'France': [46.23, 2.21],
+        'Italy': [41.87, 12.57],
+        'Spain': [40.46, -3.75],
+        'Netherlands': [52.13, 5.29],
+        'Belgium': [50.50, 4.47],
+        'Switzerland': [46.82, 8.23],
+        'Austria': [47.52, 14.55],
+        'Sweden': [60.13, 18.64],
+        'Denmark': [56.26, 9.50],
+        'Finland': [61.92, 25.75],
+        'Norway': [60.47, 8.47],
+        'Poland': [51.92, 19.15],
+        'Czech Republic': [49.82, 15.47],
+        'Greece': [39.07, 21.82],
+        'Turkey': [38.96, 35.24],
+        'Russia': [61.52, 105.32],
+        'Portugal': [39.40, -8.22],
+        'Ireland': [53.14, -7.69],
+        'Hungary': [47.16, 19.50],
+        'Romania': [45.94, 24.97],
+        'Bulgaria': [42.73, 25.49],
+        'Latvia': [56.88, 24.60],
+        'Lithuania': [55.17, 23.88],
+        'Estonia': [58.60, 25.01],
+        'Slovenia': [46.15, 14.99],
+        'Luxembourg': [49.82, 6.13],
+        'Monaco': [43.73, 7.42],
+        'Ukraine': [48.38, 31.17],
+        'UAE': [23.42, 53.85],
+        'United Arab Emirates': [23.42, 53.85],
+        'Saudi Arabia': [23.89, 45.08],
+        'Qatar': [25.35, 51.18],
+        'Bahrain': [26.07, 50.55],
+        'Oman': [21.51, 55.92],
+        'Kuwait': [29.31, 47.48],
+        'Israel': [31.05, 34.85],
+        'Jordan': [30.59, 36.24],
+        'Lebanon': [33.85, 35.86],
+        'Iraq': [33.22, 43.68],
+        'Iran': [32.43, 53.69],
+        'Egypt': [26.82, 30.80],
+        'Morocco': [31.79, -7.09],
+        'South Africa': [-30.56, 22.94],
+        'Nigeria': [9.08, 8.68],
+        'Kenya': [-0.02, 37.91],
+        'Tanzania': [-6.37, 34.89],
+        'Ghana': [7.95, -1.02],
+        'Algeria': [28.03, 1.66],
+        'Ethiopia': [9.15, 40.49],
+        'Uganda': [1.37, 32.29],
+        'Rwanda': [-1.94, 29.87],
+        'Mozambique': [-18.67, 35.53],
+        'Angola': [-11.20, 17.87],
+        'Japan': [36.20, 138.25],
+        'South Korea': [35.91, 127.77],
+        'China': [35.86, 104.20],
+        'Taiwan': [23.70, 120.96],
+        'Hong Kong': [22.40, 114.11],
+        'Singapore': [1.35, 103.82],
+        'Thailand': [15.87, 100.99],
+        'Indonesia': [-0.79, 113.92],
+        'Malaysia': [4.21, 101.98],
+        'Vietnam': [14.06, 108.28],
+        'Philippines': [12.88, 121.77],
+        'India': [20.59, 78.96],
+        'Pakistan': [30.38, 69.35],
+        'Bangladesh': [23.68, 90.36],
+        'Sri Lanka': [7.87, 80.77],
+        'Nepal': [28.39, 84.12],
+        'Myanmar': [21.91, 95.96],
+        'Cambodia': [12.57, 104.99],
+        'Australia': [-25.27, 133.78],
+        'New Zealand': [-40.90, 174.89],
+        'Kazakhstan': [48.02, 66.92],
+        'Uzbekistan': [41.38, 64.59],
+        'Azerbaijan': [40.14, 47.58],
+        'Armenia': [40.07, 45.04],
+        'Dominican Republic': [18.74, -70.16],
+        'Puerto Rico': [18.22, -66.59],
+        'Bahamas': [25.03, -77.40],
+        'Malta': [35.94, 14.38],
+        'Cote divoire': [7.54, -5.55],
+        'Democratic Republic of the Congo': [-4.04, 21.76],
+        'Djibouti': [11.83, 42.59],
+        'Syria': [34.80, 38.99]
+    };
+
+    // =========================================================================
+    // State & Globals
+    // =========================================================================
+    let map, markerClusterGroup;
+    let allMarkers = [];
+    let allShows = [];
+    let filteredShows = [];
+    let categories = new Set();
+    let countries = new Set();
+
+    // =========================================================================
+    // Initialize Map
+    // =========================================================================
+    function initMap() {
+        map = L.map('map', {
+            center: [20, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 18,
+            zoomControl: true,
+            scrollWheelZoom: true
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 19
+        }).addTo(map);
+
+        markerClusterGroup = L.markerClusterGroup({
+            chunkedLoading: true,
+            chunkProgress: updateLoadingProgress,
+            maxClusterRadius: 50,
+            spiderfyOnMaxZoom: true,
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            disableClusteringAtZoom: 15,
+            iconCreateFunction: function(cluster) {
+                var childCount = cluster.getChildCount();
+                var size = 'small';
+                if (childCount >= 100) size = 'large';
+                else if (childCount >= 10) size = 'medium';
+                return new L.DivIcon({
+                    html: '<div>' + childCount + '</div>',
+                    className: 'marker-cluster marker-cluster-' + size,
+                    iconSize: new L.Point(40, 40)
+                });
+            }
+        });
+
+        // When a cluster is clicked, show sidebar with shows at that location
+        markerClusterGroup.on('clusterclick', function(e) {
+            var markers = e.layer.getAllChildMarkers();
+            var shows = markers.map(function(m) { return m.options.showData; });
+            if (shows.length > 0) {
+                var city = shows[0].city || 'Multiple Locations';
+                showSidebar(city, shows);
+            }
+        });
+
+        map.addLayer(markerClusterGroup);
+    }
+
+    function updateLoadingProgress(processed, total, elapsed) {
+        if (processed === total) {
+            document.getElementById('map-loading').classList.add('hidden');
+        }
+    }
+
+    // =========================================================================
+    // Create Markers
+    // =========================================================================
+    function getCoords(show) {
+        var city = show.city;
+        if (city && CITY_COORDS[city]) {
+            // Add small random offset to prevent exact overlaps
+            var jitter = 0.002;
+            return [
+                CITY_COORDS[city][0] + (Math.random() - 0.5) * jitter,
+                CITY_COORDS[city][1] + (Math.random() - 0.5) * jitter
+            ];
+        }
+        var country = show.country;
+        if (country && COUNTRY_COORDS[country]) {
+            var jitter2 = 0.5;
+            return [
+                COUNTRY_COORDS[country][0] + (Math.random() - 0.5) * jitter2,
+                COUNTRY_COORDS[country][1] + (Math.random() - 0.5) * jitter2
+            ];
+        }
+        return null;
+    }
+
+    function createPopupContent(show) {
+        var attendeesHtml = show.attendees ? '<span><span class="popup-icon">&#x1f465;</span>' + escapeHtml(show.attendees) + ' attendees</span>' : '';
+        var exhibitorsHtml = show.exhibitors ? '<span><span class="popup-icon">&#x1f3ea;</span>' + escapeHtml(show.exhibitors) + ' exhibitors</span>' : '';
+        return '<div class="popup-card">' +
+            '<h4>' + escapeHtml(show.title) + '</h4>' +
+            '<div class="popup-meta">' +
+                '<span><span class="popup-icon">&#x1f4c5;</span>' + escapeHtml(show.date) + '</span>' +
+                '<span><span class="popup-icon">&#x1f4cd;</span>' + escapeHtml(show.city + (show.country ? ', ' + show.country : '')) + '</span>' +
+                attendeesHtml +
+                exhibitorsHtml +
+            '</div>' +
+            (show.category ? '<span class="popup-tag">' + escapeHtml(show.category) + '</span>' : '') +
+            '<br>' +
+            '<a class="popup-link" href="/shows/' + encodeURIComponent(show.slug) + '">View Details &rarr;</a>' +
+        '</div>';
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    // Custom SVG marker icon
+    var showIcon = L.divIcon({
+        html: '<svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+              '<path d="M12 0C5.37 0 0 5.37 0 12c0 9 12 20 12 20s12-11 12-20C24 5.37 18.63 0 12 0z" fill="#0a0a0a"/>' +
+              '<circle cx="12" cy="11" r="5" fill="#fff"/>' +
+              '</svg>',
+        className: 'custom-marker',
+        iconSize: [24, 32],
+        iconAnchor: [12, 32],
+        popupAnchor: [0, -32]
+    });
+
+    function buildMarkers(shows) {
+        allMarkers = [];
+        var batch = [];
+
+        shows.forEach(function(show) {
+            var coords = getCoords(show);
+            if (!coords) return;
+
+            var marker = L.marker(coords, {
+                icon: showIcon,
+                showData: show
+            });
+
+            marker.bindPopup(function() {
+                return createPopupContent(show);
+            }, { maxWidth: 300 });
+
+            marker.on('click', function() {
+                // Find nearby shows at same city
+                var cityShows = filteredShows.filter(function(s) {
+                    return s.city === show.city;
+                });
+                if (cityShows.length > 1) {
+                    showSidebar(show.city + (show.country ? ', ' + show.country : ''), cityShows);
+                }
+            });
+
+            allMarkers.push({ marker: marker, show: show });
+            batch.push(marker);
+        });
+
+        return batch;
+    }
+
+    // =========================================================================
+    // Filters
+    // =========================================================================
+    function populateFilters() {
+        // Collect categories
+        allShows.forEach(function(s) {
+            if (s.category) categories.add(s.category);
+            if (s.country) countries.add(s.country);
+        });
+
+        var catSelect = document.getElementById('filter-industry');
+        Array.from(categories).sort().forEach(function(cat) {
+            var opt = document.createElement('option');
+            opt.value = cat;
+            opt.textContent = cat;
+            catSelect.appendChild(opt);
+        });
+    }
+
+    function getFilteredShows() {
+        var industry = document.getElementById('filter-industry').value;
+        var countrySearch = document.getElementById('filter-country').value.trim().toLowerCase();
+        var dateRange = document.getElementById('filter-date').value;
+        var now = new Date();
+
+        return allShows.filter(function(show) {
+            // Industry filter
+            if (industry && show.category !== industry) return false;
+
+            // Country filter
+            if (countrySearch && show.country && show.country.toLowerCase().indexOf(countrySearch) === -1) return false;
+            if (countrySearch && !show.country) return false;
+
+            // Date filter
+            if (dateRange !== 'all' && show.sort_date) {
+                var showDate = new Date(show.sort_date);
+                var maxDate = new Date(now);
+                maxDate.setDate(maxDate.getDate() + parseInt(dateRange));
+                if (showDate < now || showDate > maxDate) return false;
+            }
+
+            return true;
+        });
+    }
+
+    function applyFilters() {
+        filteredShows = getFilteredShows();
+        updateMap(filteredShows);
+        updateCounts(filteredShows.length, allShows.length);
+        closeSidebar();
+    }
+
+    function updateMap(shows) {
+        markerClusterGroup.clearLayers();
+        var batch = buildMarkers(shows);
+        markerClusterGroup.addLayers(batch);
+    }
+
+    function updateCounts(visible, total) {
+        document.getElementById('visible-count').textContent = visible.toLocaleString();
+        document.getElementById('total-count').textContent = total.toLocaleString();
+    }
+
+    function resetFilters() {
+        document.getElementById('filter-industry').value = '';
+        document.getElementById('filter-country').value = '';
+        document.getElementById('filter-date').value = 'all';
+        applyFilters();
+    }
+    // Expose to global scope for inline onclick
+    window.resetFilters = resetFilters;
+
+    // =========================================================================
+    // Sidebar
+    // =========================================================================
+    function showSidebar(title, shows) {
+        var sidebar = document.getElementById('sidebar');
+        var sidebarTitle = document.getElementById('sidebar-title');
+        var sidebarSubtitle = document.getElementById('sidebar-subtitle');
+        var sidebarList = document.getElementById('sidebar-list');
+
+        sidebarTitle.textContent = title;
+        sidebarSubtitle.textContent = shows.length + ' show' + (shows.length !== 1 ? 's' : '');
+
+        // Sort shows by date
+        shows.sort(function(a, b) {
+            return (a.sort_date || '').localeCompare(b.sort_date || '');
+        });
+
+        var html = '';
+        shows.forEach(function(show) {
+            html += '<a class="sidebar-show" href="/shows/' + encodeURIComponent(show.slug) + '">' +
+                '<div class="sidebar-show-title">' + escapeHtml(show.title) + '</div>' +
+                '<div class="sidebar-show-meta">' +
+                    escapeHtml(show.date) +
+                    (show.venue ? '<br>' + escapeHtml(show.venue) : '') +
+                    (show.attendees ? '<br>' + escapeHtml(show.attendees) + ' attendees' : '') +
+                    (show.category ? '<br><span class="tag">' + escapeHtml(show.category) + '</span>' : '') +
+                '</div>' +
+            '</a>';
+        });
+
+        sidebarList.innerHTML = html;
+        sidebar.classList.add('active');
+
+        // On mobile, ensure map is still visible
+        map.invalidateSize();
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('active');
+        map.invalidateSize();
+    }
+    window.closeSidebar = closeSidebar;
+
+    // =========================================================================
+    // Initialize
+    // =========================================================================
+    function init() {
+        // Load shows data
+        if (typeof SHOWS_DATA !== 'undefined') {
+            allShows = SHOWS_DATA;
+        } else if (typeof defined_shows !== 'undefined') {
+            allShows = defined_shows;
+        } else {
+            document.getElementById('map-loading').innerHTML =
+                '<p style="color:#dc2626;font-weight:600">Failed to load show data. Please refresh the page.</p>';
+            return;
+        }
+
+        initMap();
+        populateFilters();
+
+        filteredShows = allShows;
+        var batch = buildMarkers(allShows);
+        markerClusterGroup.addLayers(batch);
+
+        updateCounts(allShows.length, allShows.length);
+
+        // Hide loading after a short delay to allow clusters to render
+        setTimeout(function() {
+            document.getElementById('map-loading').classList.add('hidden');
+        }, 500);
+
+        // Attach filter event listeners
+        document.getElementById('filter-industry').addEventListener('change', applyFilters);
+        document.getElementById('filter-date').addEventListener('change', applyFilters);
+
+        var countryInput = document.getElementById('filter-country');
+        var countryTimeout;
+        countryInput.addEventListener('input', function() {
+            clearTimeout(countryTimeout);
+            countryTimeout = setTimeout(applyFilters, 300);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            map.invalidateSize();
+        });
+    }
+
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+</script>
+
+</body>
+</html>
