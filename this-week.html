@@ -735,7 +735,7 @@
                         if (show.country) loc += ', ' + show.country;
                     }
 
-                    html += '<a href="/show.html?slug=' + encodeURIComponent(show.slug) + '" class="tw-show-card" style="text-decoration:none;color:inherit;">';
+                    html += '<a href="/shows/' + encodeURIComponent(show.slug) + '" class="tw-show-card" style="text-decoration:none;color:inherit;">';
                     html += '<span class="tw-show-category" style="background:' + color + '">' + escapeHtml(show.category) + '</span>';
                     html += '<div class="tw-show-title">' + escapeHtml(show.title) + '</div>';
                     html += '<div class="tw-show-meta">';
