@@ -290,3 +290,33 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 - Pushed all changes to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Feb 9, 2026 — Session 6
+
+#### Amazon Affiliate Product Image Fix (travel.html)
+- Fixed 8 broken Amazon product images (were using fabricated m.media-amazon.com URLs that 404'd)
+- Downloaded product images from official manufacturer websites and hosted locally in `/images/products/`
+- Images sourced from: Anker, Samsonite (LuggageBase), Downy, MATEIN, BAGSMART, ExponetUSA, EasyOrderBanners, Kinzd
+- Updated all 8 Amazon ASINs to verified product listings
+- Updated prices to current values (Anker $109.99, Downy $7.49, BAGSMART $15.99)
+- All links verified with `showfloortips-20` affiliate tag
+
+#### City Guide Card Image Fix (travel.html)
+- Fixed 3 broken Unsplash city images (Atlanta, Houston, San Diego were 404)
+- Replaced ALL 10 city card images with locally-hosted versions in `/images/cities/`
+- Replacement images: Atlanta & San Diego from Pexels, Houston from Pexels; 7 others downloaded from Unsplash before they break
+- No more external image dependencies on travel.html — all images self-hosted
+
+#### Amazon ASIN Updates (10 city guide articles)
+- Updated 13 affiliate links across all 10 city guides in `/travel/` to verified ASINs
+- Replacements: Anker B0BN744Y71→B09VPHVT2Z, MATEIN B0BSHF7WHJ→B06XZTZ7GB, MaxGear B07VJYZGRL→B074TZ9TS1, BAGSMART B075Y3BTRN→B017SKRWL4, Samsonite B09NNMBPMJ→B01M0A3BKH, Downy B08LH59SXZ→B07ZG4D84D, Banner B0BY8CY8B5→B0CDN222CL
+- Verified zero old ASINs remain in any file
+
+#### New Files Added
+- `/images/products/` — 8 product images (anker, samsonite, downy, matein, bagsmart, retractable-banner, backdrop-banner, business-card-holder)
+- `/images/cities/` — 10 city images (las-vegas, chicago, orlando, new-york, anaheim, san-francisco, atlanta, houston, dallas, san-diego)
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
