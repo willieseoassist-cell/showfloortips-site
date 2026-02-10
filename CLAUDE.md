@@ -469,3 +469,18 @@ EuroShop (BolzJ, PaessensJ, MoebiusE, info @messe-duesseldorf.de) | VIVE/HLTH (s
 - API endpoint tested: `curl -X POST /api/subscribe` → `{"success": true}`
 - Subscription verified in Beehiiv dashboard
 - Live at https://showfloortips.com
+
+#### Newsletter Email System Built
+- **93 trade show organizer emails** extracted from CLAUDE.md outreach log and bulk-added to Beehiiv as subscribers
+- All 93 added successfully (`utm_source: showfloortips_outreach`, welcome emails sent)
+- **First newsletter sent** to all 93 contacts via Resend API (from `info@showfloortips.com`)
+- Subject: "ShowFloorTips Weekly: AI Is Replacing Booth Staff, Super Bowl Spend Reshaping Trade Shows & More"
+- Content: 3 featured articles (AI booth staff, Super Bowl spend, sustainability compliance), 3 quick links, tools CTA
+- Fixed Unicode escape bug (`\u2019` showing as raw text) — switched to HTML entities (`&rsquo;` `&bull;` `&copy;` `&mdash;`)
+- **Created reusable newsletter infrastructure:**
+  - `email-template.html` — standalone HTML email template with proper HTML entities (never Unicode escapes)
+  - `send-newsletter.py` — reads template from file, sends via Resend API with `User-Agent: ShowFloorTips/1.0`
+  - Usage: `python3 send-newsletter.py --test` (preview) or `python3 send-newsletter.py --subject "Subject"` (send all)
+  - Extracts recipient list from CLAUDE.md outreach section automatically
+- **Beehiiv Send API not available** (requires Enterprise plan) — using Resend API for sends instead
+- **Important:** Always use `User-Agent: ShowFloorTips/1.0` header with Resend (Cloudflare blocks default Python UA)
