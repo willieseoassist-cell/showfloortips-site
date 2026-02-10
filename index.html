@@ -732,15 +732,14 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
+    <!-- Newsletter — Powered by Beehiiv -->
     <section class="newsletter-section" id="newsletter">
         <div class="newsletter-box">
             <h2>Weekly Trade Show Intel</h2>
             <p>Join exhibitors who get actionable tips every Tuesday. No spam, just strategies that work.</p>
-            <form class="newsletter-form" onsubmit="return handleSubscribe(event)">
-                <input type="email" id="newsletterEmail" placeholder="your@email.com" required>
-                <button type="submit">Subscribe</button>
-            </form>
+            <div style="max-width:480px;margin:0 auto;">
+                <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
+            </div>
         </div>
     </section>
 
@@ -1571,13 +1570,7 @@
             applyAdvancedFromInputs();
         };
 
-        window.handleSubscribe = function(e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value;
-            alert('Thanks for subscribing! You\'ll receive weekly trade show intel at ' + email);
-            document.getElementById('newsletterEmail').value = '';
-            return false;
-        };
+        // Newsletter handled by Beehiiv embed
 
         // ── Addiction Features ──
 

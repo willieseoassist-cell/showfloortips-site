@@ -110,134 +110,12 @@
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .nl-form-card .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .nl-form-card label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #171717;
-            margin-bottom: 0.4rem;
-        }
-
-        .nl-form-card label .optional {
-            color: #a3a3a3;
-            font-weight: 400;
-        }
-
-        .nl-form-card input[type="email"],
-        .nl-form-card input[type="text"] {
-            width: 100%;
-            padding: 0.9rem 1.15rem;
-            border: 1px solid #e5e5e5;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #0a0a0a;
-            background: #fafafa;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-            box-sizing: border-box;
-        }
-
-        .nl-form-card input[type="email"]:focus,
-        .nl-form-card input[type="text"]:focus {
-            border-color: #171717;
-            box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.06);
-            background: #fff;
-        }
-
-        .nl-form-card input[type="email"]::placeholder,
-        .nl-form-card input[type="text"]::placeholder {
-            color: #a3a3a3;
-        }
-
-        .nl-form-card .email-input {
-            font-size: 1.05rem;
-            padding: 1rem 1.25rem;
-        }
-
-        .nl-subscribe-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #0a0a0a;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            margin-top: 0.5rem;
-        }
-
-        .nl-subscribe-btn:hover {
-            background: #262626;
-        }
-
-        .nl-subscribe-btn:active {
-            transform: scale(0.99);
-        }
-
-        .nl-subscribe-btn:disabled {
-            background: #525252;
-            cursor: not-allowed;
-        }
-
         .nl-form-fine-print {
             text-align: center;
             font-size: 0.8rem;
             color: #a3a3a3;
             margin-top: 1rem;
             line-height: 1.5;
-        }
-
-        /* Success & Error States */
-        .nl-success-msg {
-            display: none;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .nl-success-msg .checkmark {
-            width: 56px;
-            height: 56px;
-            background: #0a0a0a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.25rem;
-        }
-
-        .nl-success-msg .checkmark svg {
-            width: 28px;
-            height: 28px;
-            color: #fff;
-        }
-
-        .nl-success-msg h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #0a0a0a;
-            margin-bottom: 0.5rem;
-        }
-
-        .nl-success-msg p {
-            font-size: 0.95rem;
-            color: #525252;
-            line-height: 1.6;
-        }
-
-        .nl-error-msg {
-            display: none;
-            font-size: 0.85rem;
-            color: #dc2626;
-            margin-top: 0.5rem;
-            text-align: center;
         }
 
         /* ── Benefits Section ── */
@@ -616,35 +494,11 @@
         </div>
     </section>
 
-    <!-- Signup Form -->
+    <!-- Signup Form — Powered by Beehiiv -->
     <section class="nl-form-section">
         <div class="nl-form-card">
-            <form id="nlForm" onsubmit="handleNewsletterSignup(event)">
-                <div id="nlFormFields">
-                    <div class="form-group">
-                        <label for="nlEmail">Email address</label>
-                        <input type="email" id="nlEmail" class="email-input" placeholder="you@company.com" required autocomplete="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="nlName">Name <span class="optional">(optional)</span></label>
-                        <input type="text" id="nlName" placeholder="Your name" autocomplete="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="nlCompany">Company <span class="optional">(optional)</span></label>
-                        <input type="text" id="nlCompany" placeholder="Your company" autocomplete="organization">
-                    </div>
-                    <button type="submit" class="nl-subscribe-btn" id="nlSubmitBtn">Subscribe Free</button>
-                    <div class="nl-error-msg" id="nlError"></div>
-                </div>
-                <div class="nl-success-msg" id="nlSuccess">
-                    <div class="checkmark">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <h3>You're in!</h3>
-                    <p>Welcome to the ShowFloorTips community. Your first newsletter drops this week.</p>
-                </div>
-            </form>
-            <p class="nl-form-fine-print" id="nlFinePrint">Join 10,000+ exhibitors. Unsubscribe anytime.</p>
+            <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
+            <p class="nl-form-fine-print">Join 10,000+ exhibitors. Unsubscribe anytime.</p>
         </div>
     </section>
 
@@ -728,7 +582,9 @@
         <div class="nl-bottom-cta-inner">
             <h2>Ready to Exhibit Smarter?</h2>
             <p>Join thousands of exhibitors who start their week with ShowFloorTips.</p>
-            <a href="#" class="cta-link" onclick="scrollToForm(); return false;">Subscribe Free</a>
+            <div style="max-width:440px;margin:1rem auto 0;">
+                <iframe src="https://embeds.beehiiv.com/3ced7630-50d2-4bb9-8f43-728c48a80034?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0;background-color:transparent;width:100%;"></iframe>
+            </div>
         </div>
     </section>
 
@@ -786,88 +642,11 @@
     (function() {
         'use strict';
 
-        // Email validation
-        function isValidEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
-
-        // Store subscriber in localStorage
-        function storeSubscriber(data) {
-            try {
-                var existing = JSON.parse(localStorage.getItem('sft_newsletter_subscribers') || '[]');
-                existing.push({
-                    email: data.email,
-                    name: data.name || '',
-                    company: data.company || '',
-                    timestamp: new Date().toISOString()
-                });
-                localStorage.setItem('sft_newsletter_subscribers', JSON.stringify(existing));
-            } catch (e) {
-                // localStorage may be unavailable; silent fail
-            }
-        }
-
-        // Handle form submission
-        window.handleNewsletterSignup = function(e) {
-            e.preventDefault();
-
-            var emailInput = document.getElementById('nlEmail');
-            var nameInput = document.getElementById('nlName');
-            var companyInput = document.getElementById('nlCompany');
-            var errorMsg = document.getElementById('nlError');
-            var submitBtn = document.getElementById('nlSubmitBtn');
-
-            var email = emailInput.value.trim();
-            var name = nameInput.value.trim();
-            var company = companyInput.value.trim();
-
-            // Reset error
-            errorMsg.style.display = 'none';
-            errorMsg.textContent = '';
-
-            // Validate email
-            if (!email) {
-                errorMsg.textContent = 'Please enter your email address.';
-                errorMsg.style.display = 'block';
-                emailInput.focus();
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                errorMsg.textContent = 'Please enter a valid email address.';
-                errorMsg.style.display = 'block';
-                emailInput.focus();
-                return;
-            }
-
-            // Disable button during "submission"
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Subscribing...';
-
-            // Store in localStorage as backup
-            storeSubscriber({ email: email, name: name, company: company });
-
-            // Simulate API call (replace with Resend API integration later)
-            setTimeout(function() {
-                // Show success state
-                document.getElementById('nlFormFields').style.display = 'none';
-                document.getElementById('nlSuccess').style.display = 'block';
-                document.getElementById('nlFinePrint').style.display = 'none';
-
-                // Reset button for potential re-use
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Subscribe Free';
-            }, 600);
-        };
-
         // Scroll to form from bottom CTA
         window.scrollToForm = function() {
             var formSection = document.querySelector('.nl-form-section');
             if (formSection) {
                 formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(function() {
-                    document.getElementById('nlEmail').focus();
-                }, 500);
             }
         };
 
