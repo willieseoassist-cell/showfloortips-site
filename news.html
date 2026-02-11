@@ -926,10 +926,10 @@
         function formatDate(isoStr) {
             if (!isoStr) return '';
             try {
-                var d = new Date(isoStr);
-                if (isNaN(d.getTime())) return '';
+                var parts = isoStr.substring(0, 10).split('-');
+                if (parts.length !== 3) return '';
                 var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+                return months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
             } catch(e) {
                 return '';
             }
