@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,670+ shows), `news.js` (article index, 14MB)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,779+ shows), `news.js` (article index, 14MB, 24,532+ articles)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -987,4 +987,38 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 #### Deployment
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,582 files)
+- Live at https://showfloortips.com
+
+### Feb 11, 2026 — Session 17
+
+#### 10 New Articles Written & Deployed
+- **5 News Insight articles:**
+  - FDA AI wearables deregulation reshaping HIMSS, ViVE, BIO 2026
+  - Data center electrification boom driving CONEXPO 2026 infrastructure exhibits
+  - Nvidia Physical AI (Cosmos, GR00T, Alpamayo) across MWC, RSA, re:Invent
+  - World Defense Show 2026 expands 58% with AI autonomy & unmanned zones
+  - Google Universal Commerce Protocol — agentic shopping at Shoptalk, IRCE, eTail
+- **3 Networking Guides:**
+  - How to Network at HANNOVER MESSE 2026 (industrial, 4,000+ exhibitors)
+  - How to Network at RAPID + TCT 2026 (additive manufacturing, Detroit)
+  - How to Network at FIBO 2026 (fitness/wellness, Cologne, 130K+ visitors)
+- **2 Comparison Articles:**
+  - LEAP 2026 vs GITEX Global 2026 (Middle East tech showdown)
+  - Hydrogen Technology Expo vs Carbon Capture Expo 2026 (co-located Bremen)
+
+#### 17 New Trade Shows Added to Database
+- Q-EXPO, HumanX, LEAP, GITEX Africa, Africa Tech Summit Nairobi, PsyCon Denver
+- Global Vertical Farming Show, Carbon Capture Technology World Expo, Hydrogen Technology World Expo
+- SynBioBeta, SEMICON Southeast Asia, SpaceCom, Exposec, Expo Manufactura
+- Indoor Ag-Con, Psychedelic Therapeutics Conference, SynbiTECH
+- **Total shows in database: 24,779**
+
+#### Data Updates
+- news.js: 24,532 entries (was 24,522)
+- rss.xml: 140 items (was 130)
+- shows.js: 24,779 shows (was 24,762)
+
+#### Deployment
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,590 files)
 - Live at https://showfloortips.com
