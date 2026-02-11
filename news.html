@@ -525,6 +525,7 @@
                     <li><a href="/travel.html">Travel</a></li>
                     <li><a href="/venue-maps.html">Maps</a></li>
                     <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/guide.html">Guide</a></li>
                     <li><a href="/products.html">Products</a></li>
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
@@ -583,10 +584,12 @@
             <span class="news-count" id="newsCount">Loading articles...</span>
         </div>
         <div class="news-grid" id="newsGrid">
-            <div class="news-no-results">
-                <h3>Loading news...</h3>
-                <p>Fetching the latest trade show industry headlines.</p>
-            </div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
+            <div class="news-card"><div class="skeleton skeleton-card"></div></div>
         </div>
         <div class="news-load-more" id="newsLoadMore" style="display:none;">
             <button class="news-load-more-btn" id="newsLoadMoreBtn">Load More Articles</button>
@@ -896,7 +899,7 @@
 
                 var imageHtml;
                 if (article.image_url) {
-                    imageHtml = '<div class="news-card-image" style="background-image:url(\''+escapeAttr(article.image_url)+'\')"><span class="news-card-category ' + catClass + '">' + escapeHtml(article.category) + '</span></div>';
+                    imageHtml = '<div class="news-card-image" data-bg="'+escapeAttr(article.image_url)+'"><span class="news-card-category ' + catClass + '">' + escapeHtml(article.category) + '</span></div>';
                 } else {
                     imageHtml = '';
                 }
@@ -923,6 +926,25 @@
 
             var loadMore = document.getElementById('newsLoadMore');
             loadMore.style.display = visibleCount < filteredArticles.length ? 'block' : 'none';
+
+            // Lazy load background images
+            if ('IntersectionObserver' in window) {
+                var lazyBgs = grid.querySelectorAll('[data-bg]');
+                var bgObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.style.backgroundImage = 'url(' + entry.target.getAttribute('data-bg') + ')';
+                            entry.target.removeAttribute('data-bg');
+                            bgObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '200px' });
+                lazyBgs.forEach(function(el) { bgObserver.observe(el); });
+            } else {
+                grid.querySelectorAll('[data-bg]').forEach(function(el) {
+                    el.style.backgroundImage = 'url(' + el.getAttribute('data-bg') + ')';
+                });
+            }
         }
 
         function formatDate(isoStr) {

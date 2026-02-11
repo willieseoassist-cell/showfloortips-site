@@ -677,3 +677,61 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - **Updated 87 article HTML files** — datePublished, dateModified, `<time>` tags, and meta tags all set to 2026-02-11
 - News listing now shows consistent dates matching the article pages
 - Sorting confirmed: newest articles appear first (descending by published_date)
+
+#### Sitemap Fix
+- **sitemap-index.xml** updated to include all 8 sub-sitemaps (was only 2): pages, shows-1/2/3, news-1/2/3, cities
+- **robots.txt** updated with both sitemap references
+- Google Search Console: sitemap-index.xml submitted and confirmed Success
+
+#### Massive SEO Optimization Pass (14 improvements)
+1. **Product schema** — JSON-LD Product/ItemList schema on products.html and bundle.html (pricing, availability, ratings for rich results)
+2. **Preconnect hints** — `<link rel="preconnect" href="https://images.unsplash.com">` added to 9 main pages + 24,224 article files
+3. **DNS prefetch** — `<link rel="dns-prefetch">` added to 6 key pages for faster resource loading
+4. **Custom 404 page** — 404.html with search box, quick links, matching site nav/footer. vercel.json updated with routes config
+5. **FAQPage schema** — 6-question FAQ section with FAQPage JSON-LD added to travel.html (rich snippets in Google)
+6. **HowTo schema** — HowTo JSON-LD added to 4,237 networking guide articles (5-step networking process)
+7. **Meta title optimization** — 9 main pages shortened to under 60 chars with keywords front-loaded
+8. **Social sharing buttons** — X/Twitter, LinkedIn, Facebook, Email share buttons added to all 24,244 articles
+9. **news_keywords meta tags** — Added to 24,237 articles for Google News eligibility
+10. **Pillar page** — `guide.html` created (1,352 lines, 11 chapters, 149 internal links, 86 content cards) — "The Ultimate Trade Show Guide 2026"
+11. **Batch SEO scripts** — add_howto_schema.py, seo_batch_update.py created for reproducible batch updates
+12. **Content freshness signals** — dateModified already present on all articles (confirmed)
+13. **Lazy loading** — All articles have single above-fold image (correctly not lazy-loaded); preconnect handles speed
+14. **Performance** — dns-prefetch + preconnect hints reduce connection latency for external resources
+
+#### Comprehensive Site Enhancement Wave (Feb 11 continued)
+
+##### New Pages Built
+- **10 Industry Landing Pages** — `/industries/technology.html`, `/industries/healthcare.html`, `/industries/manufacturing.html`, `/industries/food-beverage.html`, `/industries/construction.html`, `/industries/automotive.html`, `/industries/energy.html`, `/industries/fashion-beauty.html`, `/industries/defense-security.html`, `/industries/education.html` + index page. Each dynamically filters shows from shows.js, includes country/search filters, related articles, and industry stats.
+- **Glossary** — `/glossary.html` with 100+ searchable trade show terms (drayage, I&D, pipe & drape, etc.). Alphabet nav, search filter, DefinedTermSet schema.
+- **Changelog** — `/changelog.html` with timeline of all site updates from launch through Feb 11. Professional timeline design.
+- **Calendar** — `/calendar.html` with month-by-month trade show browser. Filters by industry and search, shows stats, expandable month sections.
+
+##### New Articles Written (5)
+1. **CES cost guide** — Complete budget breakdown for CES exhibitors ($19K-$47K for 10x10, $79K-$176K for 20x20)
+2. **NRF cost guide** — NYC's retail show budget breakdown including Javits Center premium services
+3. **First-time exhibitor guide** — 15 costly mistakes that kill ROI, with actionable fixes
+4. **Top 10 shows for small business** — Budget-friendly shows with high buyer-to-exhibitor ratios
+5. **Spring 2026 season preview** — Guide to 50+ must-know events from March to May
+
+##### Code Improvements
+- **Skeleton loading** — Added CSS skeleton loading animation to styles.css with shimmer effect
+- **Print CSS** — Added `@media print` styles that hide nav, footer, buttons, CTAs for clean printouts
+- **Lazy loading images** — Intersection Observer for background-image lazy loading on both news.html (articles) and index.html (show cards). Images load when 200-300px from viewport.
+- **Guide nav link** — Added "Guide" link to navigation on 24,307 HTML pages
+
+##### Products Page Enhancement
+- Added curated "Starter Kits" section between Mega Bundle and individual products
+- 3 kit cards: First-Timer Kit, Email & Outreach Kit, ROI & Analytics Kit
+- Each kit shows included products and individual pricing, driving users toward the $49.99 Mega Bundle
+
+##### Sitemap & SEO Updates
+- Added 15 new URLs to sitemap-pages.xml (calendar, changelog, glossary, 10 industry pages + index)
+- Added glossary, industries, and calendar links to index.html footer
+- All new pages have JSON-LD structured data, canonical URLs, and meta descriptions
+
+##### Site Audit Results
+- Audited 17 main pages: all have title, meta description, footer
+- Audited industry pages: all have shows.js reference and title
+- Checked internal links across main pages: no broken links found
+- Only 1 non-issue: 404.html correctly omits canonical (noindex page)
