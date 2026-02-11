@@ -795,3 +795,40 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 
 ##### Revenue Plan Updated
 - MILLION-DOLLAR-PLAN.md updated with all new pages, article counts, and scorecard progress
+
+### Feb 11, 2026 — Session 14 (continued)
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/big-tech-650-billion-ai-spending-trade-show-impact-2026.html` — Big Tech's $650B AI infrastructure bet reshaping exhibitor landscape
+- `news/anthropic-ai-software-selloff-exhibitor-strategy-2026.html` — Anthropic AI triggers $285B software selloff, SaaS exhibitor implications
+- `news/trump-tariffs-trade-show-costs-exhibitors-2026.html` — Tariffs at 13.5% (highest since 1946), line-by-line booth cost impact
+- `news/disney-ceo-experiential-economy-trade-shows-2026.html` — Disney parks boss named CEO, lessons for exhibitor booth design
+- `news/measles-outbreak-trade-show-health-safety-2026.html` — 733+ measles cases in 5 weeks, health prep guide for exhibitors
+
+**Networking Guides (3):**
+- `news/networking-guide-rsac-2026.html` — RSA Conference 2026 (44K+ attendees, Moscone Center, Mar 23-26)
+- `news/networking-guide-seatrade-cruise-global-2026.html` — Seatrade Cruise Global 2026 (20K+ attendees, Miami Beach, Apr 13-16)
+- `news/networking-guide-automate-2026.html` — Automate 2026 (45K+ attendees, McCormick Place, Jun 22-25)
+
+**Comparison Articles (2):**
+- `news/modex-vs-automate-2026.html` — MODEX vs Automate 2026 (supply chain vs robotics/automation)
+- `news/rsac-vs-black-hat-usa-2026.html` — RSA Conference vs Black Hat USA 2026 (business vs technical cybersecurity)
+
+#### New Shows Added (12 new, total now 24,682)
+- RAPID + TCT 2026 (Apr 13-16, Boston) — 10,000+ attendees
+- EMO Hannover 2026 (Sep 22-26, Germany) — 130,000+ attendees
+- Auto China 2026 (Apr 24 - May 3, Beijing) — 800,000+ attendees
+- SNEC PV+ 2026 (Jun 3-5, Shanghai) — 500,000+ attendees
+- BEYOND Expo 2026 (May 27-30, Macao) — 30,000+ attendees
+- Global Industrie Paris 2026 (Mar 30 - Apr 2, Paris) — 45,000+ attendees
+- AAD 2026 (Sep 16-20, South Africa) — 32,000+ attendees
+- AgriSIMA 2026 (Feb 22-25, Paris) — 200,000+ attendees
+- CIIE 2026 (Nov 5-10, Shanghai) — 400,000+ attendees
+- AEEDC Dubai 2026 (Jan 19-21, Dubai) — 50,000+ attendees
+- Expomed Eurasia 2026 (Apr 16-18, Istanbul) — 22,000+ attendees
+- CIMES 2026 (May 25-29, Beijing) — 100,000+ attendees
+
+#### Orbus Competitor Audit
+- Checked all 50 shows on Orbus USA list
+- 50/50 already in our database — 100% parity maintained
