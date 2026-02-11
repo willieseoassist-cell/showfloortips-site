@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 29MB, 24,615+ shows), `news.js` (article index, 14MB)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,670+ shows), `news.js` (article index, 14MB)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -651,9 +651,20 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 1. **Mega Bundle page** (`bundle.html`) — $49.99 bundle of all 19 products, "Save 77%" badge, strikethrough $213.81, 4 product categories, FAQ, social proof
 2. **Google AdSense** — Placeholder ad slots added to index.html, news.html, show.html, travel.html (commented script tag ready to activate when approved)
 3. **XML Sitemap** — `sitemap-index.xml` → `sitemap-pages.xml` (5MB) + `sitemap-shows-1.xml` (4.4MB), autodiscovery link in index.html
-4. **Internal article linking** — All 4,865 articles in /news/ already have "Related Articles" cross-linking built into templates
+4. **Internal article linking** — "Related Articles" cross-linking added to all 24,244 articles in /news/ (4 related links each)
 5. **Event schema markup** — JSON-LD Event schema dynamically injected on show.html for every trade show (name, dates, location, URL, description)
 6. **RSS feed** — `rss.xml` (33KB, latest 50 articles), RSS 2.0 format, autodiscovery links added to index.html and news.html
 7. **Email capture popup** — Scroll-triggered at 40%, slides from bottom-right, sessionStorage prevents re-showing, added to index.html, news.html, show.html
 8. **Show page improvements** — "Request Booth Info" form in sidebar (name, email, company, saves to localStorage), enhanced layout
 9. **Mobile speed optimization** — Pagination changed from 24 to 50 shows per page, "Load More" button with "Showing X of Y shows" counter, dark mode compatible
+
+#### Products Page Updated
+- Mega Bundle featured as hero section at top of products.html
+- Dark gradient card with $49.99 price, "Save 77%" badge, "Best Value" badge
+- Individual products section renamed to "Or Buy Individually"
+
+#### SEO Optimization Pass
+- **Canonical URLs** — Added to products.html, bundle.html, show.html, city-shows.html (all other pages already had them)
+- **Organization schema** — JSON-LD Organization added to index.html (name, logo, email, contactPoint)
+- **BreadcrumbList schema** — Added to all 24,244 articles (Home > Category > Title) with category-aware detection (Comparisons, Networking Guides, FAQ Guides, Cost Guides, Spotlights, Trend Reports, First-Timer Guides, Guides, News)
+- Already had: robots.txt with sitemap, WebSite schema + SearchAction, Article JSON-LD on all articles, FAQPage schema on FAQ articles, canonical URLs on 20+ main pages
