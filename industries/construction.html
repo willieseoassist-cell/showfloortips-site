@@ -86,6 +86,32 @@
             .show-card { grid-template-columns: 1fr }
             .show-action { flex-direction: row; align-items: center }
         }
+        /* Dark mode overrides */
+        html[data-theme="dark"] .ind-hero, body.dark-mode .ind-hero { background: #0f0f23 }
+        html[data-theme="dark"] .ind-nav, body.dark-mode .ind-nav { background: #1a1a2e; border-bottom-color: #2a2a4a }
+        html[data-theme="dark"] .ind-nav a, body.dark-mode .ind-nav a { color: #94a3b8 }
+        html[data-theme="dark"] .ind-nav a:hover, body.dark-mode .ind-nav a:hover { background: #2a2a4a; color: #e2e8f0 }
+        html[data-theme="dark"] .ind-nav a.active, body.dark-mode .ind-nav a.active { background: #e2e8f0; color: #0f0f23 }
+        html[data-theme="dark"] .ind-intro, body.dark-mode .ind-intro { background: #1e1e32; border-color: #2a2a4a; color: #94a3b8 }
+        html[data-theme="dark"] .ind-filters select, html[data-theme="dark"] .ind-filters input, body.dark-mode .ind-filters select, body.dark-mode .ind-filters input { background: #1e1e32; border-color: #2a2a4a; color: #e2e8f0 }
+        html[data-theme="dark"] .ind-count, body.dark-mode .ind-count { color: #94a3b8 }
+        html[data-theme="dark"] .show-card, body.dark-mode .show-card { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .show-card:hover, body.dark-mode .show-card:hover { border-color: #94a3b8 }
+        html[data-theme="dark"] .show-card h3 a, body.dark-mode .show-card h3 a { color: #e2e8f0 }
+        html[data-theme="dark"] .show-tag, body.dark-mode .show-tag { background: #16213e; color: #94a3b8 }
+        html[data-theme="dark"] .show-desc, body.dark-mode .show-desc { color: #94a3b8 }
+        html[data-theme="dark"] .show-date, body.dark-mode .show-date { color: #94a3b8 }
+        html[data-theme="dark"] .btn-view, body.dark-mode .btn-view { background: #e2e8f0; color: #0f0f23 }
+        html[data-theme="dark"] .btn-view:hover, body.dark-mode .btn-view:hover { background: #cbd5e1 }
+        html[data-theme="dark"] .load-more button, body.dark-mode .load-more button { background: #e2e8f0; color: #0f0f23 }
+        html[data-theme="dark"] .scannly-cta, body.dark-mode .scannly-cta { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .scannly-cta h3, body.dark-mode .scannly-cta h3 { color: #e2e8f0 }
+        html[data-theme="dark"] .scannly-cta p, body.dark-mode .scannly-cta p { color: #94a3b8 }
+        html[data-theme="dark"] .article-card, body.dark-mode .article-card { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .article-card:hover, body.dark-mode .article-card:hover { border-color: #94a3b8 }
+        html[data-theme="dark"] .article-card h4 a, body.dark-mode .article-card h4 a { color: #e2e8f0 }
+        html[data-theme="dark"] .article-card p, body.dark-mode .article-card p { color: #94a3b8 }
+        html[data-theme="dark"] .related-articles h2, body.dark-mode .related-articles h2 { color: #e2e8f0 }
     </style>
 </head>
 <body>
@@ -170,6 +196,15 @@
         </div>
 
         <div class="related-articles" id="relatedArticles"></div>
+    </div>
+
+    <div style="max-width:1000px;margin:2rem auto;padding:0 2rem">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Related Industries</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+            <a href="/industries/manufacturing.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Manufacturing</a>
+            <a href="/industries/energy.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Energy</a>
+            <a href="/industries/automotive.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Automotive</a>
+        </div>
     </div>
 
     <footer class="footer">

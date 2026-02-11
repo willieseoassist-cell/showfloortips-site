@@ -1,9 +1,11 @@
 # ShowFloorTips — $1,000,000 Revenue Plan
 
-## Current State (Updated Feb 10, 2026)
+## Current State (Updated Feb 11, 2026)
 - **24,670+ trade shows** in database (shows.js, 36MB+)
-- **24,350+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
+- **24,380+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
 - **10 city travel guides** (Las Vegas, Chicago, Orlando, NYC, Anaheim, SF, Atlanta, Houston, Dallas, San Diego)
+- **16 industry landing pages** + index (Technology, Healthcare, Manufacturing, Food & Beverage, Construction, Automotive, Energy, Fashion & Beauty, Defense & Security, Education, Agriculture, Marine, Finance, Travel & Hospitality, Sports & Recreation)
+- **5 state landing pages** (California, Texas, Florida, New York, Illinois)
 - **11 interactive tools** built: ROI Calculator, Budget Planner, QR Generator, Show Comparison, Interactive World Map, Lead Value Calculator, Packing List Generator, Trip Cost Estimator, Flight Deals, This Week Live View, Venue Maps
 - **20 digital products** on Stripe ($7.99 - $49.99 each) — includes Mega Bundle
 - **Scannly** lead capture app (free)
@@ -12,8 +14,9 @@
 - **Newsletter** — Beehiiv (157 subscribers), serverless API subscribe endpoint, email capture popup
 - **Sponsor outreach** — 157 partnership pitch emails sent to show organizers + industry vendors
 - **Dark mode + PWA** — progressive web app with service worker
-- **SEO infrastructure** — XML sitemap (split index), RSS feed, Event JSON-LD schema, internal cross-linking
-- **Monetization ready** — AdSense placeholders, Mega Bundle page, Request Booth Info forms
+- **SEO infrastructure** — XML sitemap (split index), RSS feed, Event JSON-LD schema, FAQPage schema, HowTo schema, BreadcrumbList schema, internal cross-linking
+- **Essential pages** — About, Contact, Privacy Policy, Terms of Service, Glossary (100+ terms), Changelog, Calendar
+- **Monetization ready** — AdSense placeholders, Mega Bundle page, Request Booth Info forms, Starter Kits on products page
 - Revenue today: ~$0 (early stage, infrastructure complete)
 
 ---
@@ -213,6 +216,15 @@ Features:
 - **Bookmark/Save shows** — Heart icon, "Saved Shows" filter, localStorage
 - **Calendar export** — .ics file download from show modal
 - **/bundle.html** — $49.99 Mega Bundle page for all 19 products (Save 77%)
+- **/about.html** — Company mission, stats, values, team info
+- **/contact.html** — 4 contact cards + FAQ accordion
+- **/privacy.html** — Full privacy policy (10 sections)
+- **/terms.html** — Full terms of service (13 sections)
+- **/glossary.html** — 100+ searchable trade show terms, alphabet nav
+- **/changelog.html** — Timeline of all site updates
+- **/calendar.html** — Month-by-month trade show browser with filters
+- **/industries/[industry].html** — 16 industry landing pages + index (dynamically filter shows)
+- **/states/[state].html** — 5 state landing pages (CA, TX, FL, NY, IL)
 - **XML Sitemap** — sitemap-index.xml → sitemap-pages.xml + sitemap-shows-1.xml
 - **RSS Feed** — rss.xml with latest 50 articles (RSS 2.0)
 - **Email capture popup** — Scroll-triggered on index, news, show pages
@@ -223,7 +235,7 @@ Features:
 - **Pagination** — 50 shows per page with "Load More" + count display
 
 ### Content Library
-- **80+ articles** written across categories:
+- **115+ articles** written across categories:
   - News Insights (trending news through trade show lens)
   - Networking Guides (pre-show, floor tactics, follow-up for specific shows)
   - Comparison Articles (head-to-head show matchups)
@@ -247,9 +259,12 @@ Features:
 | Category | Target | Current | Progress |
 |----------|--------|---------|----------|
 | Trade Shows in DB | 25,000 | 24,670 | 99% |
-| Articles | 25,000 | 24,350+ | 97% |
+| Articles | 25,000 | 24,380+ | 98% |
 | Free Tools | 10+ | 11 | 110% |
 | Travel Guides | 10 cities | 10 cities | 100% |
+| Industry Pages | 15+ | 16 + index | 107% |
+| State Pages | 10 | 5 | 50% |
+| Essential Pages | 7 | 7 (About, Contact, Privacy, Terms, Glossary, Changelog, Calendar) | 100% |
 | Newsletter Subscribers | 1,000 | 157 | 16% |
 | Sponsor Outreach | 200 contacts | 157 sent | 79% |
 | Affiliate Programs | 5+ | 2 (Amazon, Booking) | 40% |

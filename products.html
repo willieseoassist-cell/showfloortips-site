@@ -86,6 +86,54 @@
         ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What format are the digital products delivered in?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Checklists and guides are delivered as downloadable PDFs. Spreadsheets are provided in Excel (.xlsx) format compatible with Microsoft Excel, Google Sheets, and other spreadsheet applications. Email templates are delivered as editable text files you can copy and paste directly into your email client."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I get a refund on a digital product?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Email info@showfloortips.com within 30 days of purchase for a full refund. Digital products are delivered instantly, but we offer refunds if the product does not meet your expectations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is included in the Mega Bundle?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Mega Bundle includes all 19 ShowFloorTips digital products: 5 checklists (pre-show planning, booth setup, post-show teardown, lead follow-up, and travel & logistics), 5 spreadsheets (budget & ROI calculator, lead tracking, vendor comparison, show calendar, and booth cost estimator), 5 email template packs (post-show follow-up, pre-show appointments, thank you & recap, VIP invitations, and internal team briefs), and 4 in-depth guides (first-time exhibitor, booth design, lead capture strategy, and ROI maximization). The bundle saves 77% compared to buying individually."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I get lifetime access to the digital products?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. All digital products come with instant download and lifetime access. Once purchased, you can download and use the files as many times as you need for your trade shows."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which product should I buy if I am a first-time exhibitor?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The First-Timer Kit is ideal for new exhibitors. It includes the Pre-Show Planning Checklist, Booth Setup Checklist, First-Time Exhibitor Guide, and Lead Tracking Spreadsheet. However, the Mega Bundle at $49.99 gives you all 19 products for just slightly more than the kit price, making it the best value if you plan to exhibit at multiple shows."
+                }
+            }
+        ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -912,5 +960,14 @@
 })();
 </script>
 
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<script>
+window.addEventListener('scroll', function() {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+});
+</script>
 </body>
 </html>

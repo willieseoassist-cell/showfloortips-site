@@ -56,6 +56,25 @@
         .cal-filter input, .cal-filter select { padding: 0.6rem 1rem; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; font-family: inherit }
         .cal-filter input { flex: 1; min-width: 200px }
         @media(max-width:768px) { .cal-hero h1 { font-size: 1.6rem } .cal-show { flex-wrap: wrap } }
+        /* Dark mode overrides */
+        html[data-theme="dark"] .cal-hero { background: #0f0f23 }
+        html[data-theme="dark"] .cal-months { background: #1a1a2e; border-bottom-color: #2a2a4a }
+        html[data-theme="dark"] .cal-months a { color: #94a3b8 }
+        html[data-theme="dark"] .cal-months a:hover { background: #2a2a4a; color: #e2e8f0 }
+        html[data-theme="dark"] .cal-months a.active { background: #e2e8f0; color: #0f0f23 }
+        html[data-theme="dark"] .cal-stat { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .cal-stat-num { color: #e2e8f0 }
+        html[data-theme="dark"] .cal-stat-label { color: #94a3b8 }
+        html[data-theme="dark"] .cal-month-section h2 { color: #e2e8f0 }
+        html[data-theme="dark"] .cal-show { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .cal-show:hover { border-color: #94a3b8 }
+        html[data-theme="dark"] .cal-show-date { color: #94a3b8 }
+        html[data-theme="dark"] .cal-show-name a { color: #e2e8f0 }
+        html[data-theme="dark"] .cal-show-loc { color: #94a3b8 }
+        html[data-theme="dark"] .cal-show-cat { background: #16213e; color: #94a3b8 }
+        html[data-theme="dark"] .cal-show-more button { border-color: #334155; color: #94a3b8 }
+        html[data-theme="dark"] .cal-show-more button:hover { background: #16213e }
+        html[data-theme="dark"] .cal-filter input, html[data-theme="dark"] .cal-filter select { background: #1e1e32; border-color: #2a2a4a; color: #e2e8f0 }
     </style>
 </head>
 <body>
@@ -86,6 +105,11 @@
         <p>Plan your year with the most comprehensive trade show calendar. Browse 24,600+ events month by month.</p>
     </section>
 
+    <!-- Ad Slot -->
+    <div class="ad-slot" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:20px;text-align:center;margin:24px auto;min-height:90px;display:flex;align-items:center;justify-content:center;max-width:1000px">
+      <span style="color:#999;font-size:0.8rem">Advertisement</span>
+    </div>
+
     <div class="cal-months" id="monthNav"></div>
 
     <div class="cal-content">
@@ -101,6 +125,15 @@
         </div>
 
         <div id="calendarContent"></div>
+    </div>
+
+    <div style="max-width:1000px;margin:2rem auto;padding:0 2rem">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Explore More</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+            <a href="/this-week.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">This Week</a>
+            <a href="/glossary.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Glossary</a>
+            <a href="/industries/" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Browse by Industry</a>
+        </div>
     </div>
 
     <footer class="footer">
@@ -241,5 +274,14 @@
         render();
     })();
     </script>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<script>
+window.addEventListener('scroll', function() {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+});
+</script>
 </body>
 </html>

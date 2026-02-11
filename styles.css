@@ -1935,3 +1935,17 @@ html[data-theme="dark"] .scannly-tip {
     .show-card, .news-card, .article-card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none }
     * { box-shadow: none !important }
 }
+
+/* Scroll to Top Button */
+.scroll-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: #0a0a0a; color: #fff; border: none; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 999; transition: opacity 0.3s }
+.scroll-top:hover { background: #1e293b }
+.scroll-top.visible { display: flex }
+
+/* Reading Time */
+.reading-time { font-size: 0.82rem; color: var(--gray-400); font-weight: 500 }
+
+/* Breadcrumb UI */
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 2rem; font-size: 0.82rem; color: var(--gray-400); background: var(--gray-50); border-bottom: 1px solid var(--gray-200) }
+.breadcrumb a { color: var(--gray-500); text-decoration: none }
+.breadcrumb a:hover { color: var(--black) }
+.breadcrumb .sep { color: var(--gray-300) }

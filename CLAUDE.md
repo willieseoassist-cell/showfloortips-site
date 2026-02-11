@@ -735,3 +735,63 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Audited industry pages: all have shows.js reference and title
 - Checked internal links across main pages: no broken links found
 - Only 1 non-issue: 404.html correctly omits canonical (noindex page)
+
+#### Massive Site Expansion Wave (Feb 11 evening)
+
+##### Essential Pages
+- **About page** — `/about.html` with company mission, stats, values, AboutPage JSON-LD
+- **Contact page** — `/contact.html` with 4 contact cards, 5-question FAQ accordion
+- **Privacy Policy** — `/privacy.html` with 10 sections covering data, cookies, third parties, rights
+- **Terms of Service** — `/terms.html` with 13 sections covering use, accuracy, IP, affiliate disclosure
+
+##### State Landing Pages (5)
+- California, Texas, Florida, New York, Illinois — each in `/states/`
+- Dynamic show filtering from shows.js with city/category filters
+- Navigation bar linking between all 5 states
+
+##### Additional Industry Pages (5)
+- Agriculture, Marine & Maritime, Finance & Banking, Travel & Hospitality, Sports & Recreation — each in `/industries/`
+- Now 16 total industry pages plus index
+
+##### 30 New Articles
+- 5 trending news, 5 networking guides, 5 comparisons, 5 cost guides, 5 FAQ pages, 3 trend reports, 2 top-10 lists
+- All added to news.js with proper slugs and metadata
+
+##### UI/UX Improvements
+- Scroll-to-top button added to 9 pages (news, travel, products, guide, glossary, calendar, compare, map, index)
+- Reading time CSS and breadcrumb UI styles added to styles.css
+- Build scripts cleaned up from project root
+
+##### Sitemap & Changelog
+- 14 additional URLs added to sitemap-pages.xml (29 total new URLs this session)
+- Changelog updated with Feb 11 evening entry
+- Footer links updated on index.html (glossary, industries, calendar)
+
+##### Dark Mode Support
+- Added `html[data-theme="dark"]` CSS overrides to all new pages with inline styles:
+  - about.html, contact.html, privacy.html, terms.html
+  - glossary.html, calendar.html, changelog.html
+  - 15+ industry pages in /industries/
+  - 5 state pages in /states/
+
+##### FAQPage Schema Additions
+- about.html: 5 FAQs about ShowFloorTips mission, tools, and contact info
+- glossary.html: 8 FAQs about common trade show terms (drayage, I&D, pipe & drape, etc.)
+- products.html: 5 FAQs about digital product formats, refunds, Mega Bundle contents
+- contact.html: 5 FAQs extracted from existing FAQ accordion
+
+##### Internal Cross-Linking
+- 15 industry pages: "Related Industries" section with 2-4 related industry links each
+- glossary.html, calendar.html, changelog.html: "Explore More" sections linking to related pages
+
+##### Amazon Affiliate Products on Travel Guides
+- Added "Recommended Travel Gear" section to all 10 city guide pages
+- 3-4 city-specific products per guide (Samsonite carry-on, Anker power bank, Peak Design pouch, Away suitcase, portable steamer, AirTags, Tile trackers)
+- 53 total Amazon affiliate links with tag showfloortips-20
+
+##### AdSense-Ready Ad Slots
+- Added ad placement slots to calendar.html, glossary.html, industries/index.html
+- Consistent styling matching existing slots on news.html, travel.html, show.html
+
+##### Revenue Plan Updated
+- MILLION-DOLLAR-PLAN.md updated with all new pages, article counts, and scorecard progress

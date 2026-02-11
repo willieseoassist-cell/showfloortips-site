@@ -24,6 +24,78 @@
         "publisher": {"@type": "Organization", "name": "ShowFloorTips"}
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is drayage at a trade show?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Drayage is the handling and transportation of exhibit materials from the loading dock to the booth and back. It is charged by weight, usually per 100 lbs (CWT), and is one of the most expensive show services exhibitors encounter."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between an inline booth and an island booth?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "An inline booth has one open side facing the aisle and is bordered by neighboring exhibitors on three sides. It is the most common and affordable booth type. An island booth has all four sides open to aisles, is typically 20x20 feet or larger, and offers maximum visibility but is the most expensive configuration."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does I&D mean in trade shows?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "I&D stands for Installation and Dismantle. It refers to the process of setting up (installing) and tearing down (dismantling) exhibit booths at a trade show. I&D labor is a major cost for exhibitors, especially at venues that require union labor."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a general service contractor (GSC)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A general service contractor (GSC) is the official company hired by show management to handle logistics, drayage, booth setup services, carpet, signage, and other operational needs at a trade show. Major GSCs include Freeman and GES."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is pipe and drape?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pipe and drape is the system of aluminum pipes and fabric drapes used to create booth dividers and back walls at trade shows. It is the standard booth partition system at most events, with typical colors being black or gray."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a 10x10 booth?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A 10x10 booth is a standard trade show exhibit space measuring 10 feet by 10 feet (100 square feet). It is the most common and affordable booth size, typically including one 8-foot back wall drape and two 3-foot side drapes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is lead retrieval at a trade show?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Lead retrieval is the system used to capture attendee information at a trade show, usually by scanning badges. Show-provided systems can be rented from the organizer, and third-party apps like Scannly offer alternative solutions for collecting and managing leads."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is trade show ROI calculated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Trade show ROI (Return on Investment) is calculated as (Revenue Generated minus Total Cost) divided by Total Cost, multiplied by 100. It is the ultimate measure of trade show success and helps exhibitors determine whether their investment in a particular event was worthwhile."
+                }
+            }
+        ]
+    }
+    </script>
     <style>
         .gl-hero { background: #0a0a0a; color: #fff; padding: 4rem 2rem 3rem; text-align: center }
         .gl-hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem }
@@ -44,6 +116,19 @@
         .gl-term dd { font-size: 0.9rem; color: #475569; line-height: 1.7; margin: 0 }
         .gl-count { text-align: center; font-size: 0.9rem; color: #64748b; margin-bottom: 1rem }
         @media(max-width:768px) { .gl-hero h1 { font-size: 1.6rem } }
+        /* Dark mode overrides */
+        html[data-theme="dark"] .gl-hero { background: #0f0f23 }
+        html[data-theme="dark"] .gl-search input { background: #1e1e32; border-color: #2a2a4a; color: #e2e8f0 }
+        html[data-theme="dark"] .gl-search input:focus { border-color: #94a3b8 }
+        html[data-theme="dark"] .gl-alpha a { color: #94a3b8 }
+        html[data-theme="dark"] .gl-alpha a:hover { background: #2a2a4a }
+        html[data-theme="dark"] .gl-alpha a.active { background: #e2e8f0; color: #0f0f23 }
+        html[data-theme="dark"] .gl-section h2 { color: #e2e8f0; border-bottom-color: #e2e8f0 }
+        html[data-theme="dark"] .gl-term { background: #1e1e32; border-color: #2a2a4a }
+        html[data-theme="dark"] .gl-term:hover { border-color: #94a3b8 }
+        html[data-theme="dark"] .gl-term dt { color: #e2e8f0 }
+        html[data-theme="dark"] .gl-term dd { color: #94a3b8 }
+        html[data-theme="dark"] .gl-count { color: #94a3b8 }
     </style>
 </head>
 <body>
@@ -82,6 +167,20 @@
     <p class="gl-count">Showing <span id="termCount">0</span> terms</p>
 
     <div class="gl-content" id="glossaryContent"></div>
+
+    <!-- Ad Slot -->
+    <div class="ad-slot" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:20px;text-align:center;margin:24px auto;min-height:250px;display:flex;align-items:center;justify-content:center;max-width:1000px">
+      <span style="color:#999;font-size:0.8rem">Advertisement</span>
+    </div>
+
+    <div style="max-width:800px;margin:2rem auto;padding:0 2rem">
+        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:0.75rem">Explore More</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem">
+            <a href="/guide.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Ultimate Guide</a>
+            <a href="/calendar.html" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Trade Show Calendar</a>
+            <a href="/industries/" style="padding:0.4rem 0.8rem;background:#f1f5f9;border-radius:6px;color:#334155;text-decoration:none;font-size:0.85rem;font-weight:500">Browse by Industry</a>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-grid">
@@ -249,5 +348,14 @@
 
     renderGlossary();
     </script>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<script>
+window.addEventListener('scroll', function() {
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+});
+</script>
 </body>
 </html>
