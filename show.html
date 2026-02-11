@@ -343,7 +343,7 @@
 
         // Official website link - use real URL if available, DuckDuckGo redirect as fallback
         var websiteUrl;
-        if (show.website && show.website.indexOf('google.com/search') === -1) {
+        if (show.website && show.website.indexOf('google.com/search') === -1 && show.website.indexOf('duckduckgo.com') === -1) {
             websiteUrl = show.website;
         } else {
             var searchTerms = encodeURIComponent('\\ ' + show.title + ' ' + (show.city || '') + ' official website');
