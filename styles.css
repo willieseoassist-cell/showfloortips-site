@@ -284,6 +284,7 @@ header {
     max-width: 1280px;
     margin: 0 auto;
     padding: 2rem;
+    scroll-margin-top: 80px;
 }
 
 .shows-header {
