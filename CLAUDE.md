@@ -937,3 +937,54 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - All changes committed and pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,511 files)
 - Live at https://showfloortips.com
+
+### Feb 11, 2026 — Session 16
+
+#### Image Fix (30 articles)
+- **Root cause:** 30 newest articles in news.js referenced `images/default-news.svg` which didn't exist — caused blank image cards on news page
+- **Fix:** Replaced all 30 `default-news.svg` references with relevant Unsplash images (cybersecurity, dental, EV, jewelry, space, beauty, legal, quantum, wedding, etc.)
+- **Fallback:** Created `images/default-news.svg` placeholder (dark branded SVG) for future safety
+
+#### 15 Articles Deployed (from previous session pipeline)
+- Added news.js entries for 15 untracked articles (8 Industry News, 4 Networking Guide, 3 Comparison)
+- Updated RSS feed with 15 new items (120 total)
+- Articles: cybersecurity AI, dental AI diagnostics, EV charging, food safety, quantum computing, lab-grown diamonds, legal tech AI, wedding trends + networking guides for ABA TechShow, Black Hat, JCK, RSAC + comparisons (ABA vs LegalWeek, JCK vs Luxury JCK, RSAC vs Black Hat)
+- Total news.js entries: 24,512
+
+#### Deployment
+- Pushed all changes to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,573 files)
+- Live at https://showfloortips.com
+
+### Feb 11, 2026 — Session 16 (continued)
+
+#### 10 New Articles Written & Deployed
+- **5 News Insight articles:**
+  - Vertiv's $15B backlog — data center infrastructure boom (DCW, OCP Summit, ISC 2026)
+  - Microsoft superconducting cable breakthrough — data center energy (OFC, ECOC)
+  - Semiconductor tariff exemptions — Big Tech (SEMICON West, CES, Computex)
+  - Food & Beverage tight volumes, M&A, cyber threats (NRA Show, Expo West, SIAL)
+  - NIO 100M battery swaps — BaaS reshaping EV auto shows (NAIAS, IAA, Tokyo, LA)
+- **3 Networking Guides:**
+  - How to Network at MODEX 2026 (supply chain, Atlanta, 45K attendees)
+  - How to Network at Embedded World 2026 (embedded systems, Nuremberg, 30K attendees)
+  - How to Network at Posidonia 2026 (maritime, Athens, Greek shipping customs)
+- **2 Comparison Articles:**
+  - MODEX 2026 vs ProMat 2027 (MHI's alternating supply chain shows)
+  - Embedded World 2026 vs CES 2026 (engineer's show vs world's stage)
+
+#### 12 New Trade Shows Added to Database
+- India AI Impact Summit, Quantum Innovation Summit Dubai, ICPR, Africa Deep Tech Conference
+- WebX Tokyo, Energy Tech Summit Bilbao, Posidonia Athens, Data Centre World London
+- Taipei Game Show Spring, World Hydrogen Summit, TechCrunch Disrupt, World Agri-Tech Innovation Summit
+- **Total shows in database: 24,762**
+
+#### Data Updates
+- news.js: 24,522 entries (was 24,512)
+- rss.xml: 130 items (was 120)
+- shows.js: 24,762 shows (was 24,670)
+
+#### Deployment
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,582 files)
+- Live at https://showfloortips.com
