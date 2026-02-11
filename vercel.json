@@ -12,9 +12,5 @@
     { "source": "/shows/:slug.html", "destination": "/show.html" },
     { "source": "/best-trade-shows/:category", "destination": "/best-shows.html" },
     { "source": "/trade-shows-in/:city", "destination": "/city-shows.html" }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
   ]
 }
