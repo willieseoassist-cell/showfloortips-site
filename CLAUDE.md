@@ -9,6 +9,8 @@
 3. **Never store or make changes locally** — all work happens on the drive (`/Volumes/Willie Extr/tradeshow-website`)
 4. **Update this file** after completing any task — log what was done in the Achievement Log below
 5. **Homepage show sorting:** Today's and upcoming exhibits ALWAYS appear first (nearest date first). Past/expired exhibits go to the end (most recently passed first). Never show an expired exhibit at the top — no one needs to see what already happened before what's coming up.
+6. **Articles ALWAYS use today's date** — When writing or rewriting any article, always use today's actual date for the published date, meta tags, JSON-LD datePublished, and news.js entry. Never use a past or future date.
+7. **Search Shows auto-scrolls to results** — When "Search Shows" is clicked or filters are applied, the page smooth-scrolls to the `#shows` section so users see results immediately. The `.shows-section` has `scroll-margin-top: 80px` to clear the sticky header.
 
 ## Project Setup
 - **Repo:** `willieseoassist-cell/showfloortips-site` on GitHub (main branch)
@@ -556,4 +558,37 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 #### Deployment
 - Pushed all changes to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,326 files)
+- Live at https://showfloortips.com
+
+### Feb 10, 2026 — Session 11
+
+#### Bug Fixes
+- **Products page mobile menu:** Removed duplicate onclick handler that was canceling the addEventListener toggle. Added `position: relative` to `.header-inner` and `z-index: 999` to mobile dropdown.
+- **Search Shows auto-scroll:** Added smooth scroll to `#shows` section when "Search Shows" is clicked or filters applied. Added `scroll-margin-top: 80px` to `.shows-section` so sticky header doesn't cover results. Works on desktop and mobile.
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/super-bowl-lx-trade-show-marketing-lessons-2026.html`
+- `news/winter-olympics-2026-trade-show-experience-design.html`
+- `news/measles-outbreak-1900-cases-trade-show-health-safety-2026.html`
+- `news/jimmy-lai-hong-kong-sentence-international-trade-shows-2026.html`
+- `news/portugal-election-european-populism-trade-shows-2026.html`
+
+**Networking Guides (3):**
+- `news/networking-guide-mwc-barcelona-2026.html`
+- `news/networking-guide-expo-west-2026.html`
+- `news/networking-guide-modex-2026.html`
+
+**Comparison Articles (2):**
+- `news/mwc-barcelona-vs-himss-2026.html`
+- `news/expo-west-vs-modex-2026.html`
+
+#### New Shows Added (4 unique, 24,655 total)
+- Gamescom 2026 (Cologne, 335K+ attendees)
+- EsportsNext 2026 (Fort Worth, TX)
+- SpaceCom | Space Congress 2026 (Orlando, FL)
+- Esports Travel Summit 2026 (Cincinnati, OH)
+
+#### Deployment
+- All changes pushed to GitHub and deployed to Vercel
 - Live at https://showfloortips.com
