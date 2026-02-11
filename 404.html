@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - ShowFloorTips</title>
+    <meta name="description" content="The page you're looking for doesn't exist. Browse 24,500+ trade shows, exhibitor tips, and tools on ShowFloorTips.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0a0a">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .error-section {
+            min-height: calc(100vh - 64px - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+        .error-container {
+            max-width: 600px;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 7rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--gray-200);
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+        }
+        .error-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.025em;
+        }
+        .error-message {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+        .error-search {
+            margin-bottom: 2.5rem;
+        }
+        .error-search form {
+            display: flex;
+            gap: 0;
+            max-width: 460px;
+            margin: 0 auto;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            background: var(--white);
+        }
+        .error-search form:focus-within {
+            border-color: var(--gray-400);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.04);
+        }
+        .error-search input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            background: transparent;
+        }
+        .error-search input::placeholder {
+            color: var(--text-light);
+        }
+        .error-search button {
+            padding: 0.8rem 1.25rem;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .error-search button:hover {
+            background: var(--gray-800);
+        }
+        .error-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .error-links a {
+            display: inline-block;
+            padding: 0.55rem 1.1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .error-links a:hover {
+            background: var(--white);
+            border-color: var(--gray-300);
+            box-shadow: var(--shadow-sm);
+        }
+        .error-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+        .error-home:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 640px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-title {
+                font-size: 1.35rem;
+            }
+            .error-message {
+                font-size: 0.95rem;
+            }
+            .error-search form {
+                flex-direction: column;
+                border-radius: var(--radius);
+            }
+            .error-search input {
+                border-bottom: 1px solid var(--border-light);
+            }
+            .error-search button {
+                justify-content: center;
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/#shows">Trade Shows</a></li>
+                    <li><a href="/this-week.html">This Week</a></li>
+                    <li><a href="/news.html">News</a></li>
+                    <li><a href="/travel.html">Travel</a></li>
+                    <li><a href="/venue-maps.html">Maps</a></li>
+                    <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                    <li><a href="/products.html">Products</a></li>
+                    <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+
+    <section class="error-section">
+        <div class="error-container">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">The page you're looking for doesn't exist or may have been moved. Try searching for a trade show, or use one of the links below.</p>
+
+            <div class="error-search">
+                <form action="/" method="GET">
+                    <input type="text" name="search" placeholder="Search trade shows, cities, industries..." autocomplete="off">
+                    <button type="submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            <div class="error-links">
+                <a href="/">Home</a>
+                <a href="/#shows">Trade Shows</a>
+                <a href="/news.html">News</a>
+                <a href="/products.html">Products</a>
+                <a href="/travel.html">Travel</a>
+                <a href="/roi-calculator.html">ROI Calculator</a>
+            </div>
+
+            <a href="/" class="error-home">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Back to Homepage
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>The world's most comprehensive trade show database. Expert intelligence and resources for exhibitors across 93 countries.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/products.html">Products</a></li>
+                        <li><a href="/news.html">News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Top Industries</h4>
+                    <ul>
+                        <li><a href="/?industry=Technology">Technology</a></li>
+                        <li><a href="/?industry=Healthcare">Healthcare</a></li>
+                        <li><a href="/?industry=Construction">Construction</a></li>
+                        <li><a href="/?industry=Manufacturing">Manufacturing</a></li>
+                        <li><a href="/?industry=Energy">Energy</a></li>
+                        <li><a href="/?industry=Food+%26+Beverage">Food & Beverage</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
