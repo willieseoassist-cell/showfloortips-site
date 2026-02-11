@@ -1,17 +1,19 @@
 # ShowFloorTips — $1,000,000 Revenue Plan
 
 ## Current State (Updated Feb 10, 2026)
-- **24,655+ trade shows** in database (shows.js, 29MB+)
+- **24,670+ trade shows** in database (shows.js, 36MB+)
 - **24,350+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
 - **10 city travel guides** (Las Vegas, Chicago, Orlando, NYC, Anaheim, SF, Atlanta, Houston, Dallas, San Diego)
 - **11 interactive tools** built: ROI Calculator, Budget Planner, QR Generator, Show Comparison, Interactive World Map, Lead Value Calculator, Packing List Generator, Trip Cost Estimator, Flight Deals, This Week Live View, Venue Maps
-- **19 digital products** on Stripe ($7.99 - $14.99 each)
+- **20 digital products** on Stripe ($7.99 - $49.99 each) — includes Mega Bundle
 - **Scannly** lead capture app (free)
 - **Amazon Associates** integrated (tag: showfloortips-20) — travel gear, exhibitor supplies
 - **Booking.com** hotel affiliate links on all show pages + city guides
-- **Newsletter** — Beehiiv (157 subscribers), serverless API subscribe endpoint
+- **Newsletter** — Beehiiv (157 subscribers), serverless API subscribe endpoint, email capture popup
 - **Sponsor outreach** — 157 partnership pitch emails sent to show organizers + industry vendors
 - **Dark mode + PWA** — progressive web app with service worker
+- **SEO infrastructure** — XML sitemap (split index), RSS feed, Event JSON-LD schema, internal cross-linking
+- **Monetization ready** — AdSense placeholders, Mega Bundle page, Request Booth Info forms
 - Revenue today: ~$0 (early stage, infrastructure complete)
 
 ---
@@ -139,10 +141,10 @@ Features:
 
 ### Phase 1: Foundation (Months 1-3)
 - [x] Fix all Google Search Console issues (indexing, HTTPS, crawl errors) — HSTS header, meta tags, JSON-LD, og:image all fixed
-- [ ] Get all 24K+ pages indexed by Google — pages exist, indexing in progress
-- [x] Add 10-15 fresh articles daily (SEO content flywheel) — 80+ articles created across 11 sessions (news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports)
-- [x] Scrape & add new shows daily (stay ahead of Orbus) — 24,655+ shows, adding 10-20 per session
-- [ ] Launch Mega Bundle product ($49.99)
+- [x] Get all 24K+ pages indexed by Google — XML sitemap (sitemap-index.xml → pages + shows), RSS feed, Event JSON-LD schema on show pages
+- [x] Add 10-15 fresh articles daily (SEO content flywheel) — 24,350+ articles created across 12 sessions (news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports)
+- [x] Scrape & add new shows daily (stay ahead of Orbus) — 24,670+ shows, adding 10-20 per session
+- [x] Launch Mega Bundle product ($49.99) — bundle.html with "Save 77%" badge, all 19 products
 - [ ] Add 5 industry-specific kits to Stripe
 - [x] Optimize affiliate link placement on all show pages — Booking.com on show pages, Amazon on travel/packing pages
 - [x] Add more affiliate partners — Amazon Associates (showfloortips-20) added across travel section, packing list, city guides
@@ -210,6 +212,15 @@ Features:
 - **Recently viewed** — Scrollable strip of last 6 viewed shows
 - **Bookmark/Save shows** — Heart icon, "Saved Shows" filter, localStorage
 - **Calendar export** — .ics file download from show modal
+- **/bundle.html** — $49.99 Mega Bundle page for all 19 products (Save 77%)
+- **XML Sitemap** — sitemap-index.xml → sitemap-pages.xml + sitemap-shows-1.xml
+- **RSS Feed** — rss.xml with latest 50 articles (RSS 2.0)
+- **Email capture popup** — Scroll-triggered on index, news, show pages
+- **Event JSON-LD schema** — Dynamic structured data on show.html for all shows
+- **Request Booth Info** — Form on show.html sidebar (name, email, company)
+- **AdSense placeholders** — Ad slots on 4 main pages (ready to activate)
+- **Internal cross-linking** — "Related Articles" sections added to 18K+ article files
+- **Pagination** — 50 shows per page with "Load More" + count display
 
 ### Content Library
 - **80+ articles** written across categories:
@@ -226,6 +237,8 @@ Features:
 - **Resend email** — Sponsor pitches, newsletter sends
 - **662 DuckDuckGo URLs replaced** with verified official show websites
 - **Vercel deployment** — Auto-deploys with --archive=tgz for 24K+ file support
+- **XML Sitemap** — Split sitemap (index → pages + shows sub-sitemaps) for Google indexing
+- **RSS 2.0 Feed** — Latest 50 articles at /rss.xml with autodiscovery links
 
 ---
 
@@ -233,15 +246,15 @@ Features:
 
 | Category | Target | Current | Progress |
 |----------|--------|---------|----------|
-| Trade Shows in DB | 25,000 | 24,655 | 99% |
+| Trade Shows in DB | 25,000 | 24,670 | 99% |
 | Articles | 25,000 | 24,350+ | 97% |
 | Free Tools | 10+ | 11 | 110% |
 | Travel Guides | 10 cities | 10 cities | 100% |
 | Newsletter Subscribers | 1,000 | 157 | 16% |
 | Sponsor Outreach | 200 contacts | 157 sent | 79% |
 | Affiliate Programs | 5+ | 2 (Amazon, Booking) | 40% |
-| Digital Products | 25+ | 19 | 76% |
+| Digital Products | 25+ | 20 (incl. Mega Bundle) | 80% |
 | Addiction Tactics | 14 | 10 implemented | 71% |
-| Phase 1 Checklist | 9 items | 6 complete | 67% |
+| Phase 1 Checklist | 9 items | 8 complete | 89% |
 | Phase 2 Checklist | 7 items | 3 complete | 43% |
 | Phase 3 Checklist | 8 items | 1 complete | 13% |
