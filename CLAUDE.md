@@ -894,3 +894,46 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - All changes committed and pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Feb 11, 2026 — Session 15
+
+#### Social Media Setup
+- **X/Twitter** — Account configured. X API requires paid tier ($200/month minimum) — skipped paid API.
+- **LinkedIn** — Company/personal page created (Founder & Editor-in-Chief, ShowFloorTips, Media & Telecommunications industry)
+- **dlvr.it** — Free auto-posting service connected. Reads RSS feed (`showfloortips.com/rss.xml`) and auto-posts new articles to X/Twitter. Zero maintenance, zero cost.
+- **Passive traffic strategy:** New articles → RSS feed → dlvr.it → auto-posts to X and LinkedIn
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/perplexity-model-council-multi-ai-race-trade-shows-2026.html` — Perplexity's Model Council running Claude, GPT-5.2, Gemini in parallel; multi-model AI reshaping trade show demos
+- `news/us-india-trade-deal-500-billion-exhibitor-impact-2026.html` — U.S.-India $500B trade framework, tariffs cut from 25% to 18%, massive market opening for exhibitors
+- `news/eli-lilly-orna-therapeutics-pharma-ma-wave-trade-shows-2026.html` — Eli Lilly $2.4B Orna acquisition signals pharma M&A frenzy, healthcare shows become deal hubs
+- `news/china-solar-surpasses-coal-energy-trade-shows-2026.html` — China solar capacity overtaking coal for first time, energy trade shows pivoting focus
+- `news/manufacturers-genai-reshoring-stalls-trade-shows-2026.html` — 91% manufacturers use GenAI but only 36% reshoring, automation paradox at trade shows
+
+**Networking Guides (3):**
+- `news/how-to-network-at-mwc-2026.html` — MWC Barcelona (March 2-5), 4YFN, GSMA events, Gothic Quarter spots
+- `news/how-to-network-at-natural-products-expo-west-2026.html` — Expo West Anaheim (March 3-7), NEXT Pavilion, Pitch Slam
+- `news/how-to-network-at-conexpo-con-agg-2026.html` — CONEXPO Las Vegas (March 10-14), Tech Experience, Festival Grounds demos
+
+**Comparison Articles (2):**
+- `news/himss-2026-vs-arab-health-2026-comparison.html` — HIMSS vs Arab Health (health IT vs medical devices)
+- `news/nab-show-2026-vs-ibc-2026-comparison.html` — NAB Show vs IBC (US production vs European distribution)
+
+#### New Shows Added (7 new, total now 24,689)
+- NADA Show 2026 (Feb 3-6, Las Vegas) — 25,000 attendees, automotive dealers
+- Photo Booth Expo 2026 (Feb 16-19, Las Vegas) — 4,000 attendees
+- Be+Well Show New York 2026 / IBS & IECSC (Mar 8-10, New York) — 66,500 attendees, beauty & wellness
+- CloudFest 2026 (Mar 23-26, Rust, Germany) — 7,000 attendees, cloud computing
+- AEA International Convention 2026 (Mar 23-26, Dallas) — 2,000 attendees, avionics
+- National Hardware Show 2026 (Mar 31 - Apr 2, Las Vegas) — 20,000 attendees, home improvement
+- NGPA Industry Expo 2026 (Feb 5-6, Palm Springs) — 1,500 attendees, aviation
+
+#### RSS Feed & Sitemap Updated
+- RSS feed updated with 10 new article items (dlvr.it will auto-post)
+- Sitemap updated with 10 new article URLs
+
+#### Deployment
+- All changes committed and pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,511 files)
+- Live at https://showfloortips.com
