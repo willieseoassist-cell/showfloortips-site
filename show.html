@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M52J9WDRBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M52J9WDRBW');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://images.unsplash.com">
@@ -72,6 +81,22 @@
         .transport-card-wide .btn-book { background:#334155 }
 
         /* Product Section */
+        .prepare-section { margin:2rem 0 }
+        .prepare-section h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .product-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem }
+        .product-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:1.25rem; transition:border-color 0.2s, box-shadow 0.2s; display:flex; flex-direction:column; justify-content:space-between }
+        .product-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
+        .product-card h4 { font-weight:600; color:#1e293b; margin-bottom:0.25rem; font-size:0.95rem }
+        .product-card .product-price { font-weight:700; color:#059669; font-size:0.9rem; margin-bottom:0.35rem }
+        .product-card .product-desc { font-size:0.82rem; color:#64748b; margin-bottom:0.75rem; line-height:1.4 }
+        .product-card .btn-buy { display:inline-block; padding:0.55rem 1.25rem; background:#0a0a0a; color:#fff; border:none; border-radius:8px; font-size:0.82rem; font-weight:600; text-align:center; cursor:pointer; text-decoration:none; transition:background 0.2s }
+        .product-card .btn-buy:hover { background:#334155 }
+        .mega-bundle-cta { background:linear-gradient(135deg,#f8fafc,#eef2ff); border:2px solid #c7d2fe; border-radius:12px; padding:1.5rem; text-align:center; margin-top:1rem }
+        .mega-bundle-cta h4 { font-size:1.1rem; font-weight:700; color:#0a0a0a; margin-bottom:0.35rem }
+        .mega-bundle-cta p { font-size:0.9rem; color:#475569; margin-bottom:0.75rem }
+        .mega-bundle-cta .btn-bundle { display:inline-block; padding:0.75rem 2rem; background:#6366f1; color:#fff; border:none; border-radius:10px; font-size:0.95rem; font-weight:600; text-decoration:none; transition:background 0.2s }
+        .mega-bundle-cta .btn-bundle:hover { background:#818cf8 }
+        @media(max-width:768px) { .product-grid { grid-template-columns:1fr } }
 
         /* Nearby Shows in Sidebar */
         .nearby-show { display:block; padding:0.75rem 0; border-bottom:1px solid #f1f5f9; text-decoration:none; transition:opacity 0.2s }
@@ -574,10 +599,73 @@
         // Flights
         html += flightsSection;
 
-        // Products placeholder (populated by fetch)
-
         // Tips
         html += tips;
+
+        // Prepare for This Show - Product Recommendations
+        html += '<div class="prepare-section">';
+        html += '<h2>Prepare for This Show</h2>';
+        html += '<div class="product-grid">';
+        html += '<div class="product-card">';
+        html += '<div><h4>Pre-Show Planning Checklist</h4>';
+        html += '<div class="product-price">$7.99</div>';
+        html += '<div class="product-desc">Step-by-step checklist to ensure nothing falls through the cracks before show day.</div></div>';
+        html += '<a href="https://buy.stripe.com/dRmfZg9d4c7Uc9X7gP87O0p" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '</div>';
+        html += '<div class="product-card">';
+        html += '<div><h4>Trade Show Budget &amp; ROI Calculator</h4>';
+        html += '<div class="product-price">$12.99</div>';
+        html += '<div class="product-desc">Plan your budget and measure ROI with this ready-to-use spreadsheet tool.</div></div>';
+        html += '<a href="https://buy.stripe.com/fZu28qblcc7Ude1dFd87O0u" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '</div>';
+        html += '<div class="product-card">';
+        html += '<div><h4>Lead Follow-Up Checklist</h4>';
+        html += '<div class="product-price">$7.99</div>';
+        html += '<div class="product-desc">Never lose a hot lead\u2014structured follow-up system for post-show conversions.</div></div>';
+        html += '<a href="https://buy.stripe.com/14A00i0Gy9ZMde1cB987O0s" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '</div>';
+        html += '<div class="product-card">';
+        html += '<div><h4>First-Time Exhibitor Guide</h4>';
+        html += '<div class="product-price">$14.99</div>';
+        html += '<div class="product-desc">Everything first-time exhibitors need to know, from booth setup to lead capture.</div></div>';
+        html += '<a href="https://buy.stripe.com/8x2dR8blceg20rfcB987O0E" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="mega-bundle-cta">';
+        html += '<h4>Get All 19 Products for $49.99</h4>';
+        html += '<p>Save over 70% with the complete trade show toolkit\u2014checklists, templates, calculators, and more.</p>';
+        html += '<a href="/bundle.html" class="btn-bundle">Get the Mega Bundle</a>';
+        html += '</div>';
+        html += '</div>';
+
+        // Amazon Affiliate - Trade Show Essentials
+        html += '<div class="amazon-essentials" style="margin:2rem 0;padding:1.5rem;background:#fffbeb;border:1px solid #fbbf24;border-radius:12px">';
+        html += '<h3 style="margin-bottom:0.25rem;color:#1e293b">Trade Show Essentials</h3>';
+        html += '<p style="color:#92400e;font-size:0.8rem;margin-bottom:1rem">Top-rated gear recommended by exhibitors. As an Amazon Associate, we earn from qualifying purchases.</p>';
+        html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">';
+        html += '<a href="https://www.amazon.com/dp/B09VPHVT2Z?tag=showfloortips-20" target="_blank" rel="noopener sponsored" style="display:flex;flex-direction:column;align-items:center;padding:12px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;gap:6px">';
+        html += '<img src="/images/products/anker-power-bank.jpg" alt="Anker Portable Charger" style="width:60px;height:60px;object-fit:contain" loading="lazy">';
+        html += '<span style="font-size:0.8rem;color:#1e293b;font-weight:600;text-align:center;line-height:1.3">Anker Portable Charger</span>';
+        html += '<span style="font-size:0.75rem;color:#059669;font-weight:700">$109.99</span>';
+        html += '</a>';
+        html += '<a href="https://www.amazon.com/dp/B01M0A3BKH?tag=showfloortips-20" target="_blank" rel="noopener sponsored" style="display:flex;flex-direction:column;align-items:center;padding:12px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;gap:6px">';
+        html += '<img src="/images/products/samsonite-carry-on.jpg" alt="Samsonite Carry-On" style="width:60px;height:60px;object-fit:contain" loading="lazy">';
+        html += '<span style="font-size:0.8rem;color:#1e293b;font-weight:600;text-align:center;line-height:1.3">Samsonite Carry-On</span>';
+        html += '<span style="font-size:0.75rem;color:#059669;font-weight:700">$139.99</span>';
+        html += '</a>';
+        html += '<a href="https://www.amazon.com/dp/B074TZ9TS1?tag=showfloortips-20" target="_blank" rel="noopener sponsored" style="display:flex;flex-direction:column;align-items:center;padding:12px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;gap:6px">';
+        html += '<img src="/images/products/business-card-holder.jpg" alt="Business Card Holder" style="width:60px;height:60px;object-fit:contain" loading="lazy">';
+        html += '<span style="font-size:0.8rem;color:#1e293b;font-weight:600;text-align:center;line-height:1.3">Business Card Holder</span>';
+        html += '<span style="font-size:0.75rem;color:#059669;font-weight:700">$9.99</span>';
+        html += '</a>';
+        html += '<a href="https://www.amazon.com/dp/B017SKRWL4?tag=showfloortips-20" target="_blank" rel="noopener sponsored" style="display:flex;flex-direction:column;align-items:center;padding:12px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;gap:6px">';
+        html += '<img src="/images/products/bagsmart-cable-organizer.jpg" alt="Cable Organizer" style="width:60px;height:60px;object-fit:contain" loading="lazy">';
+        html += '<span style="font-size:0.8rem;color:#1e293b;font-weight:600;text-align:center;line-height:1.3">BAGSMART Cable Organizer</span>';
+        html += '<span style="font-size:0.75rem;color:#059669;font-weight:700">$15.99</span>';
+        html += '</a>';
+        html += '</div>';
+        html += '<a href="/travel.html" style="display:block;text-align:center;margin-top:12px;font-size:0.8rem;color:#b45309;text-decoration:none;font-weight:500">View all travel gear recommendations &rarr;</a>';
+        html += '</div>';
 
         // Scannly CTA
         html += '<div style="margin:2rem 0;padding:1.5rem;background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px">';
@@ -1034,6 +1122,49 @@
       msg.style.display='block';
     });
   });
+})();
+</script>
+
+<!-- Sticky CTA Bar -->
+<div id="sft-sticky-cta" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:#0a0a0a;border-top:1px solid #1e293b;padding:12px 24px;box-shadow:0 -4px 20px rgba(0,0,0,0.15);transition:transform 0.3s ease;font-family:'Inter',sans-serif;">
+    <div style="max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <span style="color:#fff;font-size:0.95rem;font-weight:600;">Plan your exhibit &rarr;</span>
+        <a href="/roi-calculator.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:#fff;color:#0a0a0a;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            ROI Calculator
+        </a>
+        <a href="/products.html" style="display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;transition:all 0.2s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Products
+        </a>
+        <button id="sft-sticky-dismiss" style="background:none;border:none;color:#6b7280;cursor:pointer;padding:6px;margin-left:8px;font-size:1.1rem;line-height:1;" aria-label="Dismiss">&times;</button>
+    </div>
+</div>
+
+<script>
+(function() {
+    var bar = document.getElementById('sft-sticky-cta');
+    var dismissed = false;
+    var shown = false;
+
+    function checkScroll() {
+        if (dismissed) return;
+        var heroHeight = 340;
+        if (window.scrollY > heroHeight && !shown) {
+            bar.style.display = 'block';
+            shown = true;
+        } else if (window.scrollY <= heroHeight && shown) {
+            bar.style.display = 'none';
+            shown = false;
+        }
+    }
+
+    window.addEventListener('scroll', checkScroll);
+
+    document.getElementById('sft-sticky-dismiss').addEventListener('click', function() {
+        bar.style.display = 'none';
+        dismissed = true;
+    });
 })();
 </script>
 

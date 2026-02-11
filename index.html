@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M52J9WDRBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M52J9WDRBW');
+</script>
     <!-- Google AdSense: Replace with actual ad script when approved -->
     <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
     <meta charset="UTF-8">
@@ -2131,6 +2140,84 @@
 window.addEventListener('scroll', function() {
     document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
 });
+</script>
+
+<!-- Exit-Intent Email Popup -->
+<script>
+(function() {
+  if (sessionStorage.getItem('sft_popup_shown')) return;
+
+  var overlay = document.createElement('div');
+  overlay.id = 'sft-exit-overlay';
+  overlay.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;justify-content:center;align-items:center;padding:24px;backdrop-filter:blur(4px);';
+
+  overlay.innerHTML = '<div style="background:#fff;border-radius:16px;max-width:440px;width:100%;padding:40px 32px;text-align:center;position:relative;box-shadow:0 25px 50px rgba(0,0,0,0.25);animation:sftPopupIn 0.3s ease;">' +
+    '<button id="sft-exit-dismiss" style="position:absolute;top:12px;right:12px;background:none;border:none;cursor:pointer;padding:8px;color:#9ca3af;font-size:1.25rem;line-height:1;" aria-label="Close">&times;</button>' +
+    '<div style="width:48px;height:48px;background:#f5f5f5;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>' +
+    '<h2 style="font-family:Inter,sans-serif;font-size:1.5rem;font-weight:800;color:#0a0a0a;margin-bottom:8px;letter-spacing:-0.02em;">Don\'t Miss the Next Big Show</h2>' +
+    '<p style="font-family:Inter,sans-serif;font-size:0.95rem;color:#6b7280;margin-bottom:24px;line-height:1.6;">Join 5,000+ trade show professionals. Weekly insights delivered free.</p>' +
+    '<form id="sft-exit-form" style="display:flex;flex-direction:column;gap:10px;">' +
+    '<input type="email" name="email" placeholder="you@company.com" required style="width:100%;padding:12px 16px;border:1px solid #e5e7eb;border-radius:10px;font-family:Inter,sans-serif;font-size:0.95rem;color:#0a0a0a;outline:none;box-sizing:border-box;transition:border-color 0.2s;">' +
+    '<button type="submit" style="width:100%;padding:12px 24px;background:#0a0a0a;color:#fff;border:none;border-radius:10px;font-family:Inter,sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;transition:background 0.2s;">Subscribe Free</button>' +
+    '</form>' +
+    '<p id="sft-exit-msg" style="display:none;font-family:Inter,sans-serif;font-size:0.85rem;color:#16a34a;margin-top:12px;"></p>' +
+    '<p style="font-family:Inter,sans-serif;font-size:0.75rem;color:#9ca3af;margin-top:12px;">No spam. Unsubscribe anytime.</p>' +
+    '</div>';
+
+  document.body.appendChild(overlay);
+
+  var style = document.createElement('style');
+  style.textContent = '@keyframes sftPopupIn{from{opacity:0;transform:scale(0.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}';
+  document.head.appendChild(style);
+
+  function showPopup() {
+    if (sessionStorage.getItem('sft_popup_shown')) return;
+    overlay.style.display = 'flex';
+    sessionStorage.setItem('sft_popup_shown', '1');
+  }
+
+  function hidePopup() {
+    overlay.style.display = 'none';
+  }
+
+  document.getElementById('sft-exit-dismiss').addEventListener('click', hidePopup);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) hidePopup(); });
+
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY < 0) showPopup();
+  });
+
+  setTimeout(function() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) showPopup();
+  }, 30000);
+
+  document.getElementById('sft-exit-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = this.querySelector('input[name="email"]').value.trim();
+    var btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Subscribing...';
+
+    fetch('https://api.beehiiv.com/v2/publications/pub_3ced7630-50d2-4bb9-8f43-728c48a80034/subscriptions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, reactivate_existing: false, send_welcome_email: true })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function() {
+      document.getElementById('sft-exit-form').style.display = 'none';
+      var msg = document.getElementById('sft-exit-msg');
+      msg.textContent = 'You\'re in! Check your inbox.';
+      msg.style.display = 'block';
+    })
+    .catch(function() {
+      var msg = document.getElementById('sft-exit-msg');
+      msg.textContent = 'Something went wrong. Try again.';
+      msg.style.color = '#ef4444';
+      msg.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Subscribe Free';
+    });
+  });
+})();
 </script>
 
 </body>
