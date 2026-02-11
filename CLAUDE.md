@@ -668,3 +668,12 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - **Organization schema** — JSON-LD Organization added to index.html (name, logo, email, contactPoint)
 - **BreadcrumbList schema** — Added to all 24,244 articles (Home > Category > Title) with category-aware detection (Comparisons, Networking Guides, FAQ Guides, Cost Guides, Spotlights, Trend Reports, First-Timer Guides, Guides, News)
 - Already had: robots.txt with sitemap, WebSite schema + SearchAction, Article JSON-LD on all articles, FAQPage schema on FAQ articles, canonical URLs on 20+ main pages
+
+### Feb 11, 2026 — Session 13
+
+#### Date Display Bug Fixed
+- **Timezone bug in news.html** — `formatDate()` used `new Date()` which converted UTC midnight to local time (e.g., "2026-02-10T00:00:00Z" showed as "Feb 9" in US timezones). Fixed to parse date string directly without timezone conversion.
+- **Updated 100 article dates** in news.js from Feb 9/10 to Feb 11, 2026
+- **Updated 87 article HTML files** — datePublished, dateModified, `<time>` tags, and meta tags all set to 2026-02-11
+- News listing now shows consistent dates matching the article pages
+- Sorting confirmed: newest articles appear first (descending by published_date)

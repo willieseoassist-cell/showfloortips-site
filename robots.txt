@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://showfloortips.com/sitemap-index.xml
+Sitemap: https://showfloortips.com/sitemap.xml
