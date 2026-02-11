@@ -461,7 +461,7 @@
                         <div class="af-group" style="grid-column: 3 / 5">
                             <label class="af-label">&nbsp;</label>
                             <div class="af-actions" style="margin-top:0">
-                                <button class="af-btn af-btn-search" onclick="applyAdvancedFilters()">Search Shows</button>
+                                <button class="af-btn af-btn-search" onclick="applyAdvancedFilters(true)">Search Shows</button>
                                 <button class="af-btn af-btn-clear" id="afClearBtn" onclick="clearAdvancedFilters()">Clear Filters</button>
                             </div>
                         </div>
@@ -1607,9 +1607,14 @@
             }
         };
 
-        window.applyAdvancedFilters = function() {
+        window.applyAdvancedFilters = function(shouldScroll) {
             applyAdvancedFromInputs();
-            document.getElementById('shows').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (shouldScroll) {
+                setTimeout(function() {
+                    var el = document.getElementById('shows');
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
         };
 
         // Newsletter — Beehiiv API
