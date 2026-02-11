@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google AdSense: Replace with actual ad script when approved -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShowFloorTips - #1 Trade Show Directory & Exhibitor Intelligence | 24,500+ Shows</title>
@@ -38,6 +40,8 @@
     }
     </script>
 
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml">
+    <link rel="alternate" type="application/rss+xml" title="ShowFloorTips RSS Feed" href="/rss.xml">
     <link rel="stylesheet" href="/styles.css">
     <link rel="canonical" href="https://showfloortips.com">
     <link rel="manifest" href="/manifest.json">
@@ -592,8 +596,9 @@
             <span class="shows-count" id="showsCount">Loading shows...</span>
         </div>
         <div class="shows-grid" id="showsGrid"></div>
-        <div class="load-more-container" id="loadMoreContainer" style="display:none">
-            <button class="load-more-btn" id="loadMoreBtn">Load More Shows</button>
+        <div class="load-more-container" id="load-more-container" style="text-align:center;padding:2rem 0;display:none">
+            <button class="load-more-btn" id="loadMoreBtn" style="padding:14px 48px;background:#0a0a0a;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s">Load More Shows</button>
+            <p id="shows-count" style="margin-top:12px;color:#64748b;font-size:0.9rem"></p>
         </div>
     </section>
 
@@ -873,12 +878,12 @@
     (function() {
         'use strict';
 
-        const ITEMS_PER_PAGE = 24;
+        const SHOWS_PER_PAGE = 50;
         let currentFilter = 'all';
         let currentCountry = 'all';
         let currentSearch = '';
         let currentSort = 'date';
-        let visibleCount = ITEMS_PER_PAGE;
+        let visibleCount = SHOWS_PER_PAGE;
         let filteredShows = [];
 
         // Advanced filter state
@@ -1030,7 +1035,7 @@
                     document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
                     this.classList.add('active');
                     currentFilter = this.dataset.category;
-                    visibleCount = ITEMS_PER_PAGE;
+                    visibleCount = SHOWS_PER_PAGE;
                     applyFilters();
                 });
             });
@@ -1038,7 +1043,7 @@
             // Country filter
             document.getElementById('countryFilter').addEventListener('change', function() {
                 currentCountry = this.value;
-                visibleCount = ITEMS_PER_PAGE;
+                visibleCount = SHOWS_PER_PAGE;
                 applyFilters();
             });
 
@@ -1048,7 +1053,7 @@
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(() => {
                     currentSearch = this.value.trim().toLowerCase();
-                    visibleCount = ITEMS_PER_PAGE;
+                    visibleCount = SHOWS_PER_PAGE;
                     applyFilters();
                 }, 300);
             });
@@ -1061,7 +1066,7 @@
 
             // Load more
             document.getElementById('loadMoreBtn').addEventListener('click', function() {
-                visibleCount += ITEMS_PER_PAGE;
+                visibleCount += SHOWS_PER_PAGE;
                 renderCards();
             });
 
@@ -1109,7 +1114,7 @@
             afCountry = document.getElementById('afCountry').value;
             afAttendees = document.getElementById('afAttendees').value;
             afExhibitors = document.getElementById('afExhibitors').value;
-            visibleCount = ITEMS_PER_PAGE;
+            visibleCount = SHOWS_PER_PAGE;
             updateFilterBadge();
             applyFilters();
         }
@@ -1212,7 +1217,7 @@
 
             if (visible.length === 0) {
                 grid.innerHTML = '<div class="no-results"><h3>No shows found</h3><p>Try a different search term, category, or country filter.</p></div>';
-                document.getElementById('loadMoreContainer').style.display = 'none';
+                document.getElementById('load-more-container').style.display = 'none';
                 return;
             }
 
@@ -1252,8 +1257,15 @@
                 '</div>';
             }).join('');
 
-            const loadMore = document.getElementById('loadMoreContainer');
-            loadMore.style.display = visibleCount < filteredShows.length ? 'block' : 'none';
+            var loadMoreContainer = document.getElementById('load-more-container');
+            var showsCountEl = document.getElementById('shows-count');
+            var end = Math.min(visibleCount, filteredShows.length);
+            if (visibleCount < filteredShows.length) {
+                loadMoreContainer.style.display = 'block';
+                showsCountEl.textContent = 'Showing ' + end.toLocaleString() + ' of ' + filteredShows.length.toLocaleString() + ' shows';
+            } else {
+                loadMoreContainer.style.display = 'none';
+            }
         }
 
         function escapeHtml(str) {
@@ -1504,7 +1516,7 @@
             document.querySelectorAll('.filter-pill').forEach(p => {
                 p.classList.toggle('active', p.dataset.category === cat);
             });
-            visibleCount = ITEMS_PER_PAGE;
+            visibleCount = SHOWS_PER_PAGE;
             applyFilters();
             document.getElementById('shows').scrollIntoView({ behavior: 'smooth' });
         };
@@ -1534,7 +1546,7 @@
             afAttendees = '';
             afExhibitors = '';
             updateFilterBadge();
-            visibleCount = ITEMS_PER_PAGE;
+            visibleCount = SHOWS_PER_PAGE;
             applyFilters();
         };
 
@@ -1913,7 +1925,7 @@
             updateSavedPillVisibility();
             // If currently viewing saved filter, re-render
             if (currentFilter === 'saved') {
-                visibleCount = ITEMS_PER_PAGE;
+                visibleCount = SHOWS_PER_PAGE;
                 applyFilters();
             }
         };
@@ -2025,6 +2037,50 @@
 
     if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(function(){}); }
     </script>
+
+<div id="sft-popup" style="display:none;position:fixed;bottom:24px;right:24px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.15);font-family:Inter,-apple-system,sans-serif">
+  <button onclick="document.getElementById('sft-popup').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:#94a3b8;line-height:1">&times;</button>
+  <h3 style="font-size:1.1rem;font-weight:700;color:#0a0a0a;margin:0 0 6px">Stay Ahead of the Show Floor</h3>
+  <p style="font-size:0.875rem;color:#64748b;margin:0 0 16px;line-height:1.5">Get weekly trade show insights, exhibitor strategies, and industry news. Join 150+ professionals.</p>
+  <form id="sft-popup-form" style="display:flex;gap:8px">
+    <input type="email" placeholder="Your email" required style="flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit">
+    <button type="submit" style="padding:10px 18px;background:#0a0a0a;color:#fff;border:none;border-radius:8px;font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">Subscribe</button>
+  </form>
+  <p id="sft-popup-msg" style="display:none;font-size:0.85rem;color:#10b981;margin:8px 0 0;font-weight:500"></p>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('sft_popup_shown')) return;
+  var triggered=false;
+  window.addEventListener('scroll',function(){
+    if(triggered) return;
+    var scrollPct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+    if(scrollPct>0.4){
+      triggered=true;
+      sessionStorage.setItem('sft_popup_shown','1');
+      document.getElementById('sft-popup').style.display='block';
+    }
+  });
+  document.getElementById('sft-popup-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=this.querySelector('input').value;
+    fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+    .then(function(r){return r.json()})
+    .then(function(){
+      document.getElementById('sft-popup-form').style.display='none';
+      var msg=document.getElementById('sft-popup-msg');
+      msg.textContent='You\'re in! Check your inbox.';
+      msg.style.display='block';
+    })
+    .catch(function(){
+      var msg=document.getElementById('sft-popup-msg');
+      msg.textContent='Something went wrong. Try again.';
+      msg.style.color='#ef4444';
+      msg.style.display='block';
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

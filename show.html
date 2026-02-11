@@ -593,6 +593,25 @@
         html += '<a href="https://apps.apple.com/us/app/scannly/id6746970463" target="_blank" class="btn-scannly">Download Scannly</a>';
         html += '</div>';
 
+        // Request Booth Info
+        html += '<div class="sidebar-card">';
+        html += '<h3>Request Booth Info</h3>';
+        html += '<p style="font-size:0.85rem;color:#64748b;line-height:1.5;margin-bottom:1rem;">Interested in exhibiting? Submit your details and we\'ll send you booth availability and pricing.</p>';
+        html += '<form id="sft-booth-form" style="display:flex;flex-direction:column;gap:10px">';
+        html += '<input type="text" name="name" placeholder="Your Name" required style="width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;font-family:Inter,-apple-system,sans-serif;outline:none;box-sizing:border-box">';
+        html += '<input type="email" name="email" placeholder="Email Address" required style="width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;font-family:Inter,-apple-system,sans-serif;outline:none;box-sizing:border-box">';
+        html += '<input type="text" name="company" placeholder="Company Name" required style="width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;font-family:Inter,-apple-system,sans-serif;outline:none;box-sizing:border-box">';
+        html += '<button type="submit" style="width:100%;padding:0.875rem;background:#0a0a0a;color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:Inter,-apple-system,sans-serif;transition:background 0.2s">Request Info</button>';
+        html += '</form>';
+        html += '<p id="sft-booth-msg" style="display:none;font-size:0.85rem;color:#10b981;margin:10px 0 0;font-weight:500;text-align:center"></p>';
+        html += '</div>';
+
+        // Ad Slot
+        html += '<!-- Ad Slot -->';
+        html += '<div class="ad-slot" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:20px;text-align:center;margin:24px 0;min-height:250px;display:flex;align-items:center;justify-content:center">';
+        html += '<span style="color:#999;font-size:0.8rem">Advertisement</span>';
+        html += '</div>';
+
         // Nearby Shows
         html += nearbyShows;
 
@@ -610,6 +629,33 @@
         html += '</div></div>';
 
         document.getElementById('show-content').innerHTML = html;
+
+        // Booth Info form handler
+        var boothForm = document.getElementById('sft-booth-form');
+        if (boothForm) {
+            boothForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var name = this.querySelector('input[name="name"]').value;
+                var email = this.querySelector('input[name="email"]').value;
+                var company = this.querySelector('input[name="company"]').value;
+                var request = {
+                    name: name,
+                    email: email,
+                    company: company,
+                    show: show.title,
+                    slug: show.slug,
+                    date: new Date().toISOString()
+                };
+                var existing = [];
+                try { existing = JSON.parse(localStorage.getItem('sft_booth_requests')) || []; } catch(ex) {}
+                existing.push(request);
+                localStorage.setItem('sft_booth_requests', JSON.stringify(existing));
+                boothForm.style.display = 'none';
+                var msg = document.getElementById('sft-booth-msg');
+                msg.textContent = 'Request submitted! We\'ll be in touch soon.';
+                msg.style.display = 'block';
+            });
+        }
 
     })();
     </script>
@@ -943,5 +989,50 @@
 
     })();
     </script>
+
+<div id="sft-popup" style="display:none;position:fixed;bottom:24px;right:24px;z-index:9999;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.15);font-family:Inter,-apple-system,sans-serif">
+  <button onclick="document.getElementById('sft-popup').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:1.25rem;cursor:pointer;color:#94a3b8;line-height:1">&times;</button>
+  <h3 style="font-size:1.1rem;font-weight:700;color:#0a0a0a;margin:0 0 6px">Stay Ahead of the Show Floor</h3>
+  <p style="font-size:0.875rem;color:#64748b;margin:0 0 16px;line-height:1.5">Get weekly trade show insights, exhibitor strategies, and industry news. Join 150+ professionals.</p>
+  <form id="sft-popup-form" style="display:flex;gap:8px">
+    <input type="email" placeholder="Your email" required style="flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit">
+    <button type="submit" style="padding:10px 18px;background:#0a0a0a;color:#fff;border:none;border-radius:8px;font-size:0.875rem;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">Subscribe</button>
+  </form>
+  <p id="sft-popup-msg" style="display:none;font-size:0.85rem;color:#10b981;margin:8px 0 0;font-weight:500"></p>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('sft_popup_shown')) return;
+  var triggered=false;
+  window.addEventListener('scroll',function(){
+    if(triggered) return;
+    var scrollPct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+    if(scrollPct>0.4){
+      triggered=true;
+      sessionStorage.setItem('sft_popup_shown','1');
+      document.getElementById('sft-popup').style.display='block';
+    }
+  });
+  document.getElementById('sft-popup-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=this.querySelector('input').value;
+    fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+    .then(function(r){return r.json()})
+    .then(function(){
+      document.getElementById('sft-popup-form').style.display='none';
+      var msg=document.getElementById('sft-popup-msg');
+      msg.textContent='You\'re in! Check your inbox.';
+      msg.style.display='block';
+    })
+    .catch(function(){
+      var msg=document.getElementById('sft-popup-msg');
+      msg.textContent='Something went wrong. Try again.';
+      msg.style.color='#ef4444';
+      msg.style.display='block';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
