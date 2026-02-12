@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,779+ shows), `news.js` (article index, 14MB, 24,532+ articles)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,792+ shows), `news.js` (article index, 14MB, 24,542+ articles)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -1018,7 +1018,38 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - rss.xml: 140 items (was 130)
 - shows.js: 24,779 shows (was 24,762)
 
-#### Deployment
+#### Deployment (batch 1)
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,590 files)
+- Live at https://showfloortips.com
+
+#### Batch 2: 10 More Articles Written & Deployed
+- **5 News Insight articles:**
+  - Siemens-NVIDIA Industrial AI Operating System — Erlangen factory, Digital Twin Composer, HANNOVER MESSE
+  - NVIDIA & Eli Lilly $1B AI drug discovery lab — 10 exaflops, BIO & HIMSS 2026
+  - China solar capacity surpasses coal (1,200 GW) — RE+, Intersolar, SNEC
+  - Energy storage passes 100 GW — sodium-ion scaling, ees Europe & RE+ 2026
+  - 90% retailers boosting AI budgets — agentic AI at Shoptalk, NRF, Groceryshop
+- **3 Networking Guides:**
+  - How to Network at MAGIC Las Vegas 2026 (fashion, 2,600+ brands, 78K attendees)
+  - How to Network at ISC West 2026 (security, 750+ exhibitors, Venetian Expo)
+  - How to Network at Seafood Expo North America 2026 (1,340 exhibitors, 50 countries, Boston)
+- **2 Comparison Articles:**
+  - World of Concrete 2026 vs KBIS 2026 (construction shows, Vegas vs Orlando)
+  - MAGIC Las Vegas vs ISC West 2026 (fashion vs security, two Vegas shows)
+
+#### 13 More Trade Shows Added (batch 2)
+- Lucky Leaf Expo, Commercial UAV Expo, G2E, Women in Tech Global Conference
+- One Tech World, ISRP Conference, SPIE Quantum West Expo, MAGIC Las Vegas
+- ISC West, KBIS, World of Concrete, Seafood Expo NA, FiNext Conference
+- **Total shows in database: 24,792**
+
+#### Data Updates (cumulative)
+- news.js: 24,542 entries (was 24,522)
+- rss.xml: 150 items (was 130)
+- shows.js: 24,792 shows (was 24,762)
+
+#### Deployment (batch 2)
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,600 files)
 - Live at https://showfloortips.com
