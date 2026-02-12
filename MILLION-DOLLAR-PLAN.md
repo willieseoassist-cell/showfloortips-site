@@ -1,13 +1,13 @@
 # ShowFloorTips — $1,000,000 Revenue Plan
 
 ## Current State (Updated Feb 11, 2026)
-- **24,670+ trade shows** in database (shows.js, 36MB+)
-- **24,380+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
+- **24,818+ trade shows** in database (shows.js, 36MB+)
+- **24,580+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
 - **10 city travel guides** (Las Vegas, Chicago, Orlando, NYC, Anaheim, SF, Atlanta, Houston, Dallas, San Diego)
 - **16 industry landing pages** + index (Technology, Healthcare, Manufacturing, Food & Beverage, Construction, Automotive, Energy, Fashion & Beauty, Defense & Security, Education, Agriculture, Marine, Finance, Travel & Hospitality, Sports & Recreation)
-- **5 state landing pages** (California, Texas, Florida, New York, Illinois)
+- **10 state landing pages** (California, Texas, Florida, New York, Illinois, Georgia, Nevada, Pennsylvania, Ohio, Massachusetts)
 - **11 interactive tools** built: ROI Calculator, Budget Planner, QR Generator, Show Comparison, Interactive World Map, Lead Value Calculator, Packing List Generator, Trip Cost Estimator, Flight Deals, This Week Live View, Venue Maps
-- **20 digital products** on Stripe ($7.99 - $49.99 each) — includes Mega Bundle
+- **25 digital products** on Stripe ($7.99 - $49.99 each) — includes Mega Bundle + 5 industry kits
 - **Scannly** lead capture app (free)
 - **Amazon Associates** integrated (tag: showfloortips-20) — travel gear, exhibitor supplies
 - **Booking.com** hotel affiliate links on all show pages + city guides
@@ -259,7 +259,7 @@ Features:
 | Category | Target | Current | Progress |
 |----------|--------|---------|----------|
 | Trade Shows in DB | 25,000 | 24,818 | 99% |
-| Articles | 25,000 | 24,572+ | 98% |
+| Articles | 25,000 | 24,580+ | 98% |
 | Free Tools | 10+ | 11 | 110% |
 | Travel Guides | 10 cities | 10 cities | 100% |
 | Industry Pages | 15+ | 16 + index | 107% |

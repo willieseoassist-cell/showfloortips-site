@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,802+ shows), `news.js` (article index, 14MB, 24,562+ articles)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,818+ shows), `news.js` (article index, 14MB, 24,580+ articles)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -1136,6 +1136,16 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - `news/cisco-live-vs-microsoft-ignite-2026.html` — Cisco Live vs Microsoft Ignite 2026 (enterprise IT showdown)
 - `news/pack-expo-east-vs-interpack-2026.html` — PACK EXPO East vs interpack 2026 (US regional vs global packaging)
 
+**Bonus Articles (8 — from background agents, added to news.js):**
+- `news/ai-food-beverage-179-billion-trade-shows-2026.html` — AI in F&B $179.8B market, reshaping NRA Show, SIAL, Expo West
+- `news/applied-materials-2nm-semiconductor-trade-shows-2026.html` — Applied Materials 2nm breakthrough, SEMICON West, Computex
+- `news/doe-2-7b-uranium-enrichment-trade-shows-2026.html` — DOE $2.7B domestic uranium enrichment, nuclear energy shows
+- `news/pentagon-fms-restructure-defense-trade-shows-2026.html` — Pentagon FMS restructuring, defense industry trade shows
+- `news/us-tariffs-80-year-high-trade-show-exhibitors-2026.html` — US tariffs at 80-year high, exhibitor cost impact
+- `news/how-to-network-at-infocomm-2026.html` — InfoComm 2026 (AV/pro tech, Orlando, 40K+ attendees)
+- `news/infocomm-vs-ldi-comparison-2026.html` — InfoComm vs LDI 2026 (AV integration vs live entertainment)
+- `news/modex-vs-conexpo-comparison-2026.html` — MODEX vs CONEXPO 2026 (supply chain vs heavy construction)
+
 #### New Shows Added (14 new, total now 24,818)
 - MD&M Charlotte 2026 (Apr 22-23, Charlotte) — 5,000+ attendees, medtech
 - SelectUSA Investment Summit 2026 (May 3-6, National Harbor) — 5,000+ attendees, FDI
@@ -1168,10 +1178,15 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - `/products/construction-exhibitor-kit.html` — Construction Exhibitor Kit ($29.99) for World of Concrete, CONEXPO
 
 #### Data Updates
-- news.js: 24,572 entries (was 24,562)
+- news.js: 24,580 entries (was 24,562) — 10 planned + 8 bonus from agents
 - rss.xml: 180 items (was 170)
 - shows.js: 24,818 shows (was 24,802)
 - sitemap-pages.xml: 20 new URLs added (5 states, 5 products, 10 articles)
+
+#### Scorecard Milestones Hit
+- State Pages: 5 → 10 (100%)
+- Digital Products: 20 → 25 (100%)
+- Phase 1 Checklist: 9/9 complete (100%)
 
 #### Deployment
 - Pushed to GitHub (main branch)
