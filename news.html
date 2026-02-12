@@ -765,15 +765,13 @@
                 return (a.published_date || '') > (b.published_date || '') ? a : b;
             });
             if (newest && newest.published_date) {
-                var d = new Date(newest.published_date + 'T12:00:00');
+                var dateStr = newest.published_date.substring(0, 10); // Extract YYYY-MM-DD regardless of format
+                var parts = dateStr.split('-');
                 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                var h = d.getHours(), ampm = h >= 12 ? 'PM' : 'AM';
-                h = h % 12 || 12;
-                var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
                 var el = document.getElementById('lastUpdated');
-                if (el) {
-                    el.textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' at ' + h + ':' + min + ' ' + ampm;
-                    el.setAttribute('datetime', newest.published_date + 'T12:00:00Z');
+                if (el && parts.length === 3) {
+                    el.textContent = months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
+                    el.setAttribute('datetime', dateStr + 'T12:00:00Z');
                 }
             }
 
