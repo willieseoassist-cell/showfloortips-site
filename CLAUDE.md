@@ -24,7 +24,7 @@
   - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
   - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
 - **Newsletter:** Beehiiv (pub ID: `pub_3ced7630-50d2-4bb9-8f43-728c48a80034`)
-  - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
+  - **API Key:** `THNkEfhbW1GjqqHym4UMASkekB71F1kyAkgEtxi2KJKkQsrzMWOXMQID87QMFVLQ`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
 - **Data files:** `shows.js` (exhibit records, 36MB, 24,818+ shows), `news.js` (article index, 14MB, 24,580+ articles)
