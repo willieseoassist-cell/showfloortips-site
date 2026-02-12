@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,792+ shows), `news.js` (article index, 14MB, 24,542+ articles)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,796+ shows), `news.js` (article index, 14MB, 24,552+ articles)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -1053,3 +1053,33 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz` (24,600 files)
 - Live at https://showfloortips.com
+
+#### Batch 3: 10 More Articles Written & Deployed
+- **5 News Insight articles:**
+  - Tesla European sales collapse 45% — BYD takes global EV crown, NAIAS & IAA impact
+  - Singapore Airshow shatters records — GE Aerospace $15B+ deals, Paris & Farnborough
+  - BASF $18B biologicals acquisition reshapes agri-tech — Expo West & SIAL 2026
+  - Smart Bricks & agentic AI rewriting PropTech — CRETech, MIPIM, CONEXPO 2026
+  - Shai-Hulud npm worm supply chain nightmare — RSA, Black Hat, ISC West alarm
+- **3 Networking Guides:**
+  - How to Network at Global Pet Expo 2026 (pet industry, Orlando, 1,300+ exhibitors)
+  - How to Network at World of Concrete 2026 (construction, Las Vegas, 1,400+ exhibitors)
+  - How to Network at KBIS 2026 (kitchen & bath, Las Vegas, 600+ exhibitors)
+- **2 Comparison Articles:**
+  - Global Pet Expo vs Toy Fair 2026 (product companies ROI showdown)
+  - Cosmoprof Las Vegas vs Makeup in New York 2026 (beauty show comparison)
+
+#### 4 More Trade Shows Added (batch 3)
+- Cosmoprof North America Miami, Makeup in New York, Yankee Dental Congress, ISA International Sign Expo
+- **Total shows in database: 24,796**
+
+#### Data Updates (cumulative session 17)
+- news.js: 24,552 entries (was 24,522)
+- rss.xml: 160 items (was 130)
+- shows.js: 24,796 shows (was 24,762)
+
+#### Deployment (batch 3)
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz` (24,610 files)
+- Live at https://showfloortips.com
+- **Daily article limit: 10 per day (user instruction)**
