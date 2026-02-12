@@ -1228,6 +1228,21 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - 9 article HTML files — Fixed broken og:image paths to Unsplash URLs
 - 7 article HTML files — Rewrote bland og:description with social hooks
 
+#### Beehiiv Newsletter Fix
+- **6 articles had broken Beehiiv iframe** — `embeds.beehiiv.com` iframe shows "Not Found". Replaced all 6 with working custom `/api/subscribe` form + `.newsletter-form` CSS.
+- Affected files: pentagon-fms, infocomm-vs-ldi, how-to-network-at-infocomm, ai-food-beverage, doe-uranium, automate-vs-imts
+
+#### Article Image Deduplication
+- **8 articles in news.js shared identical photo** (`photo-1504384308090-c894fdcc538d`). Replaced each with unique topic-specific Unsplash URLs:
+  - ai-food-beverage → food/restaurant photo
+  - applied-materials-2nm → circuit board photo
+  - doe-uranium → nuclear energy photo
+  - infocomm networking → conference/AV photo
+  - infocomm-vs-ldi → stage/entertainment photo
+  - modex-vs-conexpo → warehouse/logistics photo
+  - pentagon-fms → military/defense photo
+  - us-tariffs → shipping containers photo
+
 #### Deployment
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
