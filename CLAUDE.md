@@ -1208,7 +1208,7 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 ### Feb 12, 2026 — Session 20
 
 #### Social Media Pipeline Optimization
-- **news.html "Last updated" now dynamic** — Reads newest article date from NEWS_DATA automatically. No more manual date edits needed.
+- **news.html "Last updated" deployment marker** — Reads `NEWS_LAST_UPDATED` variable from line 1 of `news.js`. Shows exact date/time when articles were last uploaded (e.g., "February 12, 2026 at 1:48 AM"). Update this variable every time articles are added.
 - **RSS hashtags added** — All 180 items in rss.xml now include topic-specific hashtags in descriptions (e.g., `#TradeShow #AI #Manufacturing #ExhibitorTips`). dlvr.it auto-includes these in X/LinkedIn posts.
 - **Evergreen RSS feed created** — `rss-evergreen.xml` with 59 items (9 tool/product pages + 50 best guides/comparisons). Connect to a second dlvr.it feed to auto-post older high-value content and double posting volume.
 - **Social preview cards fixed** — 9 articles had broken local `og:image` paths (files didn't exist on server). Replaced all with working Unsplash URLs (`?w=1200&h=630&fit=crop` format).
@@ -1216,12 +1216,17 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - **Evergreen RSS autodiscovery** — Added `<link rel="alternate">` for rss-evergreen.xml on index.html
 - **CLAUDE.md updated** — Added Daily Task #4 (Update RSS Feeds) with hashtag strategy, social-first headline rules, og:image requirements
 
+- **7 bland og:description tags rewritten** — Replaced generic "master networking" and "side-by-side comparison" descriptions with engaging social hooks that drive clicks on X/LinkedIn
+- **NEWS_LAST_UPDATED variable added to news.js** — Line 1: `var NEWS_LAST_UPDATED = "2026-02-12T01:48:00";` — deployment marker updated every time articles are uploaded
+
 #### Files Modified
-- `news.html` — Dynamic "Last updated" timestamp from NEWS_DATA
+- `news.js` — Added `NEWS_LAST_UPDATED` timestamp variable on line 1
+- `news.html` — Reads `NEWS_LAST_UPDATED` for "Last updated" display
 - `rss.xml` — Hashtags added to all 180 item descriptions
 - `rss-evergreen.xml` — NEW file, 59 evergreen items for content recycling
 - `index.html` — Evergreen RSS autodiscovery link added
 - 9 article HTML files — Fixed broken og:image paths to Unsplash URLs
+- 7 article HTML files — Rewrote bland og:description with social hooks
 
 #### Deployment
 - Pushed to GitHub (main branch)
