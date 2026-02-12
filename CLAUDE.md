@@ -1247,3 +1247,55 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Session 21 — Feb 11-12, 2026: Full Site Audit & Comprehensive Fixes
+
+#### Site Audit
+- Ran 5-agent parallel audit covering: data files integrity, live site testing, city/state/industry/calendar pages, HTML structure, article file checks
+- Identified 18 issues across critical, high, medium, and low severity levels
+
+#### Critical Fixes: Industry Pages
+- **14 industry pages in `/industries/` had wrong template text** from technology.html — 5 pages fully rewritten (agriculture, finance, marine-maritime, sports-recreation, travel-hospitality), 9 already had correct content
+- **og:image added to all 16 industry pages** (15 industry + index) with unique Unsplash photos per industry
+
+#### Critical Fixes: City Pages
+- **58 broken `/industries/` links fixed** across all 20 city pages — remapped to 15 valid industry page filenames
+- **20 unique city-specific OG images** added (replaced generic shared photo with city skyline/landmark photos)
+
+#### Critical Fixes: State Pages
+- **OG meta tags added to all 10 state pages** (og:title, og:description, og:type, og:url, og:image, og:site_name) with unique state photos
+- **Maps nav link added** to all 10 state page headers
+- **Created `states/index.html`** landing page with card grid, dynamic show counts from shows.js, GA4 tracking
+
+#### Critical Fixes: Product Pages
+- **5 placeholder Stripe links replaced** with "Coming Soon" messaging + newsletter signup link (construction, food-beverage, healthcare, manufacturing, tech-show exhibitor kits)
+
+#### Data File Fixes
+- **news.js**: 189 dates standardized from YYYY-MM-DD to ISO 8601 format; 156 category names normalized (Industry Insight→News Insights, Networking Guide→Networking Guides, Comparison/Show Comparison→Comparisons)
+- **shows.js**: 3 empty fields fixed (RehabWeek location, 2 shows missing website URLs)
+- **rss.xml**: 100 www URLs standardized to non-www
+- **rss-evergreen.xml**: 119 www URLs standardized to non-www
+
+#### Security Fix
+- **api/subscribe.js**: Beehiiv API key moved from hardcoded to `process.env.BEEHIIV_API_KEY` with 500 error fallback if not set
+- **ACTION REQUIRED**: Add `BEEHIIV_API_KEY` environment variable in Vercel dashboard with value from CLAUDE.md Project Setup section
+
+#### Files Modified
+- 15 files in `industries/` (14 industry pages + index.html)
+- 20 files in `cities/` (all city pages)
+- 10 files in `states/` (all state pages)
+- 1 new file: `states/index.html`
+- 5 files in `products/` (exhibitor kit pages)
+- `news.js` — dates + categories fixed
+- `shows.js` — 3 empty fields fixed
+- `rss.xml` — www URLs standardized
+- `rss-evergreen.xml` — www URLs standardized
+- `api/subscribe.js` — API key moved to env var
+
+#### Known Remaining Issues (Lower Priority)
+- 124 duplicate slugs in news.js (283 articles) — complex to fix, needs dedup strategy
+- 100 duplicate slugs in shows.js (272 shows) — intentional for recurring shows
+- 123 inconsistent show categories in shows.js — needs category consolidation pass
+- Sitemap at 48,780 URLs approaching 50K limit — consider using sitemap-index.xml exclusively
+- Duplicate industry pages at root level (*-trade-shows.html) vs /industries/ — needs consolidation
+- 10 cities missing travel guide links (corresponding to 10 unwritten travel guides)

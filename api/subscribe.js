@@ -18,13 +18,18 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Valid email required' });
     }
 
+    const apiKey = process.env.BEEHIIV_API_KEY;
+    if (!apiKey) {
+        return res.status(500).json({ error: 'Server configuration error' });
+    }
+
     try {
         const response = await fetch(
             'https://api.beehiiv.com/v2/publications/pub_3ced7630-50d2-4bb9-8f43-728c48a80034/subscriptions',
             {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS',
+                    'Authorization': `Bearer ${apiKey}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
