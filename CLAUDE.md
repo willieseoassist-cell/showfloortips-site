@@ -27,7 +27,7 @@
   - **API Key:** `DF3Ti6mXYqdmQfF2IVHUWYgwagt53Hbbin2cEeMOWIHN215T2bMKafC7QTge7CYS`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,796+ shows), `news.js` (article index, 14MB, 24,552+ articles)
+- **Data files:** `shows.js` (exhibit records, 36MB, 24,802+ shows), `news.js` (article index, 14MB, 24,562+ articles)
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -1083,3 +1083,36 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Deployed to Vercel with `--archive=tgz` (24,610 files)
 - Live at https://showfloortips.com
 - **Daily article limit: 10 per day (user instruction)**
+
+### Feb 11, 2026 — Session 18
+
+#### 10 New Articles Written & Deployed
+- **5 News Insight articles:**
+  - Humanoid robots enter mass production — Automate, IMTS, HANNOVER MESSE 2026
+  - Fusion energy $450M Inertia milestone — CERAWeek, POWERGEN 2026
+  - Big Tech $700B AI infrastructure spending — GTC, re:Invent, Ignite 2026
+  - Amazon prescription delivery 4,500 cities — HIMSS, HLTH 2026
+  - Henkel-Stahl $2B M&A surge in coatings — Coatings Show, NAB 2026
+- **3 Networking Guides:**
+  - How to Network at Automate 2026 (robotics/automation, Detroit, 800+ exhibitors)
+  - How to Network at HIMSS 2026 (health IT, Las Vegas, 1,400+ exhibitors)
+  - How to Network at Expo West 2026 (natural products, Anaheim, 3,600+ exhibitors)
+- **2 Comparison Articles:**
+  - Automate 2026 vs IMTS 2026 (automation vs machining, Detroit vs Chicago)
+  - HIMSS 2026 vs ViVE 2026 (health IT conference comparison)
+
+#### 6 New Trade Shows Added to Database
+- Psychedelic Culture 2026, GDEX 2026, Critical Minerals North America 2026
+- Blockchain Life 2026, Nuclear Energy Conference & Expo 2026, ANA Creator Marketing Conference 2026
+- **Total shows in database: 24,802**
+
+#### Data Updates
+- news.js: 24,562 entries (was 24,552)
+- rss.xml: 170 items (was 160)
+- shows.js: 24,802 shows (was 24,796)
+- Fixed news.html last-updated date to February 11, 2026
+
+#### Deployment
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
