@@ -89,7 +89,7 @@
   - Always include `#TradeShow #ExhibitorTips`
   - Add 2-3 topic-specific tags: `#AI`, `#CES2026`, `#Manufacturing`, `#HealthTech`, `#Retail`, `#Construction`, etc.
   - Max 5 hashtags per item
-- **news.html timestamp** — Now auto-updates from NEWS_DATA (no manual edits needed)
+- **news.html timestamp** — Reads `NEWS_LAST_UPDATED` variable from the first line of `news.js`. **Every time you add articles to news.js, update the timestamp on line 1:** `var NEWS_LAST_UPDATED = "YYYY-MM-DDTHH:MM:SS";` with the current date and time. This is the deployment marker that shows when content was last uploaded.
 
 ### 3. Scrape for New Exhibits
 - Search the internet for upcoming trade shows, expos, conferences, and conventions
