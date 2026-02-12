@@ -76,8 +76,20 @@
   - **Comparison Articles** — "[Show A] vs [Show B]: Which Should You Exhibit At?"
   - **News Insight Articles** — Take the day's most popular/trending news stories and rewrite them through a trade show lens. Top-level writing. Hook the reader from the first sentence. Each article should be better than the last. Make readers feel like they NEED ShowFloorTips to stay informed.
 - Writing quality: Magazine-level. No filler. Every paragraph earns its place. Hook readers from line one.
+- **Social-first headlines** — Titles must work for BOTH SEO and social media (X/LinkedIn). Use numbers, stakes, specificity. Example: "Cisco's $10B AI Chip Gambit Changes Everything for Networking Trade Shows" not "Cisco AI Networking Chip 2026"
+- **og:image MUST use Unsplash** — Never use local `/images/` paths for og:image or twitter:image. Always use `https://images.unsplash.com/photo-XXXXX?w=1200&h=630&fit=crop` format so social previews always work.
+- **twitter:card must be `summary_large_image`** — Big image previews get 2-3x more clicks than small thumbnails
 - Add corresponding entries to `news.js`
 - Use Unsplash images consistent with existing articles
+
+### 4. Update RSS Feeds (After Adding Articles)
+- **rss.xml** — Add new article items to the top (latest 180+ items). Include hashtags in `<description>` based on article topic (e.g., `#TradeShow #AI #CES2026 #ExhibitorTips`). dlvr.it auto-posts these to X and LinkedIn.
+- **rss-evergreen.xml** — Evergreen feed with best guides, comparisons, and tool pages. dlvr.it can post from this feed to recycle high-value content. Update periodically with new evergreen articles.
+- **Hashtag strategy for RSS descriptions:**
+  - Always include `#TradeShow #ExhibitorTips`
+  - Add 2-3 topic-specific tags: `#AI`, `#CES2026`, `#Manufacturing`, `#HealthTech`, `#Retail`, `#Construction`, etc.
+  - Max 5 hashtags per item
+- **news.html timestamp** — Now auto-updates from NEWS_DATA (no manual edits needed)
 
 ### 3. Scrape for New Exhibits
 - Search the internet for upcoming trade shows, expos, conferences, and conventions
@@ -1187,6 +1199,29 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - State Pages: 5 → 10 (100%)
 - Digital Products: 20 → 25 (100%)
 - Phase 1 Checklist: 9/9 complete (100%)
+
+#### Deployment
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
+
+### Feb 12, 2026 — Session 20
+
+#### Social Media Pipeline Optimization
+- **news.html "Last updated" now dynamic** — Reads newest article date from NEWS_DATA automatically. No more manual date edits needed.
+- **RSS hashtags added** — All 180 items in rss.xml now include topic-specific hashtags in descriptions (e.g., `#TradeShow #AI #Manufacturing #ExhibitorTips`). dlvr.it auto-includes these in X/LinkedIn posts.
+- **Evergreen RSS feed created** — `rss-evergreen.xml` with 59 items (9 tool/product pages + 50 best guides/comparisons). Connect to a second dlvr.it feed to auto-post older high-value content and double posting volume.
+- **Social preview cards fixed** — 9 articles had broken local `og:image` paths (files didn't exist on server). Replaced all with working Unsplash URLs (`?w=1200&h=630&fit=crop` format).
+- **All 20 recent articles confirmed** — `twitter:card` = `summary_large_image` on all. 24,430 of 24,441 articles have valid og:image.
+- **Evergreen RSS autodiscovery** — Added `<link rel="alternate">` for rss-evergreen.xml on index.html
+- **CLAUDE.md updated** — Added Daily Task #4 (Update RSS Feeds) with hashtag strategy, social-first headline rules, og:image requirements
+
+#### Files Modified
+- `news.html` — Dynamic "Last updated" timestamp from NEWS_DATA
+- `rss.xml` — Hashtags added to all 180 item descriptions
+- `rss-evergreen.xml` — NEW file, 59 evergreen items for content recycling
+- `index.html` — Evergreen RSS autodiscovery link added
+- 9 article HTML files — Fixed broken og:image paths to Unsplash URLs
 
 #### Deployment
 - Pushed to GitHub (main branch)

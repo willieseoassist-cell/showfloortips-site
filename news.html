@@ -548,7 +548,7 @@
         <div class="news-hero-content">
             <h1>Trade Show Industry News</h1>
             <p class="subtitle">The latest headlines, trends, and insights from across the exhibition industry.</p>
-            <p class="news-last-updated">Last updated: <time datetime="2026-02-11T12:00:00Z" id="lastUpdated">February 11, 2026 at 12:00 PM UTC</time></p>
+            <p class="news-last-updated">Last updated: <time id="lastUpdated">Loading...</time></p>
         </div>
     </section>
 
@@ -758,6 +758,23 @@
                     '<div class="news-no-results"><h3>No news available</h3><p>News data is being generated. Check back soon.</p></div>';
                 document.getElementById('newsCount').textContent = '0 articles';
                 return;
+            }
+
+            // Set "Last updated" to newest article date
+            var newest = NEWS_DATA.reduce(function(a, b) {
+                return (a.published_date || '') > (b.published_date || '') ? a : b;
+            });
+            if (newest && newest.published_date) {
+                var d = new Date(newest.published_date + 'T12:00:00');
+                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                var h = d.getHours(), ampm = h >= 12 ? 'PM' : 'AM';
+                h = h % 12 || 12;
+                var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+                var el = document.getElementById('lastUpdated');
+                if (el) {
+                    el.textContent = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' at ' + h + ':' + min + ' ' + ampm;
+                    el.setAttribute('datetime', newest.published_date + 'T12:00:00Z');
+                }
             }
 
             updatePillCounts();
