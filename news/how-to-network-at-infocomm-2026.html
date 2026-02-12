@@ -674,6 +674,11 @@
             background: #fff;
         }
 
+        .newsletter-form{display:flex;flex-direction:column;gap:12px}
+        .newsletter-form input{padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;background:var(--bg);color:var(--text)}
+        .newsletter-form button{padding:12px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s;font-family:inherit}
+        .newsletter-form button:hover{background:#d63651}
+
         /* ===== AMAZON PRODUCT RECS ===== */
         .product-rec {
             display: flex;
@@ -1240,10 +1245,9 @@
             </div>
 
             <!-- NEWSLETTER -->
-            <div class="sidebar-card newsletter-card">
-                <h3>Get Trade Show Tips Weekly</h3>
-                <p>Join thousands of trade show professionals who receive our weekly networking strategies, packing lists, and show previews.</p>
-                <iframe src="https://embeds.beehiiv.com/f1ff7b4f-4194-4aa5-9a26-33a715512ee3?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style="margin:0;border-radius:0px!important;background-color:transparent;"></iframe>
+            <div class="sidebar-section">
+                <h3>Subscribe to Updates</h3>
+                <form class="newsletter-form" action="/api/subscribe" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit">Subscribe</button></form>
             </div>
 
             <!-- RELATED ARTICLES -->

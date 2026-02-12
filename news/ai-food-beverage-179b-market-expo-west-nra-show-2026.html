@@ -651,6 +651,11 @@
             border-radius: var(--radius-sm);
         }
 
+        .newsletter-form{display:flex;flex-direction:column;gap:12px}
+        .newsletter-form input{padding:12px 16px;border:1px solid var(--border-color);border-radius:8px;font-size:14px;font-family:inherit;background:var(--bg-white);color:var(--text-primary)}
+        .newsletter-form button{padding:12px 16px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;transition:background .2s;font-family:inherit}
+        .newsletter-form button:hover{background:#ff6b81}
+
         /* Sidebar: Amazon Picks */
         .amazon-item {
             display: flex;
@@ -1045,10 +1050,9 @@
         <aside class="sidebar">
 
             <!-- Newsletter Signup -->
-            <div class="sidebar-card newsletter-box">
-                <div class="sidebar-card-title">Trade Show Intel Newsletter</div>
-                <p>Get weekly trade show insights, exhibitor strategies, and industry data delivered to your inbox.</p>
-                <iframe src="https://embeds.beehiiv.com/pub_3ced7630-50d2-4bb9-8f43-728c48a80034" data-test-id="beehiiv-embed" height="220" frameborder="0" scrolling="no" style="margin: 0; border-radius: 6px; background: transparent;"></iframe>
+            <div class="sidebar-section">
+                <h3>Subscribe to Updates</h3>
+                <form class="newsletter-form" action="/api/subscribe" method="POST"><input type="email" name="email" placeholder="Your email" required><button type="submit">Subscribe</button></form>
             </div>
 
             <!-- Related Articles -->
