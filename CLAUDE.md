@@ -27,7 +27,7 @@
   - **API Key:** `THNkEfhbW1GjqqHym4UMASkekB71F1kyAkgEtxi2KJKkQsrzMWOXMQID87QMFVLQ`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 15.9MB, 24,818+ shows — defines `defined_shows` + alias `SHOWS_DATA`), `news.js` (article index, 14MB, 24,580+ articles — defines `NEWS_DATA`)
+- **Data files:** `shows.js` (exhibit records, 15.9MB, 24,838+ shows — defines `defined_shows` + alias `SHOWS_DATA`), `news.js` (article index, 14MB, 24,593+ articles — defines `NEWS_DATA`)
 - **Homepage cache:** `homepage-data.js` (3.3KB pre-computed stats) — regenerate with `node build-homepage-cache.js` after updating shows.js
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
@@ -1334,3 +1334,49 @@ Homepage at showfloortips.com showed empty data: stats "--", "Happening Soon" em
 #### Deployment
 - Pushed to GitHub, deployed to Vercel
 - Verified: homepage-data.js returns 200 (3.3KB), shows.js returns 200 (15.9MB raw, 1.8MB gzipped)
+
+### Session 22 (continued) — Feb 12, 2026: Articles, Shows, & Sponsorship Outreach
+
+#### Articles Created (13 total)
+
+**News Insight Articles (8):**
+- `news/trump-12b-project-vault-critical-minerals-stockpile-mining-trade-shows-2026.html` — Trump's $12B Project Vault critical minerals stockpile
+- `news/eu-nanoic-chip-pilot-line-semicon-computex-2026.html` — EU NanoIC chip pilot line for SEMICON/Computex
+- `news/golden-dome-175b-missile-defense-program-defense-trade-shows-2026.html` — Golden Dome $175B missile defense program
+- `news/samsung-galaxy-s26-unpacked-feb-25-mwc-2026-mobile-exhibitors.html` — Samsung Galaxy S26 Unpacked + MWC 2026
+- `news/big-food-ma-wave-barry-callebaut-kraft-heinz-costa-coffee-expo-west-2026.html` — Big Food M&A wave (Barry Callebaut, Kraft Heinz, Costa Coffee)
+- `news/wto-rules-us-clean-energy-tax-credits-violate-trade-rules-solar-wind-exhibitors-2026.html` — WTO rules US clean energy credits violate trade rules
+- `news/rtx-northrop-bechtel-500m-february-defense-contracts-ausa-2026-preview.html` — RTX/Northrop/Bechtel $500M defense contracts
+- `news/defense-tech-mainstream-ai-cyber-autonomy-15b-global-ad-deals-dsei-2026.html` — Defense tech goes mainstream ($15B global deals)
+
+**Networking Guides (3):**
+- `news/how-to-network-at-hannover-messe-2026.html` — Hannover Messe 2026 (130K+ attendees, 4K+ exhibitors)
+- `news/how-to-network-at-shoptalk-2026.html` — Shoptalk 2026 (10K+ attendees, Tabletalks, Retail Rumble)
+- `news/how-to-network-at-cisco-live-2026.html` — Cisco Live 2026 (20K+ IT pros, hands-on labs, gamification)
+
+**Comparison Articles (2):**
+- `news/shoptalk-2026-vs-shoptalk-europe-2026-comparison.html` — Shoptalk Vegas vs Shoptalk Europe Barcelona
+- `news/hannover-messe-2026-vs-computex-2026-comparison.html` — Hannover Messe vs Computex (industrial vs computing)
+
+#### 20 New Trade Shows Added to shows.js (24,838 total)
+EXPO REAL Asia Pacific (Singapore) | IAAPA Expo Middle East (Abu Dhabi) | R+T South-East Asia (Bangkok) | Generative AI Expo (Fort Lauderdale) | GITEX Quantum Expo Europe (Berlin) | Energy Tech Summit (Bilbao) | IE expo China (Shanghai) | International Drone Show (Odense) | SADEX Saudi Drone (Riyadh) | Robot Tech Show (Seoul) | Battery Show Europe (Stuttgart) | Cannabis Europa Paris | Mary Jane Berlin | Cannafest Prague | Indoor Ag-Con (Las Vegas) | Space Tech Expo USA (Anaheim) | SATShow Week (Washington DC) | Shoptalk (Las Vegas) | Cisco Live (Las Vegas) | Hannover Messe (Hannover)
+
+#### High-Value Sponsorship Outreach — 8 Emails Sent
+Targeted companies with highest sponsorship potential ($500-$5,000/month packages pitched):
+1. **HotelPlanner** (sponsorship@hotelplanner.com) — Hotel booking, has dedicated sponsorship program
+2. **Navan** (marketing@navan.com) — $9.2B corporate travel platform
+3. **Groups360** (hhassall@groups360.com) — Hal Hassall, VP Marketing, group hotel booking
+4. **vFairs** (partners@vfairs.com) — Virtual/hybrid event platform, 300K+ exhibitors served
+5. **Exhibit Concepts** (kberbach@exhibitconcepts.com) — Karimey Berbach, Marketing Director
+6. **Skyline Exhibits** (info@skyline.com) — Trade show display manufacturer, nationwide dealers
+7. **Swag.com** (jeremy@swag.com) — Jeremy Parker, CEO, promotional products (Custom Ink)
+8. **4imprint** (service@4imprint.com) — $1.3B promotional products company
+
+#### Data Updates
+- `news.js` — 13 new entries prepended, NEWS_LAST_UPDATED → 2026-02-12T12:00:00, total: 24,593 articles
+- `shows.js` — 20 new shows added, total: 24,838 shows
+- `homepage-data.js` — Regenerated (24,838 shows, 640 cities, 104 countries)
+
+#### Deployment
+- Committed, pushed to GitHub, deployed to Vercel
+- Live at https://showfloortips.com
