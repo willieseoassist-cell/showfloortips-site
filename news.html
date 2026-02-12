@@ -760,19 +760,16 @@
                 return;
             }
 
-            // Set "Last updated" to newest article date
-            var newest = NEWS_DATA.reduce(function(a, b) {
-                return (a.published_date || '') > (b.published_date || '') ? a : b;
-            });
-            if (newest && newest.published_date) {
-                var dateStr = newest.published_date.substring(0, 10); // Extract YYYY-MM-DD regardless of format
-                var parts = dateStr.split('-');
-                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-                var el = document.getElementById('lastUpdated');
-                if (el && parts.length === 3) {
-                    el.textContent = months[parseInt(parts[1], 10) - 1] + ' ' + parseInt(parts[2], 10) + ', ' + parts[0];
-                    el.setAttribute('datetime', dateStr + 'T12:00:00Z');
-                }
+            // Set "Last updated" to current date and time
+            var now = new Date();
+            var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            var h = now.getHours(), ampm = h >= 12 ? 'PM' : 'AM';
+            h = h % 12 || 12;
+            var min = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes();
+            var el = document.getElementById('lastUpdated');
+            if (el) {
+                el.textContent = months[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear() + ' at ' + h + ':' + min + ' ' + ampm;
+                el.setAttribute('datetime', now.toISOString());
             }
 
             updatePillCounts();
