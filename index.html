@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="preload" href="/shows.js" as="script">
     <title>ShowFloorTips — #1 Trade Show Directory | 24,500+ Shows</title>
     <meta name="description" content="ShowFloorTips is the #1 trade show intelligence platform. Browse 24,500+ trade shows across 120+ countries with booth costs, venue details, nearby hotels, exhibitor strategy tips, and networking guides. Plan smarter. Exhibit better.">
     <meta name="keywords" content="trade show directory, trade show calendar, exhibitor tips, trade show booth, lead capture, trade show marketing, 2026 trade shows, exhibition directory, trade show database, upcoming expos, convention calendar">
@@ -78,6 +79,7 @@
 
     <!-- Advanced Filters Styles -->
     <style>
+        @keyframes spin { to { transform: rotate(360deg); } }
         .advanced-filters-toggle {
             display: none;
         }
@@ -622,7 +624,7 @@
     <!-- Shows Grid -->
     <section class="shows-section" id="shows">
         <div class="shows-header">
-            <span class="shows-count" id="showsCount">Loading shows...</span>
+            <span class="shows-count" id="showsCount">Loading 24,800+ shows...</span>
         </div>
         <div class="shows-grid" id="showsGrid"></div>
         <div class="load-more-container" id="load-more-container" style="text-align:center;padding:2rem 0;display:none">
@@ -903,8 +905,83 @@
     <!-- Toast Notification -->
     <div class="sft-toast" id="sftToast"></div>
 
-    <!-- Show Data -->
-    <script src="/shows.js"></script>
+    <!-- Pre-computed homepage data (3KB - instant load) -->
+    <script src="/homepage-data.js"></script>
+    <!-- Instant stats from cache -->
+    <script>
+    (function() {
+        if (typeof HOMEPAGE_CACHE !== 'undefined') {
+            var c = HOMEPAGE_CACHE;
+            var el;
+            el = document.getElementById('statShows'); if (el) el.textContent = c.totalShows.toLocaleString();
+            el = document.getElementById('statCities'); if (el) el.textContent = c.totalCities.toLocaleString();
+            el = document.getElementById('statCountries'); if (el) el.textContent = c.totalCountries;
+            // This Week banner
+            el = document.getElementById('thisWeekText');
+            if (el) {
+                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                var ws = new Date(c.weekStart + 'T00:00:00');
+                var we = new Date(c.weekEnd + 'T00:00:00');
+                el.textContent = c.weekShowCount.toLocaleString() + ' trade shows this week (' + months[ws.getMonth()] + ' ' + ws.getDate() + ' - ' + months[we.getMonth()] + ' ' + we.getDate() + ') \u2014 ' + c.todayShowCount + ' starting today';
+            }
+            // Countdown timers
+            var cdGrid = document.getElementById('countdownGrid');
+            if (cdGrid && c.nearest) {
+                cdGrid.innerHTML = c.nearest.map(function(s, i) {
+                    return '<div id="cd-' + i + '" style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:16px;cursor:pointer;transition:box-shadow 0.2s" onclick="window.location.href=\'/shows/' + s.slug + '\'" onmouseover="this.style.boxShadow=\'0 4px 12px rgba(0,0,0,0.08)\'" onmouseout="this.style.boxShadow=\'none\'">' +
+                        '<div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a3a3a3;margin-bottom:4px">' + s.category + '</div>' +
+                        '<div style="font-size:0.9rem;font-weight:700;color:#0a0a0a;margin-bottom:4px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + s.title + '</div>' +
+                        '<div style="font-size:0.75rem;color:#737373;margin-bottom:8px">' + s.city + (s.country ? ', ' + s.country : '') + '</div>' +
+                        '<div id="cd-timer-' + i + '" style="font-size:1.1rem;font-weight:800;color:#0a0a0a;font-variant-numeric:tabular-nums"></div>' +
+                        '<div style="font-size:0.65rem;color:#a3a3a3;font-weight:500;margin-top:2px">until show opens</div>' +
+                    '</div>';
+                }).join('');
+                // Start countdown immediately
+                function updateCachedCountdowns() {
+                    var now = new Date();
+                    c.nearest.forEach(function(s, i) {
+                        var el = document.getElementById('cd-timer-' + i);
+                        if (!el) return;
+                        var target = new Date(s.sort_date);
+                        var diff = target - now;
+                        if (diff <= 0) { el.textContent = 'HAPPENING NOW'; el.style.color = '#dc2626'; return; }
+                        var days = Math.floor(diff / 86400000);
+                        var hours = Math.floor((diff % 86400000) / 3600000);
+                        var mins = Math.floor((diff % 3600000) / 60000);
+                        var secs = Math.floor((diff % 60000) / 1000);
+                        el.textContent = days > 0 ? days + 'd ' + hours + 'h ' + mins + 'm ' + secs + 's' : hours + 'h ' + mins + 'm ' + secs + 's';
+                    });
+                }
+                updateCachedCountdowns();
+                window._cachedCountdownInterval = setInterval(updateCachedCountdowns, 1000);
+            }
+            // FOMO banner
+            var fomoBanner = document.getElementById('fomoBanner');
+            var fomoText = document.getElementById('fomoText');
+            if (fomoBanner && fomoText && c.weekShowCount > 0) {
+                fomoText.textContent = c.weekShowCount + ' trade shows happening this week \u2014 Don\'t miss out \u2192 Browse now';
+                fomoBanner.style.display = 'block';
+            }
+            // Trending shows
+            var trGrid = document.getElementById('trendingGrid');
+            if (trGrid && c.trending) {
+                trGrid.innerHTML = c.trending.map(function(s, i) {
+                    var rank = i + 1;
+                    return '<div style="background:#fafafa;border:1px solid #e5e5e5;border-radius:12px;padding:16px;cursor:pointer;transition:box-shadow 0.2s;position:relative" onclick="window.location.href=\'/shows/' + s.slug + '\'" onmouseover="this.style.boxShadow=\'0 4px 12px rgba(0,0,0,0.08)\'" onmouseout="this.style.boxShadow=\'none\'">' +
+                        '<div style="position:absolute;top:12px;right:12px;width:24px;height:24px;background:#0a0a0a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800">' + rank + '</div>' +
+                        '<div style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#a3a3a3;margin-bottom:4px">' + s.category + '</div>' +
+                        '<div style="font-size:0.9rem;font-weight:700;color:#0a0a0a;margin-bottom:4px;line-height:1.3;padding-right:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + s.title + '</div>' +
+                        '<div style="font-size:0.75rem;color:#737373;margin-bottom:6px">' + s.date + '</div>' +
+                        '<div style="font-size:0.85rem;font-weight:700;color:#0a0a0a">' + s.attendees + ' attendees</div>' +
+                    '</div>';
+                }).join('');
+            }
+        }
+    })();
+    </script>
+
+    <!-- Full show data (deferred - loads in background) -->
+    <script src="/shows.js" defer></script>
 
     <!-- App Logic -->
     <script>
@@ -982,29 +1059,28 @@
 
         function init() {
             if (typeof SHOWS_DATA === 'undefined') {
-                document.getElementById('showsGrid').innerHTML = '<div class="no-results"><h3>Loading show data...</h3><p>Shows data is being generated. Check back soon.</p></div>';
+                document.getElementById('showsGrid').innerHTML = '<div class="no-results" style="text-align:center;padding:40px"><div style="width:40px;height:40px;border:3px solid #e5e5e5;border-top-color:#0a0a0a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px"></div><h3 style="color:#525252">Loading trade shows...</h3><p style="color:#a3a3a3">Preparing 24,800+ shows</p></div>';
+                // Retry when shows.js finishes loading (deferred)
+                var retryCount = 0;
+                var retryInterval = setInterval(function() {
+                    if (typeof SHOWS_DATA !== 'undefined') {
+                        clearInterval(retryInterval);
+                        init();
+                        initAddictionFeatures();
+                        initNewFeatures();
+                    }
+                    if (++retryCount > 100) clearInterval(retryInterval);
+                }, 200);
                 return;
             }
 
-            // This Week banner
-            (function() {
-                var now = new Date();
-                var dow = now.getDay();
-                var mon = new Date(now); mon.setDate(now.getDate() - (dow === 0 ? 6 : dow - 1));
-                var sun = new Date(mon); sun.setDate(mon.getDate() + 6);
-                var ws = mon.toISOString().slice(0,10);
-                var we = sun.toISOString().slice(0,10);
-                var todayStr = now.toISOString().slice(0,10);
-                var weekShows = SHOWS_DATA.filter(function(s) { return s.sort_date >= ws && s.sort_date <= we; });
-                var todayShows = weekShows.filter(function(s) { return s.sort_date === todayStr; });
-                var el = document.getElementById('thisWeekText');
-                if (el) {
-                    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-                    el.textContent = weekShows.length.toLocaleString() + ' trade shows this week (' + months[mon.getMonth()] + ' ' + mon.getDate() + ' - ' + months[sun.getMonth()] + ' ' + sun.getDate() + ') \u2014 ' + todayShows.length + ' starting today';
-                }
-            })();
+            // Clear cached countdown interval since full data will take over
+            if (window._cachedCountdownInterval) {
+                clearInterval(window._cachedCountdownInterval);
+                window._cachedCountdownInterval = null;
+            }
 
-            // Stats
+            // Stats (update from live data - overrides cache)
             const cities = new Set(SHOWS_DATA.map(s => s.city).filter(Boolean));
             const countries = new Set(SHOWS_DATA.map(s => s.country).filter(Boolean));
             document.getElementById('statShows').textContent = SHOWS_DATA.length.toLocaleString();
