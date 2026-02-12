@@ -148,7 +148,7 @@ Features:
 - [x] Add 10-15 fresh articles daily (SEO content flywheel) — 24,350+ articles created across 12 sessions (news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports)
 - [x] Scrape & add new shows daily (stay ahead of Orbus) — 24,670+ shows, adding 10-20 per session
 - [x] Launch Mega Bundle product ($49.99) — bundle.html with "Save 77%" badge, all 19 products
-- [ ] Add 5 industry-specific kits to Stripe
+- [x] Add 5 industry-specific kits to Stripe — Healthcare, Tech, F&B, Manufacturing, Construction ($29.99 each)
 - [x] Optimize affiliate link placement on all show pages — Booking.com on show pages, Amazon on travel/packing pages
 - [x] Add more affiliate partners — Amazon Associates (showfloortips-20) added across travel section, packing list, city guides
 - [x] Build email list aggressively — Beehiiv newsletter with serverless API, forms on 4+ pages, 157 subscribers
@@ -258,18 +258,18 @@ Features:
 
 | Category | Target | Current | Progress |
 |----------|--------|---------|----------|
-| Trade Shows in DB | 25,000 | 24,670 | 99% |
-| Articles | 25,000 | 24,380+ | 98% |
+| Trade Shows in DB | 25,000 | 24,818 | 99% |
+| Articles | 25,000 | 24,572+ | 98% |
 | Free Tools | 10+ | 11 | 110% |
 | Travel Guides | 10 cities | 10 cities | 100% |
 | Industry Pages | 15+ | 16 + index | 107% |
-| State Pages | 10 | 5 | 50% |
+| State Pages | 10 | 10 | 100% |
 | Essential Pages | 7 | 7 (About, Contact, Privacy, Terms, Glossary, Changelog, Calendar) | 100% |
 | Newsletter Subscribers | 1,000 | 157 | 16% |
 | Sponsor Outreach | 200 contacts | 157 sent | 79% |
 | Affiliate Programs | 5+ | 2 (Amazon, Booking) | 40% |
-| Digital Products | 25+ | 20 (incl. Mega Bundle) | 80% |
+| Digital Products | 25+ | 25 (incl. Mega Bundle + 5 industry kits) | 100% |
 | Addiction Tactics | 14 | 10 implemented | 71% |
-| Phase 1 Checklist | 9 items | 8 complete | 89% |
+| Phase 1 Checklist | 9 items | 9 complete | 100% |
 | Phase 2 Checklist | 7 items | 3 complete | 43% |
 | Phase 3 Checklist | 8 items | 1 complete | 13% |

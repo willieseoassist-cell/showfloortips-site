@@ -1116,3 +1116,64 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Pushed to GitHub (main branch)
 - Deployed to Vercel with `--archive=tgz`
 - Live at https://showfloortips.com
+
+### Feb 11, 2026 — Session 19
+
+#### Articles Created (10 total)
+**News Insight Articles (5):**
+- `news/cisco-ai-networking-chip-data-center-trade-shows-2026.html` — Cisco's custom AI networking chip challenging Nvidia/Broadcom, impact on Cisco Live, MWC, OFC
+- `news/apptronik-520m-humanoid-robots-trade-shows-2026.html` — Apptronik raises $520M at $5.5B for humanoid robots, heading to IMTS, Automate, CES
+- `news/samsung-galaxy-unpacked-2026-consumer-electronics-shows.html` — Samsung Galaxy Unpacked Feb 25, deeper AI integration reshaping MWC, CES, IFA
+- `news/nebius-tavily-ai-agent-tooling-trade-shows-2026.html` — Nebius acquires Tavily for AI agent tooling, retrieval layer reshaping trade show demos
+- `news/meta-10b-data-center-indiana-convention-infrastructure-2026.html` — Meta $10B Indiana data center, Big Tech $635-665B spending competing with convention centers
+
+**Networking Guides (3):**
+- `news/how-to-network-at-shoptalk-2026.html` — Shoptalk 2026 (retail/ecommerce, Las Vegas, Mar 24-26, 10K+ attendees)
+- `news/how-to-network-at-pack-expo-east-2026.html` — PACK EXPO East 2026 (packaging, Philadelphia, Mar 3-5, 7K+ attendees)
+- `news/how-to-network-at-ipc-apex-expo-2026.html` — IPC APEX EXPO 2026 (electronics, Anaheim, Mar 17-19, 5K+ attendees)
+
+**Comparison Articles (2):**
+- `news/cisco-live-vs-microsoft-ignite-2026.html` — Cisco Live vs Microsoft Ignite 2026 (enterprise IT showdown)
+- `news/pack-expo-east-vs-interpack-2026.html` — PACK EXPO East vs interpack 2026 (US regional vs global packaging)
+
+#### New Shows Added (14 new, total now 24,818)
+- MD&M Charlotte 2026 (Apr 22-23, Charlotte) — 5,000+ attendees, medtech
+- SelectUSA Investment Summit 2026 (May 3-6, National Harbor) — 5,000+ attendees, FDI
+- American Manufacturing Summit 2026 (Mar 17-18, Chicago) — 1,500+ attendees, manufacturing
+- ACS Spring Meeting 2026 (Mar 22-26, Atlanta) — 14,000+ attendees, chemistry
+- AAAE Annual Conference 2026 (May 3-5, Los Angeles) — 3,000+ attendees, aviation
+- Atlanta AI Week 2026 (Apr 14-16, Atlanta) — 8,000+ attendees, AI/ML
+- Southeast Design-2-Part Show 2026 (Mar 10-11, Atlanta) — 2,500+ attendees, manufacturing
+- Future Digital Finance Connect 2026 (Mar 3-4, West Palm Beach) — 800+ attendees, fintech
+- World Aviation Training Summit 2026 (May 4-7, Orlando) — 3,000+ attendees, aviation
+- Baltic Payment Forum 2026 (Mar 3, Vilnius) — 500+ attendees, fintech
+- Venture Capital World Summit Seoul 2026 (Mar 2, Seoul) — 2,000+ attendees, VC
+- XPONENTIAL 2026 (May 11-14, Detroit) — 8,000+ attendees, drones/autonomous
+- Smarter Payments Summit Spring 2026 (Mar 4, London) — 400+ attendees, payments
+- World Event Management Summit 2026 (Mar 2-5, Los Angeles) — 5,000+ attendees, events
+
+#### 5 New State Landing Pages Built
+- `/states/georgia.html` — Georgia (Atlanta, Savannah, Augusta)
+- `/states/nevada.html` — Nevada (Las Vegas, Reno, Henderson)
+- `/states/pennsylvania.html` — Pennsylvania (Philadelphia, Pittsburgh, Harrisburg)
+- `/states/ohio.html` — Ohio (Columbus, Cleveland, Cincinnati, Dayton)
+- `/states/massachusetts.html` — Massachusetts (Boston, Springfield, Worcester)
+- Updated state navigation on ALL 10 state pages to include full 10-state nav bar
+
+#### 5 Industry-Specific Product Kits Created
+- `/products/healthcare-exhibitor-kit.html` — Healthcare Exhibitor Kit ($29.99) for HIMSS, HLTH, BIO
+- `/products/tech-show-exhibitor-kit.html` — Tech Show Exhibitor Kit ($29.99) for CES, MWC, GTC
+- `/products/food-beverage-exhibitor-kit.html` — Food & Beverage Exhibitor Kit ($29.99) for NRA, Expo West, SIAL
+- `/products/manufacturing-exhibitor-kit.html` — Manufacturing Exhibitor Kit ($29.99) for IMTS, Hannover Messe
+- `/products/construction-exhibitor-kit.html` — Construction Exhibitor Kit ($29.99) for World of Concrete, CONEXPO
+
+#### Data Updates
+- news.js: 24,572 entries (was 24,562)
+- rss.xml: 180 items (was 170)
+- shows.js: 24,818 shows (was 24,802)
+- sitemap-pages.xml: 20 new URLs added (5 states, 5 products, 10 articles)
+
+#### Deployment
+- Pushed to GitHub (main branch)
+- Deployed to Vercel with `--archive=tgz`
+- Live at https://showfloortips.com
