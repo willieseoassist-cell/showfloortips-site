@@ -27,7 +27,8 @@
   - **API Key:** `THNkEfhbW1GjqqHym4UMASkekB71F1kyAkgEtxi2KJKkQsrzMWOXMQID87QMFVLQ`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 36MB, 24,818+ shows), `news.js` (article index, 14MB, 24,580+ articles)
+- **Data files:** `shows.js` (exhibit records, 15.9MB, 24,818+ shows — defines `defined_shows` + alias `SHOWS_DATA`), `news.js` (article index, 14MB, 24,580+ articles — defines `NEWS_DATA`)
+- **Homepage cache:** `homepage-data.js` (3.3KB pre-computed stats) — regenerate with `node build-homepage-cache.js` after updating shows.js
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
 - **Aliases:** site-six-phi-86.vercel.app, site-showfloortips-projects.vercel.app
@@ -1299,3 +1300,37 @@ Freeman (exhibitorsupport@freeman.com, exhibit.transportation@freeman.com) | Cza
 - Sitemap at 48,780 URLs approaching 50K limit — consider using sitemap-index.xml exclusively
 - Duplicate industry pages at root level (*-trade-shows.html) vs /industries/ — needs consolidation
 - 10 cities missing travel guide links (corresponding to 10 unwritten travel guides)
+
+### Session 22 — Feb 12, 2026 (Homepage Performance Fix)
+
+#### Problem
+Homepage at showfloortips.com showed empty data: stats "--", "Happening Soon" empty, "Trending" empty, stuck on "Loading shows..." with "Loading show data... Check back soon." message.
+
+#### Root Cause
+- `shows.js` defines `var defined_shows = [...]` but `index.html` expected `SHOWS_DATA`
+- Variable name mismatch meant 24,818 shows loaded but were never accessible
+- 15.1MB `shows.js` loaded synchronously, blocking all rendering
+
+#### Fixes Applied
+1. **Variable alias** — Added `var SHOWS_DATA = defined_shows;` to end of shows.js
+2. **Pre-computed homepage cache** — Created `homepage-data.js` (3.3KB) with pre-computed stats, this week's count, nearest upcoming shows, trending shows
+3. **Deferred loading** — Changed `<script src="/shows.js">` to `<script src="/shows.js" defer>` so 15MB file loads in background
+4. **Preload hint** — Added `<link rel="preload" href="/shows.js" as="script">` for early download
+5. **Instant rendering** — New inline script renders stats, countdowns, trending, and FOMO banner from 3KB cache immediately on page load
+6. **Loading state** — Shows spinner + "Loading 24,800+ shows" while deferred data loads, with retry mechanism
+7. **Build script** — Created `build-homepage-cache.js` to regenerate homepage-data.js when shows.js changes
+
+#### Performance Results
+- **homepage-data.js**: 3.3KB, loads in ~0.23s → instant above-the-fold content
+- **shows.js (compressed)**: 1.8MB over wire (gzipped from 15.9MB), loads in ~0.49s deferred
+- **User experience**: Stats, countdowns, trending shows appear instantly; show grid populates ~0.5s later
+
+#### Files Changed
+- `shows.js` — Added `var SHOWS_DATA = defined_shows;` alias at end
+- `index.html` — Pre-computed cache loading, deferred shows.js, instant rendering, loading spinner
+- `homepage-data.js` — New pre-computed homepage data file (3.3KB)
+- `build-homepage-cache.js` — New build script for regenerating cache
+
+#### Deployment
+- Pushed to GitHub, deployed to Vercel
+- Verified: homepage-data.js returns 200 (3.3KB), shows.js returns 200 (15.9MB raw, 1.8MB gzipped)
