@@ -1462,7 +1462,7 @@
                         </div>
                         <div class="form-group">
                             <label for="claim-website">Website URL *</label>
-                            <input type="url" id="claim-website" name="website" placeholder="https://yourshow.com" required>
+                            <input type="text" id="claim-website" name="website" placeholder="yourshow.com" required>
                         </div>
                         <div class="form-group">
                             <label for="claim-tier">Selected Tier *</label>
@@ -1622,6 +1622,7 @@
             var phone = form.querySelector('#claim-phone').value.trim();
             var company = form.querySelector('#claim-company').value.trim();
             var website = form.querySelector('#claim-website').value.trim();
+            if (website && !/^https?:\/\//i.test(website)) { website = 'https://' + website; }
             var tier = form.querySelector('#claim-tier').value;
             var message = form.querySelector('#claim-message').value.trim();
 
@@ -1660,6 +1661,26 @@
             .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
             .then(function(res) {
                 if (res.ok && res.data.success) {
+                    // Save to localStorage for admin dashboard
+                    try {
+                        var existing = JSON.parse(localStorage.getItem('sft_claims') || '[]');
+                        existing.push({
+                            id: 'clm_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+                            show_name: res.data.claim.show_name,
+                            organizer_name: res.data.claim.organizer_name,
+                            email: res.data.claim.email,
+                            phone: res.data.claim.phone || '',
+                            company: res.data.claim.company,
+                            website: res.data.claim.website || '',
+                            tier: res.data.claim.tier,
+                            status: 'pending',
+                            message: res.data.claim.message || '',
+                            notes: '',
+                            submitted_at: res.data.claim.submitted_at
+                        });
+                        localStorage.setItem('sft_claims', JSON.stringify(existing));
+                    } catch(e) {}
+
                     // Success
                     msg.style.display = 'block';
                     msg.style.background = '#f0fdf4';
