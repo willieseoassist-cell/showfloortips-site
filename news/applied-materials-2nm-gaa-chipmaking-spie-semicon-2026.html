@@ -606,7 +606,7 @@
         .scannly-btn {
             display: inline-block;
             background: var(--accent);
-            color: #ffffff;
+            color: #ffffff !important;
             font-size: 14px;
             font-weight: 700;
             padding: 12px 28px;
@@ -616,9 +616,11 @@
 
         .scannly-btn:hover {
             background: #d63651;
-            color: #ffffff;
+            color: #ffffff !important;
             transform: translateY(-1px);
         }
+
+        .article-body .scannly-btn, .scannly-cta .scannly-btn { color: #fff !important; border-bottom: none !important; }
 
         /* ============================================
            SOCIAL SHARING

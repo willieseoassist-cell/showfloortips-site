@@ -251,7 +251,7 @@ function generateCityPage(city) {
         .ct-industries-grid a:hover { background: #0a0a0a; color: #fff; border-color: #0a0a0a }
         .ct-state-link { display: inline-block; margin-top: 0.75rem; font-size: 0.9rem; color: #475569; font-weight: 500; text-decoration: none }
         .ct-state-link:hover { color: #0a0a0a; text-decoration: underline }
-        .ct-ad-slot { margin: 2rem 0; padding: 1rem; border: 1px dashed #d1d5db; border-radius: 10px; text-align: center; color: #94a3b8; font-size: 0.8rem; min-height: 90px; display: flex; align-items: center; justify-content: center; background: #fafafa }
+
         .ct-browse { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; margin: 2.5rem 0 }
         .ct-browse h3 { font-size: 1.2rem; font-weight: 700; color: #0a0a0a; margin-bottom: 1.25rem; text-align: center }
         .ct-browse-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center }
@@ -315,10 +315,6 @@ function generateCityPage(city) {
 ${travelGuideHtml}
         <p class="ct-venues"><strong>Major venues:</strong> ${escapeHtml(city.venues)}</p>
 
-        <!-- Ad Slot -->
-        <div class="ct-ad-slot" id="ad-slot-top">
-            <!-- Ad: ${titleCity} Trade Shows page - top banner -->
-        </div>
 
         <div class="ct-sort-bar">
             <span class="ct-showing">Showing <strong id="visibleCount">0</strong> of <strong id="totalCount">0</strong> shows</span>
@@ -344,10 +340,6 @@ ${industries.map(ind => {
 ${stateLink ? `            ${stateLink}` : ''}
         </section>
 
-        <!-- Ad Slot -->
-        <div class="ct-ad-slot" id="ad-slot-mid">
-            <!-- Ad: ${titleCity} Trade Shows page - mid-content -->
-        </div>
 
         <!-- Scannly CTA -->
         <div class="ct-scannly">

@@ -1361,6 +1361,7 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
+                        <li><a href="/claim.html">Claim Your Show</a></li>
                         <li><a href="/sponsor.html">Sponsor With Us</a></li>
                         <li><a href="mailto:info@showfloortips.com">Contact</a></li>
                     </ul>
@@ -1393,36 +1394,73 @@
         });
 
         // Form handler
-        function handleSponsorForm(e) {
+        async function handleSponsorForm(e) {
             e.preventDefault();
             const form = e.target;
-            const name = form.querySelector('#sponsor-name').value;
-            const email = form.querySelector('#sponsor-email').value;
-            const company = form.querySelector('#sponsor-company').value;
-            const tier = form.querySelector('#sponsor-tier').value;
-            const message = form.querySelector('#sponsor-message').value;
-
-            // Construct mailto link as fallback
-            const subject = encodeURIComponent('ShowFloorTips Sponsorship Inquiry - ' + company);
-            const body = encodeURIComponent(
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n' +
-                'Company: ' + company + '\n' +
-                'Tier Interest: ' + (tier || 'Not specified') + '\n\n' +
-                'Message:\n' + (message || 'No additional message.')
-            );
-
-            window.location.href = 'mailto:info@showfloortips.com?subject=' + subject + '&body=' + body;
-
-            // Show confirmation
             const btn = form.querySelector('.form-submit');
             const originalText = btn.textContent;
-            btn.textContent = 'Opening Email Client...';
-            btn.style.background = '#262626';
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-            }, 3000);
+
+            const name = form.querySelector('#sponsor-name').value.trim();
+            const email = form.querySelector('#sponsor-email').value.trim();
+            const company = form.querySelector('#sponsor-company').value.trim();
+            const tier = form.querySelector('#sponsor-tier').value;
+            const message = form.querySelector('#sponsor-message').value.trim();
+
+            // Client-side validation (HTML5 required attrs handle most of this)
+            if (!name || !email || !company) return false;
+
+            // Show sending state
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'wait';
+
+            try {
+                const response = await fetch('/api/sponsor-inquiry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, company, tier, message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Success state
+                    btn.textContent = 'Inquiry Sent!';
+                    btn.style.background = '#16a34a';
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'default';
+
+                    // GA4 tracking
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'sponsor_inquiry', { event_category: 'lead_gen' });
+                    }
+
+                    // Reset form and button after 3 seconds
+                    setTimeout(() => {
+                        form.reset();
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                        btn.style.cursor = '';
+                        btn.disabled = false;
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Submission failed');
+                }
+            } catch (err) {
+                // Error state
+                btn.textContent = 'Error - Try Again';
+                btn.style.background = '#dc2626';
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+                btn.disabled = false;
+
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.style.cursor = '';
+                }, 3000);
+            }
 
             return false;
         }

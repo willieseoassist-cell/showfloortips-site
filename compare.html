@@ -29,6 +29,9 @@
     <meta name="twitter:image" content="https://showfloortips.com/images/compare-og.png">
 
     <link rel="canonical" href="https://showfloortips.com/compare.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -1086,7 +1089,7 @@
     </footer>
 
     <!-- Load Shows Data -->
-    <script src="/shows.js"></script>
+    <script src="/shows-lite.js" defer></script>
 
     <script>
     (function() {
@@ -1554,11 +1557,33 @@
             }
         }
 
-        // Run on load
+        // Run on load - with retry for deferred shows.js
+        function tryLoadFromURL() {
+            if (typeof SHOWS_DATA !== 'undefined' && SHOWS_DATA) {
+                loadFromURL();
+                return true;
+            }
+            return false;
+        }
+
+        function initCompare() {
+            if (!tryLoadFromURL()) {
+                var retryCount = 0;
+                var retryInterval = setInterval(function() {
+                    if (tryLoadFromURL()) {
+                        clearInterval(retryInterval);
+                    }
+                    if (++retryCount > 150) {
+                        clearInterval(retryInterval);
+                    }
+                }, 200);
+            }
+        }
+
         if (document.readyState === 'complete') {
-            loadFromURL();
+            initCompare();
         } else {
-            window.addEventListener('load', loadFromURL);
+            window.addEventListener('load', initCompare);
         }
 
     })();

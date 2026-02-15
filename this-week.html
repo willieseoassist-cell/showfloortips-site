@@ -41,6 +41,9 @@
     <link rel="canonical" href="https://showfloortips.com/this-week.html">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0a0a0a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -390,6 +393,7 @@
             .tw-shows-grid { grid-template-columns: 1fr; }
             .tw-content { padding: 1rem 1rem 2rem; }
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -540,7 +544,7 @@
         </div>
     </footer>
 
-    <script src="/shows.js"></script>
+    <script src="/shows-lite.js" defer></script>
 
     <!-- Newsletter Subscribe -->
     <script>
@@ -794,8 +798,30 @@
             }
         })();
 
-        // Init
-        renderWeek();
+        // Init - wait for SHOWS_DATA to be available
+        function tryInit() {
+            if (typeof SHOWS_DATA !== 'undefined') {
+                renderWeek();
+                return true;
+            }
+            return false;
+        }
+
+        // Show loading state
+        document.getElementById('twContent').innerHTML = '<div style="text-align:center;padding:3rem"><div style="width:40px;height:40px;border:3px solid #e5e5e5;border-top-color:#0a0a0a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px"></div><p style="color:#6b7280">Loading show data...</p></div>';
+
+        if (!tryInit()) {
+            var retryCount = 0;
+            var retryInterval = setInterval(function() {
+                if (tryInit()) {
+                    clearInterval(retryInterval);
+                }
+                if (++retryCount > 150) {
+                    clearInterval(retryInterval);
+                    document.getElementById('twContent').innerHTML = '<div style="text-align:center;padding:3rem;color:#dc2626">Failed to load show data. Please refresh.</div>';
+                }
+            }, 200);
+        }
     })();
     </script>
 </body>

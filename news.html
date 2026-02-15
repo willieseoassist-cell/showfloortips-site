@@ -536,6 +536,7 @@
                     <li><a href="/roi-calculator.html">ROI Calculator</a></li>
                     <li><a href="/guide.html">Guide</a></li>
                     <li><a href="/products.html">Products</a></li>
+                    <li><a href="/claim.html">For Organizers</a></li>
                     <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
                 </ul>
             </nav>
@@ -551,6 +552,17 @@
             <p class="news-last-updated">Last updated: <time id="lastUpdated">Loading...</time></p>
         </div>
     </section>
+
+    <!-- Organizer Claim CTA -->
+    <div class="news-organizer-cta" style="max-width:1280px;margin:0 auto;padding:1rem 2rem 0;">
+        <div style="background:linear-gradient(135deg,#0a0a0a,#1a1a2e);border-radius:10px;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex:1;min-width:250px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <p style="color:#fff;font-size:0.9rem;font-weight:500;">Show organizer? <strong>Claim your listing</strong> &mdash; free analytics, lead capture, and reach 100,000+ monthly visitors.</p>
+            </div>
+            <a href="/claim.html" style="display:inline-block;padding:0.6rem 1.5rem;background:#fff;color:#0a0a0a;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:background 0.2s;">Claim Your Show &rarr;</a>
+        </div>
+    </div>
 
     <!-- Enhanced Filter Section -->
     <div class="news-filter-section">
@@ -584,6 +596,9 @@
             <button class="news-filter-pill" data-category="Marketing">Marketing</button>
             <button class="news-filter-pill" data-category="Data & Trends">Data &amp; Trends</button>
             <button class="news-filter-pill" data-category="Industry News">Industry News</button>
+            <button class="news-filter-pill" data-category="Exhibitor Tips">Exhibitor Tips</button>
+            <button class="news-filter-pill" data-category="Strategy">Strategy</button>
+            <button class="news-filter-pill" data-category="Country Guides">Country Guides</button>
         </div>
     </div>
 
@@ -605,10 +620,6 @@
         </div>
     </section>
 
-    <!-- Ad Slot -->
-    <div class="ad-slot" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:20px;text-align:center;margin:24px auto;min-height:250px;display:flex;align-items:center;justify-content:center;max-width:1280px">
-      <span style="color:#999;font-size:0.8rem">Advertisement</span>
-    </div>
 
     <!-- Scannly CTA -->
     <section class="scannly-cta">
@@ -629,6 +640,24 @@
                     <line x1="21" y1="21" x2="21" y2="21.01"/>
                 </svg>
             </div>
+        </div>
+    </section>
+
+    <!-- Premium Calendar CTA Banner -->
+    <section style="padding:2rem;background:#f8fafc;border-top:1px solid #e2e8f0;">
+        <div style="max-width:1280px;margin:0 auto;background:linear-gradient(135deg,#1a0a2e 0%,#e94560 100%);border-radius:14px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:1rem;flex:1;min-width:260px;">
+                <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                    <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.25rem;">Full 2026 Trade Show Calendar</h3>
+                    <p style="color:rgba(255,255,255,0.8);font-size:0.88rem;line-height:1.5;">25,000+ shows across 104 countries. Every date, venue, and booth price.</p>
+                </div>
+            </div>
+            <a href="https://buy.stripe.com/14A4gA7L27iH1H24s13VC0o" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;background:#fff;color:#1a0a2e;border-radius:8px;font-size:0.9rem;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background 0.2s;">
+                Get Full Access &mdash; $499
+            </a>
         </div>
     </section>
 
@@ -748,8 +777,11 @@
             'Marketing': 'cat-marketing',
             'Data & Trends': 'cat-data-trends',
             'Networking Guide': 'cat-industry-news',
+            'Networking Guides': 'cat-industry-news',
             'Business & Trade': 'cat-show-updates',
-            'Comparison': 'cat-show-updates'
+            'Comparison': 'cat-show-updates',
+            'Exhibitor Tips': 'cat-show-updates',
+            'Strategy': 'cat-data-trends'
         };
 
         function init() {
@@ -780,13 +812,15 @@
         }
 
         function updatePillCounts() {
+            var nowISO = new Date().toISOString();
+            var publishedArticles = NEWS_DATA.filter(function(a) { return !a.published_date || a.published_date <= nowISO; });
             document.querySelectorAll('.news-filter-pill').forEach(function(pill) {
                 var cat = pill.dataset.category;
                 var count;
                 if (cat === 'all') {
-                    count = NEWS_DATA.length;
+                    count = publishedArticles.length;
                 } else {
-                    count = NEWS_DATA.filter(function(a) { return a.category === cat; }).length;
+                    count = publishedArticles.filter(function(a) { return a.category === cat; }).length;
                 }
                 var countEl = pill.querySelector('.pill-count');
                 if (!countEl) {
@@ -862,8 +896,12 @@
 
         function applyFilter() {
             var cutoff = getDateCutoff(currentDateRange);
+            var nowISO = new Date().toISOString();
 
             filteredArticles = NEWS_DATA.filter(function(a) {
+                // Hide future-dated articles (scheduled publishing)
+                if (a.published_date && a.published_date > nowISO) return false;
+
                 // Category filter
                 if (currentFilter !== 'all' && a.category !== currentFilter) return false;
 

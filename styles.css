@@ -1,5 +1,5 @@
 /* ShowFloorTips - Monochrome Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Font loaded via <link> in HTML - removed @import to eliminate render-blocking chain */
 
 :root {
     --white: #ffffff;

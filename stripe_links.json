@@ -2,141 +2,169 @@
   {
     "name": "Pre-Show Planning Checklist",
     "price": 799,
-    "paymentLink": "https://buy.stripe.com/dRmfZg9d4c7Uc9X7gP87O0p",
-    "productId": "prod_TwdcmMwSo9a8hD",
-    "priceId": "price_1SykKmBf1oCK7BHksmQ3wX17"
+    "paymentLink": "https://buy.stripe.com/5kQcN66GY7iHetO4s13VC00",
+    "productId": "prod_TyXUjH85YeUaXs",
+    "priceId": "price_1T0aPWJXnuPSbgX9gQyEWBi6"
   },
   {
     "name": "Booth Setup Checklist",
     "price": 799,
-    "paymentLink": "https://buy.stripe.com/3cIdR8cpgfk60rf30z87O0q",
-    "productId": "prod_TwdcVsUPV8PfeB",
-    "priceId": "price_1SykKnBf1oCK7BHkHOUWHcCK"
+    "paymentLink": "https://buy.stripe.com/dRm4gAfducD1dpK7Ed3VC01",
+    "productId": "prod_TyXUXwQ2hkMocb",
+    "priceId": "price_1T0aPYJXnuPSbgX9hlYR7oDQ"
   },
   {
     "name": "Post-Show Teardown Checklist",
     "price": 799,
-    "paymentLink": "https://buy.stripe.com/dRmcN4gFwc7Uc9Xbx587O0r",
-    "productId": "prod_TwdcNQZHg2sX9w",
-    "priceId": "price_1SykKoBf1oCK7BHk9YHMP8sf"
+    "paymentLink": "https://buy.stripe.com/aFacN6d5mfPd0CY7Ed3VC02",
+    "productId": "prod_TyXUGhWUAxL4DO",
+    "priceId": "price_1T0aPZJXnuPSbgX9kYcR09T5"
   },
   {
     "name": "Lead Follow-Up Checklist",
     "price": 799,
-    "paymentLink": "https://buy.stripe.com/14A00i0Gy9ZMde1cB987O0s",
-    "productId": "prod_TwdcymCO7sU6qr",
-    "priceId": "price_1SykKpBf1oCK7BHkERgVz1OM"
+    "paymentLink": "https://buy.stripe.com/eVq9AU1mE6eDetO3nX3VC03",
+    "productId": "prod_TyXUeXL1Xx7nlZ",
+    "priceId": "price_1T0aPbJXnuPSbgX9htYXzVIJ"
   },
   {
     "name": "Travel & Logistics Checklist",
     "price": 799,
-    "paymentLink": "https://buy.stripe.com/cNi6oGfBseg2gqd6cL87O0t",
-    "productId": "prod_Twdc0CB99RvWe3",
-    "priceId": "price_1SykKqBf1oCK7BHkHegELtZg"
+    "paymentLink": "https://buy.stripe.com/dRmaEY3uM1YndpKcYx3VC04",
+    "productId": "prod_TyXUXOrrv32H4F",
+    "priceId": "price_1T0aPdJXnuPSbgX9jtaBZOX9"
   },
   {
     "name": "Trade Show Budget & ROI Calculator",
     "price": 1299,
-    "paymentLink": "https://buy.stripe.com/fZu28qblcc7Ude1dFd87O0u",
-    "productId": "prod_TwdczN9HKHL8H2",
-    "priceId": "price_1SykKrBf1oCK7BHkHEt1NeTu"
+    "paymentLink": "https://buy.stripe.com/dRm3cwghydH599ubUt3VC05",
+    "productId": "prod_TyXU0rAleksZPV",
+    "priceId": "price_1T0aPeJXnuPSbgX9PN3rnDt2"
   },
   {
     "name": "Lead Tracking Spreadsheet",
     "price": 1299,
-    "paymentLink": "https://buy.stripe.com/cNiaEW8908VI3DreJh87O0v",
-    "productId": "prod_Twdc8cwTntIVaS",
-    "priceId": "price_1SykKsBf1oCK7BHkdQqTvqwL"
+    "paymentLink": "https://buy.stripe.com/28EeVec1i8mL4Te3nX3VC06",
+    "productId": "prod_TyXUVBWgWdJSIt",
+    "priceId": "price_1T0aPgJXnuPSbgX96ofuaYog"
   },
   {
     "name": "Vendor Comparison Matrix",
     "price": 1299,
-    "paymentLink": "https://buy.stripe.com/fZu28qah8fk65Lz44D87O0w",
-    "productId": "prod_Twdc6nbgDH8umN",
-    "priceId": "price_1SykKtBf1oCK7BHkqL6ZIq7d"
+    "paymentLink": "https://buy.stripe.com/eVqfZi7L2eL999u1fP3VC07",
+    "productId": "prod_TyXUkyRnd6S3vR",
+    "priceId": "price_1T0aPhJXnuPSbgX9vG8RYBy0"
   },
   {
     "name": "Show Calendar & Planning Spreadsheet",
     "price": 1299,
-    "paymentLink": "https://buy.stripe.com/00w7sKexo7REgqdcB987O0x",
-    "productId": "prod_TwdcjwPzQ6ubRR",
-    "priceId": "price_1SykKuBf1oCK7BHkZelZUvbI"
+    "paymentLink": "https://buy.stripe.com/5kQ28s6GYgTh4Tef6F3VC08",
+    "productId": "prod_TyXUrzTBy9eN4I",
+    "priceId": "price_1T0aPjJXnuPSbgX9MHhGNbz7"
   },
   {
     "name": "Booth Cost Estimator",
     "price": 1299,
-    "paymentLink": "https://buy.stripe.com/28E5kC74Weg26PDeJh87O0y",
-    "productId": "prod_TwdcsMt4qHmoDp",
-    "priceId": "price_1SykKuBf1oCK7BHkngFB8NpS"
+    "paymentLink": "https://buy.stripe.com/cNi00k5CU7iHdpK6A93VC09",
+    "productId": "prod_TyXUgXo5DhceQ8",
+    "priceId": "price_1T0aPlJXnuPSbgX9mih1fget"
   },
   {
     "name": "Post-Show Follow-Up Email Pack",
     "price": 999,
-    "paymentLink": "https://buy.stripe.com/7sY7sKfBs3Bode1at187O0z",
-    "productId": "prod_TwdcWR4mAQsmJM",
-    "priceId": "price_1SykKvBf1oCK7BHkieGpby7q"
+    "paymentLink": "https://buy.stripe.com/4gM14o2qIgTh3Pa9Ml3VC0a",
+    "productId": "prod_TyXUDCtACtF6dV",
+    "priceId": "price_1T0aPmJXnuPSbgX9JCNjdz2W"
   },
   {
     "name": "Pre-Show Appointment Request Emails",
     "price": 999,
-    "paymentLink": "https://buy.stripe.com/4gM9ASah89ZM4Hv1Wv87O0A",
-    "productId": "prod_TwdcV1cQQrPh2n",
-    "priceId": "price_1SykKwBf1oCK7BHkkKpSVxBo"
+    "paymentLink": "https://buy.stripe.com/dRm9AUc1i1YnetOe2B3VC0b",
+    "productId": "prod_TyXUQIVwWi2fsZ",
+    "priceId": "price_1T0aPoJXnuPSbgX9veIWvu6u"
   },
   {
     "name": "Thank You & Meeting Recap Emails",
     "price": 999,
-    "paymentLink": "https://buy.stripe.com/dRmdR8ah85Jw3Dr9oX87O0B",
-    "productId": "prod_TwdcriTXQwR2Os",
-    "priceId": "price_1SykKxBf1oCK7BHkZV5nDWvw"
+    "paymentLink": "https://buy.stripe.com/28E14o5CU6eD4Te9Ml3VC0c",
+    "productId": "prod_TyXUEuZtvylS2R",
+    "priceId": "price_1T0aPqJXnuPSbgX9Py8sXtqy"
   },
   {
     "name": "VIP Invitation Email Suite",
     "price": 999,
-    "paymentLink": "https://buy.stripe.com/7sY3cufBs9ZMc9X9oX87O0C",
-    "productId": "prod_TwdcsYHVWh69lo",
-    "priceId": "price_1SykKyBf1oCK7BHkCBo94p6D"
+    "paymentLink": "https://buy.stripe.com/cNi9AU0iA0Uj85q8Ih3VC0d",
+    "productId": "prod_TyXUI138MALlgl",
+    "priceId": "price_1T0aPrJXnuPSbgX9tSjDl82y"
   },
   {
     "name": "Internal Team Brief Emails",
     "price": 999,
-    "paymentLink": "https://buy.stripe.com/fZueVcgFw7RE1vj7gP87O0D",
-    "productId": "prod_Twdcvd0VfkPlRO",
-    "priceId": "price_1SykKzBf1oCK7BHkszEo1r0e"
+    "paymentLink": "https://buy.stripe.com/5kQ14o0iAeL9bhC8Ih3VC0e",
+    "productId": "prod_TyXUPQ7bQI6GF5",
+    "priceId": "price_1T0aPtJXnuPSbgX9I8mKaNw4"
   },
   {
     "name": "First-Time Exhibitor Guide",
     "price": 1499,
-    "paymentLink": "https://buy.stripe.com/8x2dR8blceg20rfcB987O0E",
-    "productId": "prod_TwdcGGc64NqwYK",
-    "priceId": "price_1SykL0Bf1oCK7BHkj24Jtoil"
+    "paymentLink": "https://buy.stripe.com/aFa14o8P68mL85qe2B3VC0f",
+    "productId": "prod_TyXURrXQZCedIK",
+    "priceId": "price_1T0aPuJXnuPSbgX9q7fZ0UuS"
   },
   {
     "name": "Booth Design Best Practices Guide",
     "price": 1499,
-    "paymentLink": "https://buy.stripe.com/14A3cuah88VIgqd58H87O0F",
-    "productId": "prod_Twdc7zQ63Or5SF",
-    "priceId": "price_1SykL1Bf1oCK7BHkxVBcefTS"
+    "paymentLink": "https://buy.stripe.com/bJe6oIc1i6eD5Xi5w53VC0g",
+    "productId": "prod_TyXUOHy0BrSKm1",
+    "priceId": "price_1T0aPwJXnuPSbgX9636bWyQx"
   },
   {
     "name": "Lead Capture Strategy Guide",
     "price": 1499,
-    "paymentLink": "https://buy.stripe.com/eVq3cu3SKfk6de144D87O0G",
-    "productId": "prod_TwdcasW3QWdSc5",
-    "priceId": "price_1SykL1Bf1oCK7BHkiafiGAPj"
+    "paymentLink": "https://buy.stripe.com/fZu7sMghyeL999u7Ed3VC0h",
+    "productId": "prod_TyXUWDrTcLEaAf",
+    "priceId": "price_1T0aPyJXnuPSbgX9YHII2M6b"
   },
   {
     "name": "International Show Exhibitor Guide",
     "price": 1499,
-    "paymentLink": "https://buy.stripe.com/eVq5kCexo6NA8XLdFd87O0H",
-    "productId": "prod_TwdcbmgzL3K83P",
-    "priceId": "price_1SykL2Bf1oCK7BHkaNe7Afav"
+    "paymentLink": "https://buy.stripe.com/3cIcN67L26eDbhC6A93VC0i",
+    "productId": "prod_TyXUUfhNW5lbbq",
+    "priceId": "price_1T0aPzJXnuPSbgX99xildTk4"
   },
   {
     "name": "ROI Maximization Playbook",
     "price": 1499,
-    "paymentLink": "https://buy.stripe.com/6oU14mexo2xkb5T30z87O0I",
-    "productId": "prod_TwdcXo3AKS08UF",
-    "priceId": "price_1SykL3Bf1oCK7BHklyEvJeRr"
+    "paymentLink": "https://buy.stripe.com/28E9AU1mEauT85q4s13VC0j",
+    "productId": "prod_TyXVJPYN8O0jf0",
+    "priceId": "price_1T0aQ1JXnuPSbgX9gxKCDhpr"
+  },
+  {
+    "name": "Mega Bundle - All 19 Digital Products",
+    "price": 4999,
+    "paymentLink": "https://buy.stripe.com/fZu14ofducD12L60bL3VC0k",
+    "productId": "prod_TyXVeQ6AIiUNXs",
+    "priceId": "price_1T0aQ2JXnuPSbgX9hpJlix7k"
+  },
+  {
+    "name": "First-Timer Kit",
+    "price": 2499,
+    "paymentLink": "https://buy.stripe.com/7sY9AUd5mcD1etO5w53VC0l",
+    "productId": "prod_TyXVAgBy0Le24m",
+    "priceId": "price_1T0aQ4JXnuPSbgX9JK1OsHdE"
+  },
+  {
+    "name": "Email & Outreach Kit",
+    "price": 2999,
+    "paymentLink": "https://buy.stripe.com/6oU00kaXe9qP0CY8Ih3VC0m",
+    "productId": "prod_TyXVqvf5FH39jo",
+    "priceId": "price_1T0aQ5JXnuPSbgX9VlmpY31m"
+  },
+  {
+    "name": "ROI & Analytics Kit",
+    "price": 3499,
+    "paymentLink": "https://buy.stripe.com/eVq28sfdu0Uj3Pa5w53VC0n",
+    "productId": "prod_TyXVN2mmYBRsNM",
+    "priceId": "price_1T0aQ7JXnuPSbgX9ukb32GgB"
   }
 ]

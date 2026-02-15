@@ -14,9 +14,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <title>Loading... - ShowFloorTips</title>
     <link rel="canonical" href="https://showfloortips.com/show.html">
-    <link rel="stylesheet" href="/styles.css">
+    <script>
+    // Pre-render minimal Event schema from URL slug so Google sees it even if shows-full.js times out
+    (function(){
+        var m = window.location.pathname.match(/\/shows\/([^\/]+?)(?:\.html)?$/);
+        if (!m) return;
+        var slug = decodeURIComponent(m[1]);
+        var name = slug.replace(/-/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        var s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.id = 'event-schema-fallback';
+        s.textContent = JSON.stringify({
+            "@context":"https://schema.org",
+            "@type":"Event",
+            "name":name,
+            "startDate":"2026-01-01",
+            "endDate":"2026-01-01",
+            "eventStatus":"https://schema.org/EventScheduled",
+            "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+            "description":"Trade show: "+name+". Find booth pricing, exhibitor tips, nearby hotels, and networking strategies at ShowFloorTips.",
+            "image":"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=630&fit=crop",
+            "organizer":{"@type":"Organization","name":name+" Organizers","url":"https://showfloortips.com/shows/"+slug},
+            "performer":{"@type":"Organization","name":name},
+            "location":{"@type":"Place","name":name,"address":{"@type":"PostalAddress","addressCountry":"United States"}},
+            "offers":{"@type":"Offer","name":"Exhibition Booth","description":"Contact organizer for booth pricing","url":"https://showfloortips.com/shows/"+slug,"availability":"https://schema.org/InStock"},
+            "url":"https://showfloortips.com/shows/"+slug
+        });
+        document.head.appendChild(s);
+    })();
+    </script>
+    <link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         .show-hero { position:relative; height:340px; background:#0a0a0a; display:flex; align-items:flex-end; overflow:hidden }
@@ -55,6 +88,7 @@
         .cat-badge { display:inline-block; padding:0.25rem 0.75rem; border-radius:50px; font-size:0.75rem; font-weight:600; color:#fff; margin-right:0.5rem }
         .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#64748b; font-size:0.9rem; text-decoration:none; padding:1rem 2rem; transition:color 0.2s }
         .back-link:hover { color:#0a0a0a }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .loading { text-align:center; padding:4rem 2rem; font-size:1.2rem; color:#64748b }
         .not-found { text-align:center; padding:4rem 2rem }
         .not-found h2 { font-size:1.5rem; color:#0a0a0a; margin-bottom:0.5rem }
@@ -104,6 +138,24 @@
         .nearby-show:hover { opacity:0.7 }
         .nearby-show h4 { font-size:0.9rem; font-weight:600; color:#1e293b; margin-bottom:0.2rem; line-height:1.3 }
         .nearby-show .nearby-detail { font-size:0.8rem; color:#64748b }
+
+        /* Related Articles Section */
+        .related-articles-section { max-width:1120px; margin:0 auto; padding:2rem 2rem 0 }
+        .related-articles-section h2 { font-size:1.35rem; font-weight:700; color:#0a0a0a; margin-bottom:1.25rem; padding-bottom:0.5rem; border-bottom:2px solid #e2e8f0 }
+        .related-articles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem }
+        .related-article-card { background:#fff; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; transition:border-color 0.2s, box-shadow 0.2s }
+        .related-article-card:hover { border-color:#334155; box-shadow:0 2px 8px rgba(0,0,0,0.06) }
+        .related-article-card img { width:100%; height:160px; object-fit:cover }
+        .related-article-card .ra-body { padding:1rem }
+        .related-article-card .ra-category { display:inline-block; font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:#6366f1; margin-bottom:0.5rem }
+        .related-article-card h4 { font-size:0.95rem; font-weight:700; color:#0a0a0a; margin-bottom:0.5rem; line-height:1.3 }
+        .related-article-card h4 a { color:inherit; text-decoration:none }
+        .related-article-card h4 a:hover { color:#6366f1 }
+        .related-article-card .ra-summary { font-size:0.82rem; color:#64748b; line-height:1.5; margin-bottom:0.75rem }
+        .related-article-card .ra-link { display:inline-block; font-size:0.8rem; font-weight:600; color:#0a0a0a; text-decoration:none; transition:color 0.2s }
+        .related-article-card .ra-link:hover { color:#6366f1 }
+        @media(max-width:1024px) { .related-articles-grid { grid-template-columns:repeat(2,1fr) } }
+        @media(max-width:640px) { .related-articles-grid { grid-template-columns:1fr } }
 
         /* Similar Shows Section */
         .similar-shows-section { max-width:1120px; margin:0 auto; padding:2rem 2rem 0 }
@@ -185,6 +237,7 @@
                 <a href="/venue-maps.html">Maps</a>
                 <a href="/roi-calculator.html">ROI Calculator</a>
                 <a href="/guide.html">Guide</a> | <a href="/products.html">Products</a>
+                <a href="/claim.html">For Organizers</a>
                 <a href="/scannly.html" class="nav-cta">Try Scannly</a>
             </nav>
             <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -197,6 +250,7 @@
         <div class="loading">Loading show details...</div>
     </div>
 
+    <div id="related-articles-container"></div>
     <div id="similar-shows-container"></div>
     <div id="reviews-container"></div>
 
@@ -216,7 +270,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <p>ShowFloorTips - Your Guide to Trade Shows & Exhibitions</p>
-            <p><a href="/news.html">News</a> &bull; <a href="/travel.html">Travel</a> &bull; <a href="/newsletter.html">Newsletter</a> &bull; <a href="/scannly.html">Scannly</a></p>
+            <p><a href="/news.html">News</a> &bull; <a href="/travel.html">Travel</a> &bull; <a href="/newsletter.html">Newsletter</a> &bull; <a href="/scannly.html">Scannly</a> &bull; <a href="/claim.html">Claim Your Show</a></p>
         </div>
     </footer>
 
@@ -247,10 +301,16 @@
     };
     </script>
 
-    <script src="/shows-full.js"></script>
-    <script>var SHOWS_DATA = defined_shows_full;</script>
+    <script src="/shows-full.js" defer></script>
+    <script src="/news.js" defer></script>
     <script>
-    (function() {
+    var _showPageInit = false;
+    function initShowPage() {
+        if (_showPageInit) return true;
+        if (typeof defined_shows_full !== 'undefined') {
+            window.SHOWS_DATA = defined_shows_full;
+        }
+
         var slug = '';
         var path = window.location.pathname;
         // Handle /shows/slug.html or /shows/slug
@@ -258,8 +318,7 @@
         if (m) slug = m[1];
 
         if (!slug || typeof SHOWS_DATA === 'undefined') {
-            document.getElementById('show-content').innerHTML = '<div class="not-found"><h2>Show not found</h2><p>This show may have been removed or the URL is incorrect.</p><a href="/" class="btn-visit" style="max-width:200px;margin:1rem auto">Browse All Shows</a></div>';
-            return;
+            return false;
         }
 
         var show = null;
@@ -284,36 +343,42 @@
         document.head.appendChild(metaDesc);
 
         // Schema.org Event markup for Google rich results
+        var showUrl = show.website || ('https://showfloortips.com/shows/' + show.slug);
+        var showDate = show.sort_date || '2026-01-01';
         var schema = {
             '@context': 'https://schema.org',
             '@type': 'Event',
             'name': show.title,
-            'description': show.description || ('Trade show: ' + show.title + ' in ' + (show.location || '')),
-            'url': 'https://showfloortips.com/shows/' + show.slug,
+            'description': show.description || ('Trade show: ' + show.title + ' in ' + (show.location || '') + '. Find booth pricing, exhibitor tips, nearby hotels, and networking strategies at ShowFloorTips.'),
+            'url': showUrl,
+            'startDate': showDate,
+            'endDate': showDate,
             'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
-            'eventStatus': 'https://schema.org/EventScheduled'
-        };
-        if (show.date) schema.startDate = show.sort_date || show.date;
-        if (show.sort_date) schema.endDate = show.sort_date;
-        if (show.location) {
-            schema.location = {
+            'eventStatus': 'https://schema.org/EventScheduled',
+            'image': show.image || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=630&fit=crop',
+            'organizer': { '@type': 'Organization', 'name': show.host || show.title + ' Organizers', 'url': showUrl },
+            'performer': { '@type': 'Organization', 'name': show.host || show.title },
+            'location': {
                 '@type': 'Place',
-                'name': show.venue || show.location,
+                'name': show.venue || show.location || show.title,
                 'address': {
                     '@type': 'PostalAddress',
                     'addressLocality': show.city || '',
                     'addressRegion': show.state || '',
                     'addressCountry': show.country || 'United States'
                 }
-            };
-        }
-        if (show.website) schema.url = show.website;
-        if (show.image) schema.image = show.image;
-        schema.organizer = { '@type': 'Organization', 'name': show.host || show.title + ' Organizers' };
-        schema.performer = { '@type': 'Organization', 'name': show.host || show.title };
-        if (show.booth_price) {
-            schema.offers = { '@type': 'Offer', 'name': 'Exhibition Booth', 'description': 'Booth space: ' + show.booth_price, 'url': 'https://showfloortips.com/shows/' + show.slug, 'availability': 'https://schema.org/InStock' };
-        }
+            },
+            'offers': {
+                '@type': 'Offer',
+                'name': 'Exhibition Booth',
+                'description': show.booth_price ? ('Booth space: ' + show.booth_price) : 'Contact organizer for booth pricing',
+                'url': showUrl,
+                'availability': 'https://schema.org/InStock'
+            }
+        };
+        // Replace fallback schema with real data
+        var fallback = document.getElementById('event-schema-fallback');
+        if (fallback) fallback.remove();
         var schemaScript = document.createElement('script');
         schemaScript.type = 'application/ld+json';
         schemaScript.textContent = JSON.stringify(schema);
@@ -591,6 +656,12 @@
         // Enhanced Hotels
         html += hotels;
 
+        // Widget Promotion Banner
+        html += '<div style="background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">';
+        html += '<div style="flex:1;min-width:200px"><p style="font-weight:700;color:#0c4a6e;font-size:0.95rem;margin-bottom:0.2rem">Add this show to your website</p><p style="color:#475569;font-size:0.82rem;line-height:1.5">Free embed widget. One line of code. Always up-to-date.</p></div>';
+        html += '<a href="/widgets.html" style="display:inline-block;padding:0.6rem 1.25rem;background:#0a0a0a;color:#fff;border-radius:8px;font-size:0.82rem;font-weight:600;text-decoration:none;white-space:nowrap">Get Free Widget &rarr;</a>';
+        html += '</div>';
+
         // Rental Cars
         html += rentalCars;
 
@@ -611,31 +682,31 @@
         html += '<div><h4>Pre-Show Planning Checklist</h4>';
         html += '<div class="product-price">$7.99</div>';
         html += '<div class="product-desc">Step-by-step checklist to ensure nothing falls through the cracks before show day.</div></div>';
-        html += '<a href="https://buy.stripe.com/dRmfZg9d4c7Uc9X7gP87O0p" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '<a href="https://buy.stripe.com/5kQcN66GY7iHetO4s13VC00" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
         html += '</div>';
         html += '<div class="product-card">';
         html += '<div><h4>Trade Show Budget &amp; ROI Calculator</h4>';
         html += '<div class="product-price">$12.99</div>';
         html += '<div class="product-desc">Plan your budget and measure ROI with this ready-to-use spreadsheet tool.</div></div>';
-        html += '<a href="https://buy.stripe.com/fZu28qblcc7Ude1dFd87O0u" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '<a href="https://buy.stripe.com/dRm3cwghydH599ubUt3VC05" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
         html += '</div>';
         html += '<div class="product-card">';
         html += '<div><h4>Lead Follow-Up Checklist</h4>';
         html += '<div class="product-price">$7.99</div>';
         html += '<div class="product-desc">Never lose a hot lead\u2014structured follow-up system for post-show conversions.</div></div>';
-        html += '<a href="https://buy.stripe.com/14A00i0Gy9ZMde1cB987O0s" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '<a href="https://buy.stripe.com/eVq9AU1mE6eDetO3nX3VC03" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
         html += '</div>';
         html += '<div class="product-card">';
         html += '<div><h4>First-Time Exhibitor Guide</h4>';
         html += '<div class="product-price">$14.99</div>';
         html += '<div class="product-desc">Everything first-time exhibitors need to know, from booth setup to lead capture.</div></div>';
-        html += '<a href="https://buy.stripe.com/8x2dR8blceg20rfcB987O0E" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
+        html += '<a href="https://buy.stripe.com/aFa14o8P68mL85qe2B3VC0f" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>';
         html += '</div>';
         html += '</div>';
         html += '<div class="mega-bundle-cta">';
         html += '<h4>Get All 19 Products for $49.99</h4>';
         html += '<p>Save over 70% with the complete trade show toolkit\u2014checklists, templates, calculators, and more.</p>';
-        html += '<a href="/bundle.html" class="btn-bundle">Get the Mega Bundle</a>';
+        html += '<a href="https://buy.stripe.com/fZu14ofducD12L60bL3VC0k" target="_blank" rel="noopener" class="btn-bundle">Get the Mega Bundle</a>';
         html += '</div>';
         html += '</div>';
 
@@ -698,11 +769,14 @@
         html += '<p id="sft-booth-msg" style="display:none;font-size:0.85rem;color:#10b981;margin:10px 0 0;font-weight:500;text-align:center"></p>';
         html += '</div>';
 
-        // Ad Slot
-        html += '<!-- Ad Slot -->';
-        html += '<div class="ad-slot" style="background:#f8f8f8;border:1px solid #e5e5e5;border-radius:8px;padding:20px;text-align:center;margin:24px 0;min-height:250px;display:flex;align-items:center;justify-content:center">';
-        html += '<span style="color:#999;font-size:0.8rem">Advertisement</span>';
+        // Claim This Show CTA
+        html += '<div class="sidebar-card" style="background:#fafafa;border:1px solid #e2e8f0;border-left:4px solid #0a0a0a">';
+        html += '<h3 style="font-size:1rem;margin-bottom:0.5rem">Are you the organizer of this show?</h3>';
+        html += '<p style="font-size:0.85rem;color:#64748b;line-height:1.5;margin-bottom:1rem">Take control of your listing. Update info, add branding, capture leads, and track analytics.</p>';
+        html += '<a href="/claim.html?show=' + show.slug + '" class="btn-visit" style="margin-bottom:0.75rem">Claim This Listing</a>';
+        html += '<div style="font-size:0.78rem;color:#94a3b8;line-height:1.6;margin-top:0.5rem">Update info &bull; Add your logo &bull; Capture leads &bull; Get analytics</div>';
         html += '</div>';
+
 
         // Nearby Shows
         html += nearbyShows;
@@ -749,6 +823,137 @@
             });
         }
 
+        _showPageInit = true;
+        return true;
+    }
+
+    // Show loading spinner and wait for deferred shows-full.js
+    (function() {
+        document.getElementById('show-content').innerHTML = '<div class="loading"><div style="width:40px;height:40px;border:3px solid #e5e5e5;border-top-color:#0a0a0a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px"></div>Loading show details...</div>';
+
+        if (!initShowPage()) {
+            var retryCount = 0;
+            var retryInterval = setInterval(function() {
+                if (initShowPage()) {
+                    clearInterval(retryInterval);
+                } else if (++retryCount > 150) {
+                    clearInterval(retryInterval);
+                    document.getElementById('show-content').innerHTML = '<div class="not-found"><h2>Show not found</h2><p>This show may have been removed or the URL is incorrect.</p><a href="/" class="btn-visit" style="max-width:200px;margin:1rem auto">Browse All Shows</a></div>';
+                }
+            }, 200);
+        }
+    })();
+    </script>
+
+    <script>
+    // ============================================================
+    // Feature 0: Related Articles from NEWS_DATA
+    // ============================================================
+    var _relatedArticlesInit = false;
+    function initRelatedArticles() {
+        if (_relatedArticlesInit) return true;
+        if (typeof NEWS_DATA === 'undefined') return false;
+
+        var slug = '';
+        var path = window.location.pathname;
+        var m = path.match(/\/shows\/([^\/]+?)(?:\.html)?$/);
+        if (m) slug = m[1];
+        if (!slug || typeof SHOWS_DATA === 'undefined') return false;
+
+        var currentShow = null;
+        for (var i = 0; i < SHOWS_DATA.length; i++) {
+            if (SHOWS_DATA[i].slug === slug) { currentShow = SHOWS_DATA[i]; break; }
+        }
+        if (!currentShow) return;
+
+        // Build keyword list from show title, category, city
+        var stopWords = ['the','and','for','with','from','this','that','are','was','were','been','have','has','its','not','but','what','all','can','had','her','one','our','out','you','your','when','how','each','she','which','their','will','other','about','many','then','them','into','some','than','only','come','made','like','long','look','just','over','such','take','year','also','back','use','way','new','get','more','most','make','know','still','show','shows','trade','expo','exhibition','conference','summit','forum','congress','world'];
+        var titleWords = (currentShow.title || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(function(w) { return w.length > 2 && stopWords.indexOf(w) === -1; });
+        var category = (currentShow.category || '').toLowerCase();
+        var categoryWords = category.replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(function(w) { return w.length > 2 && stopWords.indexOf(w) === -1; });
+        var city = (currentShow.city || '').toLowerCase();
+
+        // Score each article
+        var scored = [];
+        for (var a = 0; a < NEWS_DATA.length; a++) {
+            var article = NEWS_DATA[a];
+            var artTitle = (article.title || '').toLowerCase();
+            var artSummary = (article.summary || '').toLowerCase();
+            var combined = artTitle + ' ' + artSummary;
+            var score = 0;
+
+            // Direct show name match (highest priority)
+            var showNameClean = currentShow.title.replace(/\s*(20\d{2})\s*/g, '').trim().toLowerCase();
+            if (showNameClean.length > 4 && combined.indexOf(showNameClean) !== -1) {
+                score += 50;
+            }
+
+            // Title word matches
+            for (var tw = 0; tw < titleWords.length; tw++) {
+                if (combined.indexOf(titleWords[tw]) !== -1) score += 5;
+            }
+
+            // Category word matches
+            for (var cw = 0; cw < categoryWords.length; cw++) {
+                if (combined.indexOf(categoryWords[cw]) !== -1) score += 3;
+            }
+
+            // City match
+            if (city && city.length > 2 && combined.indexOf(city) !== -1) score += 8;
+
+            // Boost networking guides and comparisons (more useful for show visitors)
+            var artCat = (article.category || '').toLowerCase();
+            if (artCat === 'networking guides') score += 4;
+            if (artCat === 'comparisons') score += 3;
+            if (artCat === 'exhibitor tips') score += 2;
+            if (artCat === 'cost guide') score += 2;
+
+            if (score > 0) {
+                scored.push({ article: article, score: score });
+            }
+        }
+
+        // Sort by score descending, take top 6
+        scored.sort(function(a, b) { return b.score - a.score; });
+        var topArticles = scored.slice(0, 6);
+
+        if (topArticles.length === 0) return;
+
+        var container = document.getElementById('related-articles-container');
+        var html = '<div class="related-articles-section">';
+        html += '<h2>Related Articles & Guides</h2>';
+        html += '<div class="related-articles-grid">';
+
+        for (var ra = 0; ra < topArticles.length; ra++) {
+            var art = topArticles[ra].article;
+            var artUrl = art.url.charAt(0) === '/' ? art.url : '/' + art.url;
+            var imgUrl = art.image_url || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=80';
+            var summary = (art.summary || '').length > 120 ? art.summary.substring(0, 120) + '...' : (art.summary || '');
+
+            html += '<div class="related-article-card">';
+            html += '<a href="' + artUrl + '"><img src="' + imgUrl + '" alt="' + (art.title || '').replace(/"/g, '&quot;') + '" loading="lazy"></a>';
+            html += '<div class="ra-body">';
+            html += '<span class="ra-category">' + (art.category || 'Article') + '</span>';
+            html += '<h4><a href="' + artUrl + '">' + art.title + '</a></h4>';
+            html += '<p class="ra-summary">' + summary + '</p>';
+            html += '<a href="' + artUrl + '" class="ra-link">Read More &rarr;</a>';
+            html += '</div></div>';
+        }
+
+        html += '</div></div>';
+        container.innerHTML = html;
+        _relatedArticlesInit = true;
+        return true;
+    }
+    // Retry for related articles (deferred news.js + shows-full.js)
+    (function() {
+        if (!initRelatedArticles()) {
+            var rc = 0;
+            var ri = setInterval(function() {
+                if (initRelatedArticles()) clearInterval(ri);
+                if (++rc > 150) clearInterval(ri);
+            }, 200);
+        }
     })();
     </script>
 
@@ -757,13 +962,15 @@
     // Feature 1: Similar Shows You Might Like
     // Feature 2: Exhibitor Reviews with localStorage
     // ============================================================
-    (function() {
+    var _similarAndReviewsInit = false;
+    function initSimilarAndReviews() {
+        if (_similarAndReviewsInit) return true;
         // --- Resolve slug and current show ---
         var slug = '';
         var path = window.location.pathname;
         var m = path.match(/\/shows\/([^\/]+?)(?:\.html)?$/);
         if (m) slug = m[1];
-        if (!slug || typeof SHOWS_DATA === 'undefined') return;
+        if (!slug || typeof SHOWS_DATA === 'undefined') return false;
 
         var currentShow = null;
         for (var i = 0; i < SHOWS_DATA.length; i++) {
@@ -1079,6 +1286,18 @@
             renderAll();
         })();
 
+        _similarAndReviewsInit = true;
+        return true;
+    }
+    // Retry for similar shows and reviews (deferred shows-full.js)
+    (function() {
+        if (!initSimilarAndReviews()) {
+            var rc = 0;
+            var ri = setInterval(function() {
+                if (initSimilarAndReviews()) clearInterval(ri);
+                if (++rc > 150) clearInterval(ri);
+            }, 200);
+        }
     })();
     </script>
 

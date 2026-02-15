@@ -569,7 +569,7 @@
         .scannly-btn {
             display: inline-block;
             background: var(--accent);
-            color: #fff;
+            color: #fff !important;
             font-size: 15px;
             font-weight: 700;
             padding: 14px 36px;
@@ -581,8 +581,10 @@
         .scannly-btn:hover {
             background: #ff6b81;
             transform: translateY(-2px);
-            color: #fff;
+            color: #fff !important;
         }
+
+        .article-body .scannly-btn, .scannly-cta .scannly-btn { color: #fff !important; border-bottom: none !important; }
 
         /* ============ SIDEBAR ============ */
         .sidebar {

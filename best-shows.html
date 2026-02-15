@@ -14,6 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loading... - ShowFloorTips</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         .best-hero { background:#0a0a0a; color:#fff; padding:4rem 2rem 3rem; text-align:center }
@@ -96,9 +99,10 @@
         </div>
     </footer>
 
-    <script src="/shows.js"></script>
+    <script src="/shows-lite.js" defer></script>
+    <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
     <script>
-    (function() {
+    function initBestShows() {
         'use strict';
 
         var CATEGORIES = {
@@ -169,7 +173,18 @@
         }
 
         if (typeof SHOWS_DATA === 'undefined') {
-            document.getElementById('page-content').innerHTML = '<div style="text-align:center;padding:4rem 2rem;color:#64748b">Loading show data...</div>';
+            document.getElementById('page-content').innerHTML = '<div style="text-align:center;padding:4rem 2rem"><div style="width:40px;height:40px;border:3px solid #e5e5e5;border-top-color:#0a0a0a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px"></div><p style="color:#64748b">Loading show data...</p></div>';
+            var bestRetryCount = 0;
+            var bestRetryInterval = setInterval(function() {
+                if (typeof SHOWS_DATA !== 'undefined') {
+                    clearInterval(bestRetryInterval);
+                    initBestShows();
+                }
+                if (++bestRetryCount > 150) {
+                    clearInterval(bestRetryInterval);
+                    document.getElementById('page-content').innerHTML = '<div style="text-align:center;padding:4rem 2rem;color:#dc2626">Failed to load show data. Please refresh.</div>';
+                }
+            }, 200);
             return;
         }
 
@@ -358,7 +373,8 @@
             return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
         }
 
-    })();
+    }
+    initBestShows();
     </script>
 </body>
 </html>

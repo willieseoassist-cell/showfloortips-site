@@ -14,5 +14,13 @@ Thumbs.db
 # Node (if we add any)
 node_modules/
 
+# Large data files
+majestic_million.csv
+million_emails_wide.csv
+million_emails_long.csv
+million_emails_simple.csv
+*.pyc
+__pycache__/
+
 # Build
 .vercel/

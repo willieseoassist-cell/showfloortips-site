@@ -11,23 +11,43 @@
 5. **Homepage show sorting:** Today's and upcoming exhibits ALWAYS appear first (nearest date first). Past/expired exhibits go to the end (most recently passed first). Never show an expired exhibit at the top — no one needs to see what already happened before what's coming up.
 6. **Articles ALWAYS use today's date** — When writing or rewriting any article, always use today's actual date for the published date, meta tags, JSON-LD datePublished, and news.js entry. Never use a past or future date.
 7. **Search Shows auto-scrolls to results** — When "Search Shows" is clicked or filters are applied, the page smooth-scrolls to the `#shows` section so users see results immediately. The `.shows-section` has `scroll-margin-top: 80px` to clear the sticky header.
+8. **Update calendar stats when adding shows** — Every time shows are added to `shows.js`, update the show count in `calendar.html` (hero text, premium stats banner, meta description, schema description, and paywall text all reference the total count). Also rebuild `homepage-data.js` via `node build-homepage-cache.js`.
+9. **Site health is your #1 priority** — At the START of every session, read `healthcheck.log` and `claim-emails.log`. If ANYTHING is failing or broken, fix it IMMEDIATELY before doing any other work. Don't wait to be asked. The site must never be down or broken. Fix first, then move on to new tasks.
 
 ## Project Setup
 - **Repo:** `willieseoassist-cell/showfloortips-site` on GitHub (main branch)
 - **Hosting:** Vercel (auto-deploys from GitHub BUT requires `--archive=tgz` due to 24K+ files exceeding 15K file limit)
 - **Deploy command:** `cd "/Volumes/Willie Extr/tradeshow-website" && npx vercel --prod --archive=tgz --yes`
-- **Payments:** Stripe (`stripe_links.json` — 19 products, $7.99-$14.99)
-- **Email:** Resend API for outreach
-  - **API Key:** `re_CGmCArUb_D1qyCSuaXGhsdRdUtZk5XhcZ`
-  - **From:** `Show Floor Tips Team <info@showfloortips.com>`
-  - **Domain:** showfloortips.com (verified, DKIM + SPF confirmed)
-  - **Rate limit:** ~2 req/sec, use 0.8-1s delays between sends
-  - **Must use `User-Agent: ShowFloorTips/1.0` header** (Cloudflare blocks default Python UA)
+- **Payments:** Stripe (`stripe_links.json` — 24 products, $7.99-$49.99) — Account: `51SyEqU` (LIVE mode)
+  - **Premium Calendar:** $499 one-time — Product: `prod_TyfUlyFSRwaSCB`, Price: `price_1T0i9FJXnuPSbgX9qIYOlhNC`, Payment Link: `https://buy.stripe.com/14A4gA7L27iH1H24s13VC0o`
+  - Calendar paywall: `calendar.html` shows 8/month, `calendar/*.html` shows 10/month, rest locked behind $499 gate
+  - **PK:** `pk_live_51SyEqUJXnuPSbgX91gPiq2oV5SkOd9wq81b8ApJds0FEtAUBpz96AU96xSyZcdF5OfvpbhxvBbusn4Ka1JWDunAJ00MMt3NQio`
+  - **SK:** `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`
+- **Email:** Amazon SES (primary) + Resend API (backup)
+  - **SES SMTP Server:** `email-smtp.us-east-2.amazonaws.com` (port 587 TLS)
+  - **SES SMTP Username:** `AKIA44KLBQHB7PHZ4TWO`
+  - **SES SMTP Password:** `BBlD6WOghsmLIIcbzNbVylCE35P050vmkP2XzD/adt+V`
+  - **SES IAM User:** `ses-smtp-user.20260214-015505`
+  - **SES Domain:** showfloortips.com (DKIM verified via Cloudflare, 3 CNAME records + DMARC)
+  - **SES Status:** SANDBOX MODE — can only send to verified addresses. Production access pending AWS approval.
+  - **SNS Topic:** `ses-showfloortips-bounces` (us-east-2) — Bounce/complaint notifications
+  - **SNS Subscription:** HTTPS → `https://showfloortips.com/api/ses-webhook` (CONFIRMED)
+  - **SES Webhook:** `api/ses-webhook.js` — receives bounce/complaint events, auto-confirms SNS subscriptions
+  - **Once SES approved:** Switch `send-claim-emails.py` from Resend to SES, then run `send-mass-emails.py` for 100K/day
+  - **SES Cost:** $0.10 per 1,000 emails ($100 for 1M)
+  - **Resend API Key (backup):** `re_CGmCArUb_D1qyCSuaXGhsdRdUtZk5XhcZ`
+  - **From:** `Willie Austin <info@showfloortips.com>`
 - **Newsletter:** Beehiiv (pub ID: `pub_3ced7630-50d2-4bb9-8f43-728c48a80034`)
   - **API Key:** `THNkEfhbW1GjqqHym4UMASkekB71F1kyAkgEtxi2KJKkQsrzMWOXMQID87QMFVLQ`
   - **Serverless endpoint:** `api/subscribe.js` → calls Beehiiv Subscriptions API
   - Forms on: newsletter.html (2x), index.html, news.html, travel.html
-- **Data files:** `shows.js` (exhibit records, 15.9MB, 24,838+ shows — defines `defined_shows` + alias `SHOWS_DATA`), `news.js` (article index, 14MB, 24,593+ articles — defines `NEWS_DATA`)
+- **Data files:**
+  - `shows-lite.js` (9.9MB, 25,049 shows — listing fields only, no description/tips/hotels/website/booth_price/host) — used by ALL listing pages (1,739 HTML files)
+  - `shows.js` (16.3MB, 25,049 shows — full data with descriptions, tips, hotels) — backup/reference, defines `defined_shows` + alias `SHOWS_DATA`
+  - `shows-full.js` (30.9MB — extended data) — used by `show.html` detail pages only
+  - `news.js` (article index, ~14MB, 25,620+ articles — defines `NEWS_DATA`)
+- **Automated Publishing Pipeline:** `news.html` filters articles by `published_date` — future-dated articles are invisible until their date arrives. No cron jobs needed; client-side JS comparison. 1,000 evergreen articles scheduled Feb 13 – Jul 12, 2026 (6-7/day).
+- **Article Generator:** `generate-1000-articles.js` — Node.js script that generates evergreen HTML articles from topic definitions. Run with `node generate-1000-articles.js`.
 - **Homepage cache:** `homepage-data.js` (3.3KB pre-computed stats) — regenerate with `node build-homepage-cache.js` after updating shows.js
 - **Articles:** `/news/` folder — self-contained HTML files
 - **Site URL:** https://showfloortips.com
@@ -1377,6 +1397,790 @@ Targeted companies with highest sponsorship potential ($500-$5,000/month package
 - `shows.js` — 20 new shows added, total: 24,838 shows
 - `homepage-data.js` — Regenerated (24,838 shows, 640 cities, 104 countries)
 
+#### Mass Sponsorship Outreach — 90 Additional Emails Sent (98 Total Today)
+Targeted high-value companies with $10K+ sponsorship potential. All sent via Resend API.
+
+**Exhibit Houses (largest, most likely $10K+ sponsors):**
+Hamilton Exhibits, Nth Degree, Freeman, GES, Shepard, Hargrove, Derse, Skyline Exhibits, Nimlok, Czarnowski, MC2, Sparks, Pinnacle Exhibits, Absolute Exhibits, Steelhead Productions, Exhibit Concepts, Exponents, Classic Exhibits, 3D Exhibits, beMatrix, Impact Unlimited, MODdisplays, Brumark, Blazer Exhibits, Trade Group, Apple Rock Displays, Rockway Exhibits, ENO Exhibits, Elite Exhibits, DisplayIt, Displaycraft, Expo Marketing, Lab Expo, Orbus Exhibit, Exhibits USA, 2020 Exhibits, Access TCA, ExhibitForce, Willwork, E&E Designs
+
+**Event Technology Platforms:**
+Cvent, Bizzabo, Stova, EventMobi, Swapcard, Swoogo, Splash, Aventri, ExhibitDay, momencio, eShow, A2Z Events, Map Your Show, Perenso, NextEvent, Explori
+
+**Major Hotel Chains (MICE Divisions):**
+Marriott, Hilton, IHG, Hyatt
+
+**Travel & Print:**
+Expedia Group, Vistaprint
+
+**Industry Media & Associations:**
+IAEE, UFI, SISO, CEIR, EXHIBITOR Magazine, TSNN
+
+**Convention & Visitors Bureaus:**
+Las Vegas CVA, Choose Chicago, Visit Orlando
+
+**Logistics & Transportation:**
+CEVA Logistics, TWI Group, EFW, Momentum Management, Agility, Rental Displays
+
+**Major Experiential Agencies:**
+George P. Johnson, Jack Morton, Publicis Events, OCTANORM, Brandex, Global Experiences
+
 #### Deployment
 - Committed, pushed to GitHub, deployed to Vercel
 - Live at https://showfloortips.com
+
+### Feb 12, 2026 — Session 23
+
+#### Bug Fixes — Scannly Button & Placeholder Images
+- **Scannly button invisible text fixed (16 files):** `.article-body a { color: var(--accent); }` was overriding `.scannly-btn { color: #fff; }` due to CSS specificity. Added `!important` to `.scannly-btn` color and added `.article-body .scannly-btn, .scannly-cta .scannly-btn { color: #fff !important; border-bottom: none !important; }` override rule. Fixed across 3 CSS patterns (single-line 50px, single-line 8px, multi-line expanded).
+- **Broken Amazon product images fixed (6 files):** Replaced all `via.placeholder.com` URLs with inline SVG data URIs (card holder, charger, adapter, shoes, notebook, badge, insoles, backpack, bottle). 27 total replacements. Images now render instantly with no external requests.
+
+**Files fixed for button CSS:**
+samsung-galaxy-s26, defense-tech-mainstream, rtx-northrop-bechtel, golden-dome-175b, eu-nanoic-chip, wto-rules-us-clean-energy, how-to-network-at-shoptalk, how-to-network-at-hannover-messe, how-to-network-at-cisco-live, big-food-ma-wave, trump-12b-project-vault, how-to-network-at-infocomm, ai-food-beverage-179b, applied-materials-2nm, us-tariffs-80-year-high, pentagon-fms-restructure
+
+**Files fixed for placeholder images:**
+how-to-network-at-hannover-messe (5), how-to-network-at-shoptalk (4), how-to-network-at-cisco-live (4), how-to-network-at-infocomm (5), us-tariffs-80-year-high (4), how-to-network-at-conexpo-con-agg (5)
+
+#### Automated Publishing Pipeline — 1,000 Evergreen Articles
+Built an invisible auto-publishing system that releases 6-7 articles per day for 5 months without any manual intervention.
+
+**How it works:**
+1. All 1,000 articles are pre-generated as HTML files and deployed
+2. Each article has a `published_date` set to a future date in `news.js`
+3. `news.html` JS filters: `if (a.published_date > nowISO) return false`
+4. As each day passes, that day's articles automatically become visible
+5. No cron jobs, no server-side code — purely client-side date comparison
+
+**Schedule:** Feb 13, 2026 → Jul 12, 2026 (150 days, 6-7 articles/day)
+
+**1,000 articles across 10 industries × 10 topic types:**
+
+| Category | Count | Topics |
+|----------|-------|--------|
+| Exhibitor Tips | 400 | Booth design, lead gen, technology, travel/logistics |
+| Strategy | 300 | Pre-show planning, ROI measurement, career development |
+| Networking Guides | 100 | Industry-specific networking strategies |
+| Marketing | 100 | Social media, email, content, PR, video, influencer |
+| Industry Insight | 100 | Trends, outlook, sustainability, digital transformation |
+
+**10 industries covered:** Technology, Healthcare, Manufacturing, Food & Beverage, Energy, Construction, Retail, Automotive, Defense & Aerospace, Hospitality
+
+**Each article includes:** Full SEO (meta tags, OG, JSON-LD Article + FAQ schema), dark mode support, Scannly CTA with !important fix, newsletter signup, social share buttons, sidebar with industry-specific resources, 7 content sections, 8 tips, 4 FAQs.
+
+**Generator script:** `generate-1000-articles.js` — reusable Node.js script with parameterized content templates. Can be run again to regenerate or extend.
+
+**New filter pills added to news.html:** "Exhibitor Tips" and "Strategy" categories with proper CAT_CLASSES mappings.
+
+#### Data Updates
+- `news.js` — 1,000 new scheduled entries added, total: 25,593 articles
+- `news.html` — Added publishDate filtering pipeline, new category pills, updated pill counts to exclude future articles
+
+#### Sponsorship Outreach — 100 New Emails Sent (All Unique Domains)
+Sent via Resend API (Node.js script `send-100-emails.js`). 100/100 delivered, 0 failures. All domains verified unique vs previously contacted list.
+
+**Exhibit Design/Build (20):**
+Exhibitus, Condit Exhibits, Craftsmen Industries, Moss Inc, Color Reflections, EWI Worldwide, Xibit Solutions, Aluvision, Expo Displays, Nomadic Display, Excalibur Exhibits, Pro Exhibits, nParallel, Structure Exhibits, Hill & Partners, The Expo Group, Featherlite Exhibits, Optima Graphics, Kubik, Brede Allied
+
+**Event Technology (15):**
+Whova, Hubilo, RainFocus, Pathable, Boomset, Socio Events, Validar, iCapture, Lead Liaison, Certain, Eventbrite, Attendify, Grip, Brella, SpotMe
+
+**Promotional Products (10):**
+HALO, Pinnacle Promotions, ePromos, Quality Logo Products, AnyPromo, Kotis Design, Brand Spirit, Amsterdam Printing, National Pen, Crestline
+
+**Event Furniture/Rental (8):**
+CORT Events, AFR Event Furnishings, FormDecor, Taylor Creative, Blueprint Studios, Signature Event Rentals, EventAccents, Classic Party Rentals
+
+**AV/Production (7):**
+WorldStage, Bartha, Bluewater Technologies, LMG, PRG, Presentation Products, CCS Presentation Systems
+
+**Signage/Graphics (5):**
+FASTSIGNS, SpeedPro, AlphaGraphics, Artaius Group, Image Makers
+
+**Convention Centers/Venues (10):**
+McCormick Place, Javits Center, OCCC, Georgia World Congress Center, San Diego CC, NRG Center Houston, Dallas CC, EventsDC, Boston CC, Anaheim CC
+
+**Associations (8):**
+HCEA, PCMA, ILEA, SITE, Events Industry Council, AMC Institute, AIPC, ICCA
+
+**Corporate Travel (5):**
+BCD Travel, CWT, American Express GBT, Corporate Travel Management, Direct Travel
+
+**Event Staffing (5):**
+ATN Event Staffing, Attack! Marketing, Hype Agency, National Event Staffing, Tigerpistol Events
+
+**Event Insurance (3):**
+K&K Insurance, EventHelper, Thimble
+
+**Show Services/Flooring (3):**
+Trade Show Flooring, Snap Lock Industries, Edlen Electrical
+
+#### Bug Fixes — Broken City Guide Images
+Three city travel guide hero images had Unsplash photo IDs returning 404. Replaced with working alternatives:
+- **Atlanta** (`atlanta-trade-show-travel-guide.html`): `photo-1575917649121-4bdde9f2b4c6` → `photo-1547517023-7ca0c162f816`
+- **Houston** (`houston-trade-show-travel-guide.html`): `photo-1548519853-a40ae0201e41` → `photo-1530089711124-9ca31fb9e863`
+- **San Diego** (`san-diego-trade-show-travel-guide.html`): `photo-1538964173425-93423e8e2b86` → `photo-1444080748397-f442aa95c3e5`
+
+Updated in all 3 locations per file: `og:image` meta tag, JSON-LD `image`, and `<img>` src.
+
+#### Bug Fixes — Broken Nav Links in 5 Networking Guide Articles
+Five articles had wrong nav links (`/news/`, `/guides/`, `/reviews/`, `/about/`) pointing to non-existent directories:
+- `how-to-network-at-hannover-messe-2026.html`
+- `how-to-network-at-infocomm-2026.html`
+- `how-to-network-at-shoptalk-2026.html`
+- `how-to-network-at-cisco-live-2026.html`
+- `how-to-network-at-modex-2026.html`
+
+Replaced with correct site nav: Trade Shows (`/#shows`), News (`/news.html`), Travel (`/travel.html`), Guide (`/guide.html`), Products (`/products.html`), Try Scannly (`/scannly.html`). Also fixed breadcrumb links (`/news/` → `/news.html`) and footer links (`/guides/` → `/guide.html`, `/reviews/` → `/products.html`, `/about/` → `/`).
+
+#### Million-Email Pipeline — `million-email-pipeline.js`
+Built a complete automated email outreach system targeting 1M+ companies.
+
+**Architecture:**
+- **Lead database**: JSONL format (`pipeline-leads.jsonl`) — 5,075 leads from 1,015 companies across 39 industries
+- **State tracking**: `pipeline-state.json` — daily limits, sent counts, unsubscribed list
+- **Sent log**: `pipeline-sent.jsonl` — every email sent with Resend ID, template used, follow-up count
+- **5 email variants per company**: info@, contact@, sales@, hello@, marketing@
+- **Sends info@ first** per domain, tries other variants if bounced
+
+**Commands:**
+- `node million-email-pipeline.js generate` — Build leads from 39 industry seed lists
+- `node million-email-pipeline.js send [n]` — Send daily batch (default: 95/day free tier)
+- `node million-email-pipeline.js followup` — Auto follow-up non-responders (3, 7, 14 days)
+- `node million-email-pipeline.js status` — Pipeline dashboard
+- `node million-email-pipeline.js hotleads` — Scored lead report
+- `node million-email-pipeline.js daily` — Full daily cycle (send + followup + status)
+
+**5 A/B tested templates:** sponsorship-v1 (direct pitch), partnership-v2 (soft approach), value-first-v3 (upgrade offer), direct-v4 (short/personal), social-proof-v5 (FOMO). Templates rotate per batch.
+
+**3 auto follow-up sequences:** Day 3 (gentle reminder), Day 7 (urgency/scarcity), Day 14 (final touch).
+
+**Lead scoring system:** Tracks sent/delivered/opened/clicked/replied status. HOT keywords: interested, pricing, demo, meeting. WARM: tell me more, send details. COLD: not interested, pass. AUTO: out of office.
+
+**39 industries seeded:** Exhibit Design, Event Technology, Convention Centers, AV Production, Promotional Products, Event Furniture, Signage, Event Staffing, Show Management, Event Catering, Event Insurance, Corporate Travel, Associations, Freight Logistics, Flooring Services, Marketing Agencies, Technology, Healthcare, Manufacturing, Food & Beverage, Energy, Construction, Automotive, Defense Aerospace, Retail Consumer, Hospitality, Telecom, Financial Services, Pharma Biotech, Logistics Supply Chain, Agriculture, Education EdTech, Packaging, Chemicals, Real Estate, Gaming Entertainment, Pet Industry, Beauty Cosmetics, Environmental Sustainability
+
+**First batch results:** 95/95 sent, 0 failures (Feb 12, 2026)
+- Covered: Exhibit Design (54), Event Technology (40), Convention Centers (1)
+
+**Scaling path:**
+- Free tier (Resend): 95/day = 2,850/month = 1,015 companies in ~11 days
+- Pro tier ($20/mo): 1,667/day = 50K/month
+- To reach 1M: continuously add companies to SEEDS, scrape exhibitor directories from shows.js URLs
+- Cron job: `0 9 * * 1-5 cd "/Volumes/Willie Extr/tradeshow-website" && node million-email-pipeline.js daily`
+
+**CAN-SPAM compliance:** All templates include unsubscribe option, physical address, clear sender identification.
+
+#### Scaling to 1M — Free & Cheap Email Sending Research
+
+**Free Tier Email Services (use in parallel for max free volume):**
+
+| Service | Free Monthly Limit | Daily Limit | Notes |
+|---|---|---|---|
+| Sender.net | 15,000/mo | — | 2,500 subscribers, most generous free plan |
+| Brevo (Sendinblue) | ~9,000/mo | 300/day | 100K contacts, Brevo branding on emails |
+| Mailjet | 6,000/mo | 200/day | API + SMTP access, 1,500 contacts |
+| Amazon SES | 3,000/mo (first 12 months) | — | $0.10/1K after free tier; new AWS accounts may get $200 credits |
+| Resend (current) | 3,000/mo | 100/day | 1 domain, 2 req/sec rate limit |
+| Mailgun | ~3,000/mo | 100/day | 1 custom domain, 1 day data retention |
+| SMTP2GO | 1,000/mo | 200/day | No expiration |
+| Elastic Email | ~3,000/mo | 100/day | 1,000 subscribers max |
+
+**Cheapest path to 1M emails:**
+- **Amazon SES: $100 for 1,000,000 emails** ($0.10 per 1,000) — gold standard for cheap bulk
+- **Self-hosted Postal**: Free open-source mail server on $20-50/mo VPS, unlimited sends
+- **Resend Pro**: $20/mo for 50K/month = 1M in 20 months = $400 total
+
+**Free Email Verification APIs:**
+- ZeroBounce: 100 free credits/month
+- Hunter.io: 50 verifications/month
+- Verifalia: free tier available
+- Abstract API: free tier with risk scoring
+
+**Free Company Email Finder APIs:**
+- Apollo.io: 10,000 email credits/month (corporate domain accounts)
+- Hunter.io: 50 searches/month
+- Snov.io: 50 credits/month
+
+**Recommended scaling strategy:**
+1. Current: Resend free tier (95/day) — finishes 1,015 companies in ~11 days
+2. Next: Add Amazon SES ($100 for 1M) or Resend Pro ($20/mo for 50K/mo)
+3. Lead expansion: Apollo.io free tier (10K credits/mo) + scrape exhibitor directories
+4. Critical: Warm up IPs gradually, keep bounce rate under 4%, process unsubscribes, maintain SPF/DKIM/DMARC
+
+**SendGrid note:** Free plan retired May 27, 2025. Only offers 60-day trial now. Do not use.
+
+#### Deployment
+- Deployed to Vercel (27,347 files)
+- Live at https://showfloortips.com
+
+### Feb 13, 2026 — Session 24: Programmatic SEO Page Generator
+
+#### Programmatic SEO Page Generator (`generate-seo-pages.js`)
+Built and ran a single Node.js script that generates 1,654 self-contained HTML landing pages across 10 page types. Each page includes GA4 tracking, dark mode, SEO meta tags, JSON-LD schema, Open Graph + Twitter Cards, newsletter signup, Scannly CTA, client-side filtering/search/sort from shows.js, pagination (25 per page), and cross-links to related pages.
+
+**New directories created:**
+- `/countries/` — 57 pages (56 country pages + index)
+- `/venues/` — 115 pages (114 venue pages + index)
+- `/browse/` — 1,341 pages (1,327 combo pages + 6 size tiers + 3 price tiers + 4 seasonal + browse index)
+
+**Pages generated by type:**
+| Type | Count | Directory | Example |
+|------|-------|-----------|---------|
+| Missing industry pages | 15 | `/industries/` | Environmental, Biotechnology, Aerospace, etc. |
+| Country pages | 56 + index | `/countries/` | Germany, Japan, India, UK, etc. (20+ shows each) |
+| Missing US state pages | 27 | `/states/` | Colorado, Tennessee, Louisiana, DC, etc. (3+ shows each) |
+| New US city pages | 23 | `/cities/` | Washington, San Antonio, Los Angeles, Charlotte, etc. (10+ shows each) |
+| International city pages | 76 | `/cities/` | Singapore, Bangkok, Istanbul, Hong Kong, etc. (100+ shows each) |
+| Venue pages | 114 + index | `/venues/` | PVA Expo Prague, Bella Center Copenhagen, etc. (50+ shows each) |
+| Attendee size tiers | 6 | `/browse/` | Mega (50K+), Large (20-50K), Mid-Size, Small, Boutique, Highest |
+| Booth price tiers | 3 | `/browse/` | Budget (<$5K), Mid-Range ($5-15K), Affordable (<$3K) |
+| Seasonal pages | 4 | `/browse/` | Spring, Summer, Fall, Winter 2026 |
+| Country+Category combos | 1,327 | `/browse/` | Technology in Germany, Healthcare in Japan, etc. (10+ shows each) |
+| **TOTAL** | **1,654** | | |
+
+**Empty page prevention:** Pre-counted shows before generating. Thresholds: Industries 50+, Countries 20+, States 3+, US Cities 10+, Intl Cities 100+, Venues 50+, Combos 10+.
+
+**Sitemap updated:** Added 1,654 new URLs to `sitemap-pages.xml`.
+
+**Script features:**
+- `node generate-seo-pages.js` — runs all generators
+- `node generate-seo-pages.js --type=countries` — runs one type only
+- `node generate-seo-pages.js --dry-run` — preview without writing files
+
+### Feb 13, 2026 — Session 25: Related Articles on Show Pages
+
+**Added Related Articles & Guides section to `show.html`** — Every trade show page now displays up to 6 intelligently matched articles from NEWS_DATA (25,593 articles). Articles are scored by:
+- Direct show name match in title/summary (+50 pts)
+- Show title keyword matches (+5 pts each)
+- Category keyword matches (+3 pts each)
+- City name match (+8 pts)
+- Boost for networking guides (+4), comparisons (+3), exhibitor tips (+2), cost guides (+2)
+
+**Changes made:**
+- Added `<script src="/news.js">` to load article data
+- Added `<div id="related-articles-container">` between show content and similar shows
+- Added CSS for `.related-articles-section`, `.related-articles-grid`, `.related-article-card` with responsive breakpoints (3-col, 2-col, 1-col)
+- Added matching algorithm that scores all 25,593 articles and picks top 6
+- Articles display with image, category badge, title, summary preview, and "Read More" link
+- Section appears above "Similar Shows You Might Like" and below main show content
+- This is now the standard format for all show pages (show.html is a single template used by all 24,838+ shows)
+
+**Deployed:** 27,347 files to https://showfloortips.com
+
+### Feb 13, 2026 — Session 25 (continued): Stripe Account Migration to Live
+
+**Migrated Stripe from old account (`51Sy4gn`) → new account (`51SyEqU`) and switched from test mode to LIVE mode.**
+
+**Phase 1 — Test mode setup:**
+- Created all 24 products on new Stripe account (`51SyEqU`) in test mode
+- Replaced all payment links across the site (test URLs with `buy.stripe.com/test_...`)
+
+**Phase 2 — Live mode activation:**
+- Recreated all 24 products using live API keys (`sk_live_...` / `pk_live_...`)
+- All payment links now use live format (`buy.stripe.com/...` — no `/test_`)
+- **31 payment link replacements** across 3 files:
+  - `products.html` — 24 links (19 individual + Mega Bundle + 3 kits + 1 hero CTA)
+  - `bundle.html` — 2 links (hero + bottom CTA)
+  - `show.html` — 5 links (Mega Bundle CTA + 4 product links)
+- `stripe_links.json` — Updated with all 24 live product IDs, price IDs, and payment links
+- Updated CLAUDE.md Project Setup with live Stripe keys
+
+**All 24 products now accept real payments:**
+
+| # | Product | Price |
+|---|---------|-------|
+| 1-5 | Checklists (Pre-Show, Booth Setup, Teardown, Lead Follow-Up, Travel) | $7.99 each |
+| 6-10 | Spreadsheets (Budget/ROI, Lead Tracking, Vendor Matrix, Calendar, Booth Cost) | $12.99 each |
+| 11-15 | Email Packs (Follow-Up, Appointment, Recap, VIP, Internal Brief) | $9.99 each |
+| 16-20 | Guides (First-Timer, Booth Design, Lead Capture, International, ROI) | $14.99 each |
+| 21 | Mega Bundle (all 19) | $49.99 |
+| 22 | First-Timer Kit (4 items) | $24.99 |
+| 23 | Email & Outreach Kit (5 items) | $29.99 |
+| 24 | ROI & Analytics Kit (5 items) | $34.99 |
+
+**Deployed:** 27,350 files to https://showfloortips.com
+
+**Bug fix:** Related article URLs — 24,391 articles in news.js already start with `/`, code was prepending another `/` creating `//news/...` (protocol-relative URL). Fixed with `art.url.charAt(0) === '/' ? art.url : '/' + art.url`.
+
+### Feb 13, 2026 — Session 25 (continued): Stripe Bundle & Kit Checkout Fix
+
+**Problem:** Bundle and kit "Buy" buttons were circular links (`bundle.html` → `products.html` → `bundle.html`) with no actual Stripe checkout. All 3 Curated Starter Kits had the same CTA ("Get All 19 for $49.99") pointing to the same page.
+
+**Created 4 new Stripe products via API:**
+
+| Product | Price | Stripe Product ID | Payment Link |
+|---------|-------|-------------------|--------------|
+| Mega Bundle (all 19) | $49.99 | prod_TyWYtK1igXwo2U | buy.stripe.com/bJe4gy74W4Fs3Drat187O0J |
+| First-Timer Kit (4 items) | $24.99 | prod_TyWYIG8ol5CJ92 | buy.stripe.com/eVqbJ01KCgoa1vjat187O0K |
+| Email & Outreach Kit (5 items) | $29.99 | prod_TyWYIf2AH4KaIa | buy.stripe.com/3cIfZgfBs4Fsc9XdFd87O0L |
+| ROI & Analytics Kit (5 items) | $34.99 | prod_TyWYXxNeESfE4A | buy.stripe.com/8x25kC60SdbY1vjat187O0M |
+
+**Files updated:**
+- `bundle.html` — Both CTAs now link to Stripe checkout
+- `products.html` — Bundle CTA links to Stripe; each kit now has unique pricing, savings badge, distinct buy button, and its own Stripe link
+- `show.html` — Mega Bundle CTA updated from `/bundle.html` to Stripe checkout
+- `stripe_links.json` — Added 4 new products (now 23 total)
+
+**Deployed:** 27,347 files to https://showfloortips.com
+
+### Session 26: Added 165 Worldwide Trade Shows
+Added 165 new trade shows from around the world to `shows.js`, bringing total to ~25,003 shows across 644 cities and 104 countries.
+
+**Regions covered:**
+- **USA (~43 shows):** ISC West, AHR Expo, SHOT Show, NAMM, NAB Show, IMTS, AAPEX, FDIC, IBS, Pack Expo, Solar Power International, OTC, and more
+- **Europe (~55 shows):** bauma, drupa, MEDICA, Salone del Mobile, MWC Barcelona, ISE, Light+Building, Automechanika, IFA Berlin, FIBO, EuroShop, SIAL Paris, Eurosatory, BETT London, Farnborough, and more
+- **Asia Pacific (~35 shows):** Canton Fair, SEMICON China, Chinaplas, COMPUTEX, FOODEX Japan, Tokyo Game Show, CommunicAsia, THAIFEX, METALEX, Auto Expo India, and more
+- **Middle East (~15 shows):** Arab Health, GITEX Global, ADIPEC, LEAP, Big 5 Global, World Defense Show, and more
+- **Africa (~8 shows):** Mining Indaba, AfricaCom, Electra Mining Africa, and more
+- **Americas (~9 shows):** Agrishow Brazil, Expomin Chile, PDAC Canada, Collision Toronto, and more
+
+**Industries added:** Security, HVAC, Aviation, Concrete/Masonry, Firearms, Musical Instruments, Golf, Kitchen/Bath, Baking, Pet, Medical Devices, Photonics, Jewelry, Poultry, Woodworking, Fire/Emergency, Photography, Maritime, Packaging, Printing, Plastics, Furniture/Design, Motorcycles, Ceramics, Tourism, Wine, Real Estate, Composites, Smart Cities, and more
+
+**16 duplicates auto-skipped** (already in database)
+
+**Files updated:**
+- `shows.js` — 165 new show entries (now 25,003+ shows)
+- `homepage-data.js` — Rebuilt with 25,003 shows, 644 cities, 104 countries
+
+**Deployed:** 27,352 files to https://showfloortips.com
+
+### Session 26 (continued): Full Site Audit
+Comprehensive live site testing — all systems operational.
+
+**Pages tested (41/41 passed — HTTP 200):**
+- Homepage, show.html, products.html, bundle.html, news.html, travel.html, calendar.html, map.html
+- roi-calculator.html, scannly.html, newsletter.html, guide.html, compare.html, about.html, contact.html, privacy.html
+- glossary.html, sponsor.html, media-kit.html, 404.html, budget-planner.html, packing-list.html
+- lead-calculator.html, cost-estimator.html, flight-deals.html, this-week.html, venue-maps.html, qr-generator.html, best-shows.html
+- venues/index.html, browse/index.html, industries/technology.html, states/california.html, cities/las-vegas.html, countries/germany.html
+- sitemap.xml, rss.xml, robots.txt
+- New show pages: show.html?show=imts-2026, show.html?show=bauma-2026, show.html?show=nab-show-2026
+
+**Stripe payment links (24/24 live and working):**
+- 5 Checklists ($7.99 each) — all ✅
+- 5 Spreadsheets ($12.99 each) — all ✅
+- 5 Email Packs ($9.99 each) — all ✅
+- 5 Guides ($14.99 each) — all ✅
+- Mega Bundle ($49.99) — ✅
+- 3 Curated Kits ($24.99-$34.99) — all ✅
+
+**Key features verified:**
+- Homepage loads with show stats, filtering, search, autocomplete, countdown timers
+- Products page shows all 20 products + 3 kits with valid Stripe checkout links
+- Bundle page loads with $49.99 Mega Bundle and Stripe checkout
+- Travel page loads with 10 city guides and Amazon affiliate links
+- Calendar shows monthly navigation with 24,600+ events
+- Newsletter signup form connects to /api/subscribe (Beehiiv)
+- Scannly page loads with App Store download link
+- ROI Calculator, Budget Planner, and all 11 interactive tools functional
+- Dark mode, PWA, GA4 tracking all present
+- XML sitemap and RSS feed serving correctly
+
+### Session 26 (continued): Backlink Widgets + Speed Optimization + Claim This Show
+
+**Feature 1: Embeddable Widget Backlink Magnets**
+Created two embeddable widgets that other websites can add with a single `<script>` tag — every embed = a backlink to showfloortips.com.
+
+Files created:
+- `embed/widget.js` (7.7KB) — Upcoming trade shows widget, configurable by category/count/theme, Shadow DOM isolated
+- `embed/calendar-widget.js` (8.3KB) — Interactive monthly calendar widget with day-click detail panel
+- `api/shows-widget.js` — Lightweight Vercel serverless API returning minimal show JSON for widgets
+- `widgets.html` — Landing page with live previews, copy-paste embed codes, FAQ, SEO optimized
+
+Embed codes:
+```html
+<div id="sft-widget" data-category="technology" data-count="5"></div>
+<script src="https://showfloortips.com/embed/widget.js"></script>
+```
+
+**Feature 2: Site Speed Optimization**
+- Added `defer` to shows.js loading on all 7 key pages (index, show, calendar, map, compare, best-shows, this-week)
+- Added retry/polling logic so pages gracefully wait for 15.4MB shows.js to load
+- Added loading spinners on all pages while data loads
+- Added resource hints (`preconnect`, `dns-prefetch`, `preload`) to all key pages
+- Removed redundant `@import` from styles.css (was double-loading Google Fonts)
+- Inlined critical CSS on homepage, async-loaded styles.css on show.html and products.html
+- Added `loading="lazy"` to images in 20 news articles + 10 travel guides
+- Added comprehensive cache headers in vercel.json (shows.js: 1 day, CSS/images: 1 year immutable, HTML: 1 hour + stale-while-revalidate)
+
+**Feature 3: Claim This Show Monetization System**
+Created a full "Claim Your Show" system to monetize show organizer engagement.
+
+Files created/modified:
+- `claim.html` — Full sales landing page with 3 pricing tiers:
+  - Starter (Free): Verify organizer, update details, add logo, "Claimed" badge, basic analytics
+  - Pro ($149/mo): Verified badge, featured placement, lead capture, analytics dashboard, monthly reports
+  - Premium ($499/mo): Homepage spotlight, newsletter feature, competitor benchmarking, social media promotion, Editor's Pick badge ($399/mo annual)
+- `show.html` — Added "Claim This Listing" sidebar card on every show page with link to claim.html?show=[slug]
+- Footer links added across index.html, products.html, sponsor.html with "Claim Your Show" link
+- Inquiry form on claim.html collects organizer details and selected tier
+
+**All new pages verified (5/5 HTTP 200):**
+- claim.html, widgets.html, embed/widget.js, embed/calendar-widget.js, api/shows-widget
+
+**Widget API confirmed returning live show data** (title, slug, date, city, country, category)
+
+**Deployed:** 27,357 files to https://showfloortips.com
+
+**Amazon SES Setup:**
+- Domain: showfloortips.com verified (DKIM via Cloudflare, 3 CNAME records)
+- SMTP credentials created and saved
+- Production access requested (pending AWS approval)
+
+### Session 26 (continued): Claim System Backend + High-Visibility CTAs
+
+**Claim API + Admin Dashboard:**
+- `api/claim.js` — Serverless endpoint that validates claim form, sends admin notification email + organizer confirmation email via Resend API
+- `claim.html` — Updated form to POST to `/api/claim` with loading states, success/error messages, double-submission prevention
+- `admin/claims.html` — Password-protected admin CRM (password: `showfloor2026`)
+  - Stats dashboard (total, pending, approved, this month)
+  - Filterable table (by status, tier, search)
+  - Add/edit/delete claims, cycle status (pending → contacted → approved → rejected)
+  - CSV export, localStorage persistence, dark mode, mobile responsive
+
+**High-Visibility CTAs added to 6 pages:**
+- `index.html` — Full-width organizer banner (Claim + Widget) above footer, "For Organizers" nav link
+- `show.html` — Widget promotion banner after hotels section, "For Organizers" nav link
+- `news.html` — Persistent claim banner between hero and articles, "For Organizers" nav link
+- `calendar.html` — Top claim banner + bottom widget section, "For Organizers" nav link
+- `travel.html` — Organizer banner between sections, "For Organizers" nav link
+- `guide.html` — Dual CTA section (Claim + Widget), "For Organizers" nav link
+
+**Tested and verified:**
+- claim.html (200), widgets.html (200), admin/claims.html (200), api/claim (405 GET / 200 POST) — all working
+- Claim API POST confirmed: sends admin notification + organizer confirmation emails via Resend
+- Admin dashboard accessible with password `showfloor2026`
+
+**Deployed:** 27,359 files to https://showfloortips.com
+
+### Feb 13, 2026 — Session 27: Ad Removal + Event Schema Fix + Top 1% Audit
+
+**Ad Placeholder Removal (27 files):**
+Removed all empty AdSense "Advertisement" placeholder boxes sitewide — they were showing as ugly gray boxes with no actual ads.
+
+Files edited:
+- 6 main pages: `travel.html`, `glossary.html`, `show.html`, `industries/index.html`, `news.html`, `calendar.html`
+- 20 city pages: All cities in `/cities/` directory (atlanta, anaheim, boston, chicago, dallas, denver, detroit, houston, las-vegas, miami, minneapolis, nashville, new-orleans, new-york, orlando, phoenix, philadelphia, san-diego, san-francisco, seattle)
+- 1 template: `cities/generate-cities.js` — updated so future city pages won't regenerate ad slots
+- Final grep confirmed zero remaining `ad-slot` references across entire site
+
+**Google Search Console Fix: Event Schema Missing startDate:**
+Google Search Console flagged "Missing field startDate" on Event structured data across all 20 category listing pages (`*-trade-shows.html`). The JSON-LD used `@type: Event` for items in the `ItemList` but didn't include the required `startDate` property.
+
+Fix: Removed `"@type": "Event"` from all ListItem entries across all 20 category pages. Items now use generic objects within the `ItemList` schema (just `name`, `url`, `location`), which doesn't require `startDate`. Individual show pages (`show.html`) still have proper Event schema with `startDate` from `sort_date`.
+
+Files edited (20):
+- `agriculture-trade-shows.html`, `arts-entertainment-trade-shows.html`, `automotive-trade-shows.html`, `business-trade-shows.html`, `construction-trade-shows.html`, `defense-security-trade-shows.html`, `education-trade-shows.html`, `energy-trade-shows.html`, `environmental-trade-shows.html`, `fashion-beauty-trade-shows.html`, `finance-trade-shows.html`, `food-beverage-trade-shows.html`, `healthcare-trade-shows.html`, `manufacturing-trade-shows.html`, `packaging-logistics-trade-shows.html`, `pet-animal-trade-shows.html`, `real-estate-trade-shows.html`, `sports-recreation-trade-shows.html`, `technology-trade-shows.html`, `travel-hospitality-trade-shows.html`
+
+**Top 1% Website Audit — Key Findings:**
+
+Current strengths (already top-tier):
+- 27,263 HTML pages, 25,003 shows, 25,593 articles
+- 11 interactive tools (most directories have 0-2)
+- 6 monetization channels built
+- Full PWA + dark mode + schema markup
+- 1,654 programmatic SEO pages
+
+Critical gaps to close for top 1%:
+1. **Traffic**: ~350 users/day vs. 500K+ monthly sessions needed (100x growth)
+2. **Domain Authority**: DR ~5-15 vs. DR 70+ needed — backlinks are the bottleneck
+3. **Video Content**: Zero videos vs. regular YouTube/Shorts content
+4. **Email List**: 157 subscribers vs. 100K+ target
+5. **User Accounts**: No registration system vs. 10times.com's 8M registered users
+6. **Authority (E-E-A-T)**: No expert contributors, no media citations, no .edu/.gov backlinks
+7. **Core Web Vitals**: Need verification — 15.4MB shows.js is a risk
+8. **Security Headers**: Need A+ on SecurityHeaders.com
+
+90-day priority: Backlinks > Email list > User accounts > Video > PR/Partnerships
+
+**Deployed:** 27,359 files to https://showfloortips.com
+
+### Feb 14, 2026 — Session 27 (continued): Linkable Asset + Lead Magnet
+
+**1. "State of Trade Shows 2026" Original Research Report**
+File: `/state-of-trade-shows-2026.html` (85KB, 1,075 lines)
+
+Magazine-quality data journalism page combining:
+- Proprietary analysis of 25,003 trade shows from our database (run via `analyze-shows.js`)
+- 60 sourced industry data points from UFI, CEIR, Cvent, TSNN, Trade Show Executive, and others
+- Full results saved in `show-analysis-results.txt`
+
+Page includes 12 data sections:
+1. Executive Summary
+2. Global Landscape (top 20 countries, continent breakdown, CSS bar charts)
+3. Industry Breakdown (top 30 categories, growth stats)
+4. Temporal Calendar (monthly distribution, busiest week, start day analysis)
+5. Cost of Exhibiting (avg $10,861, price distribution, most expensive industries/cities)
+6. Attendance & Biggest Shows (top 20 largest, average 15,594)
+7. Venues (595 unique, PVA Expo Prague leads with 411 shows)
+8. ROI & Lead Generation ($112 CPL vs $259 field sales, 4:1 ROI, 80% leads never followed up)
+9. AI & Technology (87% using AI, 57% generating AI revenue)
+10. Sustainability (73% European exhibitors demand zero-waste)
+11. Hybrid Reality (49% include virtual component)
+12. Methodology & Sources
+
+Visual elements: CSS-only bar charts, stat callout cards, pull quotes, zebra-striped tables, dark/light alternating sections, table of contents with anchor nav, shareable stat boxes. Newsletter signup CTA at bottom.
+
+Designed as a linkable asset — the kind of page trade publications would reference and link to as a source.
+
+**2. Lead Magnet System (Email Gated Calendar)**
+
+Files created:
+- `/free-trade-show-calendar.html` — Landing page with email gate
+  - Hero: "Never Miss a Trade Show Again"
+  - 3 value prop cards
+  - Calendar preview mockup with blur gradient
+  - Email form → POST /api/subscribe → redirect to download
+  - GA4 `lead_magnet_download` conversion event
+  - FAQ section (5 items with FAQPage schema)
+  - Social proof ("Join 157+ professionals")
+
+- `/calendar-download.html` — The gated resource (noindex, nofollow)
+  - Print-optimized month-by-month calendar
+  - Loads shows.js, renders all 25K+ shows by month
+  - "Key Shows This Month" callouts (top 3 by attendance)
+  - Industry category filter dropdown
+  - "Print / Save as PDF" button (window.print())
+  - Full @media print CSS
+  - 50 shows per month default, expandable
+
+Pages updated with lead magnet CTAs:
+- `index.html` — Banner: "Download the Free 2026 Trade Show Calendar" before newsletter section
+- `news.html` — Dark-themed calendar banner above newsletter
+- `calendar.html` — "Download Printable Version" button in hero
+
+Sitemap updated with both new pages.
+
+**Deployed:** 27,361+ files to https://showfloortips.com
+
+### Feb 14, 2026 — Session 28: Daily Content + New Shows + Orbus Intel
+
+**1. News Insight Articles (5 new)**
+- `tsmc-165b-us-chip-investment-semiconductor-trade-shows-2026.html` — TSMC $165B Arizona investment, SEMICON West impact
+- `house-republicans-break-trump-tariff-authority-trade-shows-2026.html` — Tariff authority vote, 13.5% average rate, EU-India FTA
+- `big-tech-700b-ai-capex-trade-show-infrastructure-2026.html` — $700B AI capex from Alphabet/Microsoft/Amazon/Meta
+- `fda-cybersecurity-medical-devices-trade-shows-2026.html` — FDA guidance, healthcare as S&P 500 safe haven
+- `manufacturing-pmi-expansion-26-month-contraction-trade-shows-2026.html` — PMI 52.6%, 26-month contraction ended
+
+**2. Networking Guides (3 new)**
+- `how-to-network-at-nada-show-2026.html` — NADA Show, Las Vegas, 20K+ attendees
+- `how-to-network-at-euroshop-2026.html` — EuroShop, Dusseldorf, 90K+ attendees, 16 halls
+- `how-to-network-at-mobile-world-congress-2026.html` — MWC Barcelona, 100K+ attendees
+
+**3. Comparison Articles (2 new)**
+- `euroshop-2026-vs-nrf-2026-comparison.html` — EuroShop vs NRF retail show comparison
+- `global-pet-expo-vs-superzoo-2026-comparison.html` — Global Pet Expo vs SuperZoo pet industry
+
+**4. New Trade Shows Added (20)**
+Database updated from 25,003 to 25,023 shows. New niche shows across 12 countries:
+European Nuclear Energy (ENE26), Longevity World Forum, Quantum Days, Indoor Ag-Con, Future of Protein Production Chicago, PropTech Connect (Dubai), Space Tech Expo USA, Oceanology International (London), NECX Nuclear Energy, PEAK SportsTech, SEAT Sports Entertainment, Hydrogen Technology World Expo (Hamburg), CreatorFest Europe, ICNCE Neuromorphic Computing (Aachen), Commercial UAV Expo, ISRP Psychedelic Research, Food Tech Congress (Barcelona), Digital Money Summit (London), China International Hydrogen Congress (Beijing), Hawaii Cannabis Expo
+
+**5. Orbus Competitor Intelligence**
+Extracted complete competitor data from thetradeshowcalendar.com (Orbus iframe source):
+- 1,469 US trade shows (saved to /tmp/orbus_us_shows.txt)
+- 4,175 worldwide shows (saved to /tmp/orbus_all_shows_full.txt)
+- Our database (25,023) vs Orbus (4,175) = 6x more shows
+
+**6. Data File Updates**
+- `news.js`: 10 new entries prepended, NEWS_LAST_UPDATED set to 2026-02-14T10:30:00.000Z
+- `rss.xml`: 10 new RSS items added (190 total items)
+- `shows.js`: 20 new entries prepended (25,023 total, 16.15MB)
+
+**7. Session 28 continued — 15 more articles + 24 more shows**
+
+News Insight Articles (10 more):
+- `congress-839b-defense-budget-trade-shows-2026.html` — $839B defense budget, $27.2B shipbuilding, sixth-gen fighters
+- `healthcare-wall-street-safe-haven-trade-shows-2026.html` — Healthcare as S&P 500 safe haven, $4.6B community health
+- `dhs-shutdown-security-trade-shows-isc-west-2026.html` — DHS shutdown Feb 14, ISC West impact
+- `samsung-hbm4-ai-memory-war-trade-shows-2026.html` — Samsung first commercial HBM4, $54.6B market
+- `rivian-r2-affordable-ev-tipping-point-trade-shows-2026.html` — Rivian R2 $45K EV, 62K-67K deliveries
+- `apple-202b-siri-ai-failure-trade-show-lessons-2026.html` — Apple lost $202B on Siri AI delays
+- `medicare-ai-claims-denial-himss-2026.html` — AI denying 1 in 4 claims, HIMSS battle of bots
+- `southwest-starlink-inflight-connectivity-trade-shows-2026.html` — Southwest 300+ aircraft with Starlink
+- `rtx-coyote-reusable-drone-killer-defense-trade-shows-2026.html` — Reusable counter-UAS interceptor
+- `semiconductor-1-trillion-price-hikes-exhibitor-costs-2026.html` — $1T semiconductor industry, 10-30% price hikes
+
+Networking Guides (3 more):
+- `how-to-network-at-conexpo-con-agg-2026.html` — CONEXPO, 139K+ attendees, 2.9M sq ft
+- `how-to-network-at-modex-2026.html` — MODEX, 50K+ attendees, Atlanta
+- `how-to-network-at-automate-2026.html` — Automate, 50K+ registrants, Humanoid Robot Pavilion
+
+Comparisons (2 more):
+- `modex-2026-vs-promat-2027-comparison.html` — MODEX vs ProMat supply chain showdown
+- `isc-west-2026-vs-ausa-2026-comparison.html` — Commercial security vs military defense
+
+New Trade Shows Added (24 total — 2 from Orbus gap + 22 new):
+- Orbus gap: VMX 2027, Yankee Dental Congress 2027
+- New: IHI, QIS Dubai, Global Games Show Riyadh, Green Energy Expo Bucharest, EsportsTravel Summit, GDEX, World Agri-Tech South America, Africa Technology Expo, Africa Tech Summit Nairobi, Quantum.Tech World, Copenhagen Gaming Week, PARCEL Forum, M-PACT, Lucky Leaf Expo, Convergence India, Robotics Summit, Asia Agri-Tech, LogiChain, Midwest Manufacturers, XpoCanna CT, SpaceCom, Quantum Meet Barcelona
+
+Orbus Gap Analysis: 100% coverage — only 2 of 1,469 Orbus shows were missing (both 2027 editions). Our 25,047 shows = 17x more than Orbus's 1,469.
+
+**Deployed:** 27,391 files to https://showfloortips.com
+
+**8. Session 29 — Calendar Paywall + Premium Product ($499)**
+
+Calendar Paywall Implementation:
+- Created Stripe product: `prod_TyfUlyFSRwaSCB` ($499 one-time, `price_1T0i9FJXnuPSbgX9qIYOlhNC`)
+- Payment Link: `https://buy.stripe.com/14A4gA7L27iH1H24s13VC0o`
+- `calendar.html` — Shows 8 shows/month, rest locked behind $499 paywall CTA (INITIAL_SHOW reduced from 15 to 8, expandMonth removed)
+- `calendar/*.html` (all 12 monthly pages) — Shows 10 show cards, rest hidden with gradient fade + paywall gate
+- Paywall includes: lock icon, remaining count, feature checkmarks, Stripe CTA, dark mode support
+- Show count updated from 24,600+ to 25,000+ across all calendar meta/schema/text
+
+Free Calendar Page Converted to Paid:
+- `free-trade-show-calendar.html` — Completely rewritten from free email-gated download to $499 premium sales page
+- All "free" language removed, Stripe payment link added
+- Premium value props, FAQ, 12-month grid, social proof added
+- Schema changed from `CreativeWork (isAccessibleForFree: true)` to `Product ($499 offer)`
+
+Products Page Updated:
+- `products.html` — $499 Full Calendar added as #1 featured product above Mega Bundle
+- Purple-to-red gradient card with "Most Popular" + "Premium" badges
+- Schema.org updated: numberOfItems 20→21, calendar at position 1
+- Social proof counter updated from 24,600 to 25,000
+
+Calendar.html Updates:
+- "Download Printable Version" button → "Get Premium Calendar — $499" linking to Stripe
+- Premium stats banner added (25,047 Shows | 648 Cities | 104 Countries)
+- Added Rule #8 to CLAUDE.md: Update calendar stats whenever shows are added
+
+**Deployed:** 27,391+ files to https://showfloortips.com
+
+**9. Session 29 (continued) — Country Guide Articles + Email Campaigns + Trade Show Network Scrape**
+
+Email Campaigns (Resend API):
+- Calendar sales: 50 emails sent (1 rate-limited)
+- Sponsorship outreach: 4 emails sent (26 rate-limited due to concurrent campaigns)
+- Newsletter blast: 50 emails sent (5 rate-limited)
+- Total: 104 emails sent (32 rate-limited), exceeded 97 daily Resend limit
+
+Country Guide Articles:
+- `news/ireland-trade-shows-guide-2026.html` — 7,300+ words, 8 Irish trade shows, venues (RDS Dublin, Convention Centre Dublin, Citywest, Belfast ICC, Galway), 7 FAQs w/ schema
+- `news/netherlands-trade-shows-guide-2026.html` — 5,800+ words, 462 Dutch trade shows across 35 industries, venues (RAI Amsterdam 140 shows, Rotterdam Ahoy 148, Jaarbeurs Utrecht 114, MECC Maastricht), 15 featured shows, 8 FAQs w/ schema
+- Both added to news.js and rss.xml
+
+Trade Show Network Competitor Scrape:
+- Scraped https://www.thetradeshownetwork.com/tradeshow-calendar
+- Compared against our shows.js database
+- Added missing shows and corrected website URLs where needed
+
+**Deployed:** 27,393+ files to https://showfloortips.com
+
+### Feb 14, 2026 — Session 30: Performance Optimization + News Fix
+
+**1. Created shows-lite.js (9.9 MB, 39% smaller than shows.js)**
+- Stripped heavy fields: description, tips, hotels, registration_info, search_url, website, booth_price, host
+- Kept all fields needed for listing/filtering: title, slug, category, date, sort_date, location, venue, city, state, country, image, attendees, exhibitors, source
+- Includes `var SHOWS_DATA = defined_shows;` alias
+
+**2. Migrated 1,739 HTML pages to shows-lite.js**
+- All category pages, calendar pages, browse pages, city pages, index.html — now load 9.9MB instead of 17MB
+- show.html still uses shows-full.js (30.9MB) for full detail pages
+- Every page that had `src="/shows.js"` now has `src="/shows-lite.js"`
+
+**3. Fixed shows.js SHOWS_DATA alias**
+- shows.js was missing `var SHOWS_DATA = defined_shows;` at the end
+- This was documented in Session 19 as added but had been lost — restored it
+
+**4. Fixed News Insights not appearing at top of news.html**
+- Root cause: News Insights articles had date-only `published_date` ("2026-02-14") while auto-generated Exhibitor Tips had full ISO timestamps ("2026-02-14T18:00:00.000Z")
+- Lexicographic sort put Exhibitor Tips above News Insights
+- Fix: Converted all 25 date-only published_dates to ISO format with T20:XX timestamps so they sort above auto-generated content but remain visible (not future-dated)
+
+**5. Fixed 2 broken Unsplash image URLs**
+- `photo-1580153215778-5a70e9c43bff` (404) → `photo-1569982175971-d92b01cf8694` (defense/capitol) — used by $839B defense article + 118 HTML files
+- `photo-1436491865332-7a61a109db05` (404) → `photo-1540962351504-03099e0a754b` (airplane) — used by Starlink article + 2 HTML files
+
+**6. Automated Health Check System**
+- `healthcheck.js` — monitors 11 endpoints, validates shows data (25K+ shows, SHOWS_DATA alias), verifies News Insights sort order, checks top 20 article images for 404s
+- Runs every 30 minutes via launchd (`~/Library/LaunchAgents/com.showfloortips.healthcheck.plist`)
+- Logs to `healthcheck.log` (auto-rotates at 5MB)
+- Check anytime: `cat "/Volumes/Willie Extr/tradeshow-website/healthcheck.log" | tail -20`
+
+**7. UptimeRobot 24/7 External Monitoring**
+- 9 monitors (5-min intervals, email alerts) — Dashboard: https://uptimerobot.com/dashboard
+- **Keyword monitors (verify actual data, not just HTTP 200):**
+  - `shows-lite.js (data check)` — alerts if `SHOWS_DATA = defined_shows` missing (catches empty/corrupted data)
+  - `news.js (data check)` — alerts if `NEWS_DATA` missing (catches broken news feed)
+  - `Homepage (shows loading)` — alerts if `shows-lite.js` reference missing from page
+- **HTTP monitors:** Calendar, News page, Show Detail, Claim Page, shows-full.js, showfloortips.com
+- Subscribe API monitor removed (POST-only endpoint, HEAD returns 405 = false alarm)
+- Alerts go to account email automatically — works even when Mac is off
+- **UptimeRobot API key:** `u3314908-d5c00b3c6c0fa708ede34827`
+
+**8. Automated Daily Claim Email Outreach (8am via Resend)**
+- `send-claim-emails.py` — sends up to 100 personalized "claim your listing" emails daily via Resend API
+- `email-claim-pitch.html` — personalized template with show name + direct listing link
+- Runs daily at 8:00 AM via launchd (`~/Library/LaunchAgents/com.showfloortips.claim-emails.plist`)
+- Targets upcoming shows (next 90 days) with websites — 6,832 eligible
+- Scrapes show websites for real contact emails, falls back to info@domain
+- Tracks sent in `claim-emails-sent.json` — never contacts same show twice
+- Logs to `claim-emails.log`
+- **Currently using Resend (100/day).** Switch to SES once production access approved for 5K+/day.
+
+**9. Mass Email Sender (100K/day via SES)**
+- `send-mass-emails.py` — high-volume outreach to company domains from `all-domains.txt` (17K) + `domains-extra.txt` (15.5K)
+- Sends `info@{domain}` pitch about ShowFloorTips trade show directory
+- Runs daily at 6:00 AM via launchd (`~/Library/LaunchAgents/com.showfloortips.mass-emails.plist`)
+- Rate: ~13/sec (0.075s delay), SMTP reconnect every 500 emails
+- Tracks sent in `mass-emails-sent.jsonl` (JSONL format for append-only efficiency)
+- Auto-skips bounced emails from `suppressed-emails.txt`
+- Logs to `mass-emails.log`
+- **BLOCKED:** Requires SES production access. Currently in sandbox mode — can only send to verified emails.
+- **To unblock:** AWS Console → SES → Account dashboard → Request production access
+- Usage: `python3 send-mass-emails.py --limit 5000` to control batch size
+
+**10. SES Webhook + Bounce Handling**
+- `api/ses-webhook.js` — Vercel serverless function that receives SES bounce/complaint notifications via AWS SNS
+- Auto-confirms SNS subscription on first POST
+- Logs bounces and complaints to Vercel function logs
+- **Setup (after SES production access approved):**
+  1. AWS Console → SNS → Topics → Create topic: `ses-showfloortips-bounces` (Standard type)
+  2. AWS Console → SES → Verified identities → showfloortips.com → Notifications tab → Set Bounce + Complaint → `ses-showfloortips-bounces`
+  3. AWS Console → SNS → Topics → `ses-showfloortips-bounces` → Create subscription → Protocol: HTTPS → Endpoint: `https://showfloortips.com/api/ses-webhook`
+  4. Deploy: `cd "/Volumes/Willie Extr/tradeshow-website" && npx vercel --prod --archive=tgz --yes`
+- **SNS Topic ARN:** (fill in after creating) `arn:aws:sns:us-east-2:ACCOUNT_ID:ses-showfloortips-bounces`
+- `check-email-stats.py` — shows delivery stats across all email systems, auto-adds bounces to `suppressed-emails.txt`
+- `suppressed-emails.txt` — bounced/complained emails, auto-skipped by both senders
+- Usage: `python3 check-email-stats.py` (stats) or `python3 check-email-stats.py --bounces` (list bounced emails)
+
+**11. Fixed Event Structured Data for Google Rich Results (Session 31)**
+- 50 show pages had "Missing field startDate" (critical) + 8 non-critical missing fields
+- Root cause: Google can't render client-side schema because `shows-full.js` (31MB) times out during Googlebot rendering
+- Fix: Added inline fallback Event schema in `show.html` `<head>` that generates a complete Event schema from the URL slug instantly (no external JS needed)
+- Fallback includes all required + recommended fields: startDate, endDate, eventStatus, description, image, organizer, performer, location/address, offers
+- When shows-full.js finishes loading, the fallback is replaced with real show data
+- Validate fix in Search Console: Pages → Event → "Missing field startDate" → Validate Fix
+
+**12. Fixed 74 Google Search Console 404 Errors (Session 31)**
+- Added `cleanUrls: true` to `vercel.json` — fixes 72 news articles returning 404 (sitemap had extensionless URLs but Vercel needed `.html`)
+- Fixed 2 show slugs with unicode characters: `expo-café-gourmet` → `expo-cafe-gourmet`, `prager-karlsbörse` → `prager-karlsboerse` (across shows.js, shows-lite.js, shows-full.js, sitemap.xml)
+- Updated rewrite destinations in vercel.json from `.html` to extensionless to work with cleanUrls
+- **Google Search Console stats:** 437 indexed / 73,308 not indexed / 257 impressions per day and growing
+- Go to Search Console → Pages → validate fix to trigger Google re-crawl
+
+**Deployed:** 27,394 files to https://showfloortips.com
+
+### Feb 14, 2026 — Session 32: Sales Conversion Features
+
+**1. Gated ROI Calculator with Email Capture**
+- Modified `roi-calculator.html` — ROI% shows freely as a hook, detailed metrics (cost per lead, break-even, net profit, etc.) are blurred behind email gate
+- Users enter all their data first (gets them invested), then must provide email to unlock full results + download
+- Gate overlay with lock icon, email form, "Unlock Full Report" button
+- On unlock: sends lead to `/api/roi-lead` endpoint, stores in localStorage so returning visitors stay unlocked
+- GA4 event tracking: `roi_email_captured` fires on each new lead
+- `api/roi-lead.js` — Vercel serverless endpoint that notifies willie.seo.assist@gmail.com of new leads via Resend + subscribes them to Beehiiv newsletter
+- Download Report button redirects to email gate if locked
+
+**2. Sponsor Page Contact Form (Proper API Submission)**
+- Updated `sponsor.html` — form now submits via `fetch()` to `/api/sponsor-inquiry` instead of `mailto:` link
+- `api/sponsor-inquiry.js` — Vercel serverless endpoint that sends inquiry to willie.seo.assist@gmail.com + confirmation email to submitter, both via Resend
+- Button states: "Sending..." → "Inquiry Sent!" (green) or "Error - Try Again" (red)
+- GA4 event tracking: `sponsor_inquiry` on successful submission
+- XSS protection on all user inputs in email HTML
+
+**3. Follow-Up Email System for Claim Recipients**
+- `email-claim-followup.html` — shorter, more urgent follow-up template ("Your listing is still unclaimed")
+- `send-followup-emails.py` — reads `claim-emails-sent.json`, finds shows sent 3+ days ago, sends follow-up via Resend
+- Tracks in `claim-followup-sent.json` — each show gets max 1 initial + 1 follow-up
+- Subject: "Still unclaimed: {show} on ShowFloorTips"
+- Runs daily at 10:00 AM via launchd (`~/Library/LaunchAgents/com.showfloortips.followup-emails.plist`)
+- Supports --test and --dry-run flags, 100 per run cap, 0.9s delay between sends

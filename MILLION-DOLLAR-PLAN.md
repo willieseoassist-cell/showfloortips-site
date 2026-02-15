@@ -1,22 +1,32 @@
 # ShowFloorTips — $1,000,000 Revenue Plan
 
-## Current State (Updated Feb 11, 2026)
-- **24,818+ trade shows** in database (shows.js, 36MB+)
-- **24,580+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
+## Current State (Updated Feb 14, 2026)
+- **25,047+ trade shows** in database (shows.js, 16.2MB)
+- **25,618+ articles** across news insights, networking guides, comparisons, cost guides, FAQs, spotlights, trend reports
 - **10 city travel guides** (Las Vegas, Chicago, Orlando, NYC, Anaheim, SF, Atlanta, Houston, Dallas, San Diego)
-- **16 industry landing pages** + index (Technology, Healthcare, Manufacturing, Food & Beverage, Construction, Automotive, Energy, Fashion & Beauty, Defense & Security, Education, Agriculture, Marine, Finance, Travel & Hospitality, Sports & Recreation)
-- **10 state landing pages** (California, Texas, Florida, New York, Illinois, Georgia, Nevada, Pennsylvania, Ohio, Massachusetts)
+- **31 industry landing pages** + index (15 original + 15 new via SEO generator: Business & Trade, Environmental, Arts & Entertainment, Pet & Animal, Packaging & Logistics, Real Estate, Mining & Metals, Textiles, Printing & Publishing, Business, Pharmaceuticals, Biotechnology, Aerospace, Plastics & Rubber, Telecommunications)
+- **37 state landing pages** (10 original + 27 new via SEO generator covering all US states with 3+ shows)
+- **120 city landing pages** (20 original + 23 new US cities + 76 international cities via SEO generator)
+- **57 country landing pages** + index (NEW — all countries with 20+ shows)
+- **115 venue landing pages** + index (NEW — all venues with 50+ shows)
+- **1,341 browse pages** (NEW — 1,327 country+category combos, 6 size tiers, 3 price tiers, 4 seasonal pages + browse index)
+- **1,654 total programmatic SEO pages** generated via `generate-seo-pages.js`
 - **11 interactive tools** built: ROI Calculator, Budget Planner, QR Generator, Show Comparison, Interactive World Map, Lead Value Calculator, Packing List Generator, Trip Cost Estimator, Flight Deals, This Week Live View, Venue Maps
-- **25 digital products** on Stripe ($7.99 - $49.99 each) — includes Mega Bundle + 5 industry kits
+- **24 digital products** on Stripe LIVE ($7.99 - $49.99 each) — 19 individual products + Mega Bundle ($49.99) + 3 Curated Kits (First-Timer $24.99, Email $29.99, ROI $34.99) + 1 additional product
 - **Scannly** lead capture app (free)
 - **Amazon Associates** integrated (tag: showfloortips-20) — travel gear, exhibitor supplies
 - **Booking.com** hotel affiliate links on all show pages + city guides
 - **Newsletter** — Beehiiv (157 subscribers), serverless API subscribe endpoint, email capture popup
 - **Sponsor outreach** — 157 partnership pitch emails sent to show organizers + industry vendors
+- **1M Domain Email Pipeline** — Majestic Million top domains downloaded, 10M pattern emails generated (info@, contact@, sales@, hello@, etc.), 1,382 curated food/ag/hospitality domains merged, DIY email verifier built (MX check + SMTP handshake + catch-all detection)
+- **Amazon SES** — Bulk email service configured (us-east-2), domain DKIM verified via Cloudflare, SMTP credentials created, production access pending ($0.10/1K emails = $100 for 1M)
 - **Dark mode + PWA** — progressive web app with service worker
-- **SEO infrastructure** — XML sitemap (split index), RSS feed, Event JSON-LD schema, FAQPage schema, HowTo schema, BreadcrumbList schema, internal cross-linking
+- **SEO infrastructure** — XML sitemap (split index, 1,654 new URLs added), RSS feed, Event JSON-LD schema, FAQPage schema, HowTo schema, BreadcrumbList schema, internal cross-linking, programmatic SEO generator
 - **Essential pages** — About, Contact, Privacy Policy, Terms of Service, Glossary (100+ terms), Changelog, Calendar
-- **Monetization ready** — AdSense placeholders, Mega Bundle page, Request Booth Info forms, Starter Kits on products page
+- **Claim This Show** — Full monetized claim system: claim.html sales page (Free / $149/mo Pro / $499/mo Premium), api/claim.js serverless endpoint (emails admin + organizer via Resend), admin/claims.html CRM dashboard (password-protected, filterable, CSV export), "Claim This Listing" sidebar on every show page, high-visibility CTAs on homepage, news, calendar, travel, guide pages + "For Organizers" nav link sitewide
+- **Embeddable Widgets** — 2 free widgets (upcoming shows + calendar) other sites embed with a `<script>` tag, each embed = backlink. widgets.html landing page + api/shows-widget.js serverless endpoint, promoted via CTAs on homepage, show pages, calendar, and guide
+- **Speed Optimized** — shows.js deferred loading, critical CSS inlined, image lazy loading, cache headers (1yr for static assets), resource hints
+- **Monetization ready** — AdSense placeholders, Mega Bundle page, Request Booth Info forms, Starter Kits on products page, Claim This Show tiers
 - Revenue today: ~$0 (early stage, infrastructure complete)
 
 ---
@@ -107,6 +117,27 @@ Features:
 - Media kit page built (/media-kit.html) with site stats and ad specs
 - 157 sponsor pitch emails sent to show organizers and industry vendors
 - SXSW sales team responded requesting partnership details
+- **1M Email Pipeline built:**
+  - Majestic Million (top 1M domains by backlinks) downloaded and processed
+  - 1,382 curated food/ag/hospitality domains hand-researched and merged
+  - 10,002,120 pattern emails generated across 10 prefixes (info@, contact@, sales@, hello@, support@, admin@, team@, marketing@, press@, partnerships@)
+  - DIY email verifier script built (verify_emails.py) — MX record lookup, SMTP RCPT TO verification, catch-all detection, 50+ parallel workers
+  - Output files: million_emails_simple.csv (1M), million_emails_long.csv (10M), million_emails_wide.csv
+  - Email verifier COMPLETE — 1,000,212 emails verified in 5.2 hours (54/sec):
+    - **127,436 valid** (confirmed mailbox exists) → saved to verified_emails_valid_only.csv
+    - **94,917 catch-all** (domain accepts all, usable but risky)
+    - 280,967 invalid + 303,023 no MX + 193,869 unknown
+    - Combined sendable list: ~222K emails (valid + catch-all)
+  - **mass-sender.js** built — full sending system with:
+    - 3 campaign templates: free-listing (value-first), sponsor (upsell), newsletter (list growth)
+    - 21-day warmup schedule: 20/day → 5,000/day (protects sender reputation)
+    - Follow-up sequences for non-responders
+    - State tracking: sent, bounced, unsubscribed per email
+    - Daily limit enforcement, rate limiting, resume capability
+    - Cruise speed: 5,000/day = 150,000/month after warmup
+  - **New strategy:** Lead with free vendor directory listing (high reply rate) → upsell sponsor packages ($500/mo) to engaged companies
+  - Previous pitch ($1,500/mo cold) got 0/95 replies — new approach starts with free value
+  - Ready to launch when Resend account is activated
 
 ---
 
@@ -134,7 +165,7 @@ Features:
 | Premium Subscription (Pro) | $300,000 | Not started |
 | Scannly App | $200,000 | Free version live |
 | Affiliate Revenue | $100,000 | Amazon + Booking.com active |
-| Sponsored Listings & Ads | $150,000 | Outreach complete (157 emails) |
+| Sponsored Listings & Ads | $150,000 | 1M email pipeline + mass sender built, launching Feb 14 |
 | Data & Reports | $100,000 | Articles created (not paywalled) |
 | **TOTAL** | **$1,000,000** | |
 
@@ -152,12 +183,13 @@ Features:
 - [x] Optimize affiliate link placement on all show pages — Booking.com on show pages, Amazon on travel/packing pages
 - [x] Add more affiliate partners — Amazon Associates (showfloortips-20) added across travel section, packing list, city guides
 - [x] Build email list aggressively — Beehiiv newsletter with serverless API, forms on 4+ pages, 157 subscribers
+- [x] Build mass email infrastructure — 1M domains collected, 10M emails generated, DIY verifier running, mass-sender.js with warmup schedule ready to launch Feb 14
 
 ### Phase 2: Monetization (Months 3-6)
 - [ ] Launch ShowFloorTips Pro subscription ($29/mo)
 - [ ] Gate premium features behind paywall (CSV exports, advanced filters, benchmarking)
 - [ ] Launch Scannly freemium model with Pro/Team/Enterprise tiers
-- [x] Start outreach to show organizers for sponsored listings — 157 pitch emails sent, SXSW responded
+- [x] Start outreach to show organizers for sponsored listings — 157 pitch emails sent, SXSW responded, mass-sender.js built with 3 campaigns + 21-day warmup (launching Feb 14)
 - [ ] Create first 3 industry reports for sale — trend report articles exist but not paywalled
 - [x] Launch weekly newsletter with sponsor slot — Beehiiv + Resend infrastructure built, first newsletter sent
 - [x] Add "Exhibitor Reviews" section — full review system on show.html (star ratings, role, year, text, sorting)
@@ -166,7 +198,7 @@ Features:
 - [ ] Target 100,000+ monthly organic visitors from SEO
 - [ ] Reach 1,000 Pro subscribers
 - [ ] Reach 1,500 Scannly paid users
-- [ ] Sign 20+ sponsored listing clients — outreach done, awaiting responses
+- [ ] Sign 20+ sponsored listing clients — mass sender ready, free-listing → sponsor upsell funnel built, launching Feb 14
 - [ ] Launch ShowFloorTips API for data access
 - [x] Add show floor maps & booth location data — venue-maps.html with 10 major US venues, official PDF downloads
 - [ ] Add "Exhibitor Connect" — matchmaking between exhibitors and attendees
@@ -233,6 +265,10 @@ Features:
 - **AdSense placeholders** — Ad slots on 4 main pages (ready to activate)
 - **Internal cross-linking** — "Related Articles" sections added to 18K+ article files
 - **Pagination** — 50 shows per page with "Load More" + count display
+- **/state-of-trade-shows-2026.html** — Original research report (85KB, 1,075 lines). Magazine-quality data journalism combining 25,003-show database analysis with 60 sourced industry data points from UFI, CEIR, Cvent, TSNN. 12 sections with CSS bar charts, stat cards, data tables. Designed as a linkable asset for backlink acquisition.
+- **/free-trade-show-calendar.html** — Lead magnet landing page. Email gate → Beehiiv signup → redirects to printable calendar. Hero, value props, calendar preview mockup, FAQ section with FAQPage schema, social proof.
+- **/calendar-download.html** — Gated printable calendar resource (noindex). Loads shows.js, renders 25K+ shows by month with "Key Shows" callouts, industry filter, "Print / Save as PDF" button, full @media print CSS.
+- **Lead magnet CTAs** — Added to index.html (banner), news.html (dark CTA), calendar.html ("Download Printable Version" button)
 
 ### Content Library
 - **115+ articles** written across categories:
@@ -249,6 +285,7 @@ Features:
 - **Resend email** — Sponsor pitches, newsletter sends
 - **662 DuckDuckGo URLs replaced** with verified official show websites
 - **Vercel deployment** — Auto-deploys with --archive=tgz for 24K+ file support
+- **Email Pipeline** — process_domains.py (domain merging), generate_emails.py (pattern generation), verify_emails.py (DIY SMTP verifier with MX/catch-all detection, 100 workers), mass-sender.js (3 campaigns, 21-day warmup, 5K/day cruise), scrape-million-emails.js, send-100-emails.js, million-email-pipeline.js
 - **XML Sitemap** — Split sitemap (index → pages + shows sub-sitemaps) for Google indexing
 - **RSS 2.0 Feed** — Latest 50 articles at /rss.xml with autodiscovery links
 
@@ -258,18 +295,89 @@ Features:
 
 | Category | Target | Current | Progress |
 |----------|--------|---------|----------|
-| Trade Shows in DB | 25,000 | 24,818 | 99% |
-| Articles | 25,000 | 24,580+ | 98% |
+| Trade Shows in DB | 25,000 | 25,003+ | 100% |
+| Articles | 25,000 | 25,593+ | 102% |
 | Free Tools | 10+ | 11 | 110% |
 | Travel Guides | 10 cities | 10 cities | 100% |
 | Industry Pages | 15+ | 16 + index | 107% |
 | State Pages | 10 | 10 | 100% |
 | Essential Pages | 7 | 7 (About, Contact, Privacy, Terms, Glossary, Changelog, Calendar) | 100% |
+| Linkable Asset | 1 research report | State of Trade Shows 2026 (85KB, 60 sourced data points, 12 sections) | ✅ 100% |
+| Lead Magnet | 1 gated resource | Free Trade Show Calendar (email gate → printable calendar, CTAs on 3 pages) | ✅ 100% |
 | Newsletter Subscribers | 1,000 | 157 | 16% |
 | Sponsor Outreach | 200 contacts | 157 sent | 79% |
+| Email Pipeline | 1,000,000 domains | 1,000,212 domains, 10M emails generated | 100% |
+| Email Verifier | Verify all emails | DONE — 1M verified: **127,436 valid**, 94,917 catch-all, 281K invalid, 303K no MX, 194K unknown | ✅ 100% |
+| Mass Sender | Send to verified list | mass-sender.js built (3 campaigns, warmup, tracking) | Ready for Resend key |
 | Affiliate Programs | 5+ | 2 (Amazon, Booking) | 40% |
-| Digital Products | 25+ | 25 (incl. Mega Bundle + 5 industry kits) | 100% |
+| Digital Products | 25+ | 23 (19 individual + Mega Bundle + 3 Curated Kits) — all with working Stripe checkout | 100% |
 | Addiction Tactics | 14 | 10 implemented | 71% |
 | Phase 1 Checklist | 9 items | 9 complete | 100% |
 | Phase 2 Checklist | 7 items | 3 complete | 43% |
 | Phase 3 Checklist | 8 items | 1 complete | 13% |
+
+---
+
+## Top 1% Website Roadmap (Added Feb 14, 2026)
+
+### Current vs. Top 1% Benchmarks
+
+| Metric | ShowFloorTips Today | Top 1% Target | Gap |
+|--------|-------------------|---------------|-----|
+| Monthly Organic Traffic | ~10K sessions (est.) | 500K+ sessions | 50x |
+| Domain Rating (Ahrefs) | ~5-15 (new domain) | 70+ | Need backlinks |
+| Referring Domains | ~50 (est.) | 500+ | 10x |
+| Email Subscribers | 157 | 100,000+ | 640x |
+| Registered Users | 0 | 100,000+ | Build user accounts |
+| Video Content | 0 | Weekly videos | Start YouTube |
+| LCP (Page Speed) | Unknown | < 1.5s | Audit needed |
+| INP | Unknown | < 100ms | Audit needed |
+| CLS | Unknown | < 0.05 | Audit needed |
+| Security Headers Grade | Unknown | A+ | Add headers |
+| WCAG Accessibility | Unknown | Level AA | Audit needed |
+| Expert Contributors | 0 | 5-10+ | Recruit experts |
+| .edu/.gov Backlinks | 0 | 10+ | Outreach needed |
+| A/B Tests Running | 0 | 20+/month | Set up testing |
+| Revenue | $0 | $1M/yr | Execute monetization |
+
+### 90-Day Priority Plan
+
+**Month 1 — Authority & Foundations (Feb 14 - Mar 14)**
+1. Publish "State of Trade Shows 2026" original research report (linkable asset)
+2. Add author bios + credentials to all articles
+3. Pitch 10 trade publications for backlinks/guest posts (TSNN, EXHIBITOR, CEIR)
+4. Submit to 20+ "best trade show directory" roundup lists
+5. Add security headers to vercel.json (HSTS, CSP, X-Content-Type-Options, X-Frame-Options)
+6. Run PageSpeed Insights audit, fix Core Web Vitals issues
+7. Launch mass email campaign (sponsor outreach)
+8. Partner with 1-2 trade associations (IAEE, SISO, UFI) for co-marketing
+
+**Month 2 — Community & Engagement (Mar 15 - Apr 14)**
+9. Build user registration system (save shows, reminders, personalized calendar)
+10. Add verified attendee reviews/ratings on show pages
+11. Create first 5 YouTube videos (show previews, exhibitor tips)
+12. Implement exit-intent email popup with downloadable lead magnet
+13. Grow email list to 1,000+ with content upgrades on every article
+14. Add "I'm Going" / "I'm Exhibiting" buttons (social proof + FOMO)
+
+**Month 3 — Scale & Revenue (Apr 15 - May 14)**
+15. Launch ShowFloorTips Pro subscription ($29/mo)
+16. Activate Scannly premium tiers
+17. Expand affiliate programs (+3-5 partners: travel insurance, swag, software)
+18. Sell first 2-3 sponsored listings/newsletter sponsors
+19. Publish weekly YouTube content
+20. Target 10,000+ monthly organic sessions
+
+### Key Competitors to Overtake
+
+| Competitor | Monthly Traffic | Strengths | Our Advantage |
+|-----------|----------------|-----------|---------------|
+| 10times.com | 1.3M visits | 8M users, largest DB | Better tools, content depth, modern UX |
+| EventsEye.com | 409-513K | Clean design, good search | 2x more shows, 11 tools, city guides |
+| TradeFairDates.com | 183K | Simple, global | Richer data, interactive features |
+| ExpoDB | ~50K | Exhibitor-level search | More shows, better content, tools |
+| EventsInAmerica | ~30K | Supplier directory | Global scope, modern design |
+
+### The Honest Assessment
+Infrastructure is top 1%. Traffic is bottom 50%. The gap is **authority and distribution**, not features.
+Every hour now should focus on: backlinks, email list, partnerships, video, and PR — not more pages or tools.

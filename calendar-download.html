@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M52J9WDRBW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M52J9WDRBW');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Trade Show Calendar &mdash; Printable Version | ShowFloorTips</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        /* Calendar Download Page */
+        :root {
+            --cd-bg: #fff;
+            --cd-text: #0a0a0a;
+            --cd-text-secondary: #525252;
+            --cd-text-light: #a3a3a3;
+            --cd-border: #e5e5e5;
+            --cd-border-light: #f5f5f5;
+            --cd-accent: #0a0a0a;
+            --cd-highlight-bg: #f8f9fa;
+        }
+
+        .cd-toolbar {
+            background: var(--cd-accent);
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 64px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cd-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cd-toolbar-left h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .cd-toolbar-left span {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .cd-toolbar-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .cd-print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            background: #fff;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.15s ease;
+        }
+
+        .cd-print-btn:hover {
+            background: #e5e5e5;
+            transform: translateY(-1px);
+        }
+
+        .cd-filter-select {
+            padding: 0.6rem 2rem 0.6rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background: transparent;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+        }
+
+        .cd-filter-select option {
+            color: #0a0a0a;
+            background: #fff;
+        }
+
+        /* Calendar Content */
+        .cd-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cd-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--cd-accent);
+        }
+
+        .cd-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--cd-text);
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+
+        .cd-header p {
+            font-size: 0.95rem;
+            color: var(--cd-text-secondary);
+        }
+
+        .cd-header .cd-branding {
+            font-size: 0.8rem;
+            color: var(--cd-text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* Month Section */
+        .cd-month {
+            margin-bottom: 2.5rem;
+            page-break-inside: avoid;
+        }
+
+        .cd-month-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 2px solid var(--cd-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .cd-month-header h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--cd-text);
+            letter-spacing: -0.02em;
+        }
+
+        .cd-month-count {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #fff;
+            background: var(--cd-accent);
+            padding: 0.2rem 0.65rem;
+            border-radius: 5px;
+        }
+
+        /* Key Shows Callout */
+        .cd-key-shows {
+            background: var(--cd-highlight-bg);
+            border: 1px solid var(--cd-border);
+            border-left: 4px solid var(--cd-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cd-key-shows-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--cd-text-light);
+            margin-bottom: 0.35rem;
+        }
+
+        .cd-key-shows-list {
+            font-size: 0.82rem;
+            color: var(--cd-text);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        /* Show Table */
+        .cd-show-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+
+        .cd-show-table thead th {
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--cd-text-light);
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--cd-border);
+        }
+
+        .cd-show-table tbody tr {
+            border-bottom: 1px solid var(--cd-border-light);
+            transition: background 0.1s ease;
+        }
+
+        .cd-show-table tbody tr:hover {
+            background: var(--cd-highlight-bg);
+        }
+
+        .cd-show-table td {
+            padding: 0.45rem 0.75rem;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .cd-show-table .cd-col-date {
+            font-weight: 600;
+            color: var(--cd-text-secondary);
+            white-space: nowrap;
+            width: 90px;
+        }
+
+        .cd-show-table .cd-col-name {
+            font-weight: 600;
+            color: var(--cd-text);
+        }
+
+        .cd-show-table .cd-col-name a {
+            color: var(--cd-text);
+            text-decoration: none;
+        }
+
+        .cd-show-table .cd-col-name a:hover {
+            text-decoration: underline;
+        }
+
+        .cd-show-table .cd-col-location {
+            color: var(--cd-text-secondary);
+            white-space: nowrap;
+        }
+
+        .cd-show-table .cd-col-category {
+            color: var(--cd-text-light);
+            font-size: 0.78rem;
+        }
+
+        .cd-show-more-row {
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .cd-show-more-btn {
+            background: none;
+            border: 1px solid var(--cd-border);
+            padding: 0.35rem 1.25rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--cd-text-secondary);
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.15s ease;
+        }
+
+        .cd-show-more-btn:hover {
+            background: var(--cd-highlight-bg);
+            border-color: var(--cd-text-secondary);
+        }
+
+        /* Loading State */
+        .cd-loading {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cd-loading .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e5e5;
+            border-top-color: #0a0a0a;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .cd-loading p {
+            color: var(--cd-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer Info */
+        .cd-footer-info {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--cd-border);
+            margin-top: 2rem;
+        }
+
+        .cd-footer-info p {
+            font-size: 0.8rem;
+            color: var(--cd-text-light);
+            line-height: 1.7;
+        }
+
+        .cd-footer-info a {
+            color: var(--cd-text);
+            font-weight: 600;
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.98);
+            z-index: 999;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .mobile-nav-overlay.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-overlay a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            color: var(--black);
+        }
+
+        /* Dark Mode */
+        html[data-theme="dark"] .cd-toolbar { background: #16162a; }
+        html[data-theme="dark"] .cd-print-btn { background: #e2e8f0; color: #0f0f23; }
+        html[data-theme="dark"] .cd-content { background: #0f0f23; }
+        html[data-theme="dark"] .cd-header h1 { color: #e2e8f0; }
+        html[data-theme="dark"] .cd-header p { color: #94a3b8; }
+        html[data-theme="dark"] .cd-header { border-bottom-color: #2a2a4a; }
+        html[data-theme="dark"] .cd-month-header { border-bottom-color: #2a2a4a; }
+        html[data-theme="dark"] .cd-month-header h2 { color: #e2e8f0; }
+        html[data-theme="dark"] .cd-month-count { background: #e2e8f0; color: #0f0f23; }
+        html[data-theme="dark"] .cd-key-shows { background: #1e1e32; border-color: #2a2a4a; border-left-color: #e2e8f0; }
+        html[data-theme="dark"] .cd-key-shows-list { color: #e2e8f0; }
+        html[data-theme="dark"] .cd-show-table thead th { color: #64748b; border-bottom-color: #2a2a4a; }
+        html[data-theme="dark"] .cd-show-table tbody tr { border-bottom-color: #1e1e32; }
+        html[data-theme="dark"] .cd-show-table tbody tr:hover { background: #1e1e32; }
+        html[data-theme="dark"] .cd-show-table .cd-col-date { color: #94a3b8; }
+        html[data-theme="dark"] .cd-show-table .cd-col-name { color: #e2e8f0; }
+        html[data-theme="dark"] .cd-show-table .cd-col-name a { color: #e2e8f0; }
+        html[data-theme="dark"] .cd-show-table .cd-col-location { color: #94a3b8; }
+        html[data-theme="dark"] .cd-show-table .cd-col-category { color: #64748b; }
+        html[data-theme="dark"] .cd-show-more-btn { border-color: #2a2a4a; color: #94a3b8; }
+        html[data-theme="dark"] .cd-show-more-btn:hover { background: #1e1e32; }
+        html[data-theme="dark"] .cd-footer-info { border-top-color: #2a2a4a; }
+        html[data-theme="dark"] .cd-footer-info p { color: #64748b; }
+        html[data-theme="dark"] .cd-footer-info a { color: #e2e8f0; }
+
+        /* Print Styles */
+        @media print {
+            header, .cd-toolbar, footer, .mobile-nav-overlay, .cd-show-more-btn,
+            .scroll-top, .cd-footer-info .no-print { display: none !important; }
+
+            body {
+                font-family: 'Inter', -apple-system, sans-serif;
+                color: #000;
+                background: #fff;
+                font-size: 10pt;
+                line-height: 1.4;
+            }
+
+            .cd-content {
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cd-header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 1rem;
+                border-bottom: 2pt solid #000;
+            }
+
+            .cd-header h1 {
+                font-size: 18pt;
+                color: #000;
+            }
+
+            .cd-header p {
+                font-size: 9pt;
+                color: #333;
+            }
+
+            .cd-month {
+                margin-bottom: 1.5rem;
+                page-break-inside: avoid;
+            }
+
+            .cd-month-header {
+                border-bottom: 1.5pt solid #000;
+                margin-bottom: 0.5rem;
+                padding: 0.5rem 0;
+            }
+
+            .cd-month-header h2 {
+                font-size: 13pt;
+                color: #000;
+            }
+
+            .cd-month-count {
+                background: #000;
+                color: #fff;
+                font-size: 7pt;
+                padding: 1pt 5pt;
+            }
+
+            .cd-key-shows {
+                background: #f5f5f5;
+                border: 1pt solid #ccc;
+                border-left: 3pt solid #000;
+                padding: 0.5rem 0.75rem;
+                margin-bottom: 0.75rem;
+                border-radius: 0;
+            }
+
+            .cd-key-shows-title { font-size: 7pt; }
+            .cd-key-shows-list { font-size: 8pt; }
+
+            .cd-show-table { font-size: 8pt; }
+            .cd-show-table thead th {
+                font-size: 6.5pt;
+                border-bottom: 0.5pt solid #999;
+                padding: 3pt 5pt;
+            }
+            .cd-show-table td {
+                padding: 2.5pt 5pt;
+                border-bottom: 0.25pt solid #eee;
+            }
+            .cd-show-table .cd-col-date { width: 65px; font-size: 7.5pt; }
+            .cd-show-table .cd-col-name { font-size: 8pt; }
+            .cd-show-table .cd-col-name a { color: #000; text-decoration: none; }
+            .cd-show-table .cd-col-location { font-size: 7.5pt; }
+            .cd-show-table .cd-col-category { font-size: 7pt; }
+
+            .cd-show-more-row { display: none; }
+
+            .cd-footer-info {
+                border-top: 1pt solid #ccc;
+                margin-top: 1rem;
+                padding-top: 0.75rem;
+            }
+
+            .cd-footer-info p { font-size: 7pt; color: #666; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cd-toolbar { top: 56px; padding: 0.75rem 1rem; }
+            .cd-content { padding: 1.5rem 1rem; }
+            .cd-header h1 { font-size: 1.5rem; }
+            .cd-show-table { font-size: 0.78rem; }
+            .cd-show-table .cd-col-category { display: none; }
+            .cd-filter-select { font-size: 0.8rem; }
+        }
+
+        @media (max-width: 480px) {
+            .cd-toolbar-left span { display: none; }
+            .cd-show-table .cd-col-location { max-width: 80px; overflow: hidden; text-overflow: ellipsis; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="/" class="logo">ShowFloorTips</a>
+            <ul class="nav-links">
+                <li><a href="/">Trade Shows</a></li>
+                <li><a href="/news.html">News</a></li>
+                <li><a href="/toolkit.html">Tools</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/guide.html">Guide</a></li>
+                <li><a href="/map.html">Maps</a></li>
+                <li><a href="/scannly.html" class="nav-cta">Try Scannly</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Open menu">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <button class="mobile-nav-close" onclick="toggleMobileNav()" aria-label="Close menu">&times;</button>
+        <a href="/" onclick="toggleMobileNav()">Trade Shows</a>
+        <a href="/news.html" onclick="toggleMobileNav()">News</a>
+        <a href="/toolkit.html" onclick="toggleMobileNav()">Tools</a>
+        <a href="/products.html" onclick="toggleMobileNav()">Products</a>
+        <a href="/guide.html" onclick="toggleMobileNav()">Guide</a>
+        <a href="/map.html" onclick="toggleMobileNav()">Maps</a>
+        <a href="/scannly.html" onclick="toggleMobileNav()">Try Scannly</a>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="cd-toolbar">
+        <div class="cd-toolbar-left">
+            <h2>2026 Trade Show Calendar</h2>
+            <span id="cdShowCount">Loading...</span>
+        </div>
+        <div class="cd-toolbar-actions">
+            <select class="cd-filter-select" id="cdCategoryFilter" onchange="renderCalendar()">
+                <option value="">All Industries</option>
+            </select>
+            <button class="cd-print-btn" onclick="window.print()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print / Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Calendar Content -->
+    <div class="cd-content" id="cdContent">
+        <div class="cd-loading">
+            <div class="spinner"></div>
+            <p>Loading 25,000+ trade shows...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">ShowFloorTips</div>
+                    <p>The world's most comprehensive trade show database. Expert intelligence and resources for exhibitors across 120+ countries.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/#shows">Trade Shows</a></li>
+                        <li><a href="/guide.html">Guide</a></li>
+                        <li><a href="/products.html">Products</a></li>
+                        <li><a href="/news.html">News</a></li>
+                        <li><a href="/travel.html">Travel Guides</a></li>
+                        <li><a href="/flight-deals.html">Flight Deals</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="/scannly.html">Scannly - Lead Capture</a></li>
+                        <li><a href="/roi-calculator.html">ROI Calculator</a></li>
+                        <li><a href="/cost-estimator.html">Cost Estimator</a></li>
+                        <li><a href="/lead-calculator.html">Lead Calculator</a></li>
+                        <li><a href="/compare.html">Show Comparison</a></li>
+                        <li><a href="/map.html">Interactive Map</a></li>
+                        <li><a href="/packing-list.html">Packing List</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/claim.html">Claim Your Show</a></li>
+                        <li><a href="/sponsor.html">Sponsor With Us</a></li>
+                        <li><a href="mailto:info@showfloortips.com">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ShowFloorTips.com</p>
+                <p>Built for exhibitors, by exhibitors</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/shows-lite.js" defer></script>
+    <script>
+    (function() {
+        var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var MONTH_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var SHOWS_PER_MONTH = 50;
+        var expandedMonths = {};
+        var allShows = [];
+        var initialized = false;
+
+        function parseDate(d) {
+            if (!d) return null;
+            var s = d.substring(0, 10).split('-');
+            return { year: parseInt(s[0], 10), month: parseInt(s[1], 10) - 1, day: parseInt(s[2], 10) };
+        }
+
+        function formatDate(d) {
+            if (!d) return 'TBD';
+            var p = parseDate(d);
+            if (!p) return 'TBD';
+            return MONTH_SHORT[p.month] + ' ' + p.day;
+        }
+
+        function getAttendeeNum(s) {
+            if (!s || !s.attendees) return 0;
+            var m = s.attendees.replace(/[^0-9]/g, '');
+            return parseInt(m, 10) || 0;
+        }
+
+        function getFilteredShows() {
+            var cat = document.getElementById('cdCategoryFilter').value;
+            return allShows.filter(function(s) {
+                if (!s.start_date && !s.sort_date) return false;
+                if (cat && s.category !== cat) return false;
+                return true;
+            }).sort(function(a, b) {
+                var da = a.sort_date || a.start_date || 'z';
+                var db = b.sort_date || b.start_date || 'z';
+                return da.localeCompare(db);
+            });
+        }
+
+        function renderCalendar() {
+            var shows = getFilteredShows();
+
+            // Group by month
+            var monthGroups = {};
+            shows.forEach(function(s) {
+                var dateStr = s.sort_date || s.start_date;
+                var p = parseDate(dateStr);
+                if (!p) return;
+                var key = p.year + '-' + (p.month < 9 ? '0' : '') + (p.month + 1);
+                if (!monthGroups[key]) {
+                    monthGroups[key] = { month: p.month, year: p.year, shows: [] };
+                }
+                monthGroups[key].shows.push(s);
+            });
+
+            var sortedKeys = Object.keys(monthGroups).sort();
+
+            // Update count
+            document.getElementById('cdShowCount').textContent = shows.length.toLocaleString() + ' shows';
+
+            var html = '';
+
+            // Header
+            html += '<div class="cd-header">';
+            html += '<h1>2026 Trade Show Calendar</h1>';
+            html += '<p>Comprehensive month-by-month calendar of trade shows, expos, and conferences worldwide</p>';
+            html += '<div class="cd-branding">ShowFloorTips.com &mdash; Updated ' + new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) + '</div>';
+            html += '</div>';
+
+            sortedKeys.forEach(function(key) {
+                var group = monthGroups[key];
+                var monthName = MONTHS[group.month] + ' ' + group.year;
+                var showCount = group.shows.length;
+
+                // Sort by date, then by attendance (bigger shows first for same date)
+                group.shows.sort(function(a, b) {
+                    var da = a.sort_date || a.start_date || 'z';
+                    var db = b.sort_date || b.start_date || 'z';
+                    if (da !== db) return da.localeCompare(db);
+                    return getAttendeeNum(b) - getAttendeeNum(a);
+                });
+
+                // Key shows: top 3 by attendance
+                var keyShows = group.shows.slice().sort(function(a, b) {
+                    return getAttendeeNum(b) - getAttendeeNum(a);
+                }).slice(0, 3).filter(function(s) { return getAttendeeNum(s) > 0; });
+
+                var isExpanded = expandedMonths[key];
+                var visibleShows = isExpanded ? group.shows : group.shows.slice(0, SHOWS_PER_MONTH);
+
+                html += '<div class="cd-month">';
+                html += '<div class="cd-month-header">';
+                html += '<h2>' + monthName + '</h2>';
+                html += '<span class="cd-month-count">' + showCount + ' shows</span>';
+                html += '</div>';
+
+                // Key shows callout
+                if (keyShows.length > 0) {
+                    html += '<div class="cd-key-shows">';
+                    html += '<div class="cd-key-shows-title">Key Shows This Month</div>';
+                    html += '<div class="cd-key-shows-list">';
+                    html += keyShows.map(function(s) {
+                        return s.title + (s.attendees ? ' (' + s.attendees + ')' : '');
+                    }).join(' &bull; ');
+                    html += '</div>';
+                    html += '</div>';
+                }
+
+                // Table
+                html += '<table class="cd-show-table">';
+                html += '<thead><tr>';
+                html += '<th>Date</th>';
+                html += '<th>Show Name</th>';
+                html += '<th>Location</th>';
+                html += '<th>Industry</th>';
+                html += '</tr></thead>';
+                html += '<tbody>';
+
+                visibleShows.forEach(function(s) {
+                    var dateStr = s.sort_date || s.start_date;
+                    var location = s.city || '';
+                    if (s.country && s.country !== 'United States') {
+                        location += (location ? ', ' : '') + s.country;
+                    }
+
+                    html += '<tr>';
+                    html += '<td class="cd-col-date">' + formatDate(dateStr) + '</td>';
+                    html += '<td class="cd-col-name"><a href="/shows/' + (s.slug || '') + '">' + (s.title || 'Untitled') + '</a></td>';
+                    html += '<td class="cd-col-location">' + location + '</td>';
+                    html += '<td class="cd-col-category">' + (s.category || '') + '</td>';
+                    html += '</tr>';
+                });
+
+                html += '</tbody>';
+                html += '</table>';
+
+                if (showCount > SHOWS_PER_MONTH && !isExpanded) {
+                    html += '<div class="cd-show-more-row"><button class="cd-show-more-btn" onclick="cdExpandMonth(\'' + key + '\')">Show all ' + showCount + ' shows</button></div>';
+                }
+
+                html += '</div>';
+            });
+
+            // Footer info
+            html += '<div class="cd-footer-info">';
+            html += '<p>Generated from the ShowFloorTips database of 25,000+ trade shows.<br>';
+            html += 'Visit <a href="https://showfloortips.com">ShowFloorTips.com</a> for show details, booth costs, exhibitor tips, and more.<br>';
+            html += '<span class="no-print">Use your browser\'s Print function (Ctrl+P / Cmd+P) to save this calendar as a PDF.</span></p>';
+            html += '</div>';
+
+            document.getElementById('cdContent').innerHTML = html;
+        }
+
+        window.cdExpandMonth = function(key) {
+            expandedMonths[key] = true;
+            renderCalendar();
+        };
+
+        window.renderCalendar = renderCalendar;
+
+        function init() {
+            if (initialized) return true;
+            allShows = typeof defined_shows !== 'undefined' ? defined_shows : (typeof SHOWS_DATA !== 'undefined' ? SHOWS_DATA : []);
+            if (allShows.length === 0) return false;
+
+            // Populate category filter
+            var cats = {};
+            allShows.forEach(function(s) { if (s.category) cats[s.category] = 1; });
+            var catSelect = document.getElementById('cdCategoryFilter');
+            catSelect.innerHTML = '<option value="">All Industries</option>';
+            Object.keys(cats).sort().forEach(function(c) {
+                var opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                catSelect.appendChild(opt);
+            });
+
+            initialized = true;
+            renderCalendar();
+            return true;
+        }
+
+        // Try init immediately, or poll
+        if (!init()) {
+            var retryCount = 0;
+            var retryInterval = setInterval(function() {
+                if (init()) {
+                    clearInterval(retryInterval);
+                }
+                if (++retryCount > 150) {
+                    clearInterval(retryInterval);
+                    document.getElementById('cdContent').innerHTML = '<div class="cd-loading"><p style="color:#dc2626">Failed to load show data. Please <a href="javascript:location.reload()">refresh the page</a>.</p></div>';
+                }
+            }, 200);
+        }
+    })();
+
+    // Mobile nav toggle
+    function toggleMobileNav() {
+        var nav = document.getElementById('mobileNav');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    }
+    </script>
+
+</body>
+</html>

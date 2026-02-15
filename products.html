@@ -16,7 +16,11 @@
     <meta name="description" content="Everything you need for your next trade show — digital planning tools, checklists, guides, and recommended booth supplies from ShowFloorTips.">
     <link rel="canonical" href="https://showfloortips.com/products.html">
     <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/styles.css"></noscript>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -24,11 +28,29 @@
         "name": "Trade Show Digital Products",
         "description": "Digital planning tools, checklists, guides, and spreadsheets for trade show exhibitors",
         "url": "https://showfloortips.com/products.html",
-        "numberOfItems": 20,
+        "numberOfItems": 21,
         "itemListElement": [
             {
                 "@type": "ListItem",
                 "position": 1,
+                "item": {
+                    "@type": "Product",
+                    "name": "Full 2026 Trade Show Calendar",
+                    "description": "The most comprehensive trade show database in the world. 25,000+ shows across 104 countries with dates, venues, attendee counts, booth pricing, and industry categories. Updated weekly.",
+                    "url": "https://showfloortips.com/calendar.html",
+                    "brand": {"@type": "Brand", "name": "ShowFloorTips"},
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "499.00",
+                        "priceCurrency": "USD",
+                        "availability": "https://schema.org/InStock",
+                        "seller": {"@type": "Organization", "name": "ShowFloorTips"}
+                    }
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
                 "item": {
                     "@type": "Product",
                     "name": "Mega Bundle — All 19 Digital Products",
@@ -46,7 +68,7 @@
             },
             {
                 "@type": "ListItem",
-                "position": 2,
+                "position": 3,
                 "item": {
                     "@type": "Product",
                     "name": "Pre-Show Planning Checklist",
@@ -62,7 +84,7 @@
             },
             {
                 "@type": "ListItem",
-                "position": 3,
+                "position": 4,
                 "item": {
                     "@type": "Product",
                     "name": "First-Time Exhibitor Guide",
@@ -78,7 +100,7 @@
             },
             {
                 "@type": "ListItem",
-                "position": 4,
+                "position": 5,
                 "item": {
                     "@type": "Product",
                     "name": "Trade Show Budget & ROI Calculator",
@@ -487,7 +509,7 @@
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 48px;
         }
@@ -607,7 +629,7 @@
         if (entries[0].isIntersecting && !observed) {
             observed = true;
             animateCounter(document.getElementById('sp-exhibitors'), 5000, 1500);
-            animateCounter(document.getElementById('sp-shows'), 24600, 1800);
+            animateCounter(document.getElementById('sp-shows'), 25000, 1800);
             observer.disconnect();
         }
     });
@@ -615,6 +637,37 @@
     if (el) observer.observe(el.parentElement.parentElement.parentElement);
 })();
 </script>
+
+<!-- ── Featured: Premium Calendar ── -->
+<section class="section" id="premium-calendar" style="padding-bottom:40px">
+    <div style="background:linear-gradient(135deg,#1a0a2e 0%,#e94560 100%);border-radius:20px;padding:56px 48px;color:#fff;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,255,255,0.08);border-radius:50%"></div>
+        <div style="position:absolute;bottom:-70px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.05);border-radius:50%"></div>
+        <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap">
+            <div style="flex:1;min-width:300px">
+                <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">
+                    <span style="background:rgba(255,255,255,0.2);color:#fff;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:4px 12px;border-radius:4px">Most Popular</span>
+                    <span style="background:#22c55e;color:#fff;font-size:0.6875rem;font-weight:700;padding:4px 10px;border-radius:4px">Premium</span>
+                </div>
+                <h2 style="font-size:2.25rem;font-weight:800;margin-bottom:14px;letter-spacing:-0.03em;line-height:1.15">Full 2026 Trade Show Calendar</h2>
+                <p style="color:rgba(255,255,255,0.8);font-size:1.05rem;line-height:1.7;margin-bottom:16px">The most comprehensive trade show database in the world. 25,000+ shows across 104 countries with full details — dates, venues, cities, attendee counts, booth pricing, and industry categories. Updated weekly.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px">
+                    <span style="font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 25,000+ Shows</span>
+                    <span style="font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 104 Countries</span>
+                    <span style="font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 648 Cities</span>
+                    <span style="font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Booth Pricing</span>
+                    <span style="font-size:0.85rem;color:rgba(255,255,255,0.85);display:flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Weekly Updates</span>
+                </div>
+            </div>
+            <div style="text-align:center;min-width:220px">
+                <div style="font-size:4rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:8px">$499</div>
+                <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);margin-bottom:20px">One-time payment</div>
+                <a href="https://buy.stripe.com/14A4gA7L27iH1H24s13VC0o" target="_blank" rel="noopener" style="display:inline-block;background:#fff;color:#1a0a2e;padding:18px 44px;border-radius:12px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.2)">Get Full Access</a>
+                <p style="font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:12px">Instant access &bull; 30-day guarantee</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ── Featured: Mega Bundle ── -->
 <section class="section" id="mega-bundle" style="padding-bottom:40px">
@@ -639,7 +692,7 @@
             <div style="text-align:center;min-width:200px">
                 <div style="margin-bottom:4px"><span style="font-size:0.9rem;color:#737373;text-decoration:line-through">$213.81</span></div>
                 <div style="font-size:3rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px">$49.99</div>
-                <a href="/bundle.html" style="display:inline-block;background:#fff;color:#0a0a0a;padding:16px 40px;border-radius:12px;font-size:1rem;font-weight:700;text-decoration:none;transition:background 0.2s;white-space:nowrap">Get the Bundle</a>
+                <a href="https://buy.stripe.com/fZu14ofducD12L60bL3VC0k" target="_blank" rel="noopener" style="display:inline-block;background:#fff;color:#0a0a0a;padding:16px 40px;border-radius:12px;font-size:1rem;font-weight:700;text-decoration:none;transition:background 0.2s;white-space:nowrap">Get the Bundle</a>
                 <p style="font-size:0.75rem;color:#737373;margin-top:10px">Instant download &bull; Lifetime access</p>
             </div>
         </div>
@@ -655,7 +708,7 @@
     </div>
     <div style="max-width:1000px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem">
         <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2rem;transition:box-shadow 0.2s">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem">🚀</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:1.5rem">🚀</span><span style="background:#f0fdf4;color:#16a34a;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;border:1px solid #bbf7d0">Save 43%</span></div>
             <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem">First-Timer Kit</h3>
             <p style="font-size:0.88rem;color:#64748b;line-height:1.6;margin-bottom:1rem">Everything a first-time exhibitor needs. Covers planning, setup, and lead capture basics.</p>
             <ul style="list-style:none;padding:0;margin:0 0 1.25rem;font-size:0.85rem;color:#334155">
@@ -664,11 +717,11 @@
                 <li style="padding:0.3rem 0">✓ First-Time Exhibitor Guide ($14.99)</li>
                 <li style="padding:0.3rem 0">✓ Lead Tracking Spreadsheet ($12.99)</li>
             </ul>
-            <p style="font-size:0.82rem;color:#64748b;margin-bottom:0.75rem">Buy individually: $43.96</p>
-            <a href="/bundle.html" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none">Get All 19 for $49.99</a>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem"><span style="font-size:1.35rem;font-weight:800;color:#0a0a0a">$24.99</span><span style="font-size:0.85rem;color:#a3a3a3;text-decoration:line-through">$43.96</span></div>
+            <a href="https://buy.stripe.com/7sY9AUd5mcD1etO5w53VC0l" target="_blank" rel="noopener" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;width:100%;text-align:center">Buy First-Timer Kit</a>
         </div>
         <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2rem;transition:box-shadow 0.2s">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem">📧</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:1.5rem">📧</span><span style="background:#f0fdf4;color:#16a34a;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;border:1px solid #bbf7d0">Save 40%</span></div>
             <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem">Email & Outreach Kit</h3>
             <p style="font-size:0.88rem;color:#64748b;line-height:1.6;margin-bottom:1rem">Professional email templates for every stage — before, during, and after the show.</p>
             <ul style="list-style:none;padding:0;margin:0 0 1.25rem;font-size:0.85rem;color:#334155">
@@ -678,22 +731,22 @@
                 <li style="padding:0.3rem 0">✓ VIP Invitation Email Suite ($9.99)</li>
                 <li style="padding:0.3rem 0">✓ Internal Team Brief Emails ($9.99)</li>
             </ul>
-            <p style="font-size:0.82rem;color:#64748b;margin-bottom:0.75rem">Buy individually: $49.95</p>
-            <a href="/bundle.html" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none">Get All 19 for $49.99</a>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem"><span style="font-size:1.35rem;font-weight:800;color:#0a0a0a">$29.99</span><span style="font-size:0.85rem;color:#a3a3a3;text-decoration:line-through">$49.95</span></div>
+            <a href="https://buy.stripe.com/6oU00kaXe9qP0CY8Ih3VC0m" target="_blank" rel="noopener" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;width:100%;text-align:center">Buy Email Kit</a>
         </div>
         <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2rem;transition:box-shadow 0.2s">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem">📊</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem"><span style="font-size:1.5rem">📊</span><span style="background:#f0fdf4;color:#16a34a;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:50px;border:1px solid #bbf7d0">Save 49%</span></div>
             <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:0.5rem">ROI & Analytics Kit</h3>
             <p style="font-size:0.88rem;color:#64748b;line-height:1.6;margin-bottom:1rem">Track costs, measure leads, and prove trade show ROI to management.</p>
             <ul style="list-style:none;padding:0;margin:0 0 1.25rem;font-size:0.85rem;color:#334155">
-                <li style="padding:0.3rem 0">✓ Trade Show Budget & ROI Calculator ($12.99)</li>
+                <li style="padding:0.3rem 0">✓ Budget & ROI Calculator ($12.99)</li>
                 <li style="padding:0.3rem 0">✓ Lead Tracking Spreadsheet ($12.99)</li>
                 <li style="padding:0.3rem 0">✓ Booth Cost Estimator ($12.99)</li>
                 <li style="padding:0.3rem 0">✓ ROI Maximization Playbook ($14.99)</li>
                 <li style="padding:0.3rem 0">✓ Lead Capture Strategy Guide ($14.99)</li>
             </ul>
-            <p style="font-size:0.82rem;color:#64748b;margin-bottom:0.75rem">Buy individually: $68.95</p>
-            <a href="/bundle.html" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none">Get All 19 for $49.99</a>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem"><span style="font-size:1.35rem;font-weight:800;color:#0a0a0a">$34.99</span><span style="font-size:0.85rem;color:#a3a3a3;text-decoration:line-through">$68.95</span></div>
+            <a href="https://buy.stripe.com/eVq28sfdu0Uj3Pa5w53VC0n" target="_blank" rel="noopener" style="display:inline-block;background:#0a0a0a;color:#fff;padding:0.7rem 1.5rem;border-radius:8px;font-size:0.88rem;font-weight:600;text-decoration:none;width:100%;text-align:center">Buy ROI Kit</a>
         </div>
     </div>
 </section>
@@ -717,7 +770,7 @@
             <p class="desc">30-day countdown checklist covering booth design, marketing materials, staffing, and team training milestones.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$7.99</span>
-                <a href="https://buy.stripe.com/dRmfZg9d4c7Uc9X7gP87O0p" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/5kQcN66GY7iHetO4s13VC00" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -728,7 +781,7 @@
             <p class="desc">Day-of setup checklist ensuring every detail of your booth installation is covered, from fixtures to signage.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$7.99</span>
-                <a href="https://buy.stripe.com/3cIdR8cpgfk60rf30z87O0q" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/dRm4gAfducD1dpK7Ed3VC01" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -739,7 +792,7 @@
             <p class="desc">Systematic teardown and equipment tracking checklist to ensure nothing gets left behind or damaged.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$7.99</span>
-                <a href="https://buy.stripe.com/dRmcN4gFwc7Uc9Xbx587O0r" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/aFacN6d5mfPd0CY7Ed3VC02" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -750,7 +803,7 @@
             <p class="desc">Post-show lead qualification and outreach steps to convert booth visitors into real business opportunities.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$7.99</span>
-                <a href="https://buy.stripe.com/14A00i0Gy9ZMde1cB987O0s" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/eVq9AU1mE6eDetO3nX3VC03" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -761,7 +814,7 @@
             <p class="desc">Flights, hotels, shipping, and team coordination checklist to keep travel and logistics on track.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$7.99</span>
-                <a href="https://buy.stripe.com/cNi6oGfBseg2gqd6cL87O0t" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/dRmaEY3uM1YndpKcYx3VC04" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
     </div>
@@ -777,7 +830,7 @@
             <p class="desc">Track every expense and calculate your true return on investment with built-in formulas and charts.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$12.99</span>
-                <a href="https://buy.stripe.com/fZu28qblcc7Ude1dFd87O0u" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/dRm3cwghydH599ubUt3VC05" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -788,7 +841,7 @@
             <p class="desc">CRM-ready lead scoring and pipeline tracker to organize and prioritize every contact you capture.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$12.99</span>
-                <a href="https://buy.stripe.com/cNiaEW8908VI3DreJh87O0v" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/28EeVec1i8mL4Te3nX3VC06" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -799,7 +852,7 @@
             <p class="desc">Side-by-side vendor evaluation template for comparing pricing, services, and capabilities at a glance.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$12.99</span>
-                <a href="https://buy.stripe.com/fZu28qah8fk65Lz44D87O0w" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/eVqfZi7L2eL999u1fP3VC07" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -810,7 +863,7 @@
             <p class="desc">Annual trade show planning with deadlines, milestones, and team assignments all in one view.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$12.99</span>
-                <a href="https://buy.stripe.com/00w7sKexo7REgqdcB987O0x" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/5kQ28s6GYgTh4Tef6F3VC08" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -821,7 +874,7 @@
             <p class="desc">Itemized booth expense calculator covering space rental, materials, labor, and hidden costs.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$12.99</span>
-                <a href="https://buy.stripe.com/28E5kC74Weg26PDeJh87O0y" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/cNi00k5CU7iHdpK6A93VC09" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
     </div>
@@ -837,7 +890,7 @@
             <p class="desc">5 proven email templates designed to convert trade show leads into meetings and closed deals.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$9.99</span>
-                <a href="https://buy.stripe.com/7sY7sKfBs3Bode1at187O0z" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/4gM14o2qIgTh3Pa9Ml3VC0a" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -848,7 +901,7 @@
             <p class="desc">Meeting request templates for reaching out to prospects and scheduling booth visits before the show.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$9.99</span>
-                <a href="https://buy.stripe.com/4gM9ASah89ZM4Hv1Wv87O0A" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/dRm9AUc1i1YnetOe2B3VC0b" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -859,7 +912,7 @@
             <p class="desc">Professional follow-up templates to send after booth visits, keeping your brand top of mind.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$9.99</span>
-                <a href="https://buy.stripe.com/dRmdR8ah85Jw3Dr9oX87O0B" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/28E14o5CU6eD4Te9Ml3VC0c" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -870,7 +923,7 @@
             <p class="desc">Exclusive invite templates crafted to attract key prospects and decision-makers to your booth.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$9.99</span>
-                <a href="https://buy.stripe.com/7sY3cufBs9ZMc9X9oX87O0C" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/cNi9AU0iA0Uj85q8Ih3VC0d" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -881,7 +934,7 @@
             <p class="desc">Staff coordination email templates for pre-show briefings, role assignments, and logistics updates.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$9.99</span>
-                <a href="https://buy.stripe.com/fZueVcgFw7RE1vj7gP87O0D" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/5kQ14o0iAeL9bhC8Ih3VC0e" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
     </div>
@@ -897,7 +950,7 @@
             <p class="desc">Complete 60-page guide covering everything first-time exhibitors need to know, from planning to follow-up.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$14.99</span>
-                <a href="https://buy.stripe.com/8x2dR8blceg20rfcB987O0E" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/aFa14o8P68mL85qe2B3VC0f" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -908,7 +961,7 @@
             <p class="desc">Visual merchandising and layout strategies to maximize traffic flow and visitor engagement at your booth.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$14.99</span>
-                <a href="https://buy.stripe.com/14A3cuah88VIgqd58H87O0F" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/bJe6oIc1i6eD5Xi5w53VC0g" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -919,7 +972,7 @@
             <p class="desc">Modern lead capture methods and technology comparison to help you collect more qualified contacts.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$14.99</span>
-                <a href="https://buy.stripe.com/eVq3cu3SKfk6de144D87O0G" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/fZu7sMghyeL999u7Ed3VC0h" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -930,7 +983,7 @@
             <p class="desc">Customs, logistics, and cultural tips for exhibiting at international trade shows around the world.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$14.99</span>
-                <a href="https://buy.stripe.com/eVq5kCexo6NA8XLdFd87O0H" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/3cIcN67L26eDbhC6A93VC0i" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
         <div class="digital-card">
@@ -941,7 +994,7 @@
             <p class="desc">Data-driven approach to trade show ROI, with frameworks for measuring and improving your results.</p>
             <div class="digital-card-bottom">
                 <span class="digital-price">$14.99</span>
-                <a href="https://buy.stripe.com/6oU14mexo2xkb5T30z87O0I" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
+                <a href="https://buy.stripe.com/28E9AU1mEauT85q4s13VC0j" target="_blank" rel="noopener" class="btn-buy">Buy Now</a>
             </div>
         </div>
     </div>
@@ -1007,6 +1060,14 @@
                     <li><a href="/compare.html">Show Comparison</a></li>
                     <li><a href="/map.html">Interactive Map</a></li>
                     <li><a href="/packing-list.html">Packing List</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/claim.html">Claim Your Show</a></li>
+                    <li><a href="/sponsor.html">Sponsor With Us</a></li>
+                    <li><a href="mailto:info@showfloortips.com">Contact</a></li>
                 </ul>
             </div>
         </div>

@@ -61,6 +61,8 @@
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
@@ -611,7 +613,7 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="/shows.js"></script>
+<script src="/shows-lite.js" defer></script>
 
 <script>
 (function() {
@@ -1287,11 +1289,35 @@
         });
     }
 
-    // Start when DOM is ready
+    // Start when DOM is ready, with retry for deferred shows.js
+    function tryInit() {
+        if (typeof SHOWS_DATA !== 'undefined' || typeof defined_shows !== 'undefined') {
+            init();
+            return true;
+        }
+        return false;
+    }
+
+    function startMap() {
+        if (!tryInit()) {
+            document.getElementById('map-loading').innerHTML = '<div style="text-align:center"><div style="width:40px;height:40px;border:3px solid #e5e5e5;border-top-color:#0a0a0a;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px"></div><p style="color:#737373">Loading show data...</p></div>';
+            var retryCount = 0;
+            var retryInterval = setInterval(function() {
+                if (tryInit()) {
+                    clearInterval(retryInterval);
+                }
+                if (++retryCount > 150) {
+                    clearInterval(retryInterval);
+                    document.getElementById('map-loading').innerHTML = '<p style="color:#dc2626;font-weight:600">Failed to load show data. Please refresh the page.</p>';
+                }
+            }, 200);
+        }
+    }
+
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', startMap);
     } else {
-        init();
+        startMap();
     }
 
 })();

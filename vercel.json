@@ -1,16 +1,79 @@
 {
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
       ]
+    },
+    {
+      "source": "/embed/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/api/shows-widget",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" }
+      ]
+    },
+    {
+      "source": "/shows.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/shows-full.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/homepage-data.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
     }
   ],
   "rewrites": [
-    { "source": "/shows/:slug", "destination": "/show.html" },
-    { "source": "/shows/:slug.html", "destination": "/show.html" },
-    { "source": "/best-trade-shows/:category", "destination": "/best-shows.html" },
-    { "source": "/trade-shows-in/:city", "destination": "/city-shows.html" }
+    { "source": "/shows/:slug", "destination": "/show" },
+    { "source": "/shows/:slug.html", "destination": "/show" },
+    { "source": "/best-trade-shows/:category", "destination": "/best-shows" },
+    { "source": "/trade-shows-in/:city", "destination": "/city-shows" }
   ]
 }

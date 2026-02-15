@@ -1,0 +1,402 @@
+══════════════════════════════════════════════════════════════════════════════════════════
+  TRADE SHOW DATABASE — COMPREHENSIVE STATISTICAL ANALYSIS
+  Generated: 2026-02-14
+══════════════════════════════════════════════════════════════════════════════════════════
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  1. VOLUME STATISTICS
+──────────────────────────────────────────────────────────────────────────────────────────
+  Total Shows:               25,003
+  Total Unique Countries:    104
+  Total Unique Cities:       644
+  Total Unique Venues:       595
+  Total Unique Categories:   241
+  Total Unique Organizers:   23,670
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  2. GEOGRAPHIC DISTRIBUTION
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Top 20 Countries by Show Count:
+    1. United States                                  2,001  (8.0%)
+    2. United Kingdom                                   740  (3.0%)
+    3. Germany                                          694  (2.8%)
+    4. China                                            594  (2.4%)
+    5. India                                            569  (2.3%)
+    6. Poland                                           494  (2.0%)
+    7. Japan                                            485  (1.9%)
+    8. Canada                                           479  (1.9%)
+    9. Singapore                                        467  (1.9%)
+   10. Australia                                        466  (1.9%)
+   11. Spain                                            465  (1.9%)
+   12. Brazil                                           465  (1.9%)
+   13. Thailand                                         464  (1.9%)
+   14. Netherlands                                      460  (1.8%)
+   15. Mexico                                           446  (1.8%)
+   16. South Africa                                     444  (1.8%)
+   17. Turkey                                           444  (1.8%)
+   18. Indonesia                                        432  (1.7%)
+   19. France                                           428  (1.7%)
+   20. Saudi Arabia                                     425  (1.7%)
+
+  Top 20 Cities by Show Count:
+    1. Singapore                                        467  (1.9%)
+    2. Bangkok                                          463  (1.9%)
+    3. Istanbul                                         438  (1.8%)
+    4. Jakarta                                          428  (1.7%)
+    5. Buenos Aires                                     423  (1.7%)
+    6. Hong Kong                                        420  (1.7%)
+    7. Prague                                           418  (1.7%)
+    8. Taipei                                           409  (1.6%)
+    9. Lima                                             407  (1.6%)
+   10. Kuala Lumpur                                     406  (1.6%)
+   11. Brussels                                         405  (1.6%)
+   12. Doha                                             405  (1.6%)
+   13. Moscow                                           403  (1.6%)
+   14. Bogota                                           403  (1.6%)
+   15. Muscat                                           394  (1.6%)
+   16. Athens                                           393  (1.6%)
+   17. Manama                                           392  (1.6%)
+   18. Vienna                                           388  (1.6%)
+   19. Auckland                                         387  (1.5%)
+   20. Panama City                                      384  (1.5%)
+
+  Top 10 US States by Show Count (of 101 US shows):
+    1. Nevada                                            28  (27.7%)
+    2. Florida                                           15  (14.9%)
+    3. California                                        12  (11.9%)
+    4. Texas                                              7  (6.9%)
+    5. Georgia                                            6  (5.9%)
+    6. New York                                           6  (5.9%)
+    7. Illinois                                           5  (5.0%)
+    8. Massachusetts                                      4  (4.0%)
+    9. Ohio                                               2  (2.0%)
+   10. Arizona                                            2  (2.0%)
+
+  Shows by Continent:
+    1. Europe                                         7,409  (29.6%)
+    2. Asia                                           5,392  (21.6%)
+    3. Other/Unknown                                  2,872  (11.5%)
+    4. South America                                  2,401  (9.6%)
+    5. Middle East                                    2,019  (8.1%)
+    6. Africa                                         1,983  (7.9%)
+    7. North America                                  1,759  (7.0%)
+    8. Oceania                                          855  (3.4%)
+    9. Unknown                                          313  (1.3%)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  3. INDUSTRY / CATEGORY DISTRIBUTION
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Top 30 Categories by Show Count:
+    1. Business & Trade                               1,884  (7.5%)
+    2. Technology                                     1,252  (5.0%)
+    3. Healthcare                                       999  (4.0%)
+    4. Manufacturing                                    952  (3.8%)
+    5. Food & Beverage                                  931  (3.7%)
+    6. Construction                                     910  (3.6%)
+    7. Automotive                                       892  (3.6%)
+    8. Energy                                           882  (3.5%)
+    9. Fashion & Beauty                                 833  (3.3%)
+   10. Sports & Recreation                              787  (3.1%)
+   11. Defense & Security                               787  (3.1%)
+   12. Agriculture                                      778  (3.1%)
+   13. Education                                        774  (3.1%)
+   14. Environmental                                    764  (3.1%)
+   15. Arts & Entertainment                             763  (3.1%)
+   16. Finance                                          748  (3.0%)
+   17. Pet & Animal                                     737  (2.9%)
+   18. Real Estate                                      735  (2.9%)
+   19. Packaging & Logistics                            734  (2.9%)
+   20. Travel & Hospitality                             731  (2.9%)
+   21. Mining & Metals                                  720  (2.9%)
+   22. Textiles                                         706  (2.8%)
+   23. Printing & Publishing                            703  (2.8%)
+   24. Marine & Maritime                                702  (2.8%)
+   25. Business                                         696  (2.8%)
+   26. Pharmaceuticals                                  680  (2.7%)
+   27. Biotechnology                                    677  (2.7%)
+   28. Aerospace                                        655  (2.6%)
+   29. Plastics & Rubber                                654  (2.6%)
+   30. Telecommunications                               649  (2.6%)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  4. TEMPORAL DISTRIBUTION
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Shows by Month (2026):
+    January       1,662  ████████████████████████████
+    February      2,167  █████████████████████████████████████
+    March         2,374  ████████████████████████████████████████
+    April         2,221  █████████████████████████████████████
+    May           2,163  ████████████████████████████████████
+    June          2,137  ████████████████████████████████████
+    July          1,852  ███████████████████████████████
+    August        1,847  ███████████████████████████████
+    September     2,193  █████████████████████████████████████
+    October       2,167  █████████████████████████████████████
+    November      1,985  █████████████████████████████████
+    December      1,733  █████████████████████████████
+
+  Shows by Quarter (2026):
+    Q1:   6,203  (25.3%)
+    Q2:   6,521  (26.6%)
+    Q3:   5,892  (24.0%)
+    Q4:   5,885  (24.0%)
+
+  Busiest Week of 2026: Week 11 (Mar 9 – Mar 15) with 753 shows
+
+  Shows by Starting Day of Week:
+    Sunday        3,297  (13.3%)
+    Monday        3,399  (13.7%)
+    Tuesday       4,147  (16.7%)
+    Wednesday     4,138  (16.7%)
+    Thursday      3,487  (14.0%)
+    Friday        3,246  (13.1%)
+    Saturday      3,124  (12.6%)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  5. BOOTH COST ANALYSIS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Shows with booth pricing data: 24,919 / 25,003 (99.7%)
+  Average booth price (midpoint): $10,861
+  Median booth price (midpoint):  $9,000
+  Min booth price midpoint:       $33
+  Max booth price midpoint:       $130,000
+
+  Top 15 Most Expensive Industries (avg booth midpoint, min 3 shows):
+    1. Gaming & Entertainment                      $27,333  (n=3)
+    2. Fintech & Payments                          $24,167  (n=3)
+    3. Defence & Security                          $16,750  (n=4)
+    4. Broadcasting & Media                        $16,500  (n=3)
+    5. Security                                    $14,750  (n=4)
+    6. Packaging                                   $14,000  (n=3)
+    7. Mining                                      $12,900  (n=5)
+    8. Automotive                                  $11,759  (n=892)
+    9. Defense & Security                          $11,533  (n=786)
+   10. Healthcare                                  $11,498  (n=995)
+   11. Printing & Publishing                       $11,465  (n=703)
+   12. Pharmaceuticals                             $11,375  (n=680)
+   13. Business                                    $11,314  (n=696)
+   14. Marine & Maritime                           $11,204  (n=702)
+   15. Manufacturing                               $11,188  (n=951)
+
+  Top 15 Cheapest Industries (avg booth midpoint, min 3 shows):
+    1. Aviation                                     $4,859  (n=3)
+    2. Cannabis & Hemp                              $8,750  (n=3)
+    3. Business & Trade                             $9,012  (n=1883)
+    4. Pet Industry                                 $9,333  (n=3)
+    5. Food & Beverage                             $10,059  (n=931)
+    6. Agriculture                                 $10,575  (n=776)
+    7. Telecommunications                          $10,596  (n=649)
+    8. Education                                   $10,601  (n=774)
+    9. Pet & Animal                                $10,655  (n=737)
+   10. Construction                                $10,695  (n=910)
+   11. Fashion & Beauty                            $10,703  (n=833)
+   12. Biotechnology                               $10,705  (n=677)
+   13. Aerospace                                   $10,755  (n=655)
+   14. Finance                                     $10,791  (n=748)
+   15. Real Estate                                 $10,831  (n=735)
+
+  Top 10 Most Expensive Countries (avg booth midpoint, min 3 shows):
+    1. UK                                          $15,786  (n=7)
+    2. US                                          $15,529  (n=17)
+    3. USA                                         $13,118  (n=53)
+    4. Philippines                                 $12,254  (n=357)
+    5. Bahrain                                     $12,209  (n=392)
+    6. Costa Rica                                  $12,134  (n=342)
+    7. UAE                                         $11,835  (n=390)
+    8. Canada                                      $11,598  (n=476)
+    9. Chile                                       $11,542  (n=348)
+   10. Egypt                                       $11,506  (n=354)
+
+  Top 10 Most Expensive Cities (avg booth midpoint, min 3 shows):
+    1. Chiba                                       $16,500  (n=3)
+    2. Miami Beach                                 $16,375  (n=4)
+    3. Maastricht                                  $16,000  (n=3)
+    4. San Francisco                               $13,678  (n=45)
+    5. Portland                                    $13,000  (n=26)
+    6. Las Vegas                                   $12,873  (n=215)
+    7. Salt Lake City                              $12,500  (n=21)
+    8. Farnborough                                 $12,450  (n=10)
+    9. Jeddah                                      $12,355  (n=177)
+   10. Montreal                                    $12,264  (n=128)
+
+  Booth Price Range Distribution (midpoint):
+    $0-$2,500             1,822  (7.3%)  ████████
+    $2,501-$5,000         3,668  (14.7%)  ████████████████
+    $5,001-$10,000        9,108  (36.6%)  ████████████████████████████████████████
+    $10,001-$20,000       6,496  (26.1%)  █████████████████████████████
+    $20,001-$50,000       3,812  (15.3%)  █████████████████
+    $50,001-$100,000         10  (0.0%)  
+    $100,000+                 3  (0.0%)  
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  6. ATTENDANCE ANALYSIS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Shows with attendance data: 22,438 / 25,003 (89.7%)
+  Average attendance:  15,594
+  Median attendance:   5,000
+  Min attendance:      112
+  Max attendance:      1,500,000
+
+  Top 20 Largest Shows by Attendance:
+    1. India International Trade Fair 2026                      1,500,000  (New Delhi, India)
+    2. New York International Auto Show                         1,000,000  (New York, United States)
+    3. Auto China 2026 - Beijing International Automotive Exhibition    800,000  (Beijing, China)
+    4. Aero India 2026                                            700,000  (Bangalore, India)
+    5. bauma 2026                                                 620,000  (Munich, Germany)
+    6. EICMA 2026                                                 600,000  (Milan, Italy)
+    7. Auto Expo 2026                                             600,000  (Greater Noida, India)
+    8. SNEC PV+ 2026 - International Photovoltaic & Smart Energy Exhibition    500,000  (Shanghai, China)
+    9. EAA AirVenture Oshkosh Fly-In                              500,000  (Oshkosh, United States)
+   10. Bharat Mobility Global Expo                                500,000  (New Delhi, India)
+   11. CIIE 2026                                                  500,000  (Shanghai, China)
+   12. CIIE 2026 - China International Import Expo                400,000  (Shanghai, China)
+   13. Salone del Mobile 2026                                     400,000  (Milan, Italy)
+   14. Canadian International AutoShow - CIAS                     350,000  (ON, Canada)
+   15. ChinaJoy 2026                                              350,000  (Shanghai, China)
+   16. Gamescom 2026                                              335,000  (Cologne, Germany)
+   17. CHINAPLAS - Plastics & Rubber Trade Fair                   321,879  (Shanghai, China)
+   18. CMEF - China International Medical Equipment Fair          310,000  (Shanghai, China)
+   19. Taipei Game Show 2026 Spring                               300,000  (Taipei, Taiwan)
+   20. SXSW - South by Southwest Conference & Festivals           300,000  (Austin, United States)
+
+  Top 20 Industries by Average Attendance (min 3 shows):
+    1. Gaming & Entertainment                      235,000  (n=4)
+    2. Gaming                                      166,750  (n=4)
+    3. Packaging                                    86,333  (n=3)
+    4. Broadcasting & Media                         61,667  (n=3)
+    5. Mining                                       31,600  (n=5)
+    6. Defence & Security                           26,750  (n=4)
+    7. Security                                     26,500  (n=4)
+    8. Cybersecurity                                24,000  (n=3)
+    9. Maritime/Shipping                            19,167  (n=3)
+   10. Automotive                                   18,880  (n=767)
+   11. Food & Beverage                              17,265  (n=801)
+   12. Business & Trade                             16,780  (n=882)
+   13. Arts & Entertainment                         16,424  (n=719)
+   14. Cannabis & Hemp                              16,333  (n=3)
+   15. Technology                                   15,987  (n=964)
+   16. Aerospace                                    15,687  (n=655)
+   17. Healthcare                                   15,435  (n=862)
+   18. Manufacturing                                15,430  (n=818)
+   19. Sports & Recreation                          15,343  (n=741)
+   20. Biotechnology                                15,259  (n=677)
+
+  Top 15 Countries by Average Attendance (min 3 shows):
+    1. Pakistan                                     91,676  (n=3)
+    2. UK                                           34,113  (n=8)
+    3. China                                        28,880  (n=460)
+    4. Germany                                      27,374  (n=549)
+    5. United Arab Emirates                         26,678  (n=42)
+    6. USA                                          24,397  (n=60)
+    7. Lithuania                                    23,906  (n=4)
+    8. India                                        22,920  (n=404)
+    9. Latvia                                       20,305  (n=4)
+   10. France                                       19,562  (n=400)
+   11. Japan                                        19,168  (n=427)
+   12. Italy                                        18,174  (n=341)
+   13. Taiwan                                       17,955  (n=399)
+   14. US                                           16,917  (n=41)
+   15. South Korea                                  16,818  (n=391)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  7. VENUE ANALYSIS
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Top 20 Most-Used Venues:
+    1. PVA Expo Prague                                  411  (1.6%)
+    2. Centro de Exposiciones Jockey                    404  (1.6%)
+    3. Corferias Bogota                                 400  (1.6%)
+    4. Bahrain International Exhibition & Convention Centre    392  (1.6%)
+    5. Oman Convention & Exhibition Centre              385  (1.5%)
+    6. Metropolitan Expo Athens                         382  (1.5%)
+    7. Bella Center Copenhagen                          377  (1.5%)
+    8. Messukeskus Helsinki Expo and Convention Centre    374  (1.5%)
+    9. FIL - Feira Internacional de Lisboa              365  (1.5%)
+   10. Centro de Exposiciones Quito                     353  (1.4%)
+   11. Kenyatta International Convention Centre (KICC)    351  (1.4%)
+   12. Centro de Convenciones de Costa Rica             342  (1.4%)
+   13. Saigon Exhibition and Convention Center (SECC)    331  (1.3%)
+   14. La Rural Trade Fair                              224  (0.9%)
+   15. Aotea Centre                                     214  (0.9%)
+   16. INTEX Osaka                                      213  (0.9%)
+   17. Palais des Congres de Marrakech                  212  (0.8%)
+   18. Riocentro                                        208  (0.8%)
+   19. IMPACT Muang Thong Thani                         207  (0.8%)
+   20. Doha Exhibition and Convention Center (DECC)     202  (0.8%)
+
+  Venue Statistics:
+    Total unique venues:         595
+    Average shows per venue:     34.98
+    Median shows per venue:      1
+    Max shows at single venue:   411
+
+  Distribution of Shows per Venue:
+    1 show(s)          308 venues  ████████████████████████████████████████
+    2 show(s)           47 venues  ██████
+    3 show(s)           21 venues  ███
+    4 show(s)           11 venues  █
+    5 show(s)           14 venues  ██
+    6 show(s)            3 venues  
+    7 show(s)           11 venues  █
+    8 show(s)            7 venues  █
+    9 show(s)            1 venues  
+    10+ show(s)        172 venues  ██████████████████████
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  8. OTHER INSIGHTS & DATA QUALITY
+──────────────────────────────────────────────────────────────────────────────────────────
+
+  Data Completeness:
+    Shows with hotel data:         227 / 25,003  (0.9%)
+    Shows with exhibitor tips:     228 / 25,003  (0.9%)
+    Shows with official website:   25,002 / 25,003  (100.0%)
+    Shows with description:        20,730 / 25,003  (82.9%)
+    Shows with registration info:  236 / 25,003  (0.9%)
+    Shows with image:              25,003 / 25,003  (100.0%)
+    Shows with exhibitor count:    22,356 / 25,003  (89.4%)
+    Shows with booth pricing:      24,919 / 25,003  (99.7%)
+    Shows with attendance data:    22,438 / 25,003  (89.7%)
+
+  Hotel Listings:
+    Average hotels per show (when present): 3.00
+    Max hotels listed for a single show:    3
+
+  Exhibitor Tips:
+    Average tips per show (when present): 5.00
+
+  Most Common Booth Price Strings (Top 20):
+    1. $3,000 - $15,000                     4,746  (19.0%)
+    2. $2,500 - $12,000                     2,344  (9.4%)
+    3. $4,000 - $20,000                     2,296  (9.2%)
+    4. $5,000 - $25,000                     2,071  (8.3%)
+    5. $2,000 - $10,000                     1,999  (8.0%)
+    6. $3,500 - $18,000                     1,954  (7.8%)
+    7. $8,000 - $35,000                     1,914  (7.7%)
+    8. $10,000 - $50,000                    1,853  (7.4%)
+    9. $500 - $3,000                        1,814  (7.3%)
+   10. $1,500 - $8,000                      1,794  (7.2%)
+   11. $1,000 - $5,000                      1,777  (7.1%)
+   12. $2,000 - $8,000                         96  (0.4%)
+   13. Contact for pricing                     61  (0.2%)
+   14. $5,000 - $30,000                        59  (0.2%)
+   15. $4,000 - $25,000                        53  (0.2%)
+   16. $3,000 - $18,000                        29  (0.1%)
+   17. $3,000 - $20,000                         8  (0.0%)
+   18. $5,000 - $40,000                         8  (0.0%)
+   19. $5,000 - $50,000                         8  (0.0%)
+   20. $5,000 - $20,000                         7  (0.0%)
+
+  Data Source Breakdown:
+    1. generated                                         80  (0.3%)
+    2. Official Website                                   6  (0.0%)
+    3. https://spring.smartcitiesconnect.org              1  (0.0%)
+    4. https://miningtechnorthamerica.com                 1  (0.0%)
+
+──────────────────────────────────────────────────────────────────────────────────────────
+  END OF REPORT — 25,003 shows analyzed
+──────────────────────────────────────────────────────────────────────────────────────────

@@ -119,6 +119,21 @@
         html[data-theme="dark"] .cm-related-links a { background: #1e1e32; color: #94a3b8 }
         html[data-theme="dark"] .cm-breadcrumb { color: #94a3b8 }
         html[data-theme="dark"] .cm-breadcrumb a { color: #94a3b8 }
+        .paywall-fade { position: relative; margin-top: -120px; padding-top: 120px; background: linear-gradient(to bottom, transparent, var(--bg, #f8fafc) 60%); pointer-events: none; }
+        .paywall-gate { text-align: center; padding: 3rem 2rem; margin: 0 auto; max-width: 600px; }
+        .paywall-gate h3 { font-size: 1.5rem; font-weight: 800; color: #0a0a0a; margin-bottom: 0.75rem; }
+        .paywall-gate p { color: #64748b; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .paywall-gate .pw-count { font-size: 3rem; font-weight: 800; color: #e94560; display: block; margin-bottom: 0.5rem; }
+        .paywall-cta { display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, #e94560, #c13050); color: #fff !important; font-size: 1.1rem; font-weight: 700; border-radius: 12px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(233,69,96,0.3); }
+        .paywall-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(233,69,96,0.4); }
+        .paywall-sub { font-size: 0.82rem; color: #94a3b8; margin-top: 0.75rem; }
+        .paywall-features { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-bottom: 1.5rem; }
+        .paywall-features span { display: flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; color: #475569; font-weight: 500; }
+        .paywall-features svg { color: #22c55e; }
+        html[data-theme="dark"] .paywall-fade { background: linear-gradient(to bottom, transparent, #0f0f23 60%); }
+        html[data-theme="dark"] .paywall-gate h3 { color: #e2e8f0; }
+        html[data-theme="dark"] .paywall-gate p { color: #94a3b8; }
+        html[data-theme="dark"] .paywall-features span { color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -269,11 +284,12 @@
         </div>
     </footer>
 
-    <script src="/shows.js"></script>
+    <script src="/shows-lite.js"></script>
     <script>
     (function() {
         'use strict';
         var TARGET_MONTH = 8;
+        var MONTH_NAME = 'August';
         var shows = typeof defined_shows !== 'undefined' ? defined_shows : [];
 
         function getMonthFromSortDate(sd) {
@@ -374,6 +390,38 @@
                     '</div>' +
                 '</a>';
             }).join('');
+
+            // Paywall gate
+            var MAX_FREE = 10;
+            var oldFade = document.querySelector('.paywall-fade');
+            if (oldFade) oldFade.remove();
+            var oldGate = document.querySelector('.paywall-gate');
+            if (oldGate) oldGate.remove();
+
+            if (filtered.length > MAX_FREE) {
+                var cards = grid.querySelectorAll('.cm-card');
+                for (var i = MAX_FREE; i < cards.length; i++) {
+                    cards[i].style.display = 'none';
+                }
+                var remaining = filtered.length - MAX_FREE;
+                grid.insertAdjacentHTML('afterend',
+                    '<div class="paywall-fade"></div>' +
+                    '<div class="paywall-gate">' +
+                        '<span class="pw-count">' + filtered.length.toLocaleString() + '</span>' +
+                        '<h3>\ud83d\udd12 See All ' + MONTH_NAME + ' 2026 Trade Shows</h3>' +
+                        '<p>You\'re viewing 10 of ' + filtered.length.toLocaleString() + ' shows. Unlock the complete calendar with full details on every show.</p>' +
+                        '<div class="paywall-features">' +
+                            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Dates &amp; Venues</span>' +
+                            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Attendee Counts</span>' +
+                            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Booth Pricing</span>' +
+                            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> 104 Countries</span>' +
+                            '<span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Weekly Updates</span>' +
+                        '</div>' +
+                        '<a href="https://buy.stripe.com/14A4gA7L27iH1H24s13VC0o" class="paywall-cta">Unlock Full Calendar &mdash; $499</a>' +
+                        '<p class="paywall-sub">One-time payment &bull; Instant access &bull; Updated weekly</p>' +
+                    '</div>'
+                );
+            }
         }
 
         document.getElementById('searchInput').addEventListener('input', renderShows);

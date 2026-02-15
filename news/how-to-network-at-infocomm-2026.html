@@ -87,7 +87,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "News",
-                "item": "https://showfloortips.com/news/"
+                "item": "https://showfloortips.com/news.html"
             },
             {
                 "@type": "ListItem",
@@ -575,7 +575,7 @@
         .scannly-btn {
             display: inline-block;
             background: var(--accent);
-            color: #fff;
+            color: #fff !important;
             padding: 14px 36px;
             border-radius: 8px;
             font-weight: 700;
@@ -590,6 +590,8 @@
             background: #d63651;
             transform: translateY(-2px);
         }
+
+        .article-body .scannly-btn, .scannly-cta .scannly-btn { color: #fff !important; border-bottom: none !important; }
 
         /* ===== SIDEBAR ===== */
         .sidebar {
@@ -896,10 +898,12 @@
     <div class="container">
         <a href="https://showfloortips.com/" class="site-logo">Show<span>Floor</span>Tips</a>
         <nav class="site-nav">
-            <a href="https://showfloortips.com/news/">News</a>
-            <a href="https://showfloortips.com/guides/">Guides</a>
-            <a href="https://showfloortips.com/reviews/">Reviews</a>
-            <a href="https://showfloortips.com/about/">About</a>
+            <a href="/#shows">Trade Shows</a>
+            <a href="/news.html">News</a>
+            <a href="/travel.html">Travel</a>
+            <a href="/guide.html">Guide</a>
+            <a href="/products.html">Products</a>
+            <a href="/scannly.html">Try Scannly</a>
         </nav>
     </div>
 </header>
@@ -909,7 +913,7 @@
     <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="https://showfloortips.com/">Home</a>
         <span>/</span>
-        <a href="https://showfloortips.com/news/">News</a>
+        <a href="https://showfloortips.com/news.html">News</a>
         <span>/</span>
         How to Network at InfoComm 2026
     </nav>
@@ -1268,7 +1272,7 @@
                 <h3>Trade Show Essentials</h3>
 
                 <div class="product-rec">
-                    <img src="https://via.placeholder.com/72x72?text=Card+Holder" alt="Business card holder" loading="lazy">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' rx='12' fill='%23EEF2FF'/%3E%3Crect x='14' y='20' width='44' height='32' rx='4' fill='none' stroke='%236366F1' stroke-width='2'/%3E%3Cline x1='14' y1='30' x2='58' y2='30' stroke='%236366F1' stroke-width='2'/%3E%3Crect x='20' y='38' width='18' height='3' rx='1.5' fill='%236366F1' opacity='.35'/%3E%3Crect x='20' y='44' width='12' height='2' rx='1' fill='%236366F1' opacity='.25'/%3E%3C/svg%3E" alt="Business card holder" loading="lazy">
                     <div class="product-info">
                         <h4><a href="https://www.amazon.com/dp/B0EXAMPLE1?tag=showfloortips-20" target="_blank" rel="noopener nofollow sponsored">MaxGear Leather Business Card Holder</a></h4>
                         <span class="price">$12.99</span>
@@ -1276,7 +1280,7 @@
                 </div>
 
                 <div class="product-rec">
-                    <img src="https://via.placeholder.com/72x72?text=Portable+Charger" alt="Portable phone charger" loading="lazy">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' rx='12' fill='%23ECFDF5'/%3E%3Crect x='24' y='16' width='24' height='42' rx='4' fill='none' stroke='%23059669' stroke-width='2'/%3E%3Crect x='31' y='12' width='10' height='4' rx='2' fill='%23059669'/%3E%3Cpath d='M36 28l-5 10h10l-5 10' fill='none' stroke='%23059669' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="Portable phone charger" loading="lazy">
                     <div class="product-info">
                         <h4><a href="https://www.amazon.com/dp/B0EXAMPLE2?tag=showfloortips-20" target="_blank" rel="noopener nofollow sponsored">Anker 10000mAh Portable Charger</a></h4>
                         <span class="price">$25.99</span>
@@ -1284,7 +1288,7 @@
                 </div>
 
                 <div class="product-rec">
-                    <img src="https://via.placeholder.com/72x72?text=Comfort+Shoes" alt="Comfortable walking shoes" loading="lazy">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' rx='12' fill='%23FDF2F8'/%3E%3Cpath d='M14 44c2-12 8-18 16-18s10 4 14 6 8 2 14 2v6c0 4-2 8-6 8H20c-4 0-6-4-6-6z' fill='%23EC4899' fill-opacity='.12' stroke='%23EC4899' stroke-width='2'/%3E%3C/svg%3E" alt="Comfortable walking shoes" loading="lazy">
                     <div class="product-info">
                         <h4><a href="https://www.amazon.com/dp/B0EXAMPLE3?tag=showfloortips-20" target="_blank" rel="noopener nofollow sponsored">Allbirds Wool Runners - Trade Show Comfort</a></h4>
                         <span class="price">$110.00</span>
@@ -1292,7 +1296,7 @@
                 </div>
 
                 <div class="product-rec">
-                    <img src="https://via.placeholder.com/72x72?text=Badge+Reel" alt="Retractable badge holder" loading="lazy">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' rx='12' fill='%23F0F9FF'/%3E%3Crect x='22' y='24' width='28' height='36' rx='3' fill='none' stroke='%230284C7' stroke-width='2'/%3E%3Ccircle cx='36' cy='18' r='5' fill='none' stroke='%230284C7' stroke-width='2'/%3E%3Crect x='28' y='32' width='16' height='3' rx='1.5' fill='%230284C7' opacity='.3'/%3E%3Crect x='28' y='38' width='10' height='2' rx='1' fill='%230284C7' opacity='.2'/%3E%3C/svg%3E" alt="Retractable badge holder" loading="lazy">
                     <div class="product-info">
                         <h4><a href="https://www.amazon.com/dp/B0EXAMPLE4?tag=showfloortips-20" target="_blank" rel="noopener nofollow sponsored">Heavy Duty Retractable Badge Holder (2-Pack)</a></h4>
                         <span class="price">$8.99</span>
@@ -1300,7 +1304,7 @@
                 </div>
 
                 <div class="product-rec">
-                    <img src="https://via.placeholder.com/72x72?text=Notebook" alt="Professional notebook" loading="lazy">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Crect width='72' height='72' rx='12' fill='%23FEF3C7'/%3E%3Crect x='20' y='12' width='32' height='48' rx='3' fill='none' stroke='%23D97706' stroke-width='2'/%3E%3Cline x1='28' y1='12' x2='28' y2='60' stroke='%23D97706' stroke-width='1.5'/%3E%3Cline x1='34' y1='22' x2='46' y2='22' stroke='%23D97706' stroke-width='1.5' opacity='.5'/%3E%3Cline x1='34' y1='28' x2='44' y2='28' stroke='%23D97706' stroke-width='1.5' opacity='.5'/%3E%3Cline x1='34' y1='34' x2='46' y2='34' stroke='%23D97706' stroke-width='1.5' opacity='.5'/%3E%3Cline x1='34' y1='40' x2='42' y2='40' stroke='%23D97706' stroke-width='1.5' opacity='.5'/%3E%3C/svg%3E" alt="Professional notebook" loading="lazy">
                     <div class="product-info">
                         <h4><a href="https://www.amazon.com/dp/B0EXAMPLE5?tag=showfloortips-20" target="_blank" rel="noopener nofollow sponsored">Moleskine Pro Notebook - Meeting Notes</a></h4>
                         <span class="price">$22.50</span>
@@ -1332,10 +1336,10 @@
             </div>
             <div>
                 <h4>Quick Links</h4>
-                <p><a href="https://showfloortips.com/guides/">Networking Guides</a></p>
-                <p style="margin-top:8px"><a href="https://showfloortips.com/reviews/">Product Reviews</a></p>
-                <p style="margin-top:8px"><a href="https://showfloortips.com/news/">Show News</a></p>
-                <p style="margin-top:8px"><a href="https://showfloortips.com/about/">About Us</a></p>
+                <p><a href="https://showfloortips.com/guide.html">Networking Guides</a></p>
+                <p style="margin-top:8px"><a href="https://showfloortips.com/products.html">Product Reviews</a></p>
+                <p style="margin-top:8px"><a href="https://showfloortips.com/news.html">Show News</a></p>
+                <p style="margin-top:8px"><a href="https://showfloortips.com/">About Us</a></p>
             </div>
             <div>
                 <h4>Upcoming Shows</h4>
